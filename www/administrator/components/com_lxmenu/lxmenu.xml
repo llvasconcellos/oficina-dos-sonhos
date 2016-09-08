@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<mosinstall type="component">
+	<name>Lxmenu</name>
+	<creationDate>20-04-2006</creationDate>
+	<author>Georg Lorenz</author>
+	<copyright>(C) 2004 Georg Lorenz SoftSys</copyright>
+	<license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
+	<authorEmail>info@menu4joomla.com</authorEmail>
+	<authorUrl>www.menu4joomla.com</authorUrl>
+	<version>1.15</version>
+	<description>Joomla! DHTML Menu Component</description>
+	<files>
+		<filename>index.html</filename>
+	</files>
+
+	<install>
+		<queries>
+			<query>
+			CREATE TABLE IF NOT EXISTS `#__lxmenu_config` (
+			  `id` int(11) NOT NULL default 0,
+			  `version` int(5) NOT NULL default 0,
+			  PRIMARY KEY  (`id`)
+			) TYPE=MyISAM;
+			</query>
+			<query>
+			CREATE TABLE IF NOT EXISTS `#__lxmenu` (
+			  `id` int(11) NOT NULL auto_increment,
+			  `main_id` int(11) NOT NULL default '0',
+			  `sub_id` int(11) NOT NULL default '0',
+			  `outer_bg_color` varchar(7) NOT NULL default '#FFFFFF',
+			  `inner_bg_color` varchar(7) NOT NULL default '#FFFFFF',
+			  `outer_bg_color_hl` varchar(7) NOT NULL default '#FFFFFF',
+			  `inner_bg_color_hl` varchar(7) NOT NULL default '#FFFFFF',
+			  `inner_border_type` varchar(20) NOT NULL default 'none',
+			  `inner_border_type_hl` varchar(20) NOT NULL default 'none',
+			  `inner_border_color` varchar(7) NOT NULL default '#FFFFFF',
+			  `inner_border_color_hl` varchar(7) NOT NULL default '#FFFFFF',
+			  `inner_border_size` smallint(2) NOT NULL default '0',
+			  `font_family` varchar(150) NOT NULL default 'verdana,tahoma,arial',
+			  `font_size` smallint(2) NOT NULL default '10',
+			  `item_width` smallint(3) NOT NULL default '120',
+			  `item_height` smallint(3) NOT NULL default '20',
+			  `item_text_color` varchar(20) NOT NULL default '#000000',
+			  `item_text_align` varchar(20) NOT NULL default 'left',
+			  `item_text_weight` varchar(20) NOT NULL default 'normal',
+			  `item_text_decoration` varchar(20) NOT NULL default 'none',
+			  `item_text_wspace` varchar(20) NOT NULL default 'normal',
+			  `item_text_color_hl` varchar(20) NOT NULL default '#000000',
+			  `item_text_align_hl` varchar(20) NOT NULL default 'left',
+			  `item_text_weight_hl` varchar(20) NOT NULL default 'normal',
+			  `item_text_decoration_hl` varchar(20) NOT NULL default 'none',
+			  `item_text_wspace_hl` varchar(20) NOT NULL default 'normal',
+			  `inner_padding_top` smallint(2) NOT NULL default '0',
+			  `inner_padding_right` smallint(2) NOT NULL default '0',
+			  `inner_padding_bottom` smallint(2) NOT NULL default '0',
+			  `inner_padding_left` smallint(2) NOT NULL default '0',
+			  `outer_padding_top` smallint(2) NOT NULL default '0',
+			  `outer_padding_right` smallint(2) NOT NULL default '0',
+			  `outer_padding_bottom` smallint(2) NOT NULL default '0',
+			  `outer_padding_left` smallint(2) NOT NULL default '0',
+			  PRIMARY KEY  (`id`)
+			) TYPE=MyISAM;
+			</query>
+			<query>
+			CREATE TABLE IF NOT EXISTS `#__lxmenu_main` (
+			  `id` int(11) NOT NULL auto_increment,
+			  `name` varchar(50) NOT NULL default 'mainmenu',
+			  `direction` varchar(20) NOT NULL default 'horizontal',
+			  `position_style` varchar(20) NOT NULL default 'relative',
+			  `position_left` smallint(4) NOT NULL default '0',
+			  `position_top` smallint(4) NOT NULL default '0',
+			  `pop_on_click` tinyint(1) NOT NULL default '0',
+			  `expand_delay` smallint(4) NOT NULL default '0',
+			  `hide_delay` smallint(4) NOT NULL default '600',
+			  `transparency_create` tinyint(1) NOT NULL default '0',
+			  `transparency` smallint(3) NOT NULL default '80',
+			  `menu_align` varchar(10) NOT NULL default 'left',
+			  PRIMARY KEY  (`id`)
+			) TYPE=MyISAM;
+			</query>
+			<query>
+			CREATE TABLE IF NOT EXISTS `#__lxmenu_sub` (
+			  `id` int(11) NOT NULL auto_increment,
+			  `main_id` int(11) NOT NULL default '0',
+			  `transparency_create` tinyint(1) NOT NULL default '0',
+			  `transparency` smallint(3) NOT NULL default '80',
+			  `direction` varchar(10) NOT NULL default 'right',
+			  PRIMARY KEY  (`id`)
+			) TYPE=MyISAM;
+			</query>
+		</queries>
+	</install>
+	<installfile>includes/install.lxmenu.php</installfile>
+	<uninstallfile>includes/uninstall.lxmenu.php</uninstallfile>
+	<administration>
+    	<menu>Lxmenu</menu>
+		<images>
+			<filename>images/arrow.gif</filename>
+			<filename>images/pack128.png</filename>
+		</images>
+		<files>
+			<filename>js/functions.js</filename>
+			<filename>includes/install.lxmenu.php</filename>
+			<filename>includes/uninstall.lxmenu.php</filename>
+			<filename>index.html</filename>
+			<filename>admin.lxmenu.php</filename>
+			<filename>admin.lxmenu.html.php</filename>
+			<filename>toolbar.lxmenu.php</filename>
+			<filename>toolbar.lxmenu.html.php</filename>
+			<filename>picker.inc.php</filename>
+			<filename>preview.inc.php</filename>
+			<filename>lxmenu.class.php</filename>
+			<filename>language/czech.php</filename>
+			<filename>language/dutch.php</filename>
+			<filename>language/english.php</filename>
+			<filename>language/french.php</filename>
+			<filename>language/german.php</filename>
+			<filename>language/germani.php</filename>
+			<filename>language/germanf.php</filename>
+			<filename>language/polish.php</filename>
+		</files>
+	</administration>
+</mosinstall>

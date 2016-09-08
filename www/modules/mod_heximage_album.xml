@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+<mosinstall type="module" version="1.0.8">
+  <name>HeXimage_album</name>
+  <author>A.J.W.P. Ruitenberg</author>
+  <creationDate>14.04.2006</creationDate>
+  <copyright>This Module is released under the GNU/GPL License</copyright>	  
+  <license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
+  <authorEmail>info@hexa-design.com</authorEmail>
+  <authorUrl>http://www.hexa-design.com</authorUrl>
+  <version>2.1.2</version>
+  <description>This module shows the HeXimage album names as linkable text you can use it as a quick selector for HeXimage or as plugin for showing the last 5 albums.</description>
+  <files>
+    <filename module="mod_heximage_album">mod_heximage_album.php</filename>
+  </files>
+  <params>
+		<param name="sort" type="list" default="ASC" label="Order" description="Choose the way how to order the album names in the module">
+			<option value="ASC">Ascending</option>
+			<option value="DESC">Descending</option>
+		</param>
+    <param name="amount" type="text" default="5" label="Number of albums" description="Enter the amount of albums." />		
+  </params>
+</mosinstall>

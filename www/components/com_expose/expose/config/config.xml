@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<expose version="2.0">
+	<param name="Main Panel Y" value="255" type="integer" />
+	<param name="Main Panel Height" value="36" type="integer" />
+	<param name="Main Panel Previous Image Button X" value="20" type="integer" />
+	<param name="Main Panel Next Image Button X" value="60" type="integer" />
+	<param name="Main Panel Slide Show Button X" value="180" type="integer" />
+	<param name="Main Panel Audio Comment Button X" value="300" type="integer" />
+	<param name="Main Panel Image Description Button X" value="260" type="integer" />
+	<param name="Main Panel Show Large Image Button X" value="340" type="integer" />
+	<param name="Main Panel Select Album Button X" value="810" type="integer" />
+	<param name="Main Panel Image Strip Button X" value="765" type="integer" />
+	<param name="Main Panel Image Counter X" value="130" type="integer" />
+	<param name="Main Panel Album Info X" value="500" type="integer" />
+	<param name="Image X" value="0" type="integer" />
+	<param name="Image Y" value="-5" type="integer" />
+	<param name="Image Strip Scrollbar Y" value="140" type="integer" />
+	<param name="Image Strip Y" value="-5" type="integer" />
+	<param name="Image Strip Height" value="200" type="integer" />
+	<param name="Image Strip Min Scale" value="50" type="integer" />	
+	<param name="Image Strip Min Alpha" value="50" type="integer" />	
+	<param name="Image Strip Scroll Color" value="ffffff" type="hex" />	
+	<param name="Image Strip Scroll Rollover Color" value="f5f5f5" type="hex" />
+	<param name="Image Strip Scroll Event" value="Rollover" type="string" />
+	<param name="Image Strip Image Info Y" value="-20" type="integer" />
+	<param name="Image Strip Image Info Vertical Separation" value="16" type="integer" />
+	<param name="Image Strip Image Description Y" value="200" type="integer" />	
+	<param name="Image Strip Image Description Width" value="250" type="integer" />	
+	<param name="Image Strip Image Description Color" value="f0f0f0" type="hex" />
+	<param name="Image Strip Image Description Alpha" value="90" type="integer" />	
+	<param name="Image Strip Image Mask Curvature" value="3" type="integer" />
+	<param name="Image Strip Image Shadow Enabled" value="yes" type="boolean" />
+	<param name="Image Strip Image Shadow Size" value="15" type="integer" />
+	<param name="Image Strip Image Shadow Delta" value="7" type="integer" />
+	<param name="Image Strip Image Shadow Delta X" value="1" type="integer" />
+	<param name="Image Strip Image Shadow Delta Y" value="2" type="integer" />
+	<param name="Image Strip Image Shadow Alpha" value="60" type="integer" />
+	<param name="Image Strip Image Bevel Curvature" value="5" type="integer" />
+	<param name="Image Strip Image Bevel Width" value="5" type="integer" />
+	<param name="Image Strip Image Bevel Outline Thickness" value="2.25" type="float" />
+	<param name="Image Strip Image Bevel Outline Color" value="e8e8e8" type="hex" />
+	<param name="Image Strip Image Bevel Outline Color Alpha" value="100" type="integer" />
+	<param name="Image Strip Image Bevel Color" value="ffffff" type="hex" />
+	<param name="Image Strip Image Bevel Color Alpha" value="100" type="integer" />	
+	<param name="Language" value="english" type="string" />
+	<param name="Image Info Type" value="piped" type="string" />
+	<param name="Image Info Piped Vertical Separation" value="16" type="integer" />
+	<param name="Image Info Rowed Vertical Separation 1" value="9" type="integer" />
+	<param name="Image Info Rowed Vertical Separation 2" value="3" type="integer" />
+	<param name="Image Info X" value="0" type="integer" />
+	<param name="Image Info Y" value="-30" type="integer" />
+	<param name="Image Info Anchor" value="image" type="string" />
+	<param name="Image Info Horizontal Orientation" value="center" type="string" />
+	<param name="Image Info Vertical Orientation" value="top" type="string" />
+	<param name="Image Info Rowed Text Horizontal Alignment" value="right" type="string" />
+	<param name="Image Info Rowed Max Width" value="300" type="integer" />
+	<param name="Image Info Horizontal Alignment" value="center" type="string" />
+	<param name="Audio Comment Volume" value="30" type="integer" />
+	<param name="Slide Show Time" value="5" type="integer" />
+	<param name="Slide Show Loop" value="yes" type="boolean" />
+	<param name="Help Guide Enabled" value="yes" type="boolean" />
+	<param name="Help Guide Y" value="180" type="integer" />	
+	<param name="Image Mask Curvature" value="0" type="integer" />
+	<param name="Image Shadow Enabled" value="yes" type="boolean" />
+	<param name="Image Shadow Size" value="15" type="integer" />
+	<param name="Image Shadow Delta" value="7" type="integer" />
+	<param name="Image Shadow Delta X" value="1" type="integer" />
+	<param name="Image Shadow Delta Y" value="2" type="integer" />
+	<param name="Image Shadow Alpha" value="60" type="integer" />
+	<param name="Image Bevel Curvature" value="0" type="integer" />
+	<param name="Image Bevel Width" value="5" type="integer" />
+	<param name="Image Bevel Outline Thickness" value="2.25" type="float" />
+	<param name="Image Bevel Outline Color" value="f8f8f8" type="hex" />
+	<param name="Image Bevel Outline Color Alpha" value="0" type="integer" />
+	<param name="Image Bevel Color" value="ffffff" type="hex" />
+	<param name="Image Bevel Color Alpha" value="100" type="integer" />
+	<param name="Image Fade Speed" value="5" type="integer" />
+	<param name="Album List X" value="-260" type="integer" />
+	<param name="Album List Y" value="-0" type="integer" />
+	<param name="Album List Rows" value="5" type="integer" />
+	<param name="Album List Column Color" value="ffffff" type="hex" />	
+	<param name="Album List Column Curvature" value="6" type="integer" />	
+	<param name="Album List Column Scroll Size" value="22" type="integer" />
+	<param name="Album List Column Scroll Color" value="ffffff" type="hex" />		
+	<param name="Album List Column Scroll Rollover Color" value="e0e0e0" type="hex" />		
+	<param name="Album List Scroll Color" value="e0e0e0" type="hex" />
+	<param name="Album List Item Selected Color" value="f0f0f0" type="hex" />
+	<param name="Album List Item Rollover Color" value="f7f7f7" type="hex" />
+	<param name="Album List Item Width" value="260" type="integer" />
+	<param name="Album List Item Height" value="60" type="integer" />
+	<param name="Album List Item Curvature" value="6" type="integer" />	
+	<param name="Album List Item Text X" value="80" type="integer" />		
+	<param name="Album List Item Thumb X" value="38" type="integer" />	
+	<param name="Album List Item Thumb Mask Curvature" value="3" type="integer" />	
+	<param name="Album List Item Thumb Bevel Curvature" value="3" type="integer" />
+	<param name="Album List Item Thumb Bevel Width" value="0" type="integer" />
+	<param name="Album List Item Thumb Bevel Outline Thickness" value="2.25" type="float" />
+	<param name="Album List Item Thumb Bevel Outline Color" value="666666" type="hex" />
+	<param name="Album List Item Thumb Bevel Outline Color Alpha" value="100" type="integer" />
+	<param name="Album List Item Thumb Bevel Color" value="999999" type="hex" />
+	<param name="Album List Item Thumb Bevel Color Alpha" value="100" type="integer" />	
+	<param name="Album List Panel Color" value="ffffff" type="hex" />
+	<param name="Album List Panel Color Alpha" value="0" type="integer" />
+	<param name="Album Info Width" value="230" type="integer" />
+	<param name="Album Info Panel Color" value="f8f8f8" type="hex" />
+	<param name="Album Info Panel Color Alpha" value="90" type="integer" />
+	<param name="Album Info Line Color" value="d0d0d0" type="hex" />	
+	<param name="Image Description Fadeout Time" value="7" type="integer" />
+	<param name="Image Description Horizontal Alignment" value="right" type="string" />
+	<param name="Image Description Vertical Alignment" value="top" type="string" />
+	<param name="Image Description X" value="-14" type="integer" />
+	<param name="Image Description Y" value="14" type="integer" />
+	<param name="Image Description Panel Color" value="333333" type="hex" />
+	<param name="Image Description Panel Color Alpha" value="30" type="integer" />
+	<param name="Image Description Max Width" value="230" type="integer" />
+	<param name="Image Description Horizontal Orientation" value="right" type="string" />
+	<param name="Image Description Vertical Orientation" value="top" type="string" />
+	<param name="Image Description Anchor" value="image" type="string" />			
+	<param name="Image Preloading Enabled" value="yes" type="boolean" />
+	<param name="Help Panel Color" value="f8f8f8" type="hex" />				
+	<param name="Image Load Timeout" value="600" type="integer" />
+	<param name="SpeedSense Enabled" value="no" type="boolean" />
+</expose>

@@ -1,0 +1,39 @@
+                     -2142922835a:2:{s:6:"output";s:2345:"			<table class="contentpaneopen">
+			<tr>
+								<td class="contentheading" width="100%">
+				Jazz								</td>
+							<td align="right" width="100%" class="buttonheading">
+			<a href="javascript:void(0)" onclick="window.open('http://www.oficinadossonhos.com.br/index2.php?option=com_content&amp;do_pdf=1&amp;id=28','win2','status=no,toolbar=no,scrollbars=yes,titlebar=no,menubar=no,resizable=yes,width=640,height=480,directories=no,location=no');" title="PDF">
+			<img src="http://www.oficinadossonhos.com.br/templates/temalaranja/images/pdf_button.png" alt="PDF" align="middle" name="PDF" border="0" />			</a>
+			</td>
+							<td align="right" width="100%" class="buttonheading">
+				<a href="javascript:void(0)" onclick="window.open('http://www.oficinadossonhos.com.br/index2.php?option=com_content&amp;task=view&amp;id=28&amp;Itemid=99999999&amp;pop=1&amp;page=0','win2','status=no,toolbar=no,scrollbars=yes,titlebar=no,menubar=no,resizable=yes,width=640,height=480,directories=no,location=no');" title="Imprimir">
+				<img src="http://www.oficinadossonhos.com.br/templates/temalaranja/images/printButton.png" alt="Imprimir" align="middle" name="Imprimir" border="0" />				</a>
+				</td>
+							<td align="right" width="100%" class="buttonheading">
+			<a href="javascript:void(0)" onclick="window.open('http://www.oficinadossonhos.com.br/index2.php?option=com_content&amp;task=emailform&amp;id=28','win2','status=no,toolbar=no,scrollbars=yes,titlebar=no,menubar=no,resizable=yes,width=400,height=250,directories=no,location=no');" title="E-mail">
+			<img src="http://www.oficinadossonhos.com.br/templates/temalaranja/images/emailButton.png" alt="E-mail" align="middle" name="E-mail" border="0" />			</a>
+			</td>
+						</tr>
+			</table>
+			
+		<table class="contentpaneopen">
+				<tr>
+			<td valign="top" colspan="2">
+			<DIV align="justify">
+					A aula de Jazz representa mais uma opção, para os alunos do 
+					Ensino Fundamental, proporcionando uma harmonia com a música e 
+					corpo.<br />					
+            		</div>			</td>
+		</tr>
+						<tr>
+					<td align="left" colspan="2">
+					<a href="http://www.oficinadossonhos.com.br/index.php?option=com_content&amp;task=view&amp;id=28&amp;Itemid=35" class="readon">
+					Leia mais...					</a>
+					</td>
+				</tr>
+						</table>
+		
+		<span class="article_seperator">&nbsp;</span>
+		
+		";s:6:"result";N;}

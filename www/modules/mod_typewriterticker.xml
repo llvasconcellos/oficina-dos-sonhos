@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<mosinstall type="module" version="1.0.0">
+	<name>Typewriterticker</name>
+	<author>Blokwatch</author>
+	<creationDate>May 2006</creationDate>
+	<copyright>www.blokwatch.be</copyright>
+	<license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
+	<authorEmail>webmaster@blokwatch.be</authorEmail>
+	<authorUrl>www.blokwatch.be</authorUrl>
+	<version>1.0.0a</version>
+	<description>Modified latestnews module which shows items in a typewriter newsticker style. Output can link to original article (like mod_latestnews) or a custum url. To link to a custom url, create an article, use the title field to enter the ticker message and enter the url to link to in the article intro text.</description>
+	<files>
+		<filename module="mod_typewriterticker">mod_typewriterticker.php</filename>
+	</files>
+	<params>
+		<param name="moduleclass_sfx" type="text" default="" label="Module Class Suffix" description="A suffix to be applied to the css class of the module (table.moduletable), this allows individual module styling" />
+		<param name="@spacer" type="spacer" default="" label="" description="" />
+		<param name="cache" type="radio" default="0" label="Enable Cache" description="Select whether to cache the content of this module">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="@spacer" type="spacer" default="" label="" description="" />
+		<param name="type" type="list" default="0" label="Module Mode" description="Allows you to control which type of Content to display in the module">
+			<option value="1">Content Items only</option>
+			<option value="2">Static Content only</option>
+			<option value="3">Both</option>
+		</param>
+		<param name="linkto" type="list" default="0" label="Link Mode" description="Ticker items link to original article or url entered in article intro text">
+			<option value="0">Link to article</option>
+			<option value="1">Link to url in intro text </option>
+		</param>
+		<param name="tickerspeed" type="text" default="50" label="Tickerspeed" description="Typewriter speed (default 50 milliseconds)" />
+		<param name="tickerinterval" type="text" default="120000" label="Ticker restart interval" description="Typewriter restart interval (default 120000)" />
+		<param name="@spacer" type="spacer" default="" label="" description="" />
+		<param name="show_front" type="radio" default="1" label="Frontpage Items" description="Show/Hide items designated for the Frontpage - only works when in Content Items only mode">
+			<option value="1">show</option>
+			<option value="0">hide</option>
+		</param>
+		<param name="count" type="text" default="5" label="Count" description="The number of items to display (default 5)" />
+		<param name="catid" type="text" default="" label="Category ID" description="Selects items from a specific Category or set of Categories (to specify more than one Category, seperate with a comma , )." />
+		<param name="secid" type="text" default="" label="Section ID" description="Selects items from a specific Secion or set of Sections (to specify more than one Section, seperate with a comma , )." />
+	</params>
+</mosinstall>

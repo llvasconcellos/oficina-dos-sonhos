@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<mosinstall version="1.0.8" type="mambot" group="content">
+    <name>Fade Images</name>
+    <version>1.0.1</version>
+    <creationDate>6 Mar 2006</creationDate>
+    <author>Andrew Eddie</author>
+    <authorEmail>andrew.eddie@jamboworks.com</authorEmail>
+    <authorUrl>http://www.jamboworks.com</authorUrl>
+    <copyright>2006 JamboWorks LLC.  All rights reserved.</copyright>
+    <license>GNU General Public License</license>
+    <description>Based on javascript code from:
+Ultimate Fade-In Slideshow (v1.5): ? Dynamic Drive
+(http://www.dynamicdrive.com)
+
+Usage:
+{fadeimages folder=\\\\\\\&quot;&lt;subfolder&gt;\\\\\\\&quot;}image1.png|&lt;url&gt;|&lt;target&gt;,image2.png,image3.png{/fadeimages}
+
+Where {subfolder} is located under /images/stories</description>
+    <files>
+        <filename>fadeimages.js</filename>
+        <filename mambot="fadeimages">fadeimages.php</filename>
+        <filename>fadeimages.xml</filename>
+    </files>
+    <params />
+</mosinstall>

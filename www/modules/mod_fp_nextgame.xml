@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<mosinstall type="module" version="1.0.8">
+    <name>FP Next Game</name>
+    <creationDate>8/3/2006</creationDate>
+    <author>John Bultena</author>
+    <copyright>This module is released under the GNU/GPL License</copyright>
+    <authorEmail>john@bultena.com</authorEmail>
+    <authorUrl>www.bultena.com</authorUrl>
+    <version>2.0</version>
+    <description>Football pool next game</description>
+    <files>
+      <filename module="mod_fp_nextgame">mod_fp_nextgame.php</filename>
+   </files>
+</mosinstall>

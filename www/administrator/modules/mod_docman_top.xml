@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<mosinstall type="module">
+<name>Most downloaded documents - admin module</name>
+<creationDate>April 2005</creationDate>
+<author>The DOCMan development team</author>
+<copyright>This template is released under the GNU/GPL License</copyright>
+<authorEmail>admin@mambodocman.com</authorEmail>
+<authorUrl></authorUrl>
+<version>1.0</version>
+<description>Shows the 10 most downloaded documents in the DOCMan admin control panel</description>
+<files>
+<filename module="mod_docman_top">mod_docman_top.php</filename>
+</files>
+</mosinstall>

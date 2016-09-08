@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jpconfig type="installpack">
+	<name>JoomlaPack Installer 2.0 (compatible with Joomla! 1.0.x and 1.5.x)</name>
+	<package>jpi2.jpa</package>
+	<filelist>
+		<filename>configuration-1.0.x.php</filename>
+		<filename>configuration-1.5.php</filename>
+		<filename>gpl.html</filename>
+		<filename>header_bg.png</filename>
+		<filename>includes/CConfig.php</filename>
+		<filename>includes/CDatabase.php</filename>
+		<filename>includes/CFinish.php</filename>
+		<filename>includes/CIndex.php</filename>
+		<filename>includes/CJConfigManager.php</filename>
+		<filename>includes/CLicense.php</filename>
+		<filename>includes/ajaxtool.php</filename>
+		<filename>includes/common.php</filename>
+		<filename>includes/sajax.php</filename>
+		<filename>index.php</filename>
+		<filename>install.css</filename>
+		<filename>install.js</filename>
+		<filename>install_logo.png</filename>
+		<filename>lang/en.ini</filename>
+		<filename>sql/configuration-1.0.x.php</filename>
+		<filename>sql/configuration-1.5.php</filename>
+		<filename>sql/gpl.html</filename>
+		<filename>sql/header_bg.png</filename>
+		<filename>sql/includes/CConfig.php</filename>
+		<filename>sql/includes/CDatabase.php</filename>
+		<filename>sql/includes/CFinish.php</filename>
+		<filename>sql/includes/CIndex.php</filename>
+		<filename>sql/includes/CJConfigManager.php</filename>
+		<filename>sql/includes/CLicense.php</filename>
+		<filename>sql/includes/ajaxtool.php</filename>
+		<filename>sql/includes/common.php</filename>
+		<filename>sql/includes/sajax.php</filename>
+		<filename>sql/index.php</filename>
+		<filename>sql/install.css</filename>
+		<filename>sql/install.js</filename>
+		<filename>sql/install_logo.png</filename>
+		<filename>sql/lang/en.ini</filename>
+	</filelist>
+	<sqldump mode="single" multidbready="true">
+		<basedump>joomla.sql</basedump>
+	</sqldump>
+</jpconfig>

@@ -1,0 +1,784 @@
+/*
+* DOCMan 1.3.0 for Mambo 4.5.1 CMS  
+* @version $Id: changelog.txt,v 1.238 2005/09/30 21:12:37 johanjanssens Exp $
+* @package DOCMan_1.3.0
+* @copyright (C) 2003 - 2004 The DOCMan Development Team
+* @license http://www.gnu.org/copyleft/: Resource temporarily unavailable gpl.html GNU/GPL
+* Official website: http://www.mambodocman.com/
+*/
+
+1. Changelog
+------------
+This is a non-exhaustive (but still near complete) changelog for
+DOCMan 1.3.x, including beta and release candidate versions.
+Our thanks to all those people who've contributed bug reports and
+code fixes.
+
+Legend:
+
+# -> Bug Fix
++ -> Addition
+! -> Change
+- -> Removed
+! -> Note
+
+30-Sept-2005 Johan Janssens
+ # Fixed : [#4921] Text editor (Tiny MCE) frozen - Cannot type file description in the ADD DOCUMENT view.
+
+09-Aug-2005 Johan Janssens
+ # Fixed : Minor warnings when using search module
+ # Fixed : Description field selected by default in the 'search' option 
+
+08-Augst-2005 Johan Janssens
+ # Fixed : [#5904] module don't show / load the correct docman template 
+   assigned in mos-administrator for docman
+ # Fixed : [#6331] MODULES (both) and showing restricted file links.
+
+
+07-Aug-2005 Johan Janssens
+ # Fixed : "Update" creating new documents instead of updating
+
+06-Aug-2005 Johan Janssens
+ + Added CRC checksum parameter
+ + Added MD5 checksum parameter
+
+05-Aug-2005 Johan Janssens
+ + Added dynamic page titles
+ # Fixed : Linked documents info can't be changed in the frontend
+
+04-Aug-2005 Johan Janssens
+ # Fixed : Maintainers can't always download documents
+ # Fixed : Overwrite config settings has no effect
+
+29-July-2005 Johan Janssens
+ # Fixed : Error while uploading documents
+
+28-July-2005 Johan Janssens
+ # Fixed : [#7324] Small bug in theme.class
+
+11-July-2005 Johan Janssens
+ # Fixed : [#6773] Undefined function: var_export
+ # Fixed : [#6765] Savant2 template source file not found code 7
+ # Fixed : [#6719] Frontend text fixed in file not in language file
+ # Fixed : [#6476] listed files with an order don't work with more than 1 page
+ # Fixed : [#6348] pear.php error in DocMan CP
+ # Fixed : [#6329] Search result in categorie
+ # Fixed : [#5981] $dmpath is not initialized
+ # Fixed : [#5978] DOCMan shows search categories incorrectly...
+
+02-July-2005 Johan Janssens
+ # Fixed : Can't download files larger than 2mb on PHP 5.
+
+29-May-2005 Johan Janssens
+ ! Improved frontend view document popup handling
+ + Added parameters to document model
+ + Added Savant2 document plugin
+
+24-May-2005 Johan Janssens
+ + Added support for document parameters
+ # Fixed : [#6328] 1.3 rc1 - selecting multiple categories for files does not work
+
+23-May-2005 Johan Janssens
+ # Fixed : [#5388] undefined function is_a() error before download
+ ! Moved dmParameters class to DOCMan_params.class.php
+ ! Added Language string : _DML_TITLE_DOCINFORMATION 	(backend)
+ ! Added Language string : _DML_TITLE_DOCPERMISSIONS 	(backend)
+ ! Added Language string : _DML_TITLE_DOCLICENSES 	(backend)
+ ! Added Language string : _DML_TITLE_DOCDETAILS 	(backend)
+ ! Added Language string : _DML_TITLE_DOCPARAMETERS 	(backend)
+
+20-May-2005 Johan Janssens
+ # Fixed : [#6286] Access to document category 'Not Authorized'
+ # Fixed : [#6186] Lowercasing and converting spaces in filenames results in "un-linked" documents
+ # Fixed : Upload file 'Not authorized' error
+ # Fixed : [#5911] Category permissions function incorrectly
+
+19-May-2005 Johan Janssens
+ # Fixed : [#6267] empty preg_match() php warning message from DOCMAN_utils.class.php
+ # Fixed : [#6240] Visitors browse only - error
+ # Fixed : [#5912] Language variable missing
+ ! Added Language string : _DML_RESET_COUNTER (frontent) 
+
+11-May-2004 Johan Janssens
+ # Fixed : [#6135] A couple of small cosmetic bugs...
+ # Fixed : [#6031] image path incorrect
+ 	
+11-May-2005 Johan Janssens
+ # Fixed : [#5912] Language variable missing
+ ! Added Language string : _DML_DELETED 	(common)
+ ! Added Language string : _DML_DONT_AGREE 	(frontend) 
+ ! Added Language string : _DML_AGREE 		(frontend)
+ ! Added Language string : _DML_TAB_PARAMS 	(backend)    
+
+------------------- 1.3 RC 1 Released ----------------------
+
+22-Apr-2005 Johan Janssens
+ # Fixed : [#4537] error when '&amp;' in filename
+ # Fixed : [#3927] Saving without riquired fields
+ # Fixed : [#3600] Failure to enter mainter causes loss of field data
+
+21-Apr-2005 Johan Janssens
+ # Fixed : [#4154] Files containing 'Typewriter' single quote (instead of apostrophy) get a slash in name.
+ # Fixed : [#5124] Multiple categories
+
+17-Apr-2005 Johan Janssens
+ ! Moved doclink language defines to seperate file in language directory
+ ! Moved modules language defines to seperate file in language directory
+
+15-Apr-2005 Johan Janssens
+ + Added frontend update feature
+
+14-Apr-2005 Johan Janssens
+ + Added Savant2 form validation plugin
+ ! Moved edit form validation script to script_docedit.tpl.php 	
+ ! Refactored search form to use structured, accessible markup
+ ! Refactored upload wizard to use structured, accessible markup
+
+12-Apr-2005 Johan Janssens
+ ! Refactored edit document form to use structured, accessible markup
+
+11-Apr-2005 Johan Janssens
+ ! Cleaned and seperated language files 
+ + Moved frontend upload wizard to templates
+ + Moved frontend edit task to templates
+
+10-Apr-2005 Johan Janssens
+ # Fixed : Orphan pagination problem
+
+22-Mar-2005 Johan Janssens
+ # Fixed : Default theme validates as xhtml transitional in Mambo 4.5.2
+
+14-Mar-2005 Johan Janssens
+ + Added category permissions checks to handle the different access types
+
+12-Mar-2005 Johan Janssens
+ # Fixed : [#4941] Error in Backend (Cannot redeclare mosmakepath())
+ # Fixed : [#4806] same as [#4941]
+ # Fixed : [#4612] same as [#4941]
+
+11-Mar-2005 Johan Janssens
+ # Fixed : date problems in edit document forms
+ # Fixed : missing upload.png pointed to wrong file 
+ # Fixed : [#4877] Licence acceptation choice
+
+01-Mar-2005 Johan Janssens
+ # Fixed : [#4231] Can't create linked document
+ # Fixed : [#4527] Search error
+ # Fixed : [#4434] Search Failure
+ + Added frontend delete document option
+
+28-Feb-2005 Johan Janssens
+ + Added support for Mambo frontend user groups (publishers, editors, authors).
+ + Added publish permission setting 
+ # Fixed bug : [#4200] Bug in the permission system
+
+23-Feb-2005 Johan Janssens
+ + Added PEAR HTML/Common and HTML/Select packages
+
+17-Feb-2005 Johan Janssens
+ # Fixed bug : Publishers cannot download unpublished documents
+
+17-Feb-2005 Ilias Ch
+ # Fixed : [#4553] cannot redeclare mosmakepath() on install mambo 4.5.2
+ # Fixed : [#4538] nothing to repeat at offset 12
+ # Fixed : [#4341] search function not working
+
+16-Feb-2005 Johan Janssens
+ # Fixed bug : Headers already sent
+ # Fixed : [#4132] Show unpublished items in frontend for admin
+ # Fixed : [#4503] pic-path problem in 1.3 beta 4
+ # Fixed : [#4368] Small cosmetic problem in docman
+ # Fixed : [#4205] DOCMAN_html.class.php typo, defines.php missing def (beta4), SQL syntax error
+ # Fixed : [#4175] Documents cannot be seen by even the admin when loggin in via the front end
+ # Fixed : [#4130] No information in Tooltip
+
+11-Feb-2005 Ilias Ch
+ # Fixed : [#4133] Anti-leech doesn't function
+
+10-Feb-2005 Ilias Ch
+ ! Trivial changes in permissions
+
+02-Feb-2005 Johan Janssens
+ # Fixed [#4238] : Cannot upload/create linked document in backend
+ # Fixed bug : No File extension
+ # Fixed bug : Search links are not valid
+
+01-Feb-2005 Johan Janssens
+ ! Added 'Empty categories' parameter to default template
+ + Added menu icons hide/show parameters to the default template.
+ # Fixed bug : upload icon show when upload parameters are set to no access. 
+
+28-Jan-2005 Johan Janssens
+ # Fixed : [#4157] Modules Strange Behaviour
+ # Fixed datetime handling, added savant plugin to format dates.
+
+27-Jan-2005 Johan Janssens
+ # Fixed bug : Pathway links can't show a categories title
+ ! Changed templates alternative php syntax
+ ! Moved default theme language defines to theme specific language file.
+
+26-Jan-2005 Charles Gentry
+ # Fixed bug : AutoApprove not working.
+
+25-Jan-2005 Johan Janssens
+ # Fixed bug : Savant 2 : undefined PATH_SEPERATOR constant.
+
+25-Jan 2005 Ilias Ch
+ # Fixed : [#4166] Referer dir twice
+ # Fixed : [#4168] dhtml.js doesn't exist in mambo 4.5.1a (only in the previous version)!
+ # Fixed : [#4169] wrong path in groups.html.php for tabpane.js and tabpane.css
+
+15-Jan-2005 Vasco Nunes
+ ! Version information changed version to RC1
+ + Added categories existence checking when creating new documents from backend. 
+   Redirects to categories management when at least one category defined is not founded.
+ # Fixed typo on includes/files.html.php preventing upload tooltip to work as expected.
+ # Fixed bug: deleting a license entry redirects to license management.
+
+------------------- 1.3 Beta 4 Released ----------------------
+
+12-Jan-2005 Johan Janssens
+ # Fixed : [#4116] Typo in /themes/default/templates/categories/list_item.tpl.php
+ # Fixed : [#4113] frontend: pathway not shown
+ # Fixed : [#4115] Java script error in backend
+ # Fixed bug : openbasedir restrictions problems in savant/recources files.
+ # Fixed bug : Cannot instantiate non-existent class: dmparameters
+ # Fixed bug : Redeclaration errors on certain Windows PHP version
+ # Fixed bug : cannot redeclare dmConfig class
+
+11-Jan-2005 Johan Janssens
+ + Moved search output to template (page_docsearch.tpl.php)
+ # Fixed bug : hardcoded mos_docman db name in DOCMAN_utils.class.php
+ # Fixed bug : typo in pagenav.tpl.php 
+
+10-Jan-2005 Johan Janssens
+ + Changed english terms:
+   Author -> Creator; Editor -> Maintainer; Reader -> Viewer
+   Terms for reading were changed (where applicable) to access or viewing.
+ # Fixed nasty bug with uploads: didn't show error message and went into endless redirect.
+
+10-Jan-2005 Johan Janssens
+ ! Improved theme structure and template file naming.
+ # Fixed bug : Frontend move form layout 
+ # Fixed bug : fixed undefined variables
+ # Fixed bug : dm_cpanel.png missing on some systems,
+   Extended the mosToolBar class to allow using of docman's own images folder.
+ # Fixed bug : frontend publish/unpublish,
+   Frontend publish/unpublish is now only possible by special users 
+
+07-Jan-2005 Charles Gentry
+ + Added in Javascript to admin config to check values
+ + Added in error text to english.php
+ # Fixed bug in config where type = 'author' and it changes to 'admin'
+ ! **above fixes bug report by Mark Semczyszyn: saw (-9) when uploading doc.
+
+06-Jan-2005 Charles Gentry
+ # Cleaned up grammer for english.php file
+ # Added (back) the display of max php file (using ini_get)
+ ! changed some of the terms (maintainer/creator) to make terms
+   consistant.
+
+05-Jan-2005 Johan Janssens
+ + Added trimwhitespace Savant filter
+ + Added config option to enable/disable the filter
+
+04-Jan-2004 Johan Janssens
+ # Fixed bug : frontend publish/unpublish only possible by special user
+   Now any user with edit permissions can do this.
+ + Added contributed packages to credits page
+ ! restructered theme/templates
+
+03-Jan-2005 Johan Janssens
+ ! Moved frontend config options to theme params
+ + Added theme edit/save functionality. 
+   Theme parameters are saved in themeConfig.php
+ + Moved configuration class to docman.config.php
+ ! Moved configuartion handling to DOCMAN_Config class
+
+02-Jan-2005 Johan Janssens
+ - Removed details mambot, functionality now handled by theme parameters
+ + Moved frontend output to templates
+
+01-Jan-2005 Johan Janssens
+ + Added phpSavant library
+
+29-Dec-2004 Johan Janssens
+ + Added edit css feature to theme manager
+ # Fixed bug : don't show empty categories
+ # Fixed bug : show number of documents in a category 
+
+28-Dec-2004 Johan Janssens
+ ! Created permissions conifguaration tab to improve usability
+ + Added frontend 'approve' permissions setting
+
+27-Dec-2004 Johan Janssens
+ + Added configuaration options to show/hide the download/view links
+
+26-Dec-2004 Johan Janssens
+ ! Completely cleaned out the english language file
+   Seperated defines into general, backend, frontend
+
+23-Dec-2004 Johan Janssens
+ - Removed xloadtree from repository 
+ ! Restyled document manager to improve usability
+ + Splitted document approve and publish functionality into two seperate functions.
+
+23-Dec-2004 Charles Gentry
+ + Added max upload check and feedback on configuration
+ + Allow users to enter K/M/G for upload size
+
+22-Dec-2004 Johan Janssens
+ + Added 'reset counter' option to frontend 
+
+21-Dec-2004 Charles Gentry
+ + Remove basic email notification and move it to module dmebasic
+ # Fixed document's triggers for proper labels.
+ + Made email 'bots aware of each other.
+
+18-Dec-2004 Charles Gentry
+ # Fixed search engine to work properly with Mambo search 'bot.
+
+17-Dec-2004 Johan Janssens
+ ! Moved modules to 'modules' directory
+ ! Moved document details to new details mambot 
+
+16-Dec-2004 Vasco Nunes
+ + Auto-approve and basic email notification re-implemented. Needs to be tested yet.
+
+15-Dec-2004 Charles Gentry
+ + First pass at adding link and transfer to the front end. Many changes
+   to both 'documents.*' and 'upload*', both cosmetic and major.
+ + Added a few new strings to language file and corrected 'upload*' routines
+   to use Vasco's additions.
+
+15-Dec-2004 Johan Janssens
+ # Fixed bug #3805 : XHTML Cosmetic Thing
+
+14-Dec-2004 Charles Gentry
+ + Added new update.* routines - uploaded only handlers not drivers. All
+   stripped out. Will upload update.php stuff when fully tested (don't want
+   to break the testers yet.)
+
+13-Dec-2004 Vasco Nunes
+ - Removed configuration options related with archiving/versioning.
+ # Fixed permission bug. Anonymous users were editing documents even when not allowed.
+ # Cancel button not working when editing groups. Fixed.
+
+13-Dec-2004 Charles Gentry
+ + Changed getCfg to allow default values. This will also create config
+   variables on the fly if they don't exist and you have passed a default.
+ + Changed setCfg to allow creation of variables. (Default = don't create)
+   Added capability to save/restore arrays for config values.
+ + Changed configuration routine to set most variables to defaults and
+   then write them to configuration file. This allows you to create a
+   config value without altering the distributed config file. (Which can
+   cause sync problems.)
+ + Eliminated two configuration values that were not being used
+
+09-Dec-2004 Charles Gentry
+ + Added 'Link' capability to the backend. Includes class changes
+ + and addition of HTML code for javascrip testing of document.
+
+07-Dec-2004 Vasco Nunes
+ # Documents were not publishing/unpublishing from backend. Fixed.
+
+05-Dec-2004 Johan Janssens
+ + Added move funtionality to documents manager
+ + Re-implemented frontend move feature
+
+03-Dec-2004 Johan Janssens
+ + Re-implemented frontend homepage and hits information
+
+02-Dec-2004 Johan Janssens
+ + Re-implemented frontend 'order by' feature. 
+   Documents can be ordered by name, date, hits, ascending and descending. 
+
+25-Nov-2004 Charles Gentry
+ ! Major overhaul of the permissions scheme. This entailed making
+   changes to a large number of modules, front and back. Most major
+   changes have been in the backend classes.
+ + Added DOCMAN_html to hold growing list of classes
+ # Fixed 'cancel' for documents
+ # Fixed group search problem for maintainer (all wrapped up in permissions)
+ ! Made DOCMAN_config figure out path on initial install. (goes away on write)
+
+25-Nov-2004 Johan Janssens
+ ! Improved frontend xhtml structure. 
+   Categories and documents are rendered as definition lists.
+ ! Moved hot/new document logic to document model class 
+
+23-Nov-2004 Vasco Nunes
+ # Fixed batch uploading.
+ + New and hot labels reimplemented.
+
+21-Nov-2004 Charles Gentry
+ # Documents.php had code regression: fix disable user assignation
+ # Fix setting of filename for document edit
+ # Fix log->delete and log.php deletion functions.
+ # Fix email linkage and sending of email. 
+ + Added header text for email entry. (Admin form)
+ 
+18-Nov-2004 Johan Janssens
+ # Fixed : Cannot redeclare class bug in Win systems
+ # Fixed PHP 5 Compatibility problems 
+
+18-Nov-2004 Charles Gentry
+ + Added in 'Itemid=xx' for links (via rawlink)
+ # Fixed download from non-pub items.
+ # Fixed mambots class - allows reference or copy
+ # Fixed util countDocsInCatByUser - sql was wrong and bombing.
+
+17-Nov-2004 Vasco Nunes
+ + Frontend page navigation implemented.
+
+16-Nov-2004 Charles Gentry
+ # Fixed backend document javascript to match frontend edits for documents.
+ # Made SEF fix on links. (Needs relToAbs!)
+ # Search engine fixed - sql and front end
+ # Fixed anti-leech message
+ # Fixed localhost determination
+
+16-Nov-2004 Vasco Nunes
+ ! Cleaned some hardcoded language strings
+ # Fixed bug in backend licences management. Cancel button now works as expected.
+ # Fixed bug with licenses main text when using tinyMCE. Now saves the content.
+
+16-Nov-2004 Johan Janssens
+ ! Version information changed to beta 4
+
+
+------------------- 1.3 Beta 3 Released ----------------------
+
+15-Nov-2004 Johan Janssens
+ # Fixed : [#3349] Checkout/in function
+ # Fixed : [#3096] Fatal error: Call to undefined function: getlistfooter()
+ + Added thumbnail support to frontend 'edit document'   
+
+11-Nov-2004 Vasco Nunes
+ # Fixed docman.xml to include cpanel png missing state
+ # Fixed bad path to cpanel icon
+ # Fixed syntax bug in frontend_includes/upload.php
+ # Fixed bug with frontend uploading. Now proceeds to editing doc details.
+ # Fixed frontend checkin/out operations
+
+09-Nov-2004 Johan Janssens
+ # Fixed [#3112] mouse-over tip is wrong
+ ! Implemented a singleton pattern in dmMainFrame
+ # Fixed [#3262] : Strange "cpanel" menu entries show up in backend
+ # Fixed bug : No license text appears, only the Agree/Disagree/Submit buttons
+ + Made mainframe responsible of loading the language file
+
+08-Nov-2004 Johan Janssens
+ + Added 'Category image' and 'Document image' configuration options
+ - Removed 'Show icon' and 'Icon theme' configuaration options
+
+06-Nov-2004 Johan Janssens
+ ! Seperation between output and logic completed
+ ! Frontend produces XHTML transitional 1.0 valid
+ + Added : CSS classes and id's to allow easy styling
+
+05-Nov-2004 Johan Janssens
+ # Fixed bug : Thumbnails aren't saved in the backend document manager.
+ + Added new DOCMAN_Model package, introduced basic MVC pattern in frontend code.
+
+02-Nov-2004 Charles Gentry
+ + Added new functions to search: invert order, negate search,
+ +   regular expression. Cleaned up code and front end.
+
+01-Nov-2004 Charles Gentry
+ + Added in new search.
+
+31-Oct-2004 Charles Gentry
+ # Added quotes for name on download. (Mozilla rq'd)
+ + Added new config option: Default maintainer (user/registered) and
+ + view types. (for new download function)
+ + Fixed SEF upload/downloads
+ + Added 'mode=view' in file download method. Does inline instead of attachment.
+ ! Changed _formatDoc function and toolbar display functions. More links.
+ ! Changed css for add 3d button types.
+
+30-Oct-2004 Charles Gentry
+ # Fix mimetype and name on download. (Header)
+ + Get rid of prompts for upload+login when user can't upload.
+ # deleteGroups points to wrong routine (deleteUser)
+ 
+
+27-Oct-2004 Charles Gentry
+ + Added in Mambot triggers and lightweight mambo class.
+ + Added in guest access: none/browse/browse+download
+ # Fixed bugs: access, download, ownership, maintenance
+
+27-Oct-2004 Johan Janssens
+ ! Merged DOCMAN_docutils package into DOCMAN_utils package
+ ! Renamed DOCMAN_permissions to DOCMAN_user package
+ + Added getUser function to dmMainframe
+
+------------------- 1.3 Beta 2 Released ----------------------
+
+
+21-Oct-2004 Johan Janssens
+ + Added publish/unpublish toolbar buttons to documents managaer
+ - Removed thumbnail upload feature, thumbnail now use the media manager.
+
+19-Oct-2004 Charles Gentry
+ # Fixed frontend editing and saves for documents. Error messages now
+   bunched together in one 'alert()' box.
+ + Added in backend edits for documents in class. Now checks for all
+   fields - regardless of what the javascript does.
+ + Added '_LBL' in language. All LBL entries have colons/questions after.
+ # Fixed bug in front end that didn't recognize who checked out source.
+ + Added in checkin/checkout for frontend
+ 
+18-Oct-2004 Charles Gentry
+ + Added includes/defines.php - all static defines now moved there.
+ # classes/DOCMAN_permissions: Group permissions now functioning
+ + In classes/file - added in simpler mime testing. Reduces admin confusion.
+ ! classes/DOCMAN_docutils: Tidy up SQL; allow 'mantainers' to be access
+        files; allowed 'orphan' documents to be displayed
+ ! includes/documents*: Moved some logic from html to driver; use defines
+        for permissions (_DM_PERMIT_xxxx); track dmsubmittedby
+ ! includes_frontend: added support for defines; 
+ ! NB: emailNotification needs fixing.
+
+
+17-Oct-2004 Charles Gentry
+ ! Changed docman.class.php: mosDMDocuments - added init_record(),
+   check(). Standardized certain fields.
+ ! Changed include/document*.php to use new class features. Always
+   initializes submitted/updated fields.
+ ! Changed frontend to use document class features.
+
+16-Oct-2004 Charles Gentry
+ ! Changed classes/DOCMAN_file.class.php - all functions now use new
+   bit-mapped checking.
+ ! Major changes to uploadURL - now uses PHP 'fopen' for access.
+   Includes protocol filters (reject/accept) for security. Supports ftp,
+   http, and https.
+ ! Changes to all calls for uploadHTTP and uploadURL to support both
+   Johan's passing of arrays for values and new bitmapped checking
+   scheme.
+
+15-Oct-2004 Vasco Nunes
+ # Fixed small typo in 'DOCMAN_file.class.php'
+ # Fixed bug with frontend icon types detection.
+
+14-Oct-2004 Vasco Nunes
+ # Fixed bug in 'includes_frontend/documents.php' to make it use new 
+   dmHTML::categoryList
+ ! Changed themes directory structure to match new template schema
+
+14-Oct-2004 Johan Janssens
+ + Added DOCMAN_Install package with support for mambots, module and themes.
+ ! Reworked theme installer and updater to use new install classes.
+
+14-Oct-2004 Charles Gentry (luluware)
+ + Added step 4 to upload: new display, options with icons.
+ + Added option to upload with http but give new, localname. (Not on batch upload.)
+ # Fixed minor typo in 'includes/document' for categoryList.
+ ! changed includes/documents.php file list to ignore fname_reject list,
+   any directories. Alter 'hidden file' method to consolidate tests.
+ + Changed includes/config to include multiple host messages for anti-leech
+ + Changed includes_frontend/download to test for multiple hosts in allowed
+   downloads (allows shared files amongst servers).
+
+12-Oct-2004 Johan Janssens
+ + Added theme manager
+ + Added static dmHTML class
+
+12-Oct-2004 Vasco Nunes
+ # Fixed thumbnail upload functionality. Working on both backend and frontend.
+
+12-Oct-2004 Charles Gentry (luluware)
+ # Fixed includes/categories: doesn't delete dependent categories,
+   fixed new categories and parent display
+ # Add back the FileUpload patches from 1.15 version to allow
+   uploadURL to work amongst many others. Add in Vaso's mime changes
+   to use type lookup rather than absolute file extentions.
+
+12-Oct-2004 Vasco Nunes
+ # Fixed DOCMAN_FileUpload::validateExt to perform validation of permited 
+   file extensions.
+ ! Changed frontend uploading to handle new configuration options for 
+   filenames transformations.
+ ! Better frontend downloads handling, log data insertion and antileech 
+   protection checking.
+ + New email notification to superaministrators, administrators and editors 
+   of all submited documents, using new mambo 4.5.1 core functions, with direct 
+   link to approvement.
+ + New details page per document
+ + Added new configuration option to allow display document details as a tooltip 
+   or using a separate details page.
+
+11-Oct-2004 Johan Janssens
+ + Added support for module upgrades
+ ! Cleaned up changelog
+
+11-Oct-2004 Charles Gentry (luluware)
+ ! make DOCMAN_file::getFile use 'fname_reject' configuration
+ ! alter includes/files* to use new fname_reject, add in filter for
+   document files, alter update process to include name with
+   status and return to status display.
+
+11-Oct-2004 Charles Gentry (luluware)
+ # Fixed group functions: add new, display after
+ # Fixed tags display on admin screen.
+ ! NOTE: clicking on group name still doesn't bring up edit function for group
+
+11-Oct-2004 Johan Janssens
+ ! dmMainframe sets default dmpath and saves config.
+ + Added saveConfig function to dmMainframe class
+ + Moved funtions from admin.docman.php to includes/docman.php.
+ ! Addes upport for default mambo installer types to updater.
+ + Added mosPathName check to file package 
+
+11-Oct-2004 Charles Gentry
+ + Added config options for filename handling
+ ! Changed file upload to handle blanks, reject filenames and lowercase filenames
+
+10-Oct-2004 Johan Janssens
+ ! Moved file update feature to file manager.
+ + Added check to deny deletion of file linked to document, only orphans 
+   can be deleted.
+
+10-Oct-2004 Charles Gentry
+ ! No longer display subdirectories or 'index.html' on Admin files display.
+ ! Disallow uploads of index.html, index.htm and .htaccess. 
+ ! Went through a number of tooltips and changed some verbage.
+
+09-Oct-2004 Johan Janssens
+ ! Moved orphans functionality to file manager
+ + Added missing language definitions
+
+09-oct-2004 Vasco Nunes
+ + Display unpublish documents at frontend when the user is a special user. 
+ + One click Publish/Unpublish operations implemented.
+ ! Assign maintainers to any document. 
+ ! Removed strtolower from paths and filenames. 
+   Causing some problems over *nix systems.
+
+08-oct-2004 Johan Janssens
+ ! Added file overview to file manager
+ + Added folder abstraction class to file package 
+ ! Moved upload function to new file manager
+ ! Reworked upload functions
+
+07-oct-2004 Vasco Nunes
+ ! Frontend code changed to reflect new mainframe implementation
+
+06-oct-2004 Johan Janssens
+ + Reworked file package, added DOCMAN_File class. 
+   Integrated the download function. 
+ + Added mime mapping class
+ ! Moved file utility functions to file class  
+
+05-oct-2004 Johan Janssens
+ + Moved uploadwizard to includes dir
+ ! Added config get functionality to dmMainFrame
+ ! Category field shows full category name
+ # Fixed [#2449] Files with Uppercase extensions show generic icon.
+ ! Backend functionality seperated in different sections.
+
+03-oct-2004 Johan Janssens
+ ! Added multiple level category support to documents manager
+ + Added dmMainFrame class and getPath functionality
+
+30-sep-2004 Vasco Nunes
+ ! New frontend navigation with multiple levek category support
+
+29-sep-2004 Johan Janssens
+ ! Improved code modularisation in documents manager
+ + Added dbtable mos_docman access and attribs fields
+ - Removed dbtbale mos_docman:id_subcategory field 
+ - Removed dbtable mos_docman_subcategories
+ ! Changed category manager to handle multiple level subcategories   
+
+29-sep-2004 Vasco Nunes
+ ! Theme directories moved to a unified one.
+ + added a theme ccs file to be used by the frontend
+ + added a new permissions class to handle categories/documents 
+   user permissions
+
+28-sep-2004 Johan Janssens
+ ! Restyled the backend dropdown menu to a more usable layout
+
+25-sep-2004 Johan Janssens
+ ! Moved general functions back in docman.php
+ ! Changed version to 1.3.0
+ ! Moved admin classes to includes directory
+ + Moved document specific functions into document.php
+ ! Renamed docman_utils and moved to includes/js dir. 
+
+25-sep-2004 Vasco Nunes
+ ! Backend code separated in multiple, smaller files. 
+
+23-sep-2004 Johan Janssens
+ # Fixed [ #2534 ] Corrupted files : XML / HTML appended to beginning of 
+   files (needs PHP > 4.2.0) 
+
+22-sep-2004 Johan Janssens
+ ! Frontend cleanup and seperation between logic and html output
+
+19-sep-2004 Vasco Nunes
+ ! Generic db docman related operations functions moved to main class 
+
+19-sep-2004 Vasco Nunes
+ + Documents thumbnail upload functionality implemented at backend 
+
+17-sep-2004 Vasco Nunes
+ ! Web based update system changed to reflect directory structure changes 
+   in mambo 4.5.1rc4
+
+13-sep-2004 Vasco Nunes
+ + Initial support for multi-categories and document thumbnail added to db 
+   schema and main class
+
+08-sep-2004 Vasco Nunes
+ # Fixed bug with link to categories at cpanel
+
+03-sep-2004 Vasco Nunes
+ - Removed all language files but default english. language files should 
+   include now admin strings
+
+02-sep-2004 Vasco Nunes
+ + Started to add phpdocumentator remarks to docman classes
+
+01-sep-2004 Vasco Nunes
+ ! Admin language strings separated from code, added to language file
+
+01-sep-2004 Vasco Nunes
+ ! Changed docman's admin cpanel, added new switch handler
+
+27-aug-2004 Johan Janssens
+ ! Changed installer xml, added mambo version attribute
+
+25-Aug-2004 Johan Janssens
+ ! Changed installer xml to support mod_modules::client_id
+ ! Cleanup changelog
+
+
+------------------- 1.3 Beta 1 Released ----------------------
+
+Aug-2004 Vasco 
+
+- RSS news feeds from www.mambodocman.com at DOCMan's admin control panel 
+- New administration modules installed by default - latest, top and logs 
+- Control panel implementation at backend for easier navigation 
+- dhtml layer with animated gif while uploading/transfering files implemented. 
+- new dual select panel at groups administration 
+- batch uploading using HTTP protocol - experimental. 
+- better implementation of the documents forms. 
+- new upload wizard at backend, allowing HTTP upload, FTP upload and HTTP file transfer. 
+- new HTTP upload class implemented 
+- config transfered to own class with global initialization 
+- utils transfered to own class 
+- Experimental online web based updates implementation 
+- Turquish language file added 
+- New logo added 
+- Configuration reworked to match mambo 4.5.1 
+- Added direct link to documents at the backend again. Feature missed in previous release 
+
+
+2. Copyright and disclaimer
+---------------------------
+This application is opensource software released under the GPL.  Please
+see 

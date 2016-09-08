@@ -1,0 +1,31 @@
+                       306085331a:2:{s:6:"output";s:2352:"			<table class="contentpaneopen">
+			<tr>
+								<td class="contentheading" width="100%">
+				Hora da Diversão						<a href="http://www.oficinadossonhos.com.br/index.php?option=com_content&amp;task=edit&amp;id=21&amp;Itemid=42&amp;Returnid=42" onmouseover="return overlib('Publicado<br />Public<br />24 de maio de 2006<br />Administrator', CAPTION, 'Edit Item', BELOW, RIGHT);" onmouseout="return nd();">
+		<img src="http://www.oficinadossonhos.com.br/images/M_images/edit.png" alt="Editar" align="middle" name="Editar" border="0" />		</a>
+						</td>
+							<td align="right" width="100%" class="buttonheading">
+			<a href="javascript:void(0)" onclick="window.open('http://www.oficinadossonhos.com.br/index2.php?option=com_content&amp;do_pdf=1&amp;id=21','win2','status=no,toolbar=no,scrollbars=yes,titlebar=no,menubar=no,resizable=yes,width=640,height=480,directories=no,location=no');" title="PDF">
+			<img src="http://www.oficinadossonhos.com.br/templates/tema_infantil/images/pdf_button.png" alt="PDF" align="middle" name="PDF" border="0" />			</a>
+			</td>
+							<td align="right" width="100%" class="buttonheading">
+				<a href="javascript:void(0)" onclick="window.open('http://www.oficinadossonhos.com.br/index2.php?option=com_content&amp;task=view&amp;id=21&amp;Itemid=42&amp;pop=1&amp;page=0','win2','status=no,toolbar=no,scrollbars=yes,titlebar=no,menubar=no,resizable=yes,width=640,height=480,directories=no,location=no');" title="Imprimir">
+				<img src="http://www.oficinadossonhos.com.br/templates/tema_infantil/images/printButton.png" alt="Imprimir" align="middle" name="Imprimir" border="0" />				</a>
+				</td>
+							<td align="right" width="100%" class="buttonheading">
+			<a href="javascript:void(0)" onclick="window.open('http://www.oficinadossonhos.com.br/index2.php?option=com_content&amp;task=emailform&amp;id=21','win2','status=no,toolbar=no,scrollbars=yes,titlebar=no,menubar=no,resizable=yes,width=400,height=250,directories=no,location=no');" title="E-mail">
+			<img src="http://www.oficinadossonhos.com.br/templates/tema_infantil/images/emailButton.png" alt="E-mail" align="middle" name="E-mail" border="0" />			</a>
+			</td>
+						</tr>
+			</table>
+			
+		<table class="contentpaneopen">
+				<tr>
+			<td valign="top" colspan="2">
+						</td>
+		</tr>
+				</table>
+		
+		<span class="article_seperator">&nbsp;</span>
+		
+		";s:6:"result";N;}

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<mosinstall type="module" version="4.5.2">
+	<name>SlideShow</name>
+	<author>Rami Ben-Ami</author>
+	<creationDate>04/25/2006</creationDate>
+	<copyright>Copyright 2006 - Rami Ben-Ami</copyright>
+	<license>GNU General Public License</license>
+	<authorEmail></authorEmail>
+	<authorUrl>http://lady-beetle.com</authorUrl>
+	<version>1.0</version>
+	<description>Thank you for Installing Rami's SlideShow Module...<br/>
+	To start using this module, In the Mambo/Joomla administrator control panel,<br/>
+	go to the modules menu, Find this module (SlideShow) and enter.<br/>
+	Set the module parameters to suit your needs.<br/>
+	and Enjoy...<br/>
+	<br/>Rami, <a href="http://lady-beetle.com">Lady-beetle.com</a></description>
+	<files>
+		<filename module="mod_slideshow">mod_slideshow.php</filename>
+	</files>
+	<params>
+		<param name="type" type="text" default="jpg" label="Image Type" description="Type of image PNG/GIF/JPG etc. (default is JPG)" />
+		<param name="folder" type="text" default="images/stories" label="Image Folder" description="Path to the image folder relative to the site url, eg: images/stories" />
+		<param name="link" type="text" default="" label="Link" description="A URL to redirect to if image is clicked on, eg: http://www.lady-beetle.com" />
+		<param name="target" type="text" default="_blank" label="target" description="The link target. i.e.: to open the link in a new window, enter _blank, to open in the same window enter _self" />
+		<param name="@spacer" type="spacer" default="" label="" description="" />
+		<param name="credit" type="radio" default="yes" label="developer link" description="an option to credit the developer, with a small link to his site">
+			<option value="yes">Yes</option>
+			<option value="no">No</option>
+		</param>
+		<param name="border" type="text" default="1" label="border" description="The image border (in px). you can set it to 0 for no border" />
+		<param name="align" type="radio" default="center" label="align" description="The image align.">
+			<option value="left">Left</option>
+			<option value="center">Center</option>
+			<option value="right">Right</option>
+		</param>
+		<param name="width" type="text" default="130" label="Width (px)" description="Image width (forces all images to be displayed with this width)" />
+		<param name="height" type="text" default="180" label="Height (px)" description="Image height (forces all images to be displayed with the height)" />
+		<param name="slidespeed" type="text" default="3" label="slidespeed (seconds)" description="specify interval between slide (in seconds)" />
+		<param name="alt_line" type="text" default="Slide Show Pict" label="alt line" description="Set a short line that will be used as a title/alt tag" />
+	</params>
+</mosinstall>

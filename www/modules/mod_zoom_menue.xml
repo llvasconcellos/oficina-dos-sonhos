@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<mosinstall type="module" version="1.0.0">
+	<name>mod_zoom_menue</name>
+	<author>Per Lasse Baasch</author>
+	<creationDate>2006|03|xx</creationDate>
+	<copyright>(C) 2006 Per Lasse Baasch.</copyright>
+	<license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
+	<authorEmail>www.skycube.net</authorEmail>
+	<authorUrl>www.skycube.net</authorUrl>
+	<version>1b003</version>
+	<description>mod_zoom_menue allows to navigate from every site to a part of the com_zoom. Requires com_zoom2.5rc1 !!! PLEASE NOTE THAT SOME TEMPLATES CAN OVERTAKE THE CONTROL OF SOME USED STYLES, please notify me if it's so !!!</description>
+	<files>
+		<filename module="mod_zoom_menue">mod_zoom_menue.php</filename>
+	</files>
+	<params>
+	  <param name="info" type="textarea" default="PLEASE NOTE THAT SOME TEMPLATES CAN OVERTAKE THE CONTROL OF SOME USED STYLES, please notify me if it's so. !!!" rows="5" cols="30" label="ATTENTION->READ !!!" description=""/> 
+	  
+	  <param name="@spacer" type="spacer" default="" label="" description=""/> 
+
+      <param name="zoomMenueTOPspacer" type="text" size="5" default="0" label="Top Spacer" description="Spacer on TOP for varius Templates"/>
+	  
+	  <param name="@spacer" type="spacer" default="" label="" description=""/> 
+	  
+	  <param name="zoomMenueImageW" type="text" size="5" default="40" label="RootImage Width" description="Menue Image Width 4:3"/>
+	  <param name="zoomMenueImageH" type="text" size="5" default="30" label="RootImage Hight" description="Menue Image Hight 4:3"/>
+	  <param name="zoomMenueRoot" type="text" size="5" default="0" label="Root Catid" description="catid of root for menue"/>
+	  <param name="zoomMenueRootRand" type="radio" default="0" label="Random Menue" description="Random Menue yes/no !using also before configured root!">
+			  <option value="0">no</option>
+			  <option value="1">yes</option>
+	  </param>
+	  <param name="zoomMenueDCut" type="text" size="5" default="18" label="Discription CUTTING" description="Max Stringlen until YOUR design crashes!"/>
+	  
+	  <param name="@spacer" type="spacer" default="" label="" description=""/> 
+	  
+	  <param name="zoomMenueSub" type="radio" default="0" label="En/Disable Submenue" description="Enable Submenue">
+			  <option value="0">no</option>
+			  <option value="1">yes</option>
+	  </param>
+	  <param name="zoomMenueSubDCut" type="text" size="5" default="18" label="Discription CUTTING" description="Max Stringlen until YOUR design crashes!"/>
+	  <param name="zoomMenueSubImageW" type="text" size="5" default="24" label="SubImage Width" description="SubMenue Image Width 4:3"/>
+	  <param name="zoomMenueSubImageH" type="text" size="5" default="18" label="SubImage Height" description="SubMenue Image Hight 4:3"/>
+
+   <param name="@spacer" type="spacer" default="" label="" description=""/> 
+
+   <param name="zoomMenueStyleWidth" type="text" size="10" default="160px" label="Module width" description="Width of the Module"/>	  
+	  <param name="zoomMenueStyleFont" type="text" size="10" default="arial" label="Fontface" description="Fontface for the strings"/>	  
+	  <param name="zoomMenueStyleFontSize" type="text" size="10" default="12px" label="Fontsize" description="Fontsize for the strings"/>	  
+	  <param name="zoomMenueStyleFontColorA" type="text" size="10" default="#c0c0c0" label="Color normal" description="Fontcolor normal. Set it to # when you don't want to adjust it."/>	  
+	  <param name="zoomMenueStyleFontColorB" type="text" size="10" default="#ff6600" label="Color hover" description="Fontcolor hover. Set it to # when you don't want to adjust it."/>	  
+	  <param name="zoomMenueStyleBgColorA" type="text" size="10" default="#000000" label="Bgcolor normal" description="Backgroundcolor normal. Set it to # when you don't want to adjust it."/>	  
+	  <param name="zoomMenueStyleBgColorB" type="text" size="10" default="#c0c0c0" label="Bgcolor hover" description="Backgroundcolor hover. Set it to # when you don't want to adjust it."/>	  
+	  
+	</params>
+</mosinstall>
+
+

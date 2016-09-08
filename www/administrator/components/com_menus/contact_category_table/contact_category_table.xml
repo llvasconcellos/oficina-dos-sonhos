@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<mosinstall type="menu" version="1.0.0">
+	<name>Tabela - Categoria de Contato</name>
+	<group>Component</group>
+	<author>Joomla! Project</author>
+	<creationDate>July 2004</creationDate>
+	<copyright>(C) 2005 Open Source Matters. All rights reserved.</copyright>
+	<license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
+	<authorEmail>admin@joomla.org</authorEmail>
+	<authorUrl>www.joomla.org</authorUrl>
+    <authorUrl>www.inform-se.com.br</authorUrl>
+	<version>1.0.8 BR</version>
+	<description>Exibe uma tabela com os itens de Contato de uma Categoria específica</description>
+	<params>
+		<param name="menu_image" type="imagelist" directory="/images/stories" hide_default="1" default="" label="Imagem do Menu" description="Uma pequena imagem para ser colocada à esquerda ou direita de seu item de menu, imagens devem estar em images/stories/" />
+		<param name="pageclass_sfx" type="text" default="" label="Sufixo de Classe da Página" description="Um sufixo para ser aplicado à classe css da página, isto permite um estilo de página individual" />
+		<param name="back_button" type="list" default="" label="Botão Voltar" description="Exibir/Ocultar um botão Voltar, que te retorna à página vista anteriormente">
+			<option value="">Usar Global</option>
+			<option value="0">Ocultar</option>
+			<option value="1">Exibir</option>
+		</param>
+		<param name="page_title" type="radio" default="1" label="Título da Página" description="Exibir/Ocultar o Título da Página">
+			<option value="0">Ocultar</option>
+			<option value="1">Exibir</option>
+		</param>
+		<param name="header" type="text" size="30" default="" label="Título da Página" description="Texto a ser exibido topo da página. Se deixado em branco, o nome no menu será usado no lugar" />
+		<param name="@spacer" type="spacer" default="" label="" description="" />
+		<param name="other_cat" type="radio" default="1" label="Outras Categorias" description="Quando visualizando uma Categoria, Exibir/Ocultar a lista de outras Categorias">
+			<option value="0">Ocultar</option>
+			<option value="1">Exibir</option>
+		</param>
+		<param name="cat_description" type="radio" default="0" label="Descrição da Categoria" description="Exibir/Ocultar a descrição para a lista de outras categorias">
+			<option value="0">Ocultar</option>
+			<option value="1">Exibir</option>
+		</param>
+		<param name="cat_items" type="radio" default="1" label="Itens da Categoria" description="Exibir/Ocultar o número de itens de cada categoria">
+			<option value="0">Ocultar</option>
+			<option value="1">Exibir</option>
+		</param>
+		<param name="@spacer" type="spacer" default="" label="" description="" />
+		<param name="headings" type="radio" default="1" label="Cabeçalho da Tabela" description="Exibir/Ocultar o Cabeçalho da Tabela">
+			<option value="0">Ocultar</option>
+			<option value="1">Exibir</option>
+		</param>
+		<param name="position" type="radio" default="1" label="Posicionamento da Coluna" description="Exibir/Ocultar o Posicionamento da Coluna">
+			<option value="0">Ocultar</option>
+			<option value="1">Exibir</option>
+		</param>
+		<param name="email" type="radio" default="0" label="Posicionamento da Coluna" description="Exibir/Ocultar o Posicionamento da Coluna">
+			<option value="0">Ocultar</option>
+			<option value="1">Exibir</option>
+		</param>
+		<param name="telephone" type="radio" default="1" label="Coluna do Telefone" description="Exibir/Ocultar a coluna do Telefone">
+			<option value="0">Ocultar</option>
+			<option value="1">Exibir</option>
+		</param>
+		<param name="fax" type="radio" default="1" label="Coluna do Fax" description="Exibir/Ocultar a coluna do Fax">
+			<option value="0">Ocultar</option>
+			<option value="1">Exibir</option>
+		</param>
+		<param name="@spacer" type="spacer" default="" label="" description="" />
+		<param name="bannedEmail" type="text" default="" label="E-mail proibido" size="40" description="Serão proibidos e-mails que contenham qualquer palavra a seguir, separe palavras diferentes com ponto e vígula por exemplo ban;text;etc" />
+		<param name="bannedSubject" type="text" default="" label="Assunto proibido" size="40" description="Serão proibidos assunto que contenham qualquer palavra a seguir, separe palavras diferentes com ponto e vígula por exemplo ban;text;etc" />
+		<param name="bannedText" type="text" default="" label="Messagem proibido" size="40" description="Serão proibidos textos que contenham qualquer palavra a seguir, separe palavras diferentes com ponto e vígula por exemplo ban;text;etc" />
+		<param name="@spacer" type="spacer" default="" label="" description="" />
+		<param name="session" type="radio" default="1" label="Checar a sessão" description="Verifique que a sessão de cookie esta em desabilitado, usuários com cookie desabilitado não poderão enviar e-mails.">
+			<option value="0">Ocultar</option>
+			<option value="1">Exibir</option>
+		</param>
+	</params>
+</mosinstall>

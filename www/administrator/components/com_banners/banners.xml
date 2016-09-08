@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<mosinstall type="component" version="1.0.0">
+  <name>Banners</name>
+  <author>Joomla! Project</author>
+  <creationDate>July 2004</creationDate>
+  <copyright>(C) 2005 Open Source Matters. All rights reserved.</copyright>
+  <license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
+  <authorEmail>admin@joomla.org</authorEmail>
+  <authorUrl>www.joomla.org</authorUrl>
+<authorUrl>www.inform-se.com.br</authorUrl>
+  <version>1.0.8 BR</version>
+  <description>Este componente administra banners</description>
+  <params />
+</mosinstall>

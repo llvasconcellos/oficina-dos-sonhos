@@ -1,0 +1,138 @@
+<?xml version="1.0" ?>
+<mosinstall type="component" version="4.5.2">
+	<name>Events</name>
+	<creationDate>February 2005</creationDate>
+	<author>Eric Lamette, Dave McDonell</author>
+	<copyright>This component is released under the GNU/GPL License</copyright>
+	<authorEmail>ericlmt@ibelgique.com, davemac2@yahoo.com</authorEmail>
+	<authorUrl>events.mamboforge.net</authorUrl>
+	<version>1.3</version>
+	<description>Events calendar</description>
+	<files>
+		<filename>events.php</filename>
+		<filename>events.html.php</filename>
+		<filename>events_calendar_cell.php</filename>
+		<filename>events.class.php</filename>
+		<filename>events_css.css</filename>
+		<filename>index.html</filename>
+		<filename>language/brazilian_portuguese.php</filename>
+		<filename>language/bulgarian.php</filename>
+		<filename>language/catalan.php</filename>
+		<filename>language/cymraeg.php</filename>
+		<filename>language/czech.php</filename>
+		<filename>language/danish.php</filename>
+		<filename>language/dutch.php</filename>
+		<filename>language/english.php</filename>
+		<filename>language/estonian.php</filename>
+		<filename>language/finnish.php</filename>
+		<filename>language/french.php</filename>
+		<filename>language/germanf.php</filename>
+		<filename>language/germani.php</filename>
+		<filename>language/greek.php</filename>
+		<filename>language/hungarian.php</filename>
+		<filename>language/italian.php</filename>
+		<filename>language/lithuanian.php</filename>
+		<filename>language/norwegian.php</filename>
+		<filename>language/polish.php</filename>
+		<filename>language/portuguese.php</filename>
+		<filename>language/russian.php</filename>
+		<filename>language/spanish.php</filename>
+		<filename>language/swedish.php</filename>
+		<filename>js/colorpicker.js</filename>
+	</files>
+	<images>
+		<filename>images/logo.gif</filename>
+		<filename>images/d_green.gif</filename>
+		<filename>images/dd_green.gif</filename>
+		<filename>images/g_green.gif</filename>
+		<filename>images/gg_green.gif</filename>
+		<filename>images/d_orange.gif</filename>
+		<filename>images/dd_orange.gif</filename>
+		<filename>images/g_orange.gif</filename>
+		<filename>images/gg_orange.gif</filename>
+		<filename>images/d_blue.gif</filename>
+		<filename>images/dd_blue.gif</filename>
+		<filename>images/g_blue.gif</filename>
+		<filename>images/gg_blue.gif</filename>
+		<filename>images/arrow.png</filename>                
+	</images>
+	<install>
+		<queries>
+			<query>CREATE TABLE IF NOT EXISTS `#__events` (
+				`id` int(12) NOT NULL auto_increment,
+				`sid` int(11) NOT NULL default '0',
+				`catid` int(11) NOT NULL default '1',
+				`title` varchar(100) NOT NULL default '',
+				`content` longtext NOT NULL default '',
+				`adresse_info` VARCHAR(120) NOT NULL default '',
+				`contact_info` VARCHAR(120) NOT NULL default '',
+				`extra_info` VARCHAR(240) NOT NULL default '',
+				`color_bar` VARCHAR(8) NOT NULL default '',
+				`useCatColor` TINYINT(1) NOT NULL default '0',
+				`state` tinyint(3) NOT NULL default '0',
+				`mask` int(11) unsigned NOT NULL default '0',
+				`created` datetime NOT NULL default '0000-00-00 00:00:00',
+				`created_by` int(11) unsigned NOT NULL default '0',
+				`created_by_alias` varchar(100) NOT NULL default '',
+				`modified` datetime NOT NULL default '0000-00-00 00:00:00',
+				`modified_by` int(11) unsigned NOT NULL default '0',
+				`checked_out` int(11) unsigned NOT NULL default '0',
+				`checked_out_time` datetime NOT NULL default '0000-00-00 00:00:00',
+				`publish_up` datetime NOT NULL default '0000-00-00 00:00:00',
+				`publish_down` datetime NOT NULL default '0000-00-00 00:00:00',
+				`images` text NOT NULL default '',
+				`reccurtype` tinyint(1) NOT NULL default '0',
+				`reccurday` varchar(4) NOT NULL default '',
+				`reccurweekdays` varchar(20) NOT NULL default '',
+				`reccurweeks` varchar(10) NOT NULL default '',
+				`approved` tinyint(1) NOT NULL default '1',
+				`ordering` int(11) NOT NULL default '0',
+				`archived` tinyint(1) NOT NULL default '0',
+				`access` int(11) unsigned NOT NULL default '0',
+				`hits` int(11) NOT NULL default '0',
+				PRIMARY KEY  (`id`)
+				) TYPE=MyISAM; 
+			</query>
+			<query>CREATE TABLE IF NOT EXISTS `#__events_categories` (
+				`id` INT(12) NOT NULL default '0' PRIMARY KEY,
+				`color` VARCHAR(8) NOT NULL default''
+				) TYPE=MyISAM;
+			</query>
+		</queries>
+	</install>
+	<uninstall>
+		<queries>
+			<query>DELETE FROM `#__events`</query>
+			<query>DROP TABLE `#__events`</query>
+			<query>DELETE FROM `#__events_categories`</query>
+			<query>DROP TABLE `#__events_categories`</query>
+			<query>DELETE FROM `#__categories` WHERE `section` LIKE 'com_events'</query>
+		</queries>
+	</uninstall>
+	<installfile>install.events.php</installfile>
+		<uninstallfile>uninstall.events.php</uninstallfile>
+	<administration>
+		<menu>Events</menu>
+			<submenu>
+				<menu>Manage Events</menu>
+				<menu link="option=com_events&amp;act=categories">Manage Events Categories</menu>    		
+				<menu act="conf">Edit Config</menu>
+			</submenu>
+		<files>
+			<filename>admin.events.php</filename>
+			<filename>admin.events.main.php</filename>
+			<filename>admin.events.categories.php</filename>
+			<filename>admin.events.html.php</filename>
+			<filename>toolbar.events.php</filename>
+			<filename>toolbar.events.html.php</filename>
+			<filename>events_config.php</filename>	
+			<filename>mod_events_calendar_help.html</filename>
+			<filename>mod_events_latest_help.html</filename>
+			<filename>index.html</filename>
+		</files>
+		<images>
+			<filename>images/help_ques.gif</filename>
+			<filename>images/help_ques_inact.gif</filename>
+		</images>
+	</administration>
+</mosinstall>

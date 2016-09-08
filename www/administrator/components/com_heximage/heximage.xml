@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<mosinstall type="component">
+  <name>HeXimage</name>
+  <creationDate>17.04.2006</creationDate>
+  <author>A.J.W.P. Ruitenberg</author>
+  <copyright>(C) Copyright 2006 by A.J.W.P. Ruitenberg. All rights reserved!</copyright>
+  <authorEmail>info@hexa-design.com</authorEmail>
+  <authorUrl>www.hexa-design.com</authorUrl>
+  <version>2.1.2</version>
+  <description>HeXimage is a Mambo/Joomla! photo gallery component.</description>
+  <files>
+    <filename>heximage.php</filename>
+    <filename>heximage.html.php</filename>
+    <filename>hexjava.inc</filename>
+    <filename>hexviewer.js</filename>
+	<filename>hexwatcher.php</filename>
+	<filename>hexmarker.php</filename>	
+	<filename>offline.php</filename>
+    <filename>languages/dutch.php</filename>
+    <filename>languages/english.php</filename>
+    <filename>HeXimage/index.html</filename>
+    <filename>HeXimage/thumb/index.html</filename>	
+    <filename>themes/HeX/hexa-design.php</filename>
+    <filename>themes/HeX/css/style.css</filename>	
+  </files>
+  <images>
+     <filename>images/loaded.gif</filename>
+     <filename>images/loading.gif</filename>
+	 <filename>images/first.gif</filename>	 
+	 <filename>images/previous.gif</filename>
+	 <filename>images/next.gif</filename>
+	 <filename>images/last.gif</filename>	 
+	 <filename>images/logo.gif</filename>	 
+	 <filename>images/blank.png</filename>		 
+	 <filename>watermark/HeXa.png</filename>
+	 <filename>themes/HeX/images/blank.png</filename>
+  </images>
+  <install>
+  <queries>
+	<query>DROP TABLE IF EXISTS `#__heximage_album`</query>
+	<query>
+	CREATE TABLE `#__heximage_album` (
+  	`albumid` smallint(5) NOT NULL auto_increment,
+  	`album_name` varchar(30) NOT NULL default '',
+  	`album_description` text NOT NULL,
+  	`published` char(1) NOT NULL default '',
+  	PRIMARY KEY  (`albumid`)
+	) TYPE=MyISAM AUTO_INCREMENT=1 ;
+	</query>
+	<query>DROP TABLE IF EXISTS `#__heximage_photo`</query>
+	<query>
+	CREATE TABLE `#__heximage_photo` (
+    `photoid` smallint(10) NOT NULL auto_increment,
+    `album_type` text NOT NULL,
+    `thumb` varchar(255) NOT NULL default '',
+    `url` varchar(255) NOT NULL default '',
+    `description` text NOT NULL,
+    `hsize` smallint(4) NOT NULL default '0',
+    `vsize` smallint(4) NOT NULL default '0',
+  	`published` char(1) NOT NULL default '',	
+    PRIMARY KEY  (`photoid`)
+    ) TYPE=MyISAM AUTO_INCREMENT=1 ;
+    </query>
+	</queries>
+  </install>
+  <uninstall>
+      <queries>
+      <query>DELETE FROM `#__heximage_album`</query>
+      <query>DROP TABLE `#__heximage_album`</query>
+      <query>DELETE FROM `#__heximage_photo`</query>
+      <query>DROP TABLE `#__heximage_photo`</query>
+      </queries>
+  </uninstall>
+    <installfile>install.heximage.php</installfile>
+    <uninstallfile>uninstall.heximage.php</uninstallfile>
+  <administration>
+    <menu>HeXimage</menu>
+    <submenu>
+      <menu task="config">Configuration</menu>
+      <menu task="album">Add/Edit albums</menu>
+      <menu task="upload_thumb">Upload & Create thumbs</menu>	
+      <menu task="mass_upload">Mass upload * not ready</menu>	  
+      <menu task="photo">View photo's</menu>	
+      <menu task="database">Optimize database</menu>		  	    
+      <menu task="about">About HeXimage</menu>
+    </submenu>
+	<files>
+	<filename>admin.heximage.php</filename>
+	<filename>admin.heximage.html.php</filename>
+	<filename>config.heximage.php</filename>
+	<filename>toolbar.heximage.php</filename>
+	<filename>toolbar.heximage.html.php</filename>	
+	<filename>heximage.class.php</filename>		
+	</files>
+    <images>
+      <filename>images/logo.gif</filename>
+      <filename>images/configuration.jpg</filename>
+      <filename>images/albums.jpg</filename>
+      <filename>images/photos.jpg</filename>
+      <filename>images/uploadthumbs.jpg</filename>
+      <filename>images/database.jpg</filename>	 
+      <filename>images/about.jpg</filename>		   	  	  	  	  
+    </images>
+</administration>
+</mosinstall>

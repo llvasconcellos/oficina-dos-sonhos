@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Photos</title>
+</head>
+<script language="JavaScript">
+<!--
+
+function openpic (args) {
+  var argsarray = args.split ("_SPLIT_");
+  var imgurl = argsarray[0];
+  var caption = argsarray[1];
+  var date = argsarray[2];
+  var location = argsarray[3];
+  window.open ("showpic.html?" +
+	"img=" + imgurl +
+	"&caption=" + escape (caption) +
+	"&date=" + escape (date) +
+	"&location=" + escape (location)
+	, 'pic',
+    "width=" + screen.width +
+    ",height=" + screen.height +
+    ",toolbar=no,resizable=yes,scrollbars=yes,location=no,top=0,left=0,fullscreen=1,status=no");
+}
+
+function showpicns (args) {
+  if (browserid == "ie") return;
+  openpic (args);
+}
+
+var InternetExplorer = navigator.appName.indexOf("Microsoft") != -1;
+
+var browserid;
+if (InternetExplorer) browserid = "ie"; else browserid = "ns";
+
+function expose_DoFSCommand(command, args) {
+  var exposeObj = InternetExplorer ? expose : document.expose;
+  if (command == "showpic") {
+    openpic (args);
+  }
+}
+
+if (navigator.appName && navigator.appName.indexOf("Microsoft") != -1 &&
+	  navigator.userAgent.indexOf("Windows") != -1 && navigator.userAgent.indexOf("Windows 3.1") == -1) {
+	document.write('<SCRIPT LANGUAGE=VBScript\> \n');
+	document.write('on error resume next \n');
+	document.write('Sub expose_FSCommand(ByVal command, ByVal args)\n');
+	document.write('  call expose_DoFSCommand(command, args)\n');
+	document.write('end sub\n');
+	document.write('</SCRIPT\> \n');
+}
+
+//-->
+</script>
+<body bgcolor="#ffffff" link="#f0f0f0" vlink="#f0f0f0" alink="#f0f0f0">
+<table cellspacing=0 cellpadding=0 border=0 width=100%><tr><td align=center><object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,0,0"
+  width="900"
+  height="510"
+  id="expose"
+  align="middle">
+<param name="menu" value"false" />
+<param name="allowScriptAccess" value="sameDomain" />
+<param name="movie" value="expose/swf/expose.swf" />
+<param name="quality" value="high" />
+<param name="bgcolor" value="#ffffff" />
+<param name="FlashVars" value="bgColor=ffffff&albumsXMLURL=expose/xml/albums.xml&stringsXMLURL=expose/config/strings.xml&formatsXMLURL=expose/config/formats.xml&configXMLURL=expose/config/config.xml&baseXMLURL=expose/xml/&baseImageURL=expose/img/&baseVideoURL=expose/img/&baseAudioURL=expose/img/" />
+<embed src="expose/swf/expose.swf"
+  menu="false"
+  quality="high"
+  bgcolor="#ffffff"
+  width="900"
+  height="510"
+  FlashVars="bgColor=ffffff&albumsXMLURL=expose/xml/albums.xml&stringsXMLURL=expose/config/strings.xml&formatsXMLURL=expose/config/formats.xml&configXMLURL=expose/config/config.xml&baseXMLURL=expose/xml/&baseImageURL=expose/img/&baseVideoURL=expose/img/&baseAudioURL=expose/img/"
+  name="expose"
+  align="middle" allowScriptAccess="sameDomain"
+  type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
+</object></td></tr>
+</table>
+</body>
+</html>

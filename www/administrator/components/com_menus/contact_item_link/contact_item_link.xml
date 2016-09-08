@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<mosinstall type="menu" version="1.0.0">
+	<name>Link - Item de Contato</name>
+	<group>Component|Link</group>
+	<author>Joomla! Project</author>
+	<creationDate>July 2004</creationDate>
+	<copyright>(C) 2005 Open Source Matters. All rights reserved.</copyright>
+	<license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
+	<authorEmail>admin@joomla.org</authorEmail>
+	<authorUrl>www.joomla.org</authorUrl>
+    <authorUrl>www.inform-se.com.br</authorUrl>
+	<version>1.0.8 BR</version>
+	<description>Cria um link a um Item de Contato Publicado</description>
+	<params>
+		<param name="menu_image" type="imagelist" directory="/images/stories" hide_default="1" default="" label="Imagem do Menu" description="Uma pequena imagem para ser colocada à esquerda ou direita de seu item de menu, imagens devem estar em images/stories/" />
+		<param name="pageclass_sfx" type="text" default="" label="Sufixo de Classe da Página" description="Um sufixo para ser aplicado à classe css da página, isto permite um estilo de página individual" />
+		<param name="page_title" type="radio" default="1" label="Título da Página" description="Exibir/Ocultar o Título da Página">
+			<option value="0">Ocultar</option>
+			<option value="1">Exibir</option>
+		</param>
+		<param name="header" type="text" size="30" default="" label="Título da Página" description="Texto para exibir ao topo da página. Se ficar em branco, o nome do menu será usado no lugar" />
+		<param name="@spacer" type="spacer" default="" label="" description="" />
+		<param name="bannedEmail" type="text" default="" label="E-mail proibido" size="40" description="Serão proibidos e-mails que contenham qualquer palavra a seguir, separe palavras diferentes com ponto e vígula por exemplo ban;text;etc" />
+		<param name="bannedSubject" type="text" default="" label="Assunto proibido" size="40" description="Serão proibidos assunto que contenham qualquer palavra a seguir, separe palavras diferentes com ponto e vígula por exemplo ban;text;etc" />
+		<param name="bannedText" type="text" default="" label="Messagem proibido" size="40" description="Serão proibidos textos que contenham qualquer palavra a seguir, separe palavras diferentes com ponto e vígula por exemplo ban;text;etc" />
+		<param name="@spacer" type="spacer" default="" label="" description="" />
+		<param name="session" type="radio" default="1" label="Checar a sessão" description="Verifique que a sessão de cookie esta em desabilitado, usuários com cookie desabilitado não poderão enviar e-mails.">
+			<option value="0">Ocultar</option>
+			<option value="1">Exibir</option>
+		</param>
+	</params>
+</mosinstall>

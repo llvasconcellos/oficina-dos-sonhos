@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<expose version="2.0">
+	<string id="previmage">
+		<english>previous image</english>
+	</string>
+	<string id="nextimage">
+		<english>next image</english>
+	</string>
+	<string id="playslideshow">
+		<english>play slide show</english>
+	</string>
+	<string id="stopslideshow">
+		<english>stop slide show</english>
+	</string>
+	<string id="largeimagebuttonlabel">
+		<english>show large image</english>
+	</string>
+	<string id="selectalbum">
+		<english>select album</english>
+	</string>
+	<string id="showimagestrip">
+		<english>show image strip</english>
+	</string>
+	<string id="youarein">
+		<english>You are in:</english>
+	</string>
+	<string id="selectanalbum">
+		<english>Select an album:</english>
+	</string>
+	<string id="helpguide">
+		<english>To find out how to navigate click on</english>
+	</string>
+	<string id="help">
+		<english>help</english>
+	</string>
+	<string id="playaudiocomment">
+		<english>play audio comment</english>
+	</string>
+	<string id="stopaudiocomment">
+		<english>stop audio comment</english>
+	</string>
+	<string id="imagedesc">
+		<english>image description</english>
+	</string>
+	<string id="helptext1">
+		<english>Click on an image slide to view the larger image. You can also select another album, switch back to an image strip view, step through images, start slide shows, and play audio comments by using the buttons described below.</english>
+	</string>
+	<string id="helptext2">
+		<english>Load the previous or the next image, or begin a slide show.</english>
+	</string>
+	<string id="helptext3">
+		<english>Select another album, or view an image strip of the current album.</english>
+	</string>
+	<string id="helptext4">
+		<english>View the image description, play the audio comment for the image, or view a full-screen version of the image.</english>
+	</string>	
+	<string id="largeimagebuttonlabel">
+		<english>show larger image</english>
+	</string>
+	<string id="albumlistcancel">
+		<english>Cancel</english>
+	</string>							
+</expose>

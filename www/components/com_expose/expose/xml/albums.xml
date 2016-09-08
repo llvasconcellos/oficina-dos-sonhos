@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<expose version="2.1">
+	<collection>
+		<collection _mngid="1">
+			<title>Sample collection</title>
+			<thumb>
+				<url>thumbs/_th_sample_collection.jpg</url>
+			</thumb>
+			<album _mngid="2">
+				<title>Sample album</title>
+				<description>This is my photo album.</description>
+				<thumb>
+					<url>thumbs/_th_sample_album.jpg</url>
+				</thumb>
+				<contentxmlurl>album_sample.xml</contentxmlurl>
+				<contentnumber>2</contentnumber>
+			</album>
+		</collection>
+		<album _mngid="3">
+			<title>Videos</title>
+			<thumb>
+				<url>thumbs/_th_videos.jpg</url>
+			</thumb>
+			<contentxmlurl>album_videos.xml</contentxmlurl>
+			<contentnumber>1</contentnumber>
+		</album>
+	<collection _mngid="4"><title>Educação Infantil</title><thumb><url>albth_4.jpg</url></thumb><album _mngid="5"><title>Projeto Ambiental</title><contentxmlurl>alb_5.xml</contentxmlurl><contentnumber>0</contentnumber><thumb><url>albth_5.jpg</url></thumb></album></collection></collection>
+</expose>

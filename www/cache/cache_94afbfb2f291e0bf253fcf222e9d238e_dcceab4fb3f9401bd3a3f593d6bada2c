@@ -1,0 +1,29 @@
+                      -618490084a:2:{s:6:"output";s:4088:"			<table class="contentpaneopen">
+			<tr>
+								<td class="contentheading" width="100%">
+				Estrutura								</td>
+							<td align="right" width="100%" class="buttonheading">
+			<a href="javascript:void(0)" onclick="window.open('http://www.oficinadossonhos.com.br/index2.php?option=com_content&amp;do_pdf=1&amp;id=30','win2','status=no,toolbar=no,scrollbars=yes,titlebar=no,menubar=no,resizable=yes,width=640,height=480,directories=no,location=no');" title="PDF">
+			<img src="http://www.oficinadossonhos.com.br/templates/tema_escola/images/pdf_button.png" alt="PDF" align="middle" name="PDF" border="0" />			</a>
+			</td>
+							<td align="right" width="100%" class="buttonheading">
+				<a href="javascript:void(0)" onclick="window.open('http://www.oficinadossonhos.com.br/index2.php?option=com_content&amp;task=view&amp;id=30&amp;Itemid=30&amp;pop=1&amp;page=0','win2','status=no,toolbar=no,scrollbars=yes,titlebar=no,menubar=no,resizable=yes,width=640,height=480,directories=no,location=no');" title="Imprimir">
+				<img src="http://www.oficinadossonhos.com.br/templates/tema_escola/images/printButton.png" alt="Imprimir" align="middle" name="Imprimir" border="0" />				</a>
+				</td>
+							<td align="right" width="100%" class="buttonheading">
+			<a href="javascript:void(0)" onclick="window.open('http://www.oficinadossonhos.com.br/index2.php?option=com_content&amp;task=emailform&amp;id=30','win2','status=no,toolbar=no,scrollbars=yes,titlebar=no,menubar=no,resizable=yes,width=400,height=250,directories=no,location=no');" title="E-mail">
+			<img src="http://www.oficinadossonhos.com.br/templates/tema_escola/images/emailButton.png" alt="E-mail" align="middle" name="E-mail" border="0" />			</a>
+			</td>
+						</tr>
+			</table>
+			
+		<table class="contentpaneopen">
+				<tr>
+			<td valign="top" colspan="2">
+			<p align="center"><strong>1&ordm; Andar</strong> clique nas marca&ccedil;&otilde;es em amarelo para ver uma imagem do local!<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,29,0" width="420" height="320"><param name="movie" value="http://www.oficinadossonhos.com.br/primeiro.swf" /><param name="quality" value="high" /><param name="menu" value="false" /><param name="wmode" value="" /><embed src="primeiro.swf" wmode="" quality="high" menu="false" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="420" height="320"></embed></object></p><p align="center"><strong>2&ordm; Andar</strong> clique nas marca&ccedil;&otilde;es em amarelo para ver uma imagem do local!</p><p align="center"><object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,29,0" width="420" height="320"><param name="movie" value="http://www.oficinadossonhos.com.br/segundo.swf" /><param name="quality" value="high" /><param name="menu" value="false" /><param name="wmode" value="" /><embed src="segundo.swf" wmode="" quality="high" menu="false" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="420" height="320"></embed></object></p><div align="center" style="text-align: center"><strong>3&ordm; Andar</strong> clique nas marca&ccedil;&otilde;es em amarelo para ver uma imagem do local!</div><div align="center" style="text-align: center"><object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,29,0" width="420" height="320"><param name="movie" value="http://www.oficinadossonhos.com.br/terceiro.swf" /><param name="quality" value="high" /><param name="menu" value="false" /><param name="wmode" value="" /><embed src="terceiro.swf" wmode="" quality="high" menu="false" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="420" height="320"></embed></object></div>			</td>
+		</tr>
+				</table>
+		
+		<span class="article_seperator">&nbsp;</span>
+		
+		";s:6:"result";N;}

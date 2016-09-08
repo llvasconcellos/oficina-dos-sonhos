@@ -1,0 +1,144 @@
+                      -898416829a:2:{s:6:"output";s:7151:"			<table class="contentpaneopen">
+			<tr>
+								<td class="contentheading" width="100%">
+				Natação								</td>
+							<td align="right" width="100%" class="buttonheading">
+			<a href="javascript:void(0)" onclick="window.open('http://www.oficinadossonhos.com.br/index2.php?option=com_content&amp;do_pdf=1&amp;id=25','win2','status=no,toolbar=no,scrollbars=yes,titlebar=no,menubar=no,resizable=yes,width=640,height=480,directories=no,location=no');" title="PDF">
+			<img src="http://www.oficinadossonhos.com.br/templates/temalaranja/images/pdf_button.png" alt="PDF" align="middle" name="PDF" border="0" />			</a>
+			</td>
+							<td align="right" width="100%" class="buttonheading">
+				<a href="javascript:void(0)" onclick="window.open('http://www.oficinadossonhos.com.br/index2.php?option=com_content&amp;task=view&amp;id=25&amp;Itemid=99999999&amp;pop=1&amp;page=0','win2','status=no,toolbar=no,scrollbars=yes,titlebar=no,menubar=no,resizable=yes,width=640,height=480,directories=no,location=no');" title="Imprimir">
+				<img src="http://www.oficinadossonhos.com.br/templates/temalaranja/images/printButton.png" alt="Imprimir" align="middle" name="Imprimir" border="0" />				</a>
+				</td>
+							<td align="right" width="100%" class="buttonheading">
+			<a href="javascript:void(0)" onclick="window.open('http://www.oficinadossonhos.com.br/index2.php?option=com_content&amp;task=emailform&amp;id=25','win2','status=no,toolbar=no,scrollbars=yes,titlebar=no,menubar=no,resizable=yes,width=400,height=250,directories=no,location=no');" title="E-mail">
+			<img src="http://www.oficinadossonhos.com.br/templates/temalaranja/images/emailButton.png" alt="E-mail" align="middle" name="E-mail" border="0" />			</a>
+			</td>
+						</tr>
+			</table>
+			
+		<table class="contentpaneopen">
+				<tr>
+			<td valign="top" colspan="2">
+			<div align="justify">A nata&ccedil;&atilde;o tem in&uacute;meros benef&iacute;cios, auxiliando   no desenvolvimento integral do ser.<br />
+No aspecto f&iacute;sico, proporciona um   fortalecimento de t&ocirc;nus muscular, melhora nos aparelhos respirat&oacute;rio e   circulat&oacute;rio, melhora do apetite e sono mais regular. J&aacute; no aspecto ps&iacute;quico, a   nata&ccedil;&atilde;o propicia maior rapidez de resposta da crian&ccedil;a a est&iacute;mulo   externo.</div><div align="justify">
+<style>
+.Caption {
+font-family: Arial;
+font-weight: bold;
+color:      #123456;
+}
+</style>
+<script>
+
+// Set the slideshow speed (in milliseconds)
+var SlideShowSpeed = 5000;
+
+// Set the duration of crossfade (in seconds)
+var CrossFadeDuration = 5;
+
+var Picture = new Array(); // don't change this
+var Caption = new Array(); // don't change this
+
+// ESPECIFIQUE SUAS IMAGENS NOS NOMES ABAIXO
+Picture[1]  = './images/stories/fotos_natacao/natacao1.jpg';
+Picture[2]  = './images/stories/fotos_natacao/natacao2.jpg';
+Picture[3]  = './images/stories/fotos_natacao/natacao3.jpg';
+Picture[4]  = './images/stories/fotos_natacao/natacao4.jpg';
+Picture[5]  = './images/stories/fotos_natacao/natacao5.jpg';
+Picture[6]  = './images/stories/fotos_natacao/natacao6.jpg';
+Picture[7]  = './images/stories/fotos_natacao/natacao7.jpg';
+
+var tss;
+var iss;
+var jss = 1;
+var pss = Picture.length-1;
+
+var preLoad = new Array();
+for (iss = 1; iss < pss+1; iss++){
+preLoad[iss] = new Image();
+preLoad[iss].src = Picture[iss];}
+
+function runSlideShow(){
+if (document.all){
+document.images.PictureBox.style.filter="blendTrans(duration=2)";
+document.images.PictureBox.style.filter="blendTrans(duration=CrossFadeDuration)";
+document.images.PictureBox.filters.blendTrans.Apply();}
+document.images.PictureBox.src = preLoad[jss].src;
+
+if (document.all) document.images.PictureBox.filters.blendTrans.Play();
+jss = jss + 1;
+if (jss > (pss)) jss=1;
+tss = setTimeout('runSlideShow()', SlideShowSpeed);
+}
+
+</script>
+</head>
+<!--
+Add the onload=runSlideShow() event call to the body tag.
+//-->
+<body onload=runSlideShow() bgcolor=#000000>
+<!--
+The following table holds the images and captions.
+Place the table in your page where you want the slideshow
+to appear.  Follow the instructions for each table cell.
+//-->
+<br />
+<br />
+<table border=0 cellpadding=0 cellspacing=0 align="center">
+  <tr>
+    <!--
+    The next table cell holds the images.
+    Set cell and image width and height the same.
+    The img src must have name=PictureBox in its
+    tag.  Usually the first image in the Picture
+    array in the script is used here.
+    //-->
+	<tr>
+   <td></td>
+  </tr>
+    <td width=400 height=280 align="center" bgcolor="#000000">
+    <img src=images/stories/fotos_natacao/natacao1.jpg name=PictureBox width=304 height=235>    </td>
+  </tr>
+  <tr>
+   <td></td>
+  </tr>
+</table>
+<p>
+Outro benef&iacute;cio &eacute; a socializa&ccedil;&atilde;o, pois na piscina a crian&ccedil;a est&aacute; em   contato com outras crian&ccedil;as e com o professor. Durante as aulas, elas t&ecirc;m a   oportunidade de interagir em grupo com brincadeiras, contribuindo com a   sociabiliza&ccedil;&atilde;o.<br />
+                No aspecto sa&uacute;de, a nata&ccedil;&atilde;o favorece o desenvolvimento dos   mecanismos fisiol&oacute;gicos, como a capacidade pulmonar e o sistema vascular. Com a   pr&aacute;tica da nata&ccedil;&atilde;o, a crian&ccedil;a &eacute; submetida a mudan&ccedil;as de temperatura, aumentando   sua capacidade de desenvolver anticorpos, favorecendo sua resist&ecirc;ncia e deixando   o sistema imunol&oacute;gico mais fortalecido.<br />
+                Por tudo isso a crian&ccedil;a s&oacute; tem a   ganhar com a pr&aacute;tica, ajudando a crian&ccedil;a a ter um crescimento mais saud&aacute;vel e   equilibrado. </div>
+<p>
+<table width="200" align="center" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td colspan="2" align="middle"><div align="center"><strong>Nata&ccedil;&atilde;o</strong></div></td>
+                  </tr>
+                <tr>
+                  <td align="middle" width="150"><div align="center"><strong>Dia</strong></div></td>
+                  <td align="middle" width="150"><div align="center"><strong>Hor&aacute;rio</strong></div></td>
+                </tr>
+                <tr>
+                  <td align="middle"><div align="center"><strong>3a feira</strong></div></td>
+                  <td align="middle"><div align="center"><strong>09:30 &agrave;s 10:45 </strong></div></td>
+                </tr>
+                
+                <tr>
+                  <td align="middle"><div align="center"><strong>5a feira</strong></div></td>
+                  <td align="middle"><div align="center"><strong>14:00 &agrave;s 14:45</strong></div></td>
+                </tr>
+                <tr>
+                  <td align="middle" colspan="2"><div align="center"><strong>Academia Civi<br />
+                    R Germano Wetzel, 200</strong></div></td>
+                </tr>
+              </table>
+			</td>
+		</tr>
+				</table>
+		
+		<span class="article_seperator">&nbsp;</span>
+		
+					<div class="back_button">
+			<a href='javascript:history.go(-1)'>
+			[Voltar]			</a>
+			</div>
+			";s:6:"result";N;}

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<expose version="2.1">
+	<video _mngid="1">
+		<title>Sample video</title>
+		<video>
+			<stream bitrate="203">
+				<url>videos/sample.flv</url>
+			</stream>
+		</video>
+		<thumb>
+			<url>videos/_th_sample.jpg</url>
+		</thumb>
+	</video>
+</expose>

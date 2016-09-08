@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<mosinstall type="module">
+<name>Latest news from www.mambodocman.com - admin module</name>
+<creationDate>April 2005</creationDate>
+<author>The DOCMan development team</author>
+<copyright>This template is released under the GNU/GPL License</copyright>
+<authorEmail>admin@mambodocman.com</authorEmail>
+<authorUrl></authorUrl>
+<version>1.0</version>
+<description>Shows the 5 latest news headers from www.mambodocman.com</description>
+<files>
+<filename module="mod_docman_news">mod_docman_news.php</filename>
+</files>
+</mosinstall>

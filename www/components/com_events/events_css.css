@@ -1,0 +1,280 @@
+/*********************
+* Calendar style
+**********************/
+.cal_table {
+   border: 1px solid #000000;
+}
+.cal_td_daysnames {
+    border-bottom: 1px solid #000000;
+}
+.cal_daysnames {
+    font-family: Arial;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: bold;
+    color: #000000;
+    text-decoration: none
+}
+.cal_td_daysoutofmonth {
+    background-color: #B0C4DE;
+}
+.cal_daysoutofmonth {
+    font-family:  Arial;
+    font-size: 12px;
+    font-style: normal;
+    line-height: normal;
+    font-weight: bold;
+    color: #000000;
+    text-decoration: none
+}
+.cal_td_today {
+    background-color:#E9B4A1;
+}
+.cal_td_daysnoevents {
+    background-color: #FFDEAD;
+}
+a.cal_daylink:link {
+    font-family: Arial;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: bold;
+    color: black;
+    text-decoration: none
+}
+a.cal_daylink:visited{
+    font-family: Arial;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: bold;
+    color: #000000;
+    text-decoration: none
+}
+a.cal_daylink:hover{
+    font-family: Arial;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: bold;
+    color: Red;
+    text-decoration: none
+}
+a.cal_titlelink:link, a.cal_titlelink:visited, a.cal_titlelink:hover {
+    font-size:10px;
+    font-family: Verdana;
+    color:black;
+    text-decoration: none;
+}
+
+/***************************
+* List style
+**************************/
+a.ev_link_cat:link {
+    font-size:12px;
+    font-family: Verdana;
+    color: Gray;
+}
+a.ev_link_cat:visited  {
+    font-size:12px;
+    font-family: Verdana;
+    color: Gray;
+}
+a.ev_link_cat:hover  {
+    font-size:12px;
+    font-family: Verdana;
+    color: Black;
+}
+a.ev_link_row:link {
+    font-size:12px;
+    font-family: Verdana;
+    color: Gray;
+}
+a.ev_link_row:visited  {
+    font-size:12px;
+    font-family: Verdana;
+    color: Gray;
+}
+a.ev_link_row:hover  {
+    font-size:12px;
+    font-family: Verdana;
+    color: Black;
+}
+a.ev_link_unpublished {
+    color:red;
+}
+a.ev_link_weekday:link {
+    font-size:12px;
+    font-family: Verdana;
+    color: Gray;
+}
+a.ev_link_weekday:visited  {
+    font-size:12px;
+    font-family: Verdana;
+    color: Gray;
+}
+a.ev_link_weekday:hover  {
+    font-size:12px;
+    font-family: Verdana;
+    color: Black;
+}
+.ev_fieldset {
+    font-family: Arial;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: bold;
+	/*
+    color: black;
+	*/
+}
+.ev_table {
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;
+}
+.ev_td_right {
+    background-color: #FFFFFF;
+    border-top: 1px solid #000000;
+}
+.ev_td_left {
+    background-color: #c5d5e5;
+    border-right: 1px solid #000000;
+    border-top: 1px solid #000000;
+    font-family: Arial;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: normal;
+    color: black;
+    text-align : left;
+    vertical-align: top;
+}
+.ev_td_today {
+    background-color: #E9B4A1;
+    border-right: 1px solid #000000;
+    border-top: 1px solid #000000;
+    font-family: Arial;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: normal;
+    color: black;
+}
+
+/**********************
+* Form style
+**********************/
+ /* Styles for dhtml tabbed-pages */
+.ontab {
+    font-family : Verdana, Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    background-color: ThreedShadow;
+    border-left: outset 1px #ff9900;
+    border-right: outset 1px #808080;
+    border-top: outset 1px #ff9900;
+    border-bottom: solid 1px #d5d5d5;
+    text-align: center;
+    cursor: hand;
+    font-weight: bold;
+	/*
+    color: #FFFFFF;
+	*/
+}
+.offtab {
+	font-family : Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	background-color: #EEEEEE;
+	border-left: outset 1px #E0E0E0;
+	border-right: outset 1px #E0E0E0;
+	border-top: outset 1px #E0E0E0;
+	border-bottom: solid 1px #d5d5d5;
+	text-align: center;
+	cursor: hand;
+	font-weight: normal;
+}
+.tabpadding {
+	border-bottom: solid 0px #777777;
+}
+.tabheading {
+	background-color: #ffae00;
+	border-left: solid 1px #777777;
+	border-right: solid 1px #777777;
+	/*
+	color: #FFFFFF;
+	*/
+	font-family : Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10pt;
+	text-align: left;
+}
+.tabcontent {
+	/*
+    background-color: ThreedFace;
+	*/
+    border-top: solid 1px #777777;
+    border-left: solid 1px #777777;
+    border-right: solid 1px #777777;
+    border-bottom: solid 1px #777777;
+	/*
+    color: #FFFFFF;
+	*/
+    font-family : Verdana, Arial, Helvetica, sans-serif;
+    font-size: 16pt;
+    text-align: left;
+}
+.pagetext {
+	visibility: hidden;
+   display: none;
+	position: relative;
+	top: 0;
+}
+.frm_td_bydays {
+    background-color: #FFF8DC;
+    font-size: 12px;
+    color: black;
+}
+.frm_td_byweeks {
+    background-color: #FFF0F5;
+    font-size: 12px;
+    color: black;
+}
+.frm_td_bymonth {
+    background-color: #FDF5E6;
+    font-size: 12px;
+    color: black;
+}
+.frm_td_byyear {
+    background-color: #F0F8FF;
+    font-size: 12px;
+    color: black;
+}
+/**********************
+* Nav bar style
+**********************/
+a.nav_bar_link:link {
+    font-size: 10px;
+    font-family: Verdana;
+    color: Green;
+}
+a.nav_bar_link:visited  {
+    font-size:10px;
+    font-family: Verdana;
+    color: Teal;
+}
+a.nav_bar_link:hover  {
+    font-size:10px;
+    font-family: Verdana;
+    color: Lime;
+}
+.nav_bar_cell{
+	background-color: #ECECEC;
+}
+
+/**********************
+* List formatting
+**********************/
+/* removed for MOS 4.5.1 */
+/*
+.ev_td_li {
+    list-style: url(images/arrow.png) outside;
+}
+
+.ev_ul {
+    margin: 0px 12px 0px 12px;
+    padding: 0px 0px 0px 0px;
+}
+*/

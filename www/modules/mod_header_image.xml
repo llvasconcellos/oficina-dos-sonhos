@@ -1,0 +1,114 @@
+<?xml version="1.0" ?>
+<mosinstall type="module">
+	<name>Header Image</name>
+	<creationDate>February 2006</creationDate>
+	<author>Michael Pillwax</author>
+	<copyright>Released under GNU/GPL License</copyright>
+	<authorEmail>michael.pillwax@pillwax.com</authorEmail>
+	<authorUrl>http://forge.joomla.org/sf/projects/mod_header_image</authorUrl>
+	<version>1.57</version>
+	<description>
+		<br />This module allows to load a image based on the current user selection.
+		<br />Store the images in the image path, define the prefix and file extension and if it shall be section,category or menu dependant.
+		<br />Default Image will be shown in case there is no image file found, or a random image.
+		<br />Plenty of additional features, read the documentation!
+		<br />For full documentation see the Wiki on the projects homepage at Header Image on Joomla! Developer: http://forge.joomla.com/sf/projects/mode_header_image
+		<br />
+	</description>
+	<files>
+		<filename module="mod_header_image">mod_header_image.php</filename>
+		<filename>mod_header_image/mhi_helper_functions.inc</filename>
+		<filename>mod_header_image/mhi_mambelfish_integration.inc</filename>
+		<filename>mod_header_image/mhi_slideshow_fade.js</filename>
+		<filename>mod_header_image/mhi_slideshow_images.inc</filename>
+		<filename>mod_header_image/mhi_slideshow_slide-l2r.js</filename>
+		<filename>mod_header_image/mhi_static_images.inc</filename>
+	</files>
+  	<params>
+		<param name="LinkedTo" type="list" default="section" label="Linked to" description="Select if the images shall be linked to the current Section or Category ID">
+			<option value="section">Section</option>
+			<option value="category">Category</option>
+			<option value="mainitemid">Main Menu</option>
+			<option value="itemid">Current Menu</option>
+			<option value="smart">Smart</option>
+			<option value="smart_mtree">Smart with MTREE Component</option>
+			<option value="smart_virtuemart">Smart with VirtueMart Component</option>
+		</param>
+		<param name="ImageFileType" type="list" default="images" label="Operation Mode" description="Select which type of files you want to use.">
+			<option value="images">Display Images or Files</option>
+			<option value="table">Use for table backgrounds</option>
+			<option value="html">Use HTML Code below</option>
+		</param>
+		<param name="@spacer" type="spacer" default="" label="" description="" />
+		<param name="Slideshow" type="list" default="0" label="Slideshow Images with Smart-Mode" description="Select if images shall be rotated, like a slideshow. Requires SMART Mode to be selected.">
+			<option value="0">No, static images</option>
+			<option value="1">Yes, rotate images with frequency below</option>
+		</param>
+		<param name="Slideshow_Frequency" type="text" size="5" default="30" label="Seconds to show images" description="Define the time in seconds for each image to be shown with the ROTATE IMAGES feature."/>
+		<param name="Slideshow_Pause" type="list" default="0" label="Pause on Mouse over Images" description="Select if the slideshow shall be paused when the mouse is hovered above the images.">
+			<option value="0">No, continue slideshow</option>
+			<option value="1">Yes, pause</option>
+		</param>
+		<param name="Slideshow_RandomOrder" type="list" default="" label="Show images in random order" description="Select if the slideshow images shall be shown in random order.">
+			<option value="">No, use the file order</option>
+			<option value="R">Yes, randomize the image order</option>
+		</param>
+		<param name="Slideshow_Transition" type="list" default="fade" label="Image transition type" description="Select the type of transition between images.">
+			<option value="fade">Fade between images</option>
+			<option value="slide-l2r">Slide images, left to right</option>
+		</param>
+		<param name="Slideshow_BackgroundColor" type="text" size="7" default="30" label="Slideshow Background Color" description="Enter the background color for the image slideshow, either as name (e.g. white) or as Hex-Value (e.g. #FFFFFF)."/>
+		<param name="@spacer" type="spacer" default="" label="" description="" />
+		<param name="Localize" type="list" default="0" label="Use Localization" description="Enable localization support with Mambelfish. The Image Folder Names will be extended with the current localization code, example: /images/en_en/image....jpg" >
+			<option value="0">No</option>
+			<option value="1">Yes (4-letter Abbreviations like "en_US")</option>
+			<option value="2">Yes (2-letter Abbreviations like "en")</option>
+		</param>
+		<param name="@spacer" type="spacer" default="" label="" description="" />
+		<param name="imagesFolder" type="text" size="50" default="/images/stories" label="Images Folder" description="Define the folder that will store your section and default images (NO LEADING OR TRAILING SLASH!)"/>
+		<param name="ImagePrefix" type="text" size="50" default="" label="Image Filename Prefix" description="Enter the Prefix for these image files, eg 'headerimg'."/>
+		<param name="ImageExtension" type="text" size="10" default=".png" label="Extension of Files" description="Enter the file extension of the image or HTML-files. Use '.html' for HTML file use."/>
+		<param name="ComponentSpecificFiles" type="list" default="0" label="Use Component Filter" description="Allows to add the current component name (e.g. com_content, com_search, ...) to the image filename for component specific image selection. This has no effect onto the random images, their filenames or their location.">
+			<option value="0">No</option>
+			<option value="1">Yes - use the component name as image subfolder</option>
+			<option value="2">Yes - suffix the component name with a underscore to the filename</option>
+		</param>
+		<param name="UseAdefaultImage" type="list" default="1" label="Use a default image" description="Select if the default image shall be used if no related image was found, or if no image shall be shown.">
+			<option value="0">No, supress output on missing relation</option>
+			<option value="1">Yes, use image file below</option>
+		</param>
+		<param name="defaultImageFilename" type="text" size="50" default="" label="Default Image Filename" description="Select a default image filename to use when a content or related image is not available."/>
+		<param name="ImageBorder" type="text" size="5" default="0" label="Size of Image Border" description="Set the size of the image border, applies to all images."/>
+		<param name="ImageAltText" type="text" size="50" default="" label="Image Alt-Text" description="Enter any alternate text for the image, applies to all images. See documentation for multi-language support."/>
+		<param name="@spacer" type="spacer" default="" label="" description="" />
+		<param name="ImageToolTip" type="list" default="0" label="Show Image Tooltip" description="Enable JavaScrip ToolTip-Box, use the settings below for it. See documentation on required changes to your index.php template file to make the Tooltip Box work." >
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="ImageToolTipTitle" type="text" size="50" default="" label="Image Tooltip Box: Title" description="Enter the title of the Tooltip-Box, applies to all images. See documentation for multi-language support."/>
+		<param name="ImageToolTipText" type="textarea" cols="40" rows="9" default="" label="Image Tooltip Box: Text" description="Enter any alternate text as Tooltip-Box for the image, applies to all images. See documentation for multi-language support."/>
+		<param name="ImageToolTipWidth" type="text" size="5" default="" label="Image Tooltip Box: Width" description="Enter width for the Tooltip-Box in pixels."/>
+		<param name="ImageToolTipHeight" type="text" size="5" default="" label="Image Tooltip Box: Height" description="Enter height for the Tooltip-Box in pixels."/>
+		<param name="@spacer" type="spacer" default="" label="" description="" />
+		<param name="ImageHyperLink" type="text" size="50" default="" label="Hyperlink" description="Enter a hyperlink in case the image shall be a clickable link."/>
+		<param name="ImageHyperLinkOnDefault" type="list" default="0" label="Hyperlink with Default Image" description="Defines if the Hyperlink shall also be valid for the default image. On [Yes] the Hyperlink will only be generated for all other images, except the default.">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="@spacer" type="spacer" default="" label="" description="" />
+		<param name="UseRandomImage" type="list" default="0" label="Random default image" description="Select if a random default image shall be used if no related image was found.">
+			<option value="0">No, display the default image</option>
+			<option value="1">Yes, use a random default image</option>
+		</param>
+		<param name="RandomImagesFolder" type="text" size="50" default="" label="Random Images Folder" description="Define the folder that will store your random images (NO LEADING OR TRAILING SLASH!)"/>
+		<param name="Slideshow_RandomImagesNr" type="text" size="5" default="" label="Nr. of images for a slideshow" description="Define the max. number of random images that shall be selected for a slideshow. Note: Slideshow feature has to be active for this to work."/>
+		<param name="@spacer" type="spacer" default="" label="" description="" />
+		<param name="HTMLCode" type="textarea" cols="40" rows="5" default="" label="HTML Code (use '#__image' for files)" description="Enter the HTML Code you want the module to put into the template. Use '#__image' for the image file name, mod_headerimage will replace this with the generated filename." />
+		<param name="@spacer" type="spacer" default="" label="" description="" />
+		<param name="moduleclass_sfx" type="text" default="" label="Module Class Suffix" description="A suffix to be applied to the css class of the module (table.moduletable), this allows individual module styling" />
+		<param name="Debug" type="radio" default="0" label="Debug Mode" description="Select if the module shall show debug information. Standard is OFF">
+			<option value="0">Off</option>
+			<option value="1">On</option>
+		</param>
+	</params>
+</mosinstall>

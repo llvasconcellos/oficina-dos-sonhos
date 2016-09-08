@@ -1,0 +1,121 @@
+                       815204367a:2:{s:6:"output";s:4547:"			<div class="componentheading">
+			Últimas Notícias			</div>
+					<table width="100%" cellpadding="0" cellspacing="0" border="0" align="center" class="contentpane">
+		<tr>
+			<td width="60%" valign="top" class="contentdescription" colspan="2">
+							<img src="http://www.oficinadossonhos.com.br/images/stories/articles.jpg" align="right" hspace="6" alt="articles.jpg" />
+				As últimas notícias de nossa escola			</td>
+		</tr>
+		<tr>
+			<td>
+					<form action="http://www.oficinadossonhos.com.br/index.php?option=com_content&amp;task=category&amp;sectionid=1&amp;id=1&amp;Itemid=2" method="post" name="adminForm">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+					<tr>
+				<td colspan="4">
+					<table>
+					<tr>
+													<td align="right" width="100%" nowrap="nowrap">
+							Filtro&nbsp;							<input type="text" name="filter" value="" class="inputbox" onchange="document.adminForm.submit();" />
+							</td>
+														<td align="right" width="100%" nowrap="nowrap">
+							&nbsp;&nbsp;&nbsp;Ordem&nbsp;
+<select name="order" class="inputbox" size="1"  onchange="document.adminForm.submit();">
+	<option value="alpha">Título asc</option>
+	<option value="ralpha">Título desc</option>
+	<option value="hits">Acessos asc</option>
+	<option value="rhits">Acessos desc</option>
+	<option value="order">Ordem</option>
+</select>
+							</td>
+														<td align="right" width="100%" nowrap="nowrap">
+							&nbsp;&nbsp;&nbsp;Exibir #&nbsp;
+<select name="limit" class="inputbox" size="1" onchange="document.location.href='http://www.oficinadossonhos.com.br/index.php?option=com_content&amp;task=category&amp;sectionid=1&amp;id=1&amp;Itemid=2&amp;limit=' + this.options[selectedIndex].value + '&amp;limitstart=0';">
+	<option value="5">5</option>
+	<option value="10">10</option>
+	<option value="15">15</option>
+	<option value="20">20</option>
+	<option value="25">25</option>
+	<option value="30" selected="selected">30</option>
+	<option value="50">50</option>
+</select>
+							</td>
+												</tr>
+					</table>
+				</td>
+			</tr>
+						<tr>
+									<td class="sectiontableheader">
+					Título					</td>
+										<td align="center" class="sectiontableheader" width="5%">
+					Acessos					</td>
+								</tr>
+						<tr class="sectiontableentry1" >
+										<td>
+						<a href="http://www.oficinadossonhos.com.br/index.php?option=com_content&amp;task=view&amp;id=39&amp;Itemid=2">
+						Passeio no Museu da Fundição						</a>
+												</td>
+											<td align="center">
+					41					</td>
+						</tr>
+					<tr class="sectiontableentry2" >
+										<td>
+						<a href="http://www.oficinadossonhos.com.br/index.php?option=com_content&amp;task=view&amp;id=38&amp;Itemid=2">
+						Passeio para Estrada Bonita						</a>
+												</td>
+											<td align="center">
+					47					</td>
+						</tr>
+					<tr class="sectiontableentry1" >
+										<td>
+						<a href="http://www.oficinadossonhos.com.br/index.php?option=com_content&amp;task=view&amp;id=37&amp;Itemid=2">
+						Museu Sambaqui e Parque Caieiras						</a>
+												</td>
+											<td align="center">
+					49					</td>
+						</tr>
+					<tr class="sectiontableentry2" >
+										<td>
+						<a href="http://www.oficinadossonhos.com.br/index.php?option=com_content&amp;task=view&amp;id=35&amp;Itemid=2">
+						Noite do Soninho						</a>
+												</td>
+											<td align="center">
+					61					</td>
+						</tr>
+					<tr class="sectiontableentry1" >
+										<td>
+						<a href="http://www.oficinadossonhos.com.br/index.php?option=com_content&amp;task=view&amp;id=1&amp;Itemid=2">
+						Calendário Letivo						</a>
+												</td>
+											<td align="center">
+					24					</td>
+						</tr>
+					<tr>
+				<td colspan="4">&nbsp;</td>
+			</tr>
+			<tr>
+				<td align="center" colspan="4" class="sectiontablefooter">
+				<span class="pagenav">&lt;&lt; Início</span> <span class="pagenav">&lt; Anterior</span> <span class="pagenav">1</span> <span class="pagenav">Próximo &gt;</span> <span class="pagenav">Fim &gt;&gt;</span>				</td>
+			</tr>
+			<tr>
+				<td colspan="4" align="right">
+				Resultados 1 - 5 de 5				</td>
+			</tr>
+					</table>
+		<input type="hidden" name="id" value="1" />
+		<input type="hidden" name="sectionid" value="1" />
+		<input type="hidden" name="task" value="category" />
+		<input type="hidden" name="option" value="com_content" />
+		</form>
+						
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+						</td>
+		</tr>
+		</table>
+					<div class="back_button">
+			<a href='javascript:history.go(-1)'>
+			[Voltar]			</a>
+			</div>
+			";s:6:"result";N;}

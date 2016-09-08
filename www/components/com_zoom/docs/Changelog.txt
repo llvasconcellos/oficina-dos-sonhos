@@ -1,0 +1,54 @@
+//zOOm Media Gallery//
+/** 
+-----------------------------------------------------------------------
+|  zOOm Media Gallery! by Mike de Boer - a multi-gallery component    |
+-----------------------------------------------------------------------
+
+-----------------------------------------------------------------------
+|                                                                     |
+| Author: Mike de Boer, <http://www.mikedeboer.nl>                    |
+| Copyright: copyright (C) 2004 by Mike de Boer                       |
+| Description: zOOm Media Gallery, a multi-gallery component for      |
+|              Mambo. It's the most feature-rich gallery component    |
+|              for Mambo! For documentation and a detailed list       |
+|              of features, check the zOOm homepage:                  |
+|              http://zoomfactory.org                                 |
+| License: GPL                                                        |
+| Filename: Changelog.txt                                             |
+| Version: 2.5.x                                                      |
+|                                                                     |
+-----------------------------------------------------------------------
+
+Changelog
+------------
+This is a non-exhaustive (but still near complete) changelog for
+Mambo 4.5.x, including beta and release candidate versions.
+Our thanks to all those people who've contributed bug reports and
+code fixes.
+
+Legend:
+
+# -> Bug Fix
++ -> Addition
+! -> Change
+- -> Removed
+! -> Note
+
+27-August-2005 Steven Pignataro
+ # Fixed bugs with the installer
+
+15-August-2005 Steven Pignataro
+ # Fixed a minor bug in the installer of depreciated files
+ ! Took | in other areas that it is not needed
+ ! Fixed missing <?php tags
+
+13-August-2005 Steven Pignataro
+ ! Moved "Diskspace zOOm is currently using:" in media manager to a better location. 
+ ! Took | out of media manager/settings as it was not needed.
+ ! Reorganization of Settings layout
+ ! NOTE: Need to put tab ordering in Layout tab of settings. Current way of doing it messes up layout.
+ ! Fixed a minor PHP bug that messes up on a Windows box in the settings page.
+
+12-August-2005 Steven Pignataro
+ ! Changed all old URLs to the new http://zoomfactory.org address
+ + Created Changelog text file.

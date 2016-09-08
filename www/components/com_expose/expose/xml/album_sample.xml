@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<expose version="2.1">
+	<picture _mngid="1">
+		<title>Spring leaves</title>
+		<date>2001</date>
+		<location>Bard College</location>
+		<image>
+			<url>samples/springleaves.jpg</url>
+		</image>
+		<smallimage>
+			<url>samples/_sm_springleaves.jpg</url>
+		</smallimage>
+		<largeimage>
+			<url>samples/_lg_springleaves.jpg</url>
+		</largeimage>
+	</picture>
+	<picture _mngid="2">
+		<title>Bee on a flower</title>
+		<image>
+			<url>samples/beeonflower.jpg</url>
+		</image>
+		<smallimage>
+			<url>samples/_sm_beeonflower.jpg</url>
+		</smallimage>
+	</picture>
+</expose>

@@ -1,0 +1,87 @@
+<?xml version="1.0" ?>
+<mosinstall type="component">
+  <name>xegallerypro</name>
+  <creationDate>01.01.2006</creationDate>
+  <author>Andreas Kuster</author>
+  <copyright>Xe-Media Communications</copyright>
+  <authorEmail>andreas.kuster@xe-media.ch</authorEmail>
+  <authorUrl>www.xe-media.ch/software</authorUrl>
+  <version>1.0</version>
+  <description>Xe-GalleryV1 PRO DEMO - Flash based Photo Gallery - powered by Xe-Media Communications</description>
+  <files>
+    <filename>xegallerypro.php</filename>
+	<filename>Xe-GalleryV1ProV1Demo.swf</filename>
+  </files>
+    <images>
+    <filename>images/pixel_trans.gif</filename>
+  </images>
+  <install>
+    <queries>
+      <query>DROP TABLE IF EXISTS `#__xegallerypro`</query>
+      <query>
+CREATE TABLE `#__xegallerypro` (
+  `id` int(11) NOT NULL auto_increment,
+  `catid` int(11) NOT NULL default '0',
+  `imgtitle` text NOT NULL,
+  `imgauthor` varchar(50) default NULL,
+  `imgtext` text NOT NULL,
+  `imgdate` varchar(20) default NULL,
+  `imgcounter` int(11) NOT NULL default '0',
+  `imgvotes` int(11) NOT NULL default '0',
+  `imgvotesum` int(11) NOT NULL default '0',
+  `published` tinyint(1) NOT NULL default '1',
+  `imgfilename` varchar(50) NOT NULL default '',
+  `imgthumbname` varchar(50) NOT NULL default '',
+  `ordering` int(11) NOT NULL default '0',
+  `checked_out` int(11) NOT NULL default '0',
+  `owner` varchar(50) NOT NULL default '',
+  `approved` int(1) NOT NULL default '0',
+  `useruploaded` int(1) NOT NULL default '0',
+  PRIMARY KEY  (`id`)
+) TYPE=MyISAM ;
+      </query>
+      <query>DROP TABLE IF EXISTS `#__xegallerypro_catg`;</query>
+     <query>
+      CREATE TABLE `#__xegallerypro_catg` (
+  `cid` int(11) NOT NULL auto_increment,
+  `name` varchar(255) NOT NULL default '',
+  `parent` varchar(255) NOT NULL default '0',
+  `description` text,
+  `ordering` int(11) NOT NULL default '0',
+  `access` tinyint(3) unsigned NOT NULL default '0',
+  `published` char(1) NOT NULL default '1',
+  PRIMARY KEY  (`cid`)
+) TYPE=MyISAM;
+      </query>
+    </queries>
+  </install>
+  <uninstall>
+    <queries>
+      <query>DELETE FROM `#__xegallerypro`</query>
+      <query>DROP TABLE `#__xegallerypro`</query>
+      <query>DROP TABLE `#__xegallerypro_catg`</query>
+    </queries>
+  </uninstall>
+    <installfile>install.xegallerypro.php</installfile>
+    <uninstallfile>uninstall.xegallerypro.php</uninstallfile>
+  <administration>
+    <menu>XeGalleryPro DEMO</menu>
+    <submenu>
+      <menu act="pictures">Photos</menu>
+      <menu act="showcatg">Categories</menu>
+      <menu act="upload">Upload Photos</menu>
+	  <menu act="upload2">Upload Flash</menu>
+      <menu act="settings">Settings</menu>
+    </submenu>
+    <files>
+      <filename>admin.xegallerypro.html.php</filename>
+      <filename>admin.xegallerypro.php</filename>
+      <filename>class.xegallerypro.php</filename>
+      <filename>config.xegallerypro.php</filename>
+      <filename>install.xegallerypro.php</filename>
+      <filename>toolbar.xegallerypro.html.php</filename>
+      <filename>toolbar.xegallerypro.php</filename>
+      <filename>uninstall.xegallerypro.php</filename>
+    </files>
+</administration>
+</mosinstall>

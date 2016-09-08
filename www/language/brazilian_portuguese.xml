@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<mosinstall version="1.0.4" type="language">
+	<name>Português do Brasil</name>
+	<version>1.0.4</version>
+	<creationDate>2005-11-23</creationDate>
+	<author>Projeto - JoomlaBrasil</author>
+	<authorEmail>http://www.joomlabrasil.org</authorEmail>
+	<files>
+		<filename>brazilian_portuguese.php</filename>
+		<filename>brazilian_portuguese.ignore.php</filename>
+	</files>
+	<description>
+		<![CDATA[
+		<p>Pacote de Idioma - Tradução da Frontend para Joomla! 1.0.4. Pacote criado por JoomlaBrasil.org.&nbsp;</p>
+		]]>
+	</description>
+</mosinstall>
