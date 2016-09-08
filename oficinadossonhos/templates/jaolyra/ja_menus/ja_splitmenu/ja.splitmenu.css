@@ -1,0 +1,93 @@
+/*------------------------------------------------------------------------
+# JA Olyra Jul, 2007
+# ------------------------------------------------------------------------
+# Copyright (C) 2004-2007 J.O.O.M Solutions Co., Ltd. All Rights Reserved.
+# @license - Copyrighted Commercial Software
+# Author: J.O.O.M Solutions Co., Ltd
+# Websites:  http://www.joomlart.com -  http://www.joomlancers.com
+-------------------------------------------------------------------------*/
+
+/* MAIN NAVIGATION
+----------------------------------------------------------- */
+#ja-splitmenu {
+	padding: 0;
+}
+
+#ja-splitmenu ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+#ja-splitmenu li {
+	margin: 0;
+	padding: 0;
+	display: inline;
+}
+
+#ja-splitmenu a {
+	float: left;
+	margin: 0;
+	padding: 0 15px;
+	line-height: 40px;
+	display: block;
+	color: #CCCCCC;
+	font-size: 115%;
+	font-weight: bold;
+	cursor: pointer;
+	outline: none;
+}
+
+#ja-splitmenu a:hover,
+#ja-splitmenu a:active,
+#ja-splitmenu a:focus {
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+#ja-splitmenu li.active a,
+#ja-splitmenu li.active a:hover,
+#ja-splitmenu li.active a:active,
+#ja-splitmenu li.active a:focus {
+	background: url(../../images/mainnav-active-bg.gif) no-repeat top right;
+	color: #FFFFFF;
+}
+
+/* SUB NAVIGATION
+--------------------------------------------------------- */
+#ja-subnav ul {
+	margin: 0;
+	padding: 0;
+}
+
+#ja-subnav li {
+	margin: 0 !important;
+	padding: 0 !important;
+	background: none !important;
+}
+
+#ja-subnav a {
+	margin: 0;
+	padding: 5px 5px 5px 14px;
+	width: 90%;
+	display: block;
+	color: #333333;
+	background: url(../../images/bullet-list.gif) no-repeat 3px 12px;
+	border-bottom: 1px solid #EFEFEF;
+}
+
+#ja-subnav a:hover,
+#ja-subnav a:active,
+#ja-subnav a:focus {
+	color: #D78807;
+	background-color: #F7F7F7;
+}
+
+#ja-subnav li.active a,
+#ja-subnav li.active a:hover,
+#ja-subnav li.active a:active,
+#ja-subnav li.active a:focus {
+	color: #D78807;
+	background-color: #F7F7F7;
+	font-weight: bold;
+}

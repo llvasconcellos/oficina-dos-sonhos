@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<install type="template" version="1.5.0">
+	<name>JA Olyra</name>
+	<creationDate>04 Jul, 2007</creationDate>
+	<author>JoomlArt.com</author>
+	<copyright>JoomlArt Template Club</copyright>
+	<authorEmail>webmaster@joomlart.com</authorEmail>
+	<authorUrl>http://www.joomlart.com</authorUrl>
+	<version>1.5</version>
+	<description>JA Olyra - Paper effect in Joomla template.</description>
+	<files>
+		<filename>blank.html</filename>
+		<filename>css/index.html</filename>
+		<filename>footer.php</filename>
+		<filename>images/icons_license.txt</filename>
+		<filename>images/index.html</filename>
+		<filename>index.html</filename>
+		<filename>index.php</filename>
+		<filename>ja_menus/Base.class.php</filename>
+		<filename>ja_menus/CSSmenu.class.php</filename>
+		<filename>ja_menus/Iconmenu.class.php</filename>
+		<filename>ja_menus/index.html</filename>
+		<filename>ja_menus/ja_cssmenu/img/index.html</filename>
+		<filename>ja_menus/ja_cssmenu/index.html</filename>
+		<filename>ja_menus/ja_cssmenu/ja.cssmenu.js</filename>
+		<filename>ja_menus/ja_cssmenu/ja.moomenu.js</filename>
+		<filename>ja_menus/ja_iconmenu/index.html</filename>
+		<filename>ja_menus/ja_iconmenu/ja-iconmenu.php</filename>
+		<filename>ja_menus/ja_iconmenu/ja.iconmenu.js</filename>
+		<filename>ja_menus/ja_splitmenu/img/index.html</filename>
+		<filename>ja_menus/ja_splitmenu/index.html</filename>
+		<filename>ja_menus/ja_transmenu/img/index.html</filename>
+		<filename>ja_menus/ja_transmenu/ja.transmenu.js</filename>
+		<filename>ja_menus/Splitmenu.class.php</filename>
+		<filename>ja_menus/Transmenu.class.php</filename>
+		<filename>ja_module/ja_module_template.php</filename>
+		<filename>ja_templatetools.php</filename>
+		<filename>ja_vars.php</filename>
+		<filename>params.ini</filename>
+		<filename>scripts/index.html</filename>
+		<filename>scripts/ja.script.js</filename>
+		<filename>scripts/reflection.js</filename>
+		<filename>scripts/swfobject.js</filename>
+		<filename>templateDetails.xml</filename>
+		<filename>images/arrow.png</filename>
+		<filename>images/arrow2.gif</filename>
+		<filename>images/bbook-bg.gif</filename>
+		<filename>images/blank.gif</filename>
+		<filename>images/blue/bub1-bl.gif</filename>
+		<filename>images/blue/bub1-br.gif</filename>
+		<filename>images/blue/bub1-tl.gif</filename>
+		<filename>images/blue/bub1-tr.gif</filename>
+		<filename>images/blue/bub2-bl.gif</filename>
+		<filename>images/blue/bub2-br.gif</filename>
+		<filename>images/blue/bub2-tl.gif</filename>
+		<filename>images/blue/bub2-tr.gif</filename>
+		<filename>images/blue/bub3-bl.gif</filename>
+		<filename>images/blue/bub3-br.gif</filename>
+		<filename>images/blue/bub3-tl.gif</filename>
+		<filename>images/blue/bub3-tr.gif</filename>
+		<filename>images/blue/bub4-bl.gif</filename>
+		<filename>images/blue/bub4-br.gif</filename>
+		<filename>images/blue/bub4-tl.gif</filename>
+		<filename>images/blue/bub4-tr.gif</filename>
+		<filename>images/blue/bullet-list.gif</filename>
+		<filename>images/blue/but-css.gif</filename>
+		<filename>images/blue/but-rss.gif</filename>
+		<filename>images/blue/but-xhtml10.gif</filename>
+		<filename>images/blue/checklist-bg.gif</filename>
+		<filename>images/blue/footer-bg.gif</filename>
+		<filename>images/blue/logo.jpg</filename>
+		<filename>images/blue/mainnav-active-bg.gif</filename>
+		<filename>images/blue/ol-bg.gif</filename>
+		<filename>images/blue/topsl-bl.gif</filename>
+		<filename>images/blue/topsl-br.gif</filename>
+		<filename>images/blue/topsl-head-bg.gif</filename>
+		<filename>images/blue/topsl-r-bl.gif</filename>
+		<filename>images/blue/topsl-r-br.gif</filename>
+		<filename>images/blue/topsl-r-tl.gif</filename>
+		<filename>images/blue/topsl-r-tr.gif</filename>
+		<filename>images/blue/topsl-tl.gif</filename>
+		<filename>images/blue/topsl-tr.gif</filename>
+		<filename>images/blue-hilite.gif</filename>
+		<filename>images/blue.gif</filename>
+		<filename>images/body-tr.gif</filename>
+		<filename>images/book-bl.gif</filename>
+		<filename>images/book-tl.gif</filename>
+		<filename>images/box-bl.gif</filename>
+		<filename>images/box-br.gif</filename>
+		<filename>images/box-tl.gif</filename>
+		<filename>images/box-tr.gif</filename>
+		<filename>images/bub1-bl.gif</filename>
+		<filename>images/bub1-br.gif</filename>
+		<filename>images/bub1-tl.gif</filename>
+		<filename>images/bub1-tr.gif</filename>
+		<filename>images/bub2-bl.gif</filename>
+		<filename>images/bub2-br.gif</filename>
+		<filename>images/bub2-tl.gif</filename>
+		<filename>images/bub2-tr.gif</filename>
+		<filename>images/bub3-bl.gif</filename>
+		<filename>images/bub3-br.gif</filename>
+		<filename>images/bub3-tl.gif</filename>
+		<filename>images/bub3-tr.gif</filename>
+		<filename>images/bub4-bl.gif</filename>
+		<filename>images/bub4-br.gif</filename>
+		<filename>images/bub4-tl.gif</filename>
+		<filename>images/bub4-tr.gif</filename>
+		<filename>images/bullet-error.gif</filename>
+		<filename>images/bullet-info.gif</filename>
+		<filename>images/bullet-list.gif</filename>
+		<filename>images/bullet-tips.gif</filename>
+		<filename>images/but-bg.gif</filename>
+		<filename>images/checklist-bg.gif</filename>
+		<filename>images/clip-bg.gif</filename>
+		<filename>images/close_quotes.gif</filename>
+		<filename>images/contact-bg.gif</filename>
+		<filename>images/con_address.png</filename>
+		<filename>images/con_fax.png</filename>
+		<filename>images/con_info.png</filename>
+		<filename>images/con_tel.png</filename>
+		<filename>images/default/but-css.gif</filename>
+		<filename>images/default/but-rss.gif</filename>
+		<filename>images/default/but-xhtml10.gif</filename>
+		<filename>images/default-hilite.gif</filename>
+		<filename>images/default.gif</filename>
+		<filename>images/dot-sep.gif</filename>
+		<filename>images/edit.png</filename>
+		<filename>images/emailButton.png</filename>
+		<filename>images/footer-bg.gif</filename>
+		<filename>images/green/bub1-bl.gif</filename>
+		<filename>images/green/bub1-br.gif</filename>
+		<filename>images/green/bub1-tl.gif</filename>
+		<filename>images/green/bub1-tr.gif</filename>
+		<filename>images/green/bub2-bl.gif</filename>
+		<filename>images/green/bub2-br.gif</filename>
+		<filename>images/green/bub2-tl.gif</filename>
+		<filename>images/green/bub2-tr.gif</filename>
+		<filename>images/green/bub3-bl.gif</filename>
+		<filename>images/green/bub3-br.gif</filename>
+		<filename>images/green/bub3-tl.gif</filename>
+		<filename>images/green/bub3-tr.gif</filename>
+		<filename>images/green/bub4-bl.gif</filename>
+		<filename>images/green/bub4-br.gif</filename>
+		<filename>images/green/bub4-tl.gif</filename>
+		<filename>images/green/bub4-tr.gif</filename>
+		<filename>images/green/bullet-list.gif</filename>
+		<filename>images/green/but-css.gif</filename>
+		<filename>images/green/but-rss.gif</filename>
+		<filename>images/green/but-xhtml10.gif</filename>
+		<filename>images/green/checklist-bg.gif</filename>
+		<filename>images/green/footer-bg.gif</filename>
+		<filename>images/green/logo.jpg</filename>
+		<filename>images/green/mainnav-active-bg.gif</filename>
+		<filename>images/green/ol-bg.gif</filename>
+		<filename>images/green/topsl-bl.gif</filename>
+		<filename>images/green/topsl-br.gif</filename>
+		<filename>images/green/topsl-head-bg.gif</filename>
+		<filename>images/green/topsl-r-bl.gif</filename>
+		<filename>images/green/topsl-r-br.gif</filename>
+		<filename>images/green/topsl-r-tl.gif</filename>
+		<filename>images/green/topsl-r-tr.gif</filename>
+		<filename>images/green/topsl-tl.gif</filename>
+		<filename>images/green/topsl-tr.gif</filename>
+		<filename>images/green-bl.gif</filename>
+		<filename>images/green-br.gif</filename>
+		<filename>images/green-hilite.gif</filename>
+		<filename>images/green-tl.gif</filename>
+		<filename>images/green-tr.gif</filename>
+		<filename>images/green.gif</filename>
+		<filename>images/header-bg.gif</filename>
+		<filename>images/hpwrap-bg.gif</filename>
+		<filename>images/icon-search.gif</filename>
+		<filename>images/indent1.png</filename>
+		<filename>images/indent2.png</filename>
+		<filename>images/indent3.png</filename>
+		<filename>images/indent4.png</filename>
+		<filename>images/logo-top.jpg</filename>
+		<filename>images/logo.jpg</filename>
+		<filename>images/mainnav-active-bg.gif</filename>
+		<filename>images/mainwrap-bg1.gif</filename>
+		<filename>images/mainwrap-bg2.gif</filename>
+		<filename>images/mainwrap-bg3.gif</filename>
+		<filename>images/module-bg.gif</filename>
+		<filename>images/ol-bg.gif</filename>
+		<filename>images/open_quotes.gif</filename>
+		<filename>images/orange-bl.gif</filename>
+		<filename>images/orange-br.gif</filename>
+		<filename>images/orange-tl.gif</filename>
+		<filename>images/orange-tr.gif</filename>
+		<filename>images/pages.gif</filename>
+		<filename>images/pdf_button.png</filename>
+		<filename>images/pin-bg.gif</filename>
+		<filename>images/printButton.png</filename>
+		<filename>images/q1_std.gif</filename>
+		<filename>images/q1_std.png</filename>
+		<filename>images/q2_std.gif</filename>
+		<filename>images/q2_std.png</filename>
+		<filename>images/readon-bg-on.gif</filename>
+		<filename>images/readon-bg.gif</filename>
+		<filename>images/sep-h3.gif</filename>
+		<filename>images/sep.gif</filename>
+		<filename>images/spacer.gif</filename>
+		<filename>images/sticky-bg.gif</filename>
+		<filename>images/sublevel-bg.gif</filename>
+		<filename>images/tab-border-fix.gif</filename>
+		<filename>images/tabbot-bg.gif</filename>
+		<filename>images/tabtop-bg.gif</filename>
+		<filename>images/top-quote.png</filename>
+		<filename>images/top-quote2.png</filename>
+		<filename>images/topml-tr.gif</filename>
+		<filename>images/topmn-bl.gif</filename>
+		<filename>images/topmn-br.gif</filename>
+		<filename>images/topmn-tl.gif</filename>
+		<filename>images/topmn-tr.gif</filename>
+		<filename>images/topsl-bl.gif</filename>
+		<filename>images/topsl-br.gif</filename>
+		<filename>images/topsl-head-bg.gif</filename>
+		<filename>images/topsl-r-bl.gif</filename>
+		<filename>images/topsl-r-br.gif</filename>
+		<filename>images/topsl-r-tl.gif</filename>
+		<filename>images/topsl-r-tr.gif</filename>
+		<filename>images/topsl-right-bg.gif</filename>
+		<filename>images/topsl-tl.gif</filename>
+		<filename>images/topsl-tr.gif</filename>
+		<filename>images/user-decrease.gif</filename>
+		<filename>images/user-increase.gif</filename>
+		<filename>images/user-reset.gif</filename>
+		<filename>images/user-screen1-hilite.gif</filename>
+		<filename>images/user-screen1.gif</filename>
+		<filename>images/user-screen2-hilite.gif</filename>
+		<filename>images/user-screen2.gif</filename>
+		<filename>images/user-screen3-hilite.gif</filename>
+		<filename>images/user-screen3.gif</filename>
+		<filename>ja_menus/ja_cssmenu/img/arrowchild.gif</filename>
+		<filename>ja_menus/ja_transmenu/img/arrowchild.gif</filename>
+		<filename>ja_menus/ja_transmenu/img/grey-40.png</filename>
+		<filename>ja_menus/ja_transmenu/img/mainnav-hover-bg.gif</filename>
+		<filename>ja_menus/ja_transmenu/img/white-90.png</filename>
+		<filename>ja_menus/ja_transmenu/img/x.gif</filename>
+		<filename>scripts/cleardot.gif</filename>
+		<filename>template_thumbnail.png</filename>
+		<filename>css/colors/blue.css</filename>
+		<filename>css/colors/default.css</filename>
+		<filename>css/colors/green.css</filename>
+		<filename>css/editor_content.css</filename>
+		<filename>css/offline.css</filename>
+		<filename>css/template_css.css</filename>
+		<filename>ja_menus/ja_cssmenu/ja-sosdmenu.css</filename>
+		<filename>ja_menus/ja_cssmenu/ja.cssmenu.css</filename>
+		<filename>ja_menus/ja_cssmenu/ja.sosdmenu.css</filename>
+		<filename>ja_menus/ja_iconmenu/ja.iconmenu.css</filename>
+		<filename>ja_menus/ja_splitmenu/ja.splitmenu.css</filename>
+		<filename>ja_menus/ja_transmenu/ja.transmenuh.css</filename>
+	</files>
+	<positions>
+	  <position>left</position>
+	  <position>right</position>	  
+	  <position>top</position>
+	  <position>banner</position>
+	  <position>header</position>
+	  <position>footer</position>
+	  <position>pathway</position>
+	  <position>user1</position>
+	  <position>user2</position>
+	  <position>user3</position>
+	  <position>user4</position>
+	  <position>user5</position>
+	  <position>user6</position>
+	  <position>user7</position>
+	  <position>user8</position>
+	  <position>user9</position>
+	  <position>user10</position>
+	  <position>inset</position>
+	  <position>debug</position>
+	  <position>ja-qj</position>
+	  <position>search</position>
+	  <position>gallery</position>
+	  <position>slideshow</position>
+	  <position>newslight</position>
+	  <position>ja-news</position>
+   </positions>
+	<params>
+		<param name="ja_color" type="list" default="default" label="Color Variation" description="Color variation to use">
+		  <option value="default">Default</option>	 
+		  <option value="green">Green</option>
+		  <option value="blue">Blue</option>
+		  </param>
+		<param name="ja_font" type="list" default="3" label="Font size" description="Font size to use">
+		  <option value="1">1</option>
+		  <option value="2">2</option>
+		  <option value="3">3</option>
+		  <option value="4">4</option>
+		  <option value="5">5</option>
+		  <option value="6">6</option>
+		  </param>
+		<param name="ja_menu" type="list" default="5" label="Menu Module" description="Menu display module">
+		  <option value="1">Split Menu</option>
+		  <option value="2">Suckerfish Menu</option>
+		  <option value="5">Transmenu</option>	    
+		  </param>
+		<param name="usertool" type="list" default="6" label="Display template tool" description="Display template tool">
+		  <option value="0">No display</option>
+		  <option value="1">Screen Type</option>
+		  <option value="2">Font Size</option>
+		  <option value="4">Color Css</option>
+		  <option value="3">Screen Type and Font Size</option>
+		  <option value="5">Screen Type and Color Css</option>
+		  <option value="6">Font site and Color Css</option>
+		  <option value="7">All tools</option>
+		</param>
+		<param name="ja_screen" type="list" default="wide" label="Template screen" description="Template screen">
+		  <option value="wide">Wide</option>
+		  <option value="narrow">Narrow</option>
+		  <option value="auto">Auto</option>		
+		</param>
+		<param name="ja_iconmenu" type="radio" default="1" label="Template Icon menu" description="Template Icon menu">
+		  <option value="0">No</option>
+		  <option value="1">Yes</option>
+		</param>
+  </params>
+</install>
