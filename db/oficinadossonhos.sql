@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tempo de Geração: Set 08, 2016 as 04:18 PM
+-- Tempo de Geração: Set 09, 2016 as 12:56 AM
 -- Versão do Servidor: 5.0.51
 -- Versão do PHP: 5.2.5
 
@@ -128,7 +128,7 @@ CREATE TABLE IF NOT EXISTS `jos_categories` (
   KEY `cat_idx` (`section`,`published`,`access`),
   KEY `idx_access` (`access`),
   KEY `idx_checkout` (`checked_out`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
 -- Extraindo dados da tabela `jos_categories`
@@ -157,7 +157,7 @@ CREATE TABLE IF NOT EXISTS `jos_components` (
   `enabled` tinyint(4) NOT NULL default '1',
   PRIMARY KEY  (`id`),
   KEY `parent_option` (`parent`,`option`(32))
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=41 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=42 ;
 
 --
 -- Extraindo dados da tabela `jos_components`
@@ -183,7 +183,7 @@ INSERT INTO `jos_components` (`id`, `name`, `link`, `menuid`, `parent`, `admin_m
 (17, 'Wrapper', 'option=com_wrapper', 0, 0, '', 'Wrapper', 'com_wrapper', 0, '', 1, '', 1),
 (18, 'Mail To', '', 0, 0, '', '', 'com_mailto', 0, '', 1, '', 1),
 (19, 'Media Manager', '', 0, 0, 'option=com_media', 'Media Manager', 'com_media', 0, '', 1, 'upload_extensions=bmp,csv,doc,epg,gif,ico,jpg,odg,odp,ods,odt,pdf,png,ppt,swf,txt,xcf,xls,BMP,CSV,DOC,EPG,GIF,ICO,JPG,ODG,ODP,ODS,ODT,PDF,PNG,PPT,SWF,TXT,XCF,XLS\nupload_maxsize=10000000\nfile_path=images\nimage_path=images/stories\nrestrict_uploads=1\ncheck_mime=1\nimage_extensions=bmp,gif,jpg,png\nignore_extensions=\nupload_mime=image/jpeg,image/gif,image/png,image/bmp,application/x-shockwave-flash,application/msword,application/excel,application/pdf,application/powerpoint,text/plain,application/x-zip\nupload_mime_illegal=text/html\nenable_flash=0\n\n', 1),
-(20, 'Articles', 'option=com_content', 0, 0, '', '', 'com_content', 0, '', 1, 'show_noauth=0\nshow_title=1\nlink_titles=0\nshow_intro=1\nshow_section=0\nlink_section=0\nshow_category=0\nlink_category=0\nshow_author=1\nshow_create_date=1\nshow_modify_date=1\nshow_item_navigation=0\nshow_readmore=1\nshow_vote=0\nshow_icons=1\nshow_pdf_icon=1\nshow_print_icon=1\nshow_email_icon=1\nshow_hits=1\nfeed_summary=0\n\n', 1),
+(20, 'Articles', 'option=com_content', 0, 0, '', '', 'com_content', 0, '', 1, 'show_noauth=0\nshow_title=1\nlink_titles=0\nshow_intro=1\nshow_section=0\nlink_section=0\nshow_category=0\nlink_category=0\nshow_author=0\nshow_create_date=0\nshow_modify_date=0\nshow_item_navigation=1\nshow_readmore=1\nshow_vote=0\nshow_icons=1\nshow_pdf_icon=1\nshow_print_icon=1\nshow_email_icon=1\nshow_hits=1\nfeed_summary=0\nfilter_tags=\nfilter_attritbutes=\n\n', 1),
 (21, 'Configuration Manager', '', 0, 0, '', 'Configuration', 'com_config', 0, '', 1, '', 1),
 (22, 'Installation Manager', '', 0, 0, '', 'Installer', 'com_installer', 0, '', 1, '', 1),
 (23, 'Language Manager', '', 0, 0, '', 'Languages', 'com_languages', 0, '', 1, 'site=pt-BR\nadministrator=pt-BR\n\n', 1),
@@ -202,7 +202,8 @@ INSERT INTO `jos_components` (`id`, `name`, `link`, `menuid`, `parent`, `admin_m
 (37, 'Groups', '', 0, 34, 'option=com_jce&type=group', 'Groups', 'com_jce', 2, 'templates/khepri/images/menu/icon-16-user.png', 0, '', 1),
 (38, 'Plugins', '', 0, 34, 'option=com_jce&type=plugin', 'Plugins', 'com_jce', 3, 'templates/khepri/images/menu/icon-16-plugin.png', 0, '', 1),
 (39, 'Install', '', 0, 34, 'option=com_jce&type=install', 'Install', 'com_jce', 4, 'templates/khepri/images/menu/icon-16-install.png', 0, '', 1),
-(40, 'EventList', 'option=com_eventlist', 0, 0, 'option=com_eventlist', 'EventList', 'com_eventlist', 0, '../administrator/components/com_eventlist/assets/images/eventlist.png', 0, 'display_num=15\ncat_num=4\nfilter=1\ndisplay=1\nicons=1\nshow_print_icon=1\nshow_email_icon=1\n', 1);
+(40, 'EventList', 'option=com_eventlist', 0, 0, 'option=com_eventlist', 'EventList', 'com_eventlist', 0, '../administrator/components/com_eventlist/assets/images/eventlist.png', 0, 'display_num=15\ncat_num=4\nfilter=1\ndisplay=1\nicons=1\nshow_print_icon=1\nshow_email_icon=1\n', 1),
+(41, 'mtwMigrator', 'option=com_mtwmigrator', 0, 0, 'option=com_mtwmigrator', 'mtwMigrator', 'com_mtwmigrator', 0, 'js/ThemeOffice/component.png', 0, '', 1);
 
 -- --------------------------------------------------------
 
@@ -290,19 +291,12 @@ CREATE TABLE IF NOT EXISTS `jos_content` (
   KEY `idx_state` (`state`),
   KEY `idx_catid` (`catid`),
   KEY `idx_createdby` (`created_by`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
 
 --
 -- Extraindo dados da tabela `jos_content`
 --
 
-INSERT INTO `jos_content` (`id`, `title`, `alias`, `title_alias`, `introtext`, `fulltext`, `state`, `sectionid`, `mask`, `catid`, `created`, `created_by`, `created_by_alias`, `modified`, `modified_by`, `checked_out`, `checked_out_time`, `publish_up`, `publish_down`, `images`, `urls`, `attribs`, `version`, `parentid`, `ordering`, `metakey`, `metadesc`, `access`, `hits`, `metadata`) VALUES
-(1, 'Calendário Letivo 2009', 'calendario-letivo-2009', '', '<p><img style="border: 1px solid #b7b7b7; padding: 3px; margin-right: 4px; float: left;" alt="calendrio" src="images/stories/calendrio.jpg" width="128" height="128" />Verifique as datas importantes deste ano letivo e programe-se para não ser pego desprevinido.</p>\r\n', '\r\nffdsafdsafdsa', 0, 0, 0, 0, '2009-02-23 17:35:01', 62, '', '2009-02-25 13:16:11', 62, 0, '0000-00-00 00:00:00', '2009-02-23 17:35:01', '0000-00-00 00:00:00', '', '', 'show_title=\nlink_titles=\nshow_intro=\nshow_section=\nlink_section=\nshow_category=\nlink_category=\nshow_vote=\nshow_author=\nshow_create_date=\nshow_modify_date=\nshow_pdf_icon=\nshow_print_icon=\nshow_email_icon=\nlanguage=\nkeyref=\nreadmore=', 5, 0, 6, '', '', 0, 0, 'robots=\nauthor='),
-(2, 'Para Refletir', 'para-refletir', '', '<img style="border: 1px solid #b7b7b7; padding: 3px; margin-right: 4px; float: left;" alt="biblia" src="images/stories/biblia.png" width="128" height="111" /><strong>Os Princípios bíblicos aplicados na vida do estudante:</strong><br /><br />Individualidade Cada um tem a sua forma de aprender e de expressar o que sabe. Você tem muito a aprender e muito a ensinar. Lembre-se, sua atitude também é uma maneira de ensinar as pessoas. Respeite e contribua!<br />\r\n', '\r\n<br />Semear e colher Tenha compromisso com seus estudos, seja responsável, enriqueça seu aprendizado pesquisando e estudando além do que é ensinado em sala de aula, assim seu sucesso será uma realidade.<br /> <br />Autogoverno Procure se controlar diante de situações que queiram tirar sua atenção e concentração das atividades escolares. Isto serve para sala de aula e em casa, nas horas separadas para estudos.<br /><br />União Todas as pessoas que fazem parte do seu contexto escolar são importantes na sua formação: colegas, professores, funcionários, etc., portanto, procure ser amigo dessas pessoas, valorizando-as e respeitando-as.Caráter Seja sempre honesto, primeiramente consigo mesmo, cumprindo suas tarefas com a impedir seu crescimento e o de seus colegas. Faça diferença onde está plantado!<br /><br />Mordomia Cuide de aprender o que está sendo ensinado HOJE. Não perca a oportunidade de crescer com as pessoas que Deus colocou no seu caminho.<br /><br />Soberania Creia que você jamais estaria aqui, neste Colégio, se Deus assim não o quisesse, então confia Nele e agradeço-O, pois Ele pode abençoá-lo muito com todas as coisas que lhe são oferecidas neste momento: professores, funcionários, estrutura da escola, material pedagógico, metodologia...', 1, 0, 0, 0, '2009-02-23 18:41:36', 62, '', '2009-02-23 19:11:13', 62, 0, '0000-00-00 00:00:00', '2009-02-23 18:41:36', '0000-00-00 00:00:00', '', '', 'show_title=\nlink_titles=\nshow_intro=\nshow_section=\nlink_section=\nshow_category=\nlink_category=\nshow_vote=\nshow_author=\nshow_create_date=\nshow_modify_date=\nshow_pdf_icon=\nshow_print_icon=\nshow_email_icon=\nlanguage=\nkeyref=\nreadmore=', 3, 0, 5, '', '', 0, 0, 'robots=\nauthor='),
-(3, 'Aulas Extras', 'aulas-extras', '', '<p><img style="border: 1px solid #b7b7b7; padding: 3px; margin-right: 4px; float: left;" alt="atividades" src="images/stories/atividades.png" width="136" height="81" />Além das aulas convencionais dispomos também de aulas extras que ajudam a desenvolver socialmente, culturalmente e atleticamente as crianças. As opções de aulas extras são Ballet, Jazz, Natação, Violão, Patinação, Judô e Técnica Vocal. Saiba mais sobre estas atividades.</p>\r\n', '\r\n<p>fdsafdsafdsafdsafdsa</p>', 0, 0, 0, 0, '2009-02-23 18:53:32', 62, '', '2009-02-25 13:19:33', 62, 0, '0000-00-00 00:00:00', '2009-02-23 18:53:32', '0000-00-00 00:00:00', '', '', 'show_title=\nlink_titles=\nshow_intro=\nshow_section=\nlink_section=\nshow_category=\nlink_category=\nshow_vote=\nshow_author=\nshow_create_date=\nshow_modify_date=\nshow_pdf_icon=\nshow_print_icon=\nshow_email_icon=\nlanguage=\nkeyref=\nreadmore=', 2, 0, 4, '', '', 0, 0, 'robots=\nauthor='),
-(4, 'A importancia de chegar no horário', 'a-importancia-de-chegar-no-horario', '', '<img style="border-width: 0px; margin-right: 4px; float: left;" alt="clock" src="images/stories/clock.jpg" width="150" height="112" />Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas tortor. Nunc pulvinar, massa vitae luctus posuere, quam urna bibendum augue, quis venenatis mi est eu libero. Duis quis orci. Vivamus vitae neque vel augue cursus consequat. Ut lectus diam, fermentum ut, vestibulum malesuada, vulputate eget, nisi. Curabitur mollis velit id erat dictum aliquet. Vestibulum vitae diam congue odio iaculis laoreet. Sed a dolor. Cras nunc odio, fringilla at, vehicula at, convallis aliquam, diam. Duis placerat tempus leo. Suspendisse sed tellus.<br />\r\n', '\r\n<br />Mauris eu massa. Quisque vulputate. Suspendisse potenti. Curabitur a nisi. Etiam auctor, justo a sodales gravida, arcu ipsum iaculis velit, id interdum mauris arcu vitae est. Suspendisse aliquet egestas nibh. Proin vitae erat dignissim massa tempus aliquet. Donec placerat faucibus nunc. Suspendisse erat sapien, commodo vitae, dictum vitae, feugiat ut, sapien. Nulla vulputate accumsan justo. Donec euismod, magna sit amet ullamcorper interdum, lectus velit interdum lacus, accumsan imperdiet turpis erat eget ligula. Donec mollis sem sed velit. In eget neque. Nam sapien tellus, placerat non, dictum quis, interdum quis, nulla. Fusce id est elementum diam bibendum ultricies. Aenean elit nisi, eleifend quis, pulvinar ut, sagittis id, augue. Mauris ligula.<br /><br />Nunc semper rhoncus eros. Aliquam at neque laoreet est feugiat rhoncus. Donec tempus faucibus orci. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Pellentesque lectus. Curabitur dui libero, adipiscing eu, malesuada tempor, tempus non, lacus. Fusce ipsum justo, tempus id, molestie ac, lacinia sed, risus. Vivamus hendrerit ipsum at ipsum. Mauris quis purus et lorem pulvinar egestas. Vivamus id libero at leo mattis semper. Nunc molestie varius mauris. Ut quis metus. Maecenas non nisi. Nam ultricies elit id diam.<br /><br />Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Maecenas suscipit risus et nisl. Quisque elementum augue a nunc. Morbi eget quam. Ut at leo et pede ullamcorper convallis. Vivamus est odio, facilisis eget, scelerisque ut, consequat sed, eros. Mauris in diam. Nulla blandit neque at pede convallis feugiat. Donec leo dolor, venenatis id, sodales lacinia, interdum id, nulla. Sed ut ipsum. Praesent urna nisl, faucibus a, tristique sit amet, ornare eu, nunc. Cras ultrices dui et nisi. Nam non purus. Curabitur augue arcu, interdum at, aliquam vitae, luctus et, odio. Vivamus ac pede eget nunc porta dapibus. Nam commodo mauris eget augue. Maecenas nec leo. Aenean sapien.<br /><br />Curabitur risus felis, dignissim vitae, gravida eget, dapibus eget, augue. Sed felis ipsum, aliquam in, imperdiet sit amet, semper vitae, leo. Quisque nec magna. Cras risus. Nunc nec neque. Fusce eleifend. Nam aliquam, leo at ullamcorper tincidunt, mauris nisl pharetra est, at pellentesque urna lacus ut pede. Morbi ac enim eu nibh egestas dictum. Morbi lectus lectus, dictum quis, placerat eget, imperdiet sit amet, sapien. Duis ipsum. Ut eu quam. Morbi suscipit tincidunt sapien. Suspendisse nunc. Mauris ipsum nisl, ultricies sed, tincidunt vitae, ullamcorper nec, felis. Morbi ac quam vel neque feugiat mollis. Aliquam hendrerit venenatis nunc. Donec vestibulum turpis non felis. Mauris elit ipsum, semper vitae, blandit quis, porta sed, magna.', 1, 0, 0, 0, '2009-02-25 13:22:43', 62, '', '0000-00-00 00:00:00', 0, 0, '0000-00-00 00:00:00', '2009-02-25 13:22:43', '0000-00-00 00:00:00', '', '', 'show_title=\nlink_titles=\nshow_intro=\nshow_section=\nlink_section=\nshow_category=\nlink_category=\nshow_vote=\nshow_author=\nshow_create_date=\nshow_modify_date=\nshow_pdf_icon=\nshow_print_icon=\nshow_email_icon=\nlanguage=\nkeyref=\nreadmore=', 1, 0, 3, '', '', 0, 0, 'robots=\nauthor='),
-(5, 'Laboratório de Informática', 'laboratorio-de-informatica', '', '<img style="border-width: 0px; margin-right: 4px; float: left;" alt="email2" src="images/stories/email2.png" width="64" height="64" />Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas tortor. Nunc pulvinar, massa vitae luctus posuere, quam urna bibendum augue, quis venenatis mi est eu libero. Duis quis orci. Vivamus vitae neque vel augue cursus consequat. Ut lectus diam, fermentum ut, vestibulum malesuada, vulputate eget, nisi. Curabitur mollis velit id erat dictum aliquet. Vestibulum vitae diam congue odio iaculis laoreet. Sed a dolor. Cras nunc odio, fringilla at, vehicula at, convallis aliquam, diam. Duis placerat tempus leo. Suspendisse sed tellus.<br />\r\n', '\r\n<br />Mauris eu massa. Quisque vulputate. Suspendisse potenti. Curabitur a nisi. Etiam auctor, justo a sodales gravida, arcu ipsum iaculis velit, id interdum mauris arcu vitae est. Suspendisse aliquet egestas nibh. Proin vitae erat dignissim massa tempus aliquet. Donec placerat faucibus nunc. Suspendisse erat sapien, commodo vitae, dictum vitae, feugiat ut, sapien. Nulla vulputate accumsan justo. Donec euismod, magna sit amet ullamcorper interdum, lectus velit interdum lacus, accumsan imperdiet turpis erat eget ligula. Donec mollis sem sed velit. In eget neque. Nam sapien tellus, placerat non, dictum quis, interdum quis, nulla. Fusce id est elementum diam bibendum ultricies. Aenean elit nisi, eleifend quis, pulvinar ut, sagittis id, augue. Mauris ligula.<br /><br />Nunc semper rhoncus eros. Aliquam at neque laoreet est feugiat rhoncus. Donec tempus faucibus orci. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Pellentesque lectus. Curabitur dui libero, adipiscing eu, malesuada tempor, tempus non, lacus. Fusce ipsum justo, tempus id, molestie ac, lacinia sed, risus. Vivamus hendrerit ipsum at ipsum. Mauris quis purus et lorem pulvinar egestas. Vivamus id libero at leo mattis semper. Nunc molestie varius mauris. Ut quis metus. Maecenas non nisi. Nam ultricies elit id diam.<br /><br />Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Maecenas suscipit risus et nisl. Quisque elementum augue a nunc. Morbi eget quam. Ut at leo et pede ullamcorper convallis. Vivamus est odio, facilisis eget, scelerisque ut, consequat sed, eros. Mauris in diam. Nulla blandit neque at pede convallis feugiat. Donec leo dolor, venenatis id, sodales lacinia, interdum id, nulla. Sed ut ipsum. Praesent urna nisl, faucibus a, tristique sit amet, ornare eu, nunc. Cras ultrices dui et nisi. Nam non purus. Curabitur augue arcu, interdum at, aliquam vitae, luctus et, odio. Vivamus ac pede eget nunc porta dapibus. Nam commodo mauris eget augue. Maecenas nec leo. Aenean sapien.<br /><br />Curabitur risus felis, dignissim vitae, gravida eget, dapibus eget, augue. Sed felis ipsum, aliquam in, imperdiet sit amet, semper vitae, leo. Quisque nec magna. Cras risus. Nunc nec neque. Fusce eleifend. Nam aliquam, leo at ullamcorper tincidunt, mauris nisl pharetra est, at pellentesque urna lacus ut pede. Morbi ac enim eu nibh egestas dictum. Morbi lectus lectus, dictum quis, placerat eget, imperdiet sit amet, sapien. Duis ipsum. Ut eu quam. Morbi suscipit tincidunt sapien. Suspendisse nunc. Mauris ipsum nisl, ultricies sed, tincidunt vitae, ullamcorper nec, felis. Morbi ac quam vel neque feugiat mollis. Aliquam hendrerit venenatis nunc. Donec vestibulum turpis non felis. Mauris elit ipsum, semper vitae, blandit quis, porta sed, magna.', 1, 0, 0, 0, '2009-02-25 13:25:06', 62, '', '0000-00-00 00:00:00', 0, 0, '0000-00-00 00:00:00', '2009-02-25 13:25:06', '0000-00-00 00:00:00', '', '', 'show_title=\nlink_titles=\nshow_intro=\nshow_section=\nlink_section=\nshow_category=\nlink_category=\nshow_vote=\nshow_author=\nshow_create_date=\nshow_modify_date=\nshow_pdf_icon=\nshow_print_icon=\nshow_email_icon=\nlanguage=\nkeyref=\nreadmore=', 1, 0, 2, '', '', 0, 0, 'robots=\nauthor='),
-(6, 'Tipografia', 'tipografia', '', '<p>Listas:</p>\r\n<ul>\r\n<li>texto 1</li>\r\n<li>texto 2</li>\r\n<li>texto 3</li>\r\n<li>texto 4</li>\r\n</ul>\r\n<ul class="checklist">\r\n<li>texto 1</li>\r\n<li>texto 2</li>\r\n<li>texto 3</li>\r\n<li>texto 4</li>\r\n</ul>\r\n<br />\r\n<div class="bubble1">\r\n<div>\r\n<div>\r\n<div>\r\n<div><br />    Balão de Texto!<br /><br /><br /></div>\r\n</div>\r\n</div>\r\n</div>\r\n<strong>Balão 1</strong></div>\r\n<div class="bubble2">\r\n<div>\r\n<div>\r\n<div>\r\n<div><br />    Balão de Texto!<br /><br /><br /></div>\r\n</div>\r\n</div>\r\n</div>\r\n<strong>Balão 2<br /></strong></div>\r\n<div class="bubble3">\r\n<div>\r\n<div>\r\n<div>\r\n<div><br />    Balão de Texto!<br /><br /><br /><br /></div>\r\n</div>\r\n</div>\r\n</div>\r\n<strong>Balão 3</strong></div>\r\n<div class="bubble4">\r\n<div>\r\n<div>\r\n<div>\r\n<div><br />   Balão de Texto!<br /><br /><br /><br /></div>\r\n</div>\r\n</div>\r\n</div>\r\n<strong>Balão 4</strong></div>\r\n<div class="quote-grey"><blockquote>Digite suas citações aqui!</blockquote></div><br /><br />\r\n<p class="blocknumber"><span class="bignumber">01</span>Bloco de numeração!</p><br /><br />\r\n<p class="blocknumber"><span class="bignumber">02</span>Bloco de numeração!</p><br /><br />\r\n<p class="blocknumber"><span class="bignumber">03</span>Bloco de numeração!</p><br /><br />\r\n<p class="blocknumber"><span class="bignumber">04</span>Bloco de numeração!</p><br /><br />\r\n<p class="error">Mensagem de Alerta aqui!</p><br /><br />\r\n<p class="message">Mensagem de informação aqui!</p><br /><br />\r\n<p class="tips">Dicas aqui!</p><br /><br />\r\n<span class="highlight">Frase em destaque!</span><br /><br />', '', 1, 0, 0, 0, '2009-02-25 13:48:38', 62, '', '2009-02-25 14:11:04', 62, 0, '0000-00-00 00:00:00', '2009-02-25 13:48:38', '0000-00-00 00:00:00', '', '', 'show_title=\nlink_titles=\nshow_intro=\nshow_section=\nlink_section=\nshow_category=\nlink_category=\nshow_vote=\nshow_author=\nshow_create_date=\nshow_modify_date=\nshow_pdf_icon=\nshow_print_icon=\nshow_email_icon=\nlanguage=\nkeyref=\nreadmore=', 17, 0, 1, '', '', 0, 0, 'robots=\nauthor=');
 
 -- --------------------------------------------------------
 
@@ -320,10 +314,6 @@ CREATE TABLE IF NOT EXISTS `jos_content_frontpage` (
 -- Extraindo dados da tabela `jos_content_frontpage`
 --
 
-INSERT INTO `jos_content_frontpage` (`content_id`, `ordering`) VALUES
-(4, 1),
-(5, 3),
-(2, 2);
 
 -- --------------------------------------------------------
 
@@ -826,7 +816,7 @@ CREATE TABLE IF NOT EXISTS `jos_jce_groups` (
 --
 
 INSERT INTO `jos_jce_groups` (`id`, `name`, `description`, `users`, `types`, `components`, `rows`, `plugins`, `published`, `ordering`, `checked_out`, `checked_out_time`, `params`) VALUES
-(1, 'Default', 'Default group for all users with edit access', '', '19,20,21,23,24,25', '', '28,27,32,33,19,20,21,29,45,44,43,46,26,49,36,37,30,31,39,40;56,47,38,5,9,48,42,24,25,22,18,2;7,17,13,10,3;23,15,14,59,16,4,6,8,12,54,34,41,11', '1,52,53,55,57,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,28,54,59', 1, 1, 62, '2008-08-01 18:52:15', '');
+(1, 'Default', 'Default group for all users with edit access', '', '19,20,21,23,24,25', '', '28,27,32,33,19,20,21,29,45,44,43,46,26,49,36,37,30,31,39,40;56,47,38,5,9,48,42,24,25,22,18,2;7,17,13,10,3;23,15,14,59,16,4,6,8,12,54,34,41,11,60', '1,52,53,55,57,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,28,54,59,60', 1, 1, 62, '2008-08-01 18:52:15', '');
 
 -- --------------------------------------------------------
 
@@ -852,7 +842,7 @@ CREATE TABLE IF NOT EXISTS `jos_jce_plugins` (
   `checked_out_time` datetime NOT NULL default '0000-00-00 00:00:00',
   PRIMARY KEY  (`id`),
   UNIQUE KEY `plugin` (`name`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=60 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=61 ;
 
 --
 -- Extraindo dados da tabela `jos_jce_plugins`
@@ -916,7 +906,8 @@ INSERT INTO `jos_jce_plugins` (`id`, `title`, `name`, `type`, `icon`, `layout`, 
 (55, 'Media Support', 'media', 'plugin', '', '', 0, 9, 1, 1, '', '', 1, 0, '0000-00-00 00:00:00'),
 (56, 'Code Cleanup', 'cleanup', 'command', 'cleanup', 'cleanup', 2, 14, 1, 0, '', '', 1, 0, '0000-00-00 00:00:00'),
 (57, 'Safari Browser Support', 'safari', 'plugin', '', '', 0, 13, 1, 0, '', '', 1, 0, '0000-00-00 00:00:00'),
-(59, 'Advanced Code Editor', 'advcode', 'plugin', 'advcode', 'advcode', 4, 8, 1, 0, '', '', 1, 0, '0000-00-00 00:00:00');
+(59, 'Advanced Code Editor', 'advcode', 'plugin', 'advcode', 'advcode', 4, 8, 1, 0, '', '', 1, 0, '0000-00-00 00:00:00'),
+(60, 'Media Manager', 'mediamanager', 'plugin', 'mediamanager', 'mediamanager', 4, 1, 1, 1, '', '', 0, 0, '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -949,33 +940,14 @@ CREATE TABLE IF NOT EXISTS `jos_menu` (
   PRIMARY KEY  (`id`),
   KEY `componentid` (`componentid`,`menutype`,`published`,`access`),
   KEY `menutype` (`menutype`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=21 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=35 ;
 
 --
 -- Extraindo dados da tabela `jos_menu`
 --
 
 INSERT INTO `jos_menu` (`id`, `menutype`, `name`, `alias`, `link`, `type`, `published`, `parent`, `componentid`, `sublevel`, `ordering`, `checked_out`, `checked_out_time`, `pollid`, `browserNav`, `access`, `utaccess`, `params`, `lft`, `rgt`, `home`) VALUES
-(1, 'mainmenu', 'Home', 'home', 'index.php?option=com_content&view=frontpage', 'component', 1, 0, 20, 0, 1, 0, '0000-00-00 00:00:00', 0, 0, 0, 3, 'num_leading_articles=4\nnum_intro_articles=4\nnum_columns=1\nnum_links=4\norderby_pri=\norderby_sec=front\nmulti_column_order=1\nshow_pagination=2\nshow_pagination_results=1\nshow_feed_link=1\nshow_noauth=\nshow_title=\nlink_titles=\nshow_intro=\nshow_section=\nlink_section=\nshow_category=\nlink_category=\nshow_author=\nshow_create_date=\nshow_modify_date=\nshow_item_navigation=\nshow_readmore=\nshow_vote=\nshow_icons=\nshow_pdf_icon=\nshow_print_icon=\nshow_email_icon=\nshow_hits=\nfeed_summary=\npage_title=\nshow_page_title=1\npageclass_sfx=\nmenu_image=-1\nsecure=0\n\n', 0, 0, 1),
-(2, 'mainmenu', 'A Escola', 'a-escola', 'http://www.google.com', 'url', 1, 0, 0, 0, 2, 0, '0000-00-00 00:00:00', 0, 0, 0, 0, 'menu_image=-1\n\n', 0, 0, 0),
-(3, 'mainmenu', 'Notícias', 'noticias', 'http://www.google.com', 'url', 1, 0, 0, 0, 3, 0, '0000-00-00 00:00:00', 0, 0, 0, 0, 'menu_image=-1\n\n', 0, 0, 0),
-(4, 'mainmenu', 'Oficina 100%', 'oficina-100', 'http://www.google.com', 'url', 1, 0, 0, 0, 4, 0, '0000-00-00 00:00:00', 0, 0, 0, 0, 'menu_image=-1\n\n', 0, 0, 0),
-(5, 'mainmenu', 'Coordenação Pedagógica', 'coordenacao-pedagogica', 'http://www.google.com', 'url', 1, 0, 0, 0, 5, 0, '0000-00-00 00:00:00', 0, 0, 0, 0, 'menu_image=-1\n\n', 0, 0, 0),
-(6, 'mainmenu', 'Ensino Fundamental', 'ensino-fundamental', 'http://www.google.com', 'url', 1, 0, 0, 0, 6, 0, '0000-00-00 00:00:00', 0, 0, 0, 0, 'menu_image=-1\n\n', 0, 0, 0),
-(7, 'mainmenu', 'Educação Infantil', 'educacao-infantil', 'http://www.google.com', 'url', 1, 0, 0, 0, 7, 0, '0000-00-00 00:00:00', 0, 0, 0, 0, 'menu_image=-1\n\n', 0, 0, 0),
-(8, 'mainmenu', 'Aulas Extras', 'aulas-extras', 'http://www.google.com', 'url', 1, 0, 0, 0, 8, 0, '0000-00-00 00:00:00', 0, 0, 0, 0, 'menu_image=-1\n\n', 0, 0, 0),
-(9, 'mainmenu', 'Links', 'links', 'http://www.google.com', 'url', 1, 0, 0, 0, 9, 0, '0000-00-00 00:00:00', 0, 0, 0, 0, 'menu_image=-1\n\n', 0, 0, 0),
-(10, 'mainmenu', 'Contato', 'contato', 'http://www.google.com', 'url', 1, 0, 0, 0, 10, 0, '0000-00-00 00:00:00', 0, 0, 0, 0, 'menu_image=-1\n\n', 0, 0, 0),
-(11, 'mainmenu', 'Galeria de Fotos', 'galeria-de-fotos', 'http://www.google.com', 'url', 1, 0, 0, 0, 11, 0, '0000-00-00 00:00:00', 0, 0, 0, 0, 'menu_image=-1\n\n', 0, 0, 0),
-(12, 'topmenu', 'Home', 'home', 'index.php?option=com_content&view=frontpage', 'component', 1, 0, 20, 0, 1, 62, '2016-09-08 19:15:04', 0, 0, 0, 3, 'num_leading_articles=4\nnum_intro_articles=4\nnum_columns=1\nnum_links=4\norderby_pri=\norderby_sec=front\nmulti_column_order=1\nshow_pagination=2\nshow_pagination_results=1\nshow_feed_link=1\nshow_noauth=\nshow_title=\nlink_titles=\nshow_intro=\nshow_section=\nlink_section=\nshow_category=\nlink_category=\nshow_author=\nshow_create_date=\nshow_modify_date=\nshow_item_navigation=\nshow_readmore=\nshow_vote=\nshow_icons=\nshow_pdf_icon=\nshow_print_icon=\nshow_email_icon=\nshow_hits=\nfeed_summary=\npage_title=\nshow_page_title=1\npageclass_sfx=\nmenu_image=-1\nsecure=0\n\n', 0, 0, 0),
-(13, 'topmenu', 'A Escola', 'a-escola', 'http://www.google.com', 'url', 1, 0, 0, 0, 2, 0, '0000-00-00 00:00:00', 0, 0, 0, 0, 'menu_image=-1\n\n', 0, 0, 0),
-(14, 'topmenu', 'Notícias', 'noticias', 'http://www.google.com', 'url', 1, 0, 0, 0, 3, 0, '0000-00-00 00:00:00', 0, 0, 0, 0, 'menu_image=-1\n\n', 0, 0, 0),
-(15, 'topmenu', 'Contato', 'contato', 'http://www.google.com', 'url', 1, 0, 0, 0, 4, 0, '0000-00-00 00:00:00', 0, 0, 0, 0, 'menu_image=-1\n\n', 0, 0, 0),
-(16, 'topmenu', 'Galeria de Fotos', 'galeria-de-fotos', 'http://www.google.com', 'url', 1, 0, 0, 0, 5, 0, '0000-00-00 00:00:00', 0, 0, 0, 0, 'menu_image=-1\n\n', 0, 0, 0),
-(17, 'othermenu', 'Home', 'home', 'index.php?option=com_content&view=frontpage', 'component', 1, 0, 20, 0, 1, 0, '0000-00-00 00:00:00', 0, 0, 0, 3, 'num_leading_articles=1\nnum_intro_articles=4\nnum_columns=2\nnum_links=4\norderby_pri=\norderby_sec=front\nmulti_column_order=1\nshow_pagination=2\nshow_pagination_results=1\nshow_feed_link=1\nshow_noauth=\nshow_title=\nlink_titles=\nshow_intro=\nshow_section=\nlink_section=\nshow_category=\nlink_category=\nshow_author=\nshow_create_date=\nshow_modify_date=\nshow_item_navigation=\nshow_readmore=\nshow_vote=\nshow_icons=\nshow_pdf_icon=\nshow_print_icon=\nshow_email_icon=\nshow_hits=\nfeed_summary=\npage_title=\nshow_page_title=1\npageclass_sfx=\nmenu_image=home_64x64.png\nsecure=0\n\n', 0, 0, 0),
-(18, 'othermenu', 'Links', 'links', 'http://www.google.com', 'url', 1, 0, 0, 0, 2, 0, '0000-00-00 00:00:00', 0, 0, 0, 0, 'menu_image=product-big.png\n\n', 0, 0, 0),
-(19, 'othermenu', 'Contato', 'contato', 'http://www.google.com', 'url', 1, 0, 0, 0, 3, 0, '0000-00-00 00:00:00', 0, 0, 0, 0, 'menu_image=email2.png\n\n', 0, 0, 0),
-(20, 'othermenu', 'Galeria de Fotos', 'galeria-de-fotos', 'http://www.google.com', 'url', 1, 0, 0, 0, 4, 0, '0000-00-00 00:00:00', 0, 0, 0, 0, 'menu_image=photo.png\n\n', 0, 0, 0);
+(1, 'mainmenu', 'Home', 'home', 'index.php?option=com_content&view=frontpage', 'component', 1, 0, 20, 0, 1, 0, '0000-00-00 00:00:00', 0, 0, 0, 3, 'num_leading_articles=4\nnum_intro_articles=4\nnum_columns=1\nnum_links=4\norderby_pri=\norderby_sec=front\nmulti_column_order=1\nshow_pagination=2\nshow_pagination_results=1\nshow_feed_link=1\nshow_noauth=\nshow_title=\nlink_titles=\nshow_intro=\nshow_section=\nlink_section=\nshow_category=\nlink_category=\nshow_author=\nshow_create_date=\nshow_modify_date=\nshow_item_navigation=\nshow_readmore=\nshow_vote=\nshow_icons=\nshow_pdf_icon=\nshow_print_icon=\nshow_email_icon=\nshow_hits=\nfeed_summary=\npage_title=\nshow_page_title=1\npageclass_sfx=\nmenu_image=-1\nsecure=0\n\n', 0, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -1090,7 +1062,7 @@ CREATE TABLE IF NOT EXISTS `jos_modules` (
   PRIMARY KEY  (`id`),
   KEY `published` (`published`,`access`),
   KEY `newsfeeds` (`module`,`published`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=27 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=28 ;
 
 --
 -- Extraindo dados da tabela `jos_modules`
@@ -1112,17 +1084,8 @@ INSERT INTO `jos_modules` (`id`, `title`, `content`, `ordering`, `position`, `ch
 (13, 'Admin SubMenu', '', 1, 'submenu', 0, '0000-00-00 00:00:00', 1, 'mod_submenu', 0, 2, 1, '', 0, 1, ''),
 (14, 'User Status', '', 1, 'status', 0, '0000-00-00 00:00:00', 1, 'mod_status', 0, 2, 1, '', 0, 1, ''),
 (15, 'Title', '', 1, 'title', 0, '0000-00-00 00:00:00', 1, 'mod_title', 0, 2, 1, '', 0, 1, ''),
-(16, 'TopMenu', '', 2, 'left', 0, '0000-00-00 00:00:00', 0, 'mod_mainmenu', 0, 0, 1, 'menutype=topmenu', 0, 0, ''),
-(17, 'OtherMenu', '', 1, 'left', 0, '0000-00-00 00:00:00', 0, 'mod_mainmenu', 0, 0, 1, 'menutype=othermenu', 0, 0, ''),
 (18, 'JCE Latest News', '', 1, 'jce_cpanel', 0, '0000-00-00 00:00:00', 1, 'mod_feed', 0, 0, 1, 'cache=1\r\n	cache_time=15\r\n	moduleclass_sfx=\r\n	rssurl=http://www.joomlacontenteditor.net/index.php?option=com_rss&feed=RSS2.0&type=com_frontpage&Itemid=1\r\n	rssrtl=0\r\n	rsstitle=0\r\n	rssdesc=0\r\n	rssimage=0\r\n	rssitems=3\r\n	rssitemdesc=1\r\n	word_count=100', 0, 1, ''),
-(19, 'JCE Control Panel Icons', '', 1, 'jce_icon', 0, '0000-00-00 00:00:00', 1, 'mod_jcequickicon', 0, 0, 0, '', 0, 1, ''),
-(20, 'Matrículas Abertas', '<img style="border-width: 0px; margin-right: 4px; float: left;" alt="draw" src="images/stories/draw.png" width="48" height="48" />As matrículas para o ano letivo de 2009 já estão abertas. Veja aqui todas as informações necessárias. <a href="index.php?option=com_content&amp;view=frontpage&amp;Itemid=1"><br />Leia Mais...</a><br />', 0, 'user1', 0, '0000-00-00 00:00:00', 1, 'mod_custom', 0, 0, 1, 'moduleclass_sfx=\n\n', 0, 0, ''),
-(21, 'Lista de Materiais', '<img style="border-width: 0px; margin-right: 4px; float: left;" alt="customize" src="images/stories/customize.png" width="53" height="53" />Livros, cadernos, lapis e borracha.Veja aqui a lista de materiais para iniciar o ano letivo bem.<br /><a href="index.php?option=com_content&amp;view=frontpage&amp;Itemid=1">Leia Mais...</a><br />', 0, 'user2', 0, '0000-00-00 00:00:00', 1, 'mod_custom', 0, 0, 1, 'moduleclass_sfx=\n\n', 0, 0, ''),
-(22, 'Aulas Extras', '<img style="border: 1px solid #b7b7b7; padding: 3px; margin-right: 4px; float: left;" alt="atividades" src="images/stories/atividades.png" width="68" height="40" />Além das aulas convencionais dispomos também de aulas extras que ajudam a desenvolver socialmente, culturalmente e atleticamente as crianças.<br /><a href="index.php?option=com_content&amp;view=frontpage&amp;Itemid=17">Leia Mais...</a>', 0, 'user5', 0, '0000-00-00 00:00:00', 1, 'mod_custom', 0, 0, 1, 'moduleclass_sfx=\n\n', 0, 0, ''),
-(23, 'Calendário 2009', '<img style="border: 1px solid #b7b7b7; padding: 3px; margin-right: 4px; float: left;" alt="calendrio" src="images/stories/calendrio.jpg" width="64" height="64" />Verifique as datas importantes deste ano letivo e programe-se para não ser pego desprevinido.<br /><a href="index.php?option=com_content&amp;view=frontpage&amp;Itemid=1">Leia Mais...</a>', 0, 'user6', 0, '0000-00-00 00:00:00', 1, 'mod_custom', 0, 0, 1, 'moduleclass_sfx=\n\n', 0, 0, ''),
-(24, 'Calendário', '', 0, 'right', 0, '0000-00-00 00:00:00', 1, 'mod_eventlistcal15q', 0, 0, 1, 'Show_Tooltips=0\nShow_Tooltips_Title=0\ncal15q_tooltips_title=Event\ncal15q_tooltipspl_title=Events\nDisplayCat=0\nDisplayVenue=0\nUseJoomlaLanguage=1\nday_name_length=1\nfirst_day=1\nYear_length=1\nMonth_length=0\nMonth_offset=0\nTime_offset=0\nRemember=1\nArchivedEvents=0\nStraightToDetails=1\nmoduleclass_sfx=-orange\nlocale_override=\ncatid=\nvenid=\n\n', 0, 0, ''),
-(25, 'Alunos Online', '', 0, 'right', 0, '0000-00-00 00:00:00', 1, 'mod_whosonline', 0, 0, 1, 'cache=0\nshowmode=0\nmoduleclass_sfx=\n\n', 0, 0, ''),
-(26, 'Enquete', '', 0, 'right', 0, '0000-00-00 00:00:00', 1, 'mod_poll', 0, 0, 1, 'id=1\nmoduleclass_sfx=-green\ncache=1\ncache_time=900\n\n', 0, 0, '');
+(19, 'JCE Control Panel Icons', '', 1, 'jce_icon', 0, '0000-00-00 00:00:00', 1, 'mod_jcequickicon', 0, 0, 0, '', 0, 1, '');
 
 -- --------------------------------------------------------
 
@@ -1141,16 +1104,7 @@ CREATE TABLE IF NOT EXISTS `jos_modules_menu` (
 --
 
 INSERT INTO `jos_modules_menu` (`moduleid`, `menuid`) VALUES
-(1, 0),
-(16, 0),
-(17, 0),
-(20, 0),
-(21, 0),
-(22, 0),
-(23, 0),
-(24, 0),
-(25, 0),
-(26, 0);
+(1, 0);
 
 -- --------------------------------------------------------
 
@@ -1203,7 +1157,7 @@ CREATE TABLE IF NOT EXISTS `jos_plugins` (
   `params` text NOT NULL,
   PRIMARY KEY  (`id`),
   KEY `idx_folder` (`published`,`client_id`,`access`,`folder`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=35 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=36 ;
 
 --
 -- Extraindo dados da tabela `jos_plugins`
@@ -1242,7 +1196,8 @@ INSERT INTO `jos_plugins` (`id`, `name`, `element`, `folder`, `access`, `orderin
 (31, 'System - Log', 'log', 'system', 0, 5, 0, 1, 0, 0, '0000-00-00 00:00:00', ''),
 (32, 'System - Remember Me', 'remember', 'system', 0, 6, 1, 1, 0, 0, '0000-00-00 00:00:00', ''),
 (33, 'System - Backlink', 'backlink', 'system', 0, 7, 0, 1, 0, 0, '0000-00-00 00:00:00', ''),
-(34, 'Editor - JCE 1.5.1', 'jce', 'editors', 0, 0, 1, 0, 0, 0, '0000-00-00 00:00:00', 'editor_state=mceEditor\neditor_toggle_text=[show/hide]\neditor_layout_rows=5\n');
+(34, 'Editor - JCE 1.5.1', 'jce', 'editors', 0, 0, 1, 0, 0, 0, '0000-00-00 00:00:00', 'editor_state=mceEditor\neditor_toggle_text=[show/hide]\neditor_layout_rows=5\n'),
+(35, 'Google Maps', 'plugin_googlemap2', 'content', 0, 0, 1, 0, 0, 0, '0000-00-00 00:00:00', 'publ=1\ndebug=0\nplugincode=mosmap\nGoogle_API_version=2.x\ntimeinterval=500\nGoogle_API_key=ABQIAAAAzT9OYEniEH3QVaXmY7GllRRMaQ-9nCDe9C0z4AIBDVlOnQhsohRN0_nneK66GG2VND5G7L7ttJWAew\nGoogle_Multi_API_key=\nurlsetting=http_host\nwidth=100%\nheight=400px\nlat=52.075581\nlon=4.541513\ncenterlat=\ncenterlon=\naddress=\nzoom=10\ncontrolType=user\nzoomNew=0\nzoomWheel=0\nkeyboard=0\nmapType=Normal\nshowMaptype=1\nshowScale=0\noverview=0\nnavlabel=0\ndragging=1\nmarker=1\nicon=\niconwidth=\niconheight=\niconshadow=\niconshadowwidth=\niconshadowheight=\niconshadowanchorx=\niconshadowanchory=\niconanchorx=\niconanchory=\niconinfoanchorx=\niconinfoanchory=\nicontransparent=\niconimagemap=\ndir=0\ndirtype=D\navoidhighways=0\ntraffic=0\npanoramio=0\nadsmanager=0\nmaxads=3\nlocalsearch=0\nadsense=\nchannel=\ngooglebar=0\nsearchlist=inline\nsearchtarget=_blank\nsearchzoompan=1\ntxtdir=Directions:\ntxtgetdir=Get Directions\ntxtfrom=From here\ntxtto=To here\ntxtdiraddr=Address:\ntxt_driving=\ntxt_avhighways=\ntxt_walking=\ndirdefault=0\ngotoaddr=0\ntxtaddr=Address: ##\nerraddr=Address ## not found!\nalign=center\nlangtype=site\nlang=\nlightbox=0\ntxtlightbox=Open lightbox\nlbxwidth=100%\nlbxheight=700px\neffect=none\nkmlrenderer=google\nkmlsidebar=none\nkmlsbwidth=200\nkmlsbsort=none\nkmlmessshow=0\nproxy=1\nsv=none\nsvwidth=100%\nsvheight=300\nsvyaw=0\nsvpitch=0\nsvzoom=\n\n');
 
 -- --------------------------------------------------------
 
@@ -1364,7 +1319,7 @@ CREATE TABLE IF NOT EXISTS `jos_sections` (
   `params` text NOT NULL,
   PRIMARY KEY  (`id`),
   KEY `idx_scope` (`scope`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
 -- Extraindo dados da tabela `jos_sections`
@@ -1398,8 +1353,8 @@ CREATE TABLE IF NOT EXISTS `jos_session` (
 --
 
 INSERT INTO `jos_session` (`username`, `time`, `session_id`, `guest`, `userid`, `usertype`, `gid`, `client_id`, `data`) VALUES
-('', '1473362235', '6b9467cd2e31fd5baa1850847c423247', 1, 0, '', 0, 0, '__default|a:8:{s:22:"session.client.browser";s:110:"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36";s:15:"session.counter";i:11;s:8:"registry";O:9:"JRegistry":3:{s:17:"_defaultNameSpace";s:7:"session";s:9:"_registry";a:1:{s:7:"session";a:1:{s:4:"data";O:8:"stdClass":0:{}}}s:7:"_errors";a:0:{}}s:4:"user";O:5:"JUser":19:{s:2:"id";i:0;s:4:"name";N;s:8:"username";N;s:5:"email";N;s:8:"password";N;s:14:"password_clear";s:0:"";s:8:"usertype";N;s:5:"block";N;s:9:"sendEmail";i:0;s:3:"gid";i:0;s:12:"registerDate";N;s:13:"lastvisitDate";N;s:10:"activation";N;s:6:"params";N;s:3:"aid";i:0;s:5:"guest";i:1;s:7:"_params";O:10:"JParameter":7:{s:4:"_raw";s:0:"";s:4:"_xml";N;s:9:"_elements";a:0:{}s:12:"_elementPath";a:1:{i:0;s:75:"C:\\ServidorWEB\\www\\oficinadossonhos\\libraries\\joomla\\html\\parameter\\element";}s:17:"_defaultNameSpace";s:8:"_default";s:9:"_registry";a:1:{s:8:"_default";a:1:{s:4:"data";O:8:"stdClass":0:{}}}s:7:"_errors";a:0:{}}s:9:"_errorMsg";N;s:7:"_errors";a:0:{}}s:13:"session.token";s:32:"8f67f293f6dfc593df29054237b11ba4";s:19:"session.timer.start";i:1473361643;s:18:"session.timer.last";i:1473362111;s:17:"session.timer.now";i:1473362235;}'),
-('admin', '1473362231', '2220af8b55829ae2fdc836da82220fd8', 0, 62, 'Super Administrator', 25, 1, '__default|a:8:{s:15:"session.counter";i:33;s:19:"session.timer.start";i:1473361411;s:18:"session.timer.last";i:1473362231;s:17:"session.timer.now";i:1473362231;s:22:"session.client.browser";s:110:"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36";s:8:"registry";O:9:"JRegistry":3:{s:17:"_defaultNameSpace";s:7:"session";s:9:"_registry";a:3:{s:7:"session";a:1:{s:4:"data";O:8:"stdClass":0:{}}s:11:"application";a:1:{s:4:"data";O:8:"stdClass":1:{s:4:"lang";s:0:"";}}s:9:"com_menus";a:1:{s:4:"data";O:8:"stdClass":1:{s:8:"menutype";s:8:"mainmenu";}}}s:7:"_errors";a:0:{}}s:4:"user";O:5:"JUser":19:{s:2:"id";s:2:"62";s:4:"name";s:13:"Administrator";s:8:"username";s:5:"admin";s:5:"email";s:31:"contato@oficinadossonhos.com.br";s:8:"password";s:65:"ac5046a237883c9394f3d66c3dd566c3:E7cHApFkzt7XsYBSZmL6eBpLYWcYi7SQ";s:14:"password_clear";s:0:"";s:8:"usertype";s:19:"Super Administrator";s:5:"block";s:1:"0";s:9:"sendEmail";s:1:"1";s:3:"gid";s:2:"25";s:12:"registerDate";s:19:"2009-02-18 20:53:27";s:13:"lastvisitDate";s:19:"2016-09-08 14:20:04";s:10:"activation";s:0:"";s:6:"params";s:56:"admin_language=\nlanguage=\neditor=\nhelpsite=\ntimezone=0\n\n";s:3:"aid";i:2;s:5:"guest";i:0;s:7:"_params";O:10:"JParameter":7:{s:4:"_raw";s:0:"";s:4:"_xml";N;s:9:"_elements";a:0:{}s:12:"_elementPath";a:1:{i:0;s:75:"C:\\ServidorWEB\\www\\oficinadossonhos\\libraries\\joomla\\html\\parameter\\element";}s:17:"_defaultNameSpace";s:8:"_default";s:9:"_registry";a:1:{s:8:"_default";a:1:{s:4:"data";O:8:"stdClass":5:{s:14:"admin_language";s:0:"";s:8:"language";s:0:"";s:6:"editor";s:0:"";s:8:"helpsite";s:0:"";s:8:"timezone";s:1:"0";}}}s:7:"_errors";a:0:{}}s:9:"_errorMsg";N;s:7:"_errors";a:0:{}}s:13:"session.token";s:32:"2e97715139dbfa91d13c27b1ea921752";}');
+('admin', '1473392886', '2220af8b55829ae2fdc836da82220fd8', 0, 62, 'Super Administrator', 25, 1, '__default|a:8:{s:15:"session.counter";i:10;s:19:"session.timer.start";i:1473392832;s:18:"session.timer.last";i:1473392875;s:17:"session.timer.now";i:1473392886;s:22:"session.client.browser";s:110:"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36";s:8:"registry";O:9:"JRegistry":3:{s:17:"_defaultNameSpace";s:7:"session";s:9:"_registry";a:2:{s:7:"session";a:1:{s:4:"data";O:8:"stdClass":0:{}}s:11:"application";a:1:{s:4:"data";O:8:"stdClass":1:{s:4:"lang";s:0:"";}}}s:7:"_errors";a:0:{}}s:4:"user";O:5:"JUser":25:{s:2:"id";i:62;s:4:"name";s:13:"Administrator";s:8:"username";s:5:"admin";s:5:"email";s:31:"contato@oficinadossonhos.com.br";s:8:"password";s:65:"3c49e6ac651210a34dc86c621255b4a6:BjHInQk2IRLBUDjb9Gpu6tel5tBdmnI6";s:14:"password_clear";s:6:"123456";s:8:"usertype";s:19:"Super Administrator";s:5:"block";s:1:"0";s:9:"sendEmail";s:1:"1";s:3:"gid";s:2:"25";s:12:"registerDate";s:19:"2009-02-18 20:53:27";s:13:"lastvisitDate";s:19:"2016-09-09 03:47:20";s:10:"activation";s:0:"";s:6:"params";s:56:"admin_language=\nlanguage=\neditor=\nhelpsite=\ntimezone=0\n\n";s:3:"aid";i:2;s:5:"guest";i:0;s:7:"_params";O:10:"JParameter":7:{s:4:"_raw";s:0:"";s:4:"_xml";N;s:9:"_elements";a:0:{}s:12:"_elementPath";a:1:{i:0;s:75:"C:\\ServidorWEB\\www\\oficinadossonhos\\libraries\\joomla\\html\\parameter\\element";}s:17:"_defaultNameSpace";s:8:"_default";s:9:"_registry";a:1:{s:8:"_default";a:1:{s:4:"data";O:8:"stdClass":5:{s:14:"admin_language";s:0:"";s:8:"language";s:0:"";s:6:"editor";s:0:"";s:8:"helpsite";s:0:"";s:8:"timezone";s:1:"0";}}}s:7:"_errors";a:0:{}}s:9:"_errorMsg";N;s:7:"_errors";a:0:{}s:9:"password2";s:6:"123456";s:3:"cid";a:1:{i:0;s:2:"62";}s:6:"option";s:9:"com_users";s:4:"task";s:4:"save";s:10:"contact_id";s:0:"";s:32:"1c5759fcbc8e94df1c3712e5307a6316";s:1:"1";}s:13:"session.token";s:32:"7a62a5331dc60cd7f0b5dce451a7deb8";}'),
+('', '1473393328', '70f9a27d293d534d2261f0408b5560c2', 1, 0, '', 0, 0, '__default|a:7:{s:15:"session.counter";i:6;s:19:"session.timer.start";i:1473392891;s:18:"session.timer.last";i:1473392961;s:17:"session.timer.now";i:1473393328;s:22:"session.client.browser";s:110:"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36";s:8:"registry";O:9:"JRegistry":3:{s:17:"_defaultNameSpace";s:7:"session";s:9:"_registry";a:1:{s:7:"session";a:1:{s:4:"data";O:8:"stdClass":0:{}}}s:7:"_errors";a:0:{}}s:4:"user";O:5:"JUser":19:{s:2:"id";i:0;s:4:"name";N;s:8:"username";N;s:5:"email";N;s:8:"password";N;s:14:"password_clear";s:0:"";s:8:"usertype";N;s:5:"block";N;s:9:"sendEmail";i:0;s:3:"gid";i:0;s:12:"registerDate";N;s:13:"lastvisitDate";N;s:10:"activation";N;s:6:"params";N;s:3:"aid";i:0;s:5:"guest";i:1;s:7:"_params";O:10:"JParameter":7:{s:4:"_raw";s:0:"";s:4:"_xml";N;s:9:"_elements";a:0:{}s:12:"_elementPath";a:1:{i:0;s:75:"C:\\ServidorWEB\\www\\oficinadossonhos\\libraries\\joomla\\html\\parameter\\element";}s:17:"_defaultNameSpace";s:8:"_default";s:9:"_registry";a:1:{s:8:"_default";a:1:{s:4:"data";O:8:"stdClass":0:{}}}s:7:"_errors";a:0:{}}s:9:"_errorMsg";N;s:7:"_errors";a:0:{}}}');
 
 -- --------------------------------------------------------
 
@@ -1472,7 +1427,7 @@ CREATE TABLE IF NOT EXISTS `jos_users` (
 --
 
 INSERT INTO `jos_users` (`id`, `name`, `username`, `email`, `password`, `usertype`, `block`, `sendEmail`, `gid`, `registerDate`, `lastvisitDate`, `activation`, `params`) VALUES
-(62, 'Administrator', 'admin', 'contato@oficinadossonhos.com.br', 'ac5046a237883c9394f3d66c3dd566c3:E7cHApFkzt7XsYBSZmL6eBpLYWcYi7SQ', 'Super Administrator', 0, 1, 25, '2009-02-18 20:53:27', '2016-09-08 19:03:34', '', 'admin_language=\nlanguage=\neditor=\nhelpsite=\ntimezone=0\n\n');
+(62, 'Administrator', 'admin', 'contato@oficinadossonhos.com.br', '3c49e6ac651210a34dc86c621255b4a6:BjHInQk2IRLBUDjb9Gpu6tel5tBdmnI6', 'Super Administrator', 0, 1, 25, '2009-02-18 20:53:27', '2016-09-09 03:47:20', '', 'admin_language=\nlanguage=\neditor=\nhelpsite=\ntimezone=0\n\n');
 
 -- --------------------------------------------------------
 

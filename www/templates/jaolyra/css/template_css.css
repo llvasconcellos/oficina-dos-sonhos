@@ -438,6 +438,14 @@ div.bubble4 div div div div div {
 
 /* MODULE
 --------------------------------------------------------- */
+
+div.moduletable-slide{
+	padding:18px;
+	text-align:center;
+	vertical-align:middle;
+}
+
+
 div.module-green h3,
 div.module-orange h3,
 div.module-sticky h3,

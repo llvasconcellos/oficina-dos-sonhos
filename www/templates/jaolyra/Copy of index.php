@@ -52,7 +52,6 @@ document.write ('<style type="text\/css">.ja-tab-content{display: none;}\n#ja-hp
 </script>
 
 <link href="<?php echo $tmpTools->templateurl();?>/css/colors/<?php echo $tmpTools->getParam(JA_TOOL_COLOR); ?>.css" rel="stylesheet" type="text/css" />
-<link rel="shortcut icon" href="images/favicon.ico" />
 
 </head>
 
@@ -143,9 +142,63 @@ document.write ('<style type="text\/css">.ja-tab-content{display: none;}\n#ja-hp
 
         <div id="ja-topsl-left">
         <div class="wrap1"><div class="wrap2"><div class="wrap3 clearfix">
-			<?php if( $this->countModules('user1') ) {?>
-				<jdoc:include type="modules" name="user1" style="xhtml" />
-			<?php } ?>
+          <?php if( $this->countModules('user1') ) {?>
+      	  <div class="ja-box<?php echo $topsl['user1']['class']; ?>" style="width: <?php echo $topsl['user1']['width']; ?>;">
+      	  	<jdoc:include type="modules" name="user1" style="xhtml" />	
+      	  </div>
+      	  <?php } ?>
+      
+      	  <?php if( $this->countModules('user2') ) {?>
+      	  <div class="ja-box<?php echo $topsl['user2']['class']; ?>" style="width: <?php echo $topsl['user2']['width']; ?>;">
+      	    <jdoc:include type="modules" name="user2" style="xhtml" />	
+      	  </div>
+      	  <?php } ?>
+      
+      	  <?php if( $this->countModules('user5') ) {?>
+      	  <div class="ja-box<?php echo $topsl['user5']['class']; ?>" style="width: <?php echo $topsl['user5']['width']; ?>;">
+      	    <jdoc:include type="modules" name="user5" style="xhtml" />	
+      	  </div>
+      	  <?php } ?>
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  <br />
+			<script type="text/javascript" src="swfobject.js"></script>
+			<div id="monoSlideshow" style="width: 750px; height:250px; text-align:center; vertical-align:middle;"></div>
+			<script type="text/javascript">
+				var so = new SWFObject("monoslideshow.swf", "SOmonoSlideshow", "750", "250", "7", "#EBF5FF");
+				so.addVariable("showLogo", "false");
+				so.addVariable("dataFile", "slideshow.xml.php");
+				so.addParam("wmode", "transparent");
+				so.write("monoSlideshow");
+			</script>
+			<br />
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
       	</div></div></div>
         </div>  
       </div>

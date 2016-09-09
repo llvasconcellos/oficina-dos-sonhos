@@ -47,8 +47,8 @@ class JConfig {
 	var $session_handler = 'database';
 	var $password = 'vertrigo';
 	var $sitename = 'Oficina dos Sonhos';
-	var $MetaDesc = 'Joomla! - O sistema dinâmico de portais e gerenciador de conteúdo';
-	var $MetaKeys = 'joomla, Joomla';
+	var $MetaDesc = 'Portal Escola Oficina dos Sonhos';
+	var $MetaKeys = 'Escola, Oficina, Sonhos, evangélicos, cristãos, quadrangular, colégio, primário, Joinville, Santa Catarina';
 	var $offline_message = 'Este site está em manutenção. Por favor, retorne mais tarde.';
 }
 ?>
