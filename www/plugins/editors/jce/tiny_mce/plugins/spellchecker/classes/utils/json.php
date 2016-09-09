@@ -1,7 +1,5 @@
 <?php
 /**
- * $Id: JSON.php 40 2007-06-18 11:43:15Z spocke $
- *
  * @package MCManager.utils
  * @author Moxiecode
  * @copyright Copyright © 2007, Moxiecode Systems AB, All rights reserved.

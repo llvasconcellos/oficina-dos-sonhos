@@ -1,6 +1,6 @@
 <?php
 /**
-* @version		$Id: helper.php 10967 2008-09-26 00:01:51Z ian $
+* @version		$Id: helper.php 11668 2009-03-08 20:33:38Z willebil $
 * @package		Joomla
 * @copyright	Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.
 * @license		GNU/GPL, see LICENSE.php
@@ -22,13 +22,13 @@ class modLoginHelper
 		{
 			$menu =& JSite::getMenu();
 			$item = $menu->getItem($itemid);
-			$url = $item->link.'&Itemid='.$itemid;
+			$url = JRoute::_($item->link.'&Itemid='.$itemid, false);
 		}
 		else
 		{
-			// Redirect to login
+			// stay on the same page
 			$uri = JFactory::getURI();
-			$url = $uri->toString();
+			$url = $uri->toString(array('path', 'query', 'fragment'));
 		}
 
 		return base64_encode($url);

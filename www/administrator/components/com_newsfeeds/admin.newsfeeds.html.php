@@ -1,6 +1,6 @@
 <?php
 /**
-* @version		$Id: admin.newsfeeds.html.php 10381 2008-06-01 03:35:53Z pasamio $
+* @version		$Id: admin.newsfeeds.html.php 11655 2009-03-08 20:04:17Z willebil $
 * @package		Joomla
 * @subpackage	Newsfeeds
 * @copyright	Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.
@@ -68,7 +68,7 @@ class HTML_newsfeeds
 					</th>
 					<th width="8%" nowrap="nowrap">
 						<?php echo JHTML::_('grid.sort',   'Order', 'a.ordering', @$lists['order_Dir'], @$lists['order'] ); ?>
-						<?php echo JHTML::_('grid.order',  $rows ); ?>
+						<?php if ($ordering) echo JHTML::_('grid.order',  $rows ); ?>
 					</th>
 					<th class="title" width="10%">
 						<?php echo JHTML::_('grid.sort',   'Category', 'catname', @$lists['order_Dir'], @$lists['order'] ); ?>
@@ -299,12 +299,7 @@ class HTML_newsfeeds
 						<?php echo $lists['ordering']; ?>
 					</td>
 				</tr>
-				<?php
-					$isRtl = '';
-					if ($row->rtl == 1) {
-						$isRtl = 'checked="checked"';
-					}
-				?>
+
 				<tr>
 					<td class="key">
 						<label for="rtl">
@@ -312,7 +307,7 @@ class HTML_newsfeeds
 						</label>
 					</td>
 					<td>
-						<input class="inputbox" type="checkbox" name="rtl" id="rtl" <?php echo $isRtl; ?>  />
+						<?php echo $lists['rtl']; ?>
 					</td>
 				</tr>
 				<tr>

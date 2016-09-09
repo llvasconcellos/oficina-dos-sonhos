@@ -1,6 +1,6 @@
 <?php
 /**
- * @version		$Id: version.php 11252 2008-11-10 23:36:48Z willebil $
+ * @version		$Id: version.php 11987 2009-06-03 01:08:57Z ian $
  * @package	Joomla.Framework
  * @copyright	Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.
  * @license		GNU/GPL, see LICENSE.php
@@ -26,15 +26,15 @@ class JVersion
 	/** @var string Development Status */
 	var $DEV_STATUS = 'Production/Stable';
 	/** @var int Sub Release Level */
-	var $DEV_LEVEL 	= '8';
+	var $DEV_LEVEL 	= '11';
 	/** @var int build Number */
 	var $BUILD	= '';
 	/** @var string Codename */
-	var $CODENAME 	= 'Wohnaiki';
+	var $CODENAME 	= 'Vea';
 	/** @var string Date */
-	var $RELDATE 	= '10-November-2008';
+	var $RELDATE 	= '03-June-2009';
 	/** @var string Time */
-	var $RELTIME 	= '23:00';
+	var $RELTIME 	= '03:30';
 	/** @var string Timezone */
 	var $RELTZ 	= 'GMT';
 	/** @var string Copyright Text */

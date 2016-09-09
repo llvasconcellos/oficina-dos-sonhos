@@ -6,7 +6,7 @@
 <?php
 	$rows =& $this->items;
 	
-	JToolBarHelper::title( JText::_( 'Group Manager' ), 'user.png' );
+	JToolBarHelper::title( JText::_( 'JCE Group Manager' ), 'user.png' );
 	
 	JToolBarHelper::editListX();
 	JToolBarHelper::addNewX();
@@ -68,7 +68,7 @@
 			<?php echo JHTML::_('grid.sort',   'Published', 'g.published', @$this->lists['order_Dir'], @$this->lists['order'] ); ?>
 		</th>
         <th nowrap="nowrap" width="8%" >
-			<?php echo JHTML::_('grid.sort',   'Priority', 'g.name', @$this->lists['order_Dir'], @$this->lists['order'] ); ?>
+			<?php echo JHTML::_('grid.sort',   'Priority', 'g.ordering', @$this->lists['order_Dir'], @$this->lists['order'] ); ?>
 			<?php if( count( $rows ) > 1 ){ echo JHTML::_('grid.order',  $rows );}?>
 		</th>
 		<th nowrap="nowrap"  width="1%" class="title">
@@ -96,7 +96,7 @@
 		$published 	= JHTML::_('grid.published', $row, $i );
 	}
 	$checked 	= JHTML::_('grid.checkedout', $row, $i );
-	$ordering 	= ($this->lists['order'] == 'g.name');
+	$ordering 	= ($this->lists['order'] == 'g.ordering');
 ?>
 	<tr class="<?php echo "row$k"; ?>">
 		<td align="right">
@@ -125,7 +125,7 @@
         <td class="order">
 			<span><?php echo $this->pagination->orderUpIcon( $i, ($row->ordering > -10000 && $row->ordering < 10000), 'orderup', 'Move Up', $ordering ); ?></span>
 			<span><?php echo $this->pagination->orderDownIcon( $i, $n, ($row->ordering > -10000 && $row->ordering < 10000), 'orderdown', 'Move Down', $ordering ); ?></span>
-			<?php $disabled = $ordering && $n > 1?  '' : 'disabled="disabled"'; ?>
+			<?php $disabled = $n > 1?  '' : 'disabled="disabled"'; ?>
 			<input type="text" name="order[]" size="5" value="<?php echo $row->ordering; ?>"  <?php echo $disabled ?> class="text_area" style="text-align: center" />
 		</td>
 		<td align="center">

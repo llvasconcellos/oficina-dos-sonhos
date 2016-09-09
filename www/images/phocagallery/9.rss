@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss xmlns:media="http://search.yahoo.com/mrss" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <atom:icon>http://www.phoca.cz/images/phoca-piclens.png</atom:icon>
+        <item>
+            <title>dsc08978</title>
+            <link>/images/phocagallery/ZZPVTK/thumbs/phoca_thumb_l_dsc08978.jpg</link>
+            <media:thumbnail url="/images/phocagallery/ZZPVTK/thumbs/phoca_thumb_l_dsc08978.jpg" />
+            <media:content url="/images/phocagallery/ZZPVTK/dsc08978.jpg" />
+            <guid isPermaLink="false">9-phocagallerypiclenscode-/ZZPVTK/dsc08978.jpg</guid>
+        </item>
+        <item>
+            <title>dsc09332</title>
+            <link>/images/phocagallery/ZZPVTK/thumbs/phoca_thumb_l_dsc09332.jpg</link>
+            <media:thumbnail url="/images/phocagallery/ZZPVTK/thumbs/phoca_thumb_l_dsc09332.jpg" />
+            <media:content url="/images/phocagallery/ZZPVTK/dsc09332.jpg" />
+            <guid isPermaLink="false">9-phocagallerypiclenscode-/ZZPVTK/dsc09332.jpg</guid>
+        </item>
+        <item>
+            <title>dsc09333</title>
+            <link>/images/phocagallery/ZZPVTK/thumbs/phoca_thumb_l_dsc09333.jpg</link>
+            <media:thumbnail url="/images/phocagallery/ZZPVTK/thumbs/phoca_thumb_l_dsc09333.jpg" />
+            <media:content url="/images/phocagallery/ZZPVTK/dsc09333.jpg" />
+            <guid isPermaLink="false">9-phocagallerypiclenscode-/ZZPVTK/dsc09333.jpg</guid>
+        </item>
+        <item>
+            <title>dsc09334</title>
+            <link>/images/phocagallery/ZZPVTK/thumbs/phoca_thumb_l_dsc09334.jpg</link>
+            <media:thumbnail url="/images/phocagallery/ZZPVTK/thumbs/phoca_thumb_l_dsc09334.jpg" />
+            <media:content url="/images/phocagallery/ZZPVTK/dsc09334.jpg" />
+            <guid isPermaLink="false">9-phocagallerypiclenscode-/ZZPVTK/dsc09334.jpg</guid>
+        </item>
+        <item>
+            <title>fotos_diversas_039</title>
+            <link>/images/phocagallery/ZZPVTK/thumbs/phoca_thumb_l_fotos_diversas_039.jpg</link>
+            <media:thumbnail url="/images/phocagallery/ZZPVTK/thumbs/phoca_thumb_l_fotos_diversas_039.jpg" />
+            <media:content url="/images/phocagallery/ZZPVTK/fotos_diversas_039.jpg" />
+            <guid isPermaLink="false">9-phocagallerypiclenscode-/ZZPVTK/fotos_diversas_039.jpg</guid>
+        </item>
+        <item>
+            <title>fotos_diversas_050</title>
+            <link>/images/phocagallery/ZZPVTK/thumbs/phoca_thumb_l_fotos_diversas_050.jpg</link>
+            <media:thumbnail url="/images/phocagallery/ZZPVTK/thumbs/phoca_thumb_l_fotos_diversas_050.jpg" />
+            <media:content url="/images/phocagallery/ZZPVTK/fotos_diversas_050.jpg" />
+            <guid isPermaLink="false">9-phocagallerypiclenscode-/ZZPVTK/fotos_diversas_050.jpg</guid>
+        </item>
+        <item>
+            <title>maria_luiza_03</title>
+            <link>/images/phocagallery/ZZPVTK/thumbs/phoca_thumb_l_maria_luiza_03.jpg</link>
+            <media:thumbnail url="/images/phocagallery/ZZPVTK/thumbs/phoca_thumb_l_maria_luiza_03.jpg" />
+            <media:content url="/images/phocagallery/ZZPVTK/maria_luiza_03.jpg" />
+            <guid isPermaLink="false">9-phocagallerypiclenscode-/ZZPVTK/maria_luiza_03.jpg</guid>
+        </item>
+    </channel>
+</rss>

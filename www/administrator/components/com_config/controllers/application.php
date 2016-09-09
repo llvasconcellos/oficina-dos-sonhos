@@ -1,6 +1,6 @@
 <?php
 /**
- * @version		$Id: application.php 10854 2008-08-29 22:45:24Z willebil $
+ * @version		$Id: application.php 11795 2009-05-06 01:59:19Z ian $
  * @package		Joomla
  * @subpackage	Config
  * @copyright	Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.
@@ -105,6 +105,13 @@ class ConfigControllerApplication extends ConfigController
 		$lists['xmlrpc_server'] = JHTML::_('select.booleanlist', 'xmlrpc_server', 'class="inputbox"', $row->xmlrpc_server);
 		$lists['error_reporting'] = JHTML::_('select.genericlist',  $errors, 'error_reporting', 'class="inputbox" size="1"', 'value', 'text', $row->error_reporting);
 		$lists['enable_ftp'] 	= JHTML::_('select.booleanlist', 'ftp_enable', 'class="inputbox"', intval($row->ftp_enable));
+		
+		$forceSSL = array(
+								JHTML::_('select.option', 0, JText::_('None')),
+								JHTML::_('select.option', 1, JText::_('Administrator Only')),
+								JHTML::_('select.option', 2, JText::_('Entire Site')),
+						);
+		$lists['force_ssl'] = JHTML::_('select.genericlist', $forceSSL, 'force_ssl', 'class="inputbox" size="1"', 'value', 'text', @$row->force_ssl);
 
 		// LOCALE SETTINGS
 		$timeoffset = array (	JHTML::_('select.option', -12, JText::_('(UTC -12:00) International Date Line West')),
@@ -184,7 +191,10 @@ class ConfigControllerApplication extends ConfigController
 		$formats	= array (JHTML::_('select.option', 'RSS2.0', JText::_('RSS')), JHTML::_('select.option', 'Atom', JText::_('Atom')));
 		$summary	= array (JHTML::_('select.option', 1, JText::_('Full Text')), JHTML::_('select.option', 0, JText::_('Intro Text')),);
 		$lists['feed_limit']	= JHTML::_('select.genericlist',  $listLimit, 'feed_limit', 'class="inputbox" size="1"', 'value', 'text', ($row->feed_limit ? $row->feed_limit : 10));
-
+		$emailOptions = array (	JHTML::_('select.option', 'author', JText::_('Author Email')),
+								JHTML::_('select.option', 'site', JText::_('Site Email')));
+		$lists['feed_email'] = JHTML::_('select.genericlist', $emailOptions, 'feed_email', 'class="inputbox" size="1"', 'value', 'text', (@$row->feed_email) ? $row->feed_email : 'author');
+		
 		// SESSION SETTINGS
 		$stores = JSession::getStores();
 		$options = array();
@@ -291,6 +301,7 @@ class ConfigControllerApplication extends ConfigController
 
 		// FEED SETTINGS
 		$config_array['feed_limit']		= JRequest::getVar('feed_limit', 10, 'post', 'int');
+		$config_array['feed_email']		= JRequest::getVar('feed_email', 'author', 'post', 'word');
 
 		// SERVER SETTINGS
 		$config_array['secret']				= JRequest::getVar('secret', 0, 'post', 'string');
@@ -300,6 +311,7 @@ class ConfigControllerApplication extends ConfigController
 		$config_array['log_path']			= JRequest::getVar('log_path', JPATH_ROOT.DS.'logs', 'post', 'string');
 		$config_array['tmp_path']			= JRequest::getVar('tmp_path', JPATH_ROOT.DS.'tmp', 'post', 'string');
 		$config_array['live_site'] 			= rtrim(JRequest::getVar('live_site','','post','string'), '/\\');
+		$config_array['force_ssl'] 			= JRequest::getVar('force_ssl', 0, 'post', 'int');
 
 		// LOCALE SETTINGS
 		$config_array['offset']				= JRequest::getVar('offset', 0, 'post', 'float');

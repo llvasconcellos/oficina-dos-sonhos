@@ -86,7 +86,7 @@
 .classicblue .mceConfirm .mceCancel {left:50%; top:auto}
 .classicblue .mceConfirm .mceIcon {background:url(../img/confirm.png)}
 
-.classicblue .mceAlert .mceMiddle span div, .clearlooks2 .mceConfirm .mceMiddle span div {font-size: 1.1em;width:inherit;}
+.classicblue .mceAlert .mceMiddle span div, .clearlooks2 .mceConfirm .mceMiddle span div {font-size: 1.1em;width:100%;}
 
 .classicblue .mcePrompt .mceMiddle, .classicblue .mceDialog .mceMiddle {background:#fff}
 .classicblue .mcePrompt .mceOk {left:50%; top:auto; margin-left: -90px}

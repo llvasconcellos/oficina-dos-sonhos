@@ -10,9 +10,9 @@
 	JToolBarHelper::unpublishList();
 	
 	JToolBarHelper::addNew( 'add', JText::_( 'New Plugin' ) );
-	JToolBarHelper::custom( 'manage', 'upload.png', 'upload_f2.png', JText::_( 'Installer' ), false );
-	jceToolbarHelper::popup( JText::_( 'Editor Layout' ), 'move', 'plugin', 'layout' );
-	JToolBarHelper::custom( '', 'refresh.png', 'refresh_f2.png', JText::_( 'Refresh List' ), false );
+	JToolBarHelper::custom( 'manage', 'upload.png', 'upload_f2.png', JText::_( 'Install' ), false );
+	//jceToolbarHelper::popup( JText::_( 'Editor Layout' ), 'move', 'plugin', 'layout' );
+	//JToolBarHelper::custom( '', 'refresh.png', 'refresh_f2.png', JText::_( 'Refresh List' ), false );
 	JToolBarHelper::cancel( 'cancel', JText::_( 'Close' ) );
 	jceToolbarHelper::help( 'plugins' );
 

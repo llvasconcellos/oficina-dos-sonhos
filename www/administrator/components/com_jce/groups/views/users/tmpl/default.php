@@ -1,24 +1,36 @@
 <?php defined('_JEXEC') or die('Restricted access'); ?>
 
 <?php  
-JHTML::_('behavior.tooltip');  
-JHTML::script('scripts.js', 'administrator/components/com_jce/js/');
+JHTML::_('behavior.tooltip'); 
 ?>
 <script type="text/javascript">
+	function checkUser(s, v){
+		var a = [];
+		$each(s, function(n){
+			a.push(n.value);
+		});
+		return a.contains(v);
+	}
 	function selectUsers(){
-		var u = [];
+		var u = [], v, s, o, h;
 		if(document.adminForm.boxchecked.value == 0){
 			alert('Please select at least 1 user!');
 			return false;
 		}else{
-			var cb = document.getElementsByTagName('input');
-			for(var i=0; i<cb.length; i++){
-				if(cb[i].type == 'checkbox' && cb[i].name == 'cid[]' && cb[i].checked){
-					var id 			= cb[i].value;
-					var username 	= trim(document.getElementById('username' + id).innerHTML);
-					jce.addSelect(window.parent.document, 'users', username, id);
+			s = window.parent.document.getElementById('users').options;
+			$ES('input[type=checkbox]').each(function(el){
+				if(el.name == 'cid[]' && el.checked){
+					v = el.value;
+					h = $('username_' + v).innerHTML.trim();
+					
+					if(checkUser(s, v))
+						return;
+					
+					
+					o = new Option(h, v);
+					s[s.length] = o;
 				}
-			}
+			});
 			window.parent.document.getElementById('sbox-window').close();
 		}
 	}
@@ -103,8 +115,8 @@ JHTML::script('scripts.js', 'administrator/components/com_jce/js/');
 				<td>
 					<?php echo $row->name; ?>
                 </td>
-				<td id="username<?php echo $row->id;?>">
-					<?php echo $row->username; ?>
+				<td>
+					<span id="username_<?php echo $row->id;?>"><?php echo $row->username; ?></span>
 				</td>
 				<td>
 					<?php echo JText::_( $row->groupname ); ?>

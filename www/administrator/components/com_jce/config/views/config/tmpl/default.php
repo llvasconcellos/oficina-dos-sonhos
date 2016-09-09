@@ -10,12 +10,7 @@ jceToolbarHelper::help('config');
 ?>
 <form action="index.php" method="post" name="adminForm">
     <div class="col width-50">
-        <fieldset class="adminform">
-            <legend><?php echo JText::_( 'Global Parameters' ); ?></legend>
             <table class="admintable">
-                <tr>
-                	<td><?php echo JText::_( 'GLOBAL PARAMETERS DESC' ); ?></td>
-                </tr>
                 <tr>
                 	<td style="vertical-align:top;">
                 	<fieldset class="adminform">
@@ -67,18 +62,6 @@ jceToolbarHelper::help('config');
                 <tr>
                     <td style="vertical-align:top;">
                     <fieldset class="adminform">
-                        <legend><?php echo JText::_( 'Plugins' ); ?></legend>
-                        <?php if($output = $this->params->render('params', 'plugins')) :
-                       		echo $output;
-                        else :
-                        	echo "<div  style=\"text-align: center; padding: 5px; \">".JText::_('No Parameters ')."</div>";
-                        endif;?>
-                    </fieldset>
-                    </td>
-                </tr>
-                <tr>
-                    <td style="vertical-align:top;">
-                    <fieldset class="adminform">
                         <legend><?php echo JText::_( 'Miscellaneous' ); ?></legend>
                         <?php if($output = $this->params->render('params', 'other')) :
                        		echo $output;
@@ -89,44 +72,6 @@ jceToolbarHelper::help('config');
                     </td>
                 </tr>
             </table>
-        </fieldset>
-    </div>
-    <div class="col width-50">
-        <fieldset class="adminform">
-            <legend><?php echo JText::_( 'Group Parameters' ); ?></legend>
-            <table>
-                <tr>
-                	<td><?php echo JText::_( 'GROUP PARAMETERS DESC' ); ?></td>
-                </tr>
-                <tr>
-                    <td style="vertical-align:top;">
-                        <?php if($output = $this->params->render('params', 'groups-editor')) :
-                       	 	echo $output;
-                        else :
-                        	echo "<div  style=\"text-align: center; padding: 5px; \">".JText::_('No Parameters ')."</div>";
-                        endif;?>
-                    </td>
-                </tr>
-                <tr>
-                    <td style="vertical-align:top;">
-                        <?php if($output = $this->params->render('params', 'groups-options')) :
-                       	 	echo $output;
-                        else :
-                        	echo "<div  style=\"text-align: center; padding: 5px; \">".JText::_('No Parameters ')."</div>";
-                        endif;?>
-                    </td>
-                </tr>
-                <tr>
-                    <td style="vertical-align:top;">
-                        <?php if($output = $this->params->render('params', 'groups-plugins')) :
-                       	 	echo $output;
-                        else :
-                        	echo "<div  style=\"text-align: center; padding: 5px; \">".JText::_('No Parameters ')."</div>";
-                        endif;?>
-                    </td>
-                </tr>
-            </table>
-        </fieldset>
     </div>
     <input type="hidden" name="option" value="com_jce" />
     <input type="hidden" name="client" value="<?php echo $this->client; ?>" />

@@ -1,9 +1,10 @@
 <?php
 /**
-* @version $Id: manager.php 2005-12-27 09:23:43Z Ryan Demmer $
-* @package JCE
-* @copyright Copyright (C) 2005 Ryan Demmer. All rights reserved.
-* @license http://www.gnu.org/copyleft/gpl.html GNU/GPL, see LICENSE.php
+* $Id: imgmanager.php 26 2009-05-25 10:21:53Z happynoodleboy $
+* @package      JCE
+* @copyright    Copyright (C) 2005 - 2009 Ryan Demmer. All rights reserved.
+* @author		Ryan Demmer
+* @license      GNU/GPL
 * JCE is free software. This version may have been modified pursuant
 * to the GNU General Public License, and as distributed it includes or
 * is derivative of works licensed under the GNU General Public License or
@@ -11,40 +12,20 @@
 */
 defined( '_JEXEC' ) or die( 'Restricted access' );
 
-$version = "1.5.0";
-
-require_once( JCE_LIBRARIES .DS. 'classes' .DS. 'editor.php' );
-require_once( JCE_LIBRARIES .DS. 'classes' .DS. 'plugin.php' );
-require_once( JCE_LIBRARIES .DS. 'classes' .DS. 'utils.php' );
-require_once( JCE_LIBRARIES .DS. 'classes' .DS. 'manager.php' );
+$version = "1.5.3";
 
 require_once( dirname( __FILE__ ) .DS. 'classes' .DS. 'imgmanager.php' );
 
-$manager =& ImageManager::getInstance();
-
-// check the user/group has editor permissions
-$manager->checkPlugin() or die( 'Restricted access' );
-
-// Load Plugin Parameters
-$params	= $manager->getPluginParams();
-
-// Setup plugin XHR callback functions 
-$manager->setXHR( array( &$manager, 'getDimensions' ) );
-
-// Set javascript file array
-$manager->script( array( 'imgmanager' ), 'plugins' );
-// Set css file array
-$manager->css( array( 'imgmanager' ), 'plugins' );
-
-// Load extensions if any
-$manager->loadExtensions();
-// Process requests
+$manager 	=& ImageManager::getInstance();
+// Prcess Requests
 $manager->processXHR();
+// Get Parameters
+$params		= $manager->getPluginParams();
 
 $manager->_debug = false;
 $version .= $manager->_debug ? ' - debug' : '';
 ?>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $manager->getLanguageTag();?>" lang="<?php echo $manager->getLanguageTag();?>" dir="<?php echo $manager->getLanguageDir();?>" >
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -92,12 +73,12 @@ $manager->printCss();
 	</script>
     <?php echo $manager->printHead();?>
 </head>
-<body lang="<?php echo $manager->getLanguage(); ?>" style="display: none;">
+<body xml:lang="<?php echo $manager->getLanguage(); ?>" style="display: none;">
     <div class="tabs">
         <ul>
-            <li id="general_tab" class="current"><span><a href="javascript:mcTabs.displayTab('general_tab','general_panel');" onMouseDown="return false;"><?php echo JText::_('Image');?></a></span></li>
-            <li id="swap_tab"><span><a href="javascript:mcTabs.displayTab('swap_tab','swap_panel');" onMouseDown="return false;"><?php echo JText::_('Rollover');?></a></span></li>
-            <li id="advanced_tab"><span><a href="javascript:mcTabs.displayTab('advanced_tab','advanced_panel');" onMouseDown="return false;"><?php echo JText::_('Advanced');?></a></span></li>
+            <li id="general_tab" class="current"><span><a href="javascript:mcTabs.displayTab('general_tab','general_panel');" onmousedown="return false;"><?php echo JText::_('Image');?></a></span></li>
+            <li id="swap_tab"><span><a href="javascript:mcTabs.displayTab('swap_tab','swap_panel');" onmousedown="return false;"><?php echo JText::_('Rollover');?></a></span></li>
+            <li id="advanced_tab"><span><a href="javascript:mcTabs.displayTab('advanced_tab','advanced_panel');" onmousedown="return false;"><?php echo JText::_('Advanced');?></a></span></li>
 		</ul>
     </div>
     <div class="panel_wrapper">
@@ -122,9 +103,9 @@ $manager->printCss();
                                 		<table cellpadding="0" cellspacing="0">
                                             <tr>
                                                 <td>
-                                                <input type="text" id="width" value="" onchange="ImageManagerDialog.setDimensions('width', 'height');" /> x <input type="text" id="height" name="height" value="" onChange="ImageManagerDialog.setDimensions('height', 'width');" />
-                                                <input type="hidden" id="tmp_width" value=""  />
-                                                <input type="hidden" id="tmp_height" value="" />
+                                                	<input type="text" id="width" value="" onchange="ImageManagerDialog.setDimensions('width', 'height');" /> x <input type="text" id="height" name="height" value="" onchange="ImageManagerDialog.setDimensions('height', 'width');" />
+                                               	 	<input type="hidden" id="tmp_width" value=""  />
+                                                	<input type="hidden" id="tmp_height" value="" />
                                                 </td>
                                                 <td><input id="constrain" type="checkbox" class="checkbox" checked="checked" /><label for="constrain"><?php echo JText::_('Proportional');?></label></td>
                                                 <td><div id="dim_loader">&nbsp;</div></td>
@@ -135,7 +116,7 @@ $manager->printCss();
                             <tr>
                                 <td><label for="align" class="hastip" title="<?php echo JText::_('ALIGN DESC');?>"><?php echo JText::_('ALIGN');?></label></td>
                                 <td>
-                                	<select id="align" onchange="ImageManagerDialog.updateStyles();">
+                                	<select name="align" id="align" onchange="ImageManagerDialog.updateStyles();">
                                 		<option value=""><?php echo JText::_('Align Default');?></option>
                                 		<option value="top"><?php echo JText::_('Align Top');?></option>
                                 		<option value="middle"><?php echo JText::_('Align Middle');?></option>
@@ -144,7 +125,7 @@ $manager->printCss();
                                         <option value="right"><?php echo JText::_('Align Right');?></option>
                                 	</select>
                                     <label id="clearlabel" for="clear" class="disabled hastip" title="<?php echo JText::_('CLEAR DESC');?>"><?php echo JText::_('CLEAR');?></label>
-                                    <select id="clear" disabled="disabled" onchange="ImageManagerDialog.updateStyles();">
+                                    <select name="clear" id="clear" disabled="disabled" onchange="ImageManagerDialog.updateStyles();">
                                         <option value=""><?php echo JText::_('Not Set');?></option>
                                         <option value="none"><?php echo JText::_('None');?></option>
                                         <option value="both"><?php echo JText::_('Both');?></option>
@@ -156,22 +137,22 @@ $manager->printCss();
                             <tr>
                                 <td><label for="margin" class="hastip" title="<?php echo JText::_('MARGIN DESC');?>"><?php echo JText::_('Margin');?></label></td>
                                 <td colspan="3">
-                                	<label for="margin_top"><?php echo JText::_('Top');?></label><input type="text" id="margin_top" value="" size="3" maxlength="3" onChange="ImageManagerDialog.setMargins();" />
-                                	<label for="margin_right"><?php echo JText::_('Right');?></label><input type="text" id="margin_right" value="" size="3" maxlength="3" onChange="ImageManagerDialog.setMargins();" />
-                                	<label for="margin_bottom"><?php echo JText::_('Bottom');?></label><input type="text" id="margin_bottom" value="" size="3" maxlength="3" onChange="ImageManagerDialog.setMargins();" />
-                                	<label for="margin_left"><?php echo JText::_('Left');?></label><input type="text" id="margin_left" value="" size="3" maxlength="3" onChange="ImageManagerDialog.setMargins();" />
+                                	<label for="margin_top"><?php echo JText::_('Top');?></label><input type="text" id="margin_top" value="" size="3" maxlength="3" onchange="ImageManagerDialog.setMargins();" />
+                                	<label for="margin_right"><?php echo JText::_('Right');?></label><input type="text" id="margin_right" value="" size="3" maxlength="3" onchange="ImageManagerDialog.setMargins();" />
+                                	<label for="margin_bottom"><?php echo JText::_('Bottom');?></label><input type="text" id="margin_bottom" value="" size="3" maxlength="3" onchange="ImageManagerDialog.setMargins();" />
+                                	<label for="margin_left"><?php echo JText::_('Left');?></label><input type="text" id="margin_left" value="" size="3" maxlength="3" onchange="ImageManagerDialog.setMargins();" />
                                 	<input type="checkbox" class="checkbox" id="margin_check" onclick="ImageManagerDialog.setMargins();"><label><?php echo JText::_('Equal Values');?></label>
                                 </td>
                             </tr>
                             <tr>
-                            	<td><label for="border" class="hastip" title="<?php echo JText::_('MARGIN DESC');?>"><?php echo JText::_('Border');?></label></td>
+                            	<td><label for="border" class="hastip" title="<?php echo JText::_('BORDER DESC');?>"><?php echo JText::_('Border');?></label></td>
                             	<td colspan="3">
                             		<table cellpadding="0" cellspacing="0">
                             			<tr>
                             				<td><input type="checkbox" class="checkbox" id="border" onclick="ImageManagerDialog.setBorder();"></td>
                             				<td>
                                                 <label for="border_width"><?php echo JText::_('Width');?></label>
-                                                <select id="border_width" onchange="ImageManagerDialog.updateStyles();" class="mceEditableSelect">
+                                                <select name="border_width" id="border_width" onchange="ImageManagerDialog.updateStyles();" class="mceEditableSelect">
                                                     <option value=""><?php echo JText::_('NOT SET');?></option>
                                                     <option value="0">0</option>
                                                     <option value="1">1</option>
@@ -190,7 +171,7 @@ $manager->printCss();
                                             </td>
                             				<td>
                                                 <label for="border_style"><?php echo JText::_('Style');?></label>
-                                                <select id="border_style" onchange="ImageManagerDialog.updateStyles();">
+                                                <select name="border_style" id="border_style" onchange="ImageManagerDialog.updateStyles();">
                                                 	<option value=""><?php echo JText::_('NOT SET');?></option>
                                                     <option value="none"><?php echo JText::_('BORDER NONE');?></option>
                                                     <option value="solid"><?php echo JText::_('BORDER SOLID');?></option>
@@ -239,11 +220,11 @@ $manager->printCss();
                     <table>
                             <tr>
                                 <td><label for="onmouseoversrc" class="hastip" title="<?php echo JText::_('MOUSEOVER DESC');?>"><?php echo JText::_('MOUSEOVER');?></label></td>
-                                <td><input id="onmouseoversrc" type="text" value="" /></td>
+                                <td><input id="onmouseoversrc" type="text" value="" disabled="disabled" /></td>
                             </tr>
                             <tr>
                                 <td><label for="onmouseoutsrc" class="hastip" title="<?php echo JText::_('MOUSEOUT DESC');?>"><?php echo JText::_('MOUSEOUT');?></label></td>
-                                <td><input id="onmouseoutsrc" type="text" value="" /></td>
+                                <td><input id="onmouseoutsrc" type="text" value="" disabled="disabled" /></td>
                             </tr>
                     </table>
                 </fieldset>
@@ -259,7 +240,7 @@ $manager->printCss();
                         <tr>
                             <td><label for="classlist" class="hastip" title="<?php echo JText::_('CLASS LIST DESC');?>"><?php echo JText::_('CLASS LIST');?></label></td>
                             <td colspan="2">
-                                <select id="classlist" onchange="ImageManagerDialog.setClasses(this.value);">
+                                <select name="classlist" id="classlist" onchange="ImageManagerDialog.setClasses(this.value);">
                                     <option value=""><?php echo JText::_('NOT SET');?></option>
                                 </select>
                             </td>
@@ -280,7 +261,7 @@ $manager->printCss();
                         <tr>
                             <td><label for="dir" class="hastip" title="<?php echo JText::_('LANGUAGE DIRECTION DESC');?>"><?php echo JText::_('LANGUAGE DIRECTION');?></label></td>
                             <td colspan="2">
-                                <select id="dir" onchange="ImageManagerDialog.updateStyles();">
+                                <select name="dir" id="dir" onchange="ImageManagerDialog.updateStyles();">
                                         <option value=""><?php echo JText::_('Not Set');?></option>
                                         <option value="ltr"><?php echo JText::_('LTR');?></option>
                                         <option value="rtl"><?php echo JText::_('RTL');?></option>
@@ -311,8 +292,8 @@ $manager->printCss();
 	<div class="mceActionPanel">
 		<div style="float: right">
     		<input type="button" class="button "id="refresh" value="<?php echo JText::_('Refresh');?>" />
-			<input type="button" id="insert" value="<?php echo JText::_('Insert');?>" onClick="ImageManagerDialog.insert();" />
-			<input type="button" id="cancel" value="<?php echo JText::_('Cancel');?>" onClick="tinyMCEPopup.close();" />
+			<input type="button" id="insert" value="<?php echo JText::_('Insert');?>" onclick="ImageManagerDialog.insert();" />
+			<input type="button" id="cancel" value="<?php echo JText::_('Cancel');?>" onclick="tinyMCEPopup.close();" />
 		</div>
 	</div>
 </body> 

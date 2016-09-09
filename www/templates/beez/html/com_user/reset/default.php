@@ -1,14 +1,13 @@
-<?php // @version $Id: default.php 10822 2008-08-27 17:16:00Z tcp $
+<?php // @version $Id: default.php 11917 2009-05-29 19:37:05Z ian $
 defined('_JEXEC') or die('Restricted access');
 ?>
 <?php if($this->params->get('show_page_title',1)) : ?>
-<h2 class="componentheading<?php echo $this->params->get('pageclass_sfx') ?>">
+<h2 class="componentheading<?php echo $this->escape($this->params->get('pageclass_sfx')) ?>">
 	<?php echo $this->escape($this->params->get('page_title')) ?>
 </h2>
 <?php endif; ?>
-<h1 class="componentheading"><?php echo JText::_('FORGOT_YOUR_PASSWORD'); ?></h1>
 
-<form action="index.php?option=com_user&amp;task=requestreset" method="post" class="josForm form-validate">
+<form action="<?php echo JRoute::_( 'index.php?option=com_user&task=requestreset' ); ?>" method="post" class="josForm form-validate">
 	<p><?php echo JText::_('RESET_PASSWORD_REQUEST_DESCRIPTION'); ?></p>
 
 	<label for="email" class="hasTip" title="<?php echo JText::_('RESET_PASSWORD_EMAIL_TIP_TITLE'); ?>::<?php echo JText::_('RESET_PASSWORD_EMAIL_TIP_TEXT'); ?>"><?php echo JText::_('Email Address'); ?>:</label>

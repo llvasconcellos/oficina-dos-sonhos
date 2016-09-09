@@ -1,6 +1,6 @@
 <?php
 /**
-* @version		$Id: helper.php 10812 2008-08-26 19:36:10Z charlvn $
+* @version		$Id: helper.php 11799 2009-05-06 02:15:50Z ian $
 * @package		Joomla
 * @copyright	Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.
 * @license		GNU/GPL, see LICENSE.php
@@ -218,6 +218,10 @@ class JMenuTree extends JTree
 		$this->_nodeHash[$nid] =& $node;
 		$this->_current =& $this->_nodeHash[$item->parent];
 
+		if ($item->type == 'menulink' && !empty($item->query['Itemid'])) {
+			$node->mid = $item->query['Itemid'];
+		}
+
 		if ($this->_current) {
 			$this->addChild($node, true);
 		} else {
@@ -251,7 +255,8 @@ class JMenuTree extends JTree
 		$depth++;
 
 		// Start the item
-		$this->_buffer .= '<li access="'.$this->_current->access.'" level="'.$depth.'" id="'.$this->_current->id.'">';
+		$rel = (!empty($this->_current->mid)) ? ' rel="'.$this->_current->mid.'"' : '';
+		$this->_buffer .= '<li access="'.$this->_current->access.'" level="'.$depth.'" id="'.$this->_current->id.'"'.$rel.'>';
 
 		// Append item data
 		$this->_buffer .= $this->_current->link;
@@ -281,7 +286,7 @@ class JMenuTree extends JTree
 		{
 			$menu = &JSite::getMenu();
 			if ($newItem = $menu->getItem($item->query['Itemid'])) {
-    $tmp = clone($newItem);
+    			$tmp = clone($newItem);
 				$tmp->name	 = '<span><![CDATA['.$item->name.']]></span>';
 				$tmp->mid	 = $item->id;
 				$tmp->parent = $item->parent;
@@ -295,7 +300,22 @@ class JMenuTree extends JTree
 
 		$iParams = new JParameter($tmp->params);
 		if ($params->get('menu_images') && $iParams->get('menu_image') && $iParams->get('menu_image') != -1) {
-			$image = '<img src="'.JURI::base(true).'/images/stories/'.$iParams->get('menu_image').'" alt="'.$item->alias.'" />';
+			switch ($params->get('menu_images_align', 0)){
+				case 0 : 
+				$imgalign='align="left"';
+				break;
+				
+				case 1 :
+				$imgalign='align="right"';
+				break;
+				
+				default :
+				$imgalign='';
+				break;
+			}
+				
+			
+			$image = '<img src="'.JURI::base(true).'/images/stories/'.$iParams->get('menu_image').'" '.$imgalign.' alt="'.$item->alias.'" />';
 			if($tmp->ionly){
 				 $tmp->name = null;
 			 }

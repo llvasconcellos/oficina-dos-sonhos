@@ -10,6 +10,7 @@ class JConfig {
 	var $sef_rewrite = '0';
 	var $sef_suffix = '0';
 	var $feed_limit = '10';
+	var $feed_email = 'author';
 	var $secret = 'lreGaQ5lkPls2NW0';
 	var $gzip = '0';
 	var $error_reporting = '-1';
@@ -17,15 +18,17 @@ class JConfig {
 	var $log_path = 'C:\\ServidorWEB\\www\\oficinadossonhos\\logs';
 	var $tmp_path = 'C:\\ServidorWEB\\www\\oficinadossonhos\\tmp';
 	var $live_site = '';
-	var $offset = '0';
+	var $force_ssl = '0';
+	var $offset = '-3';
 	var $caching = '0';
 	var $cachetime = '15';
 	var $cache_handler = 'file';
-	var $memcache_settings = array();
+	var $memcache_settings = array(
+		);
 	var $ftp_enable = '0';
-	var $ftp_host = '127.0.0.1';
+	var $ftp_host = 'ftp.devhouse.com.br';
 	var $ftp_port = '21';
-	var $ftp_user = '';
+	var $ftp_user = 'marcia';
 	var $ftp_pass = '';
 	var $ftp_root = '';
 	var $dbtype = 'mysql';
@@ -34,14 +37,14 @@ class JConfig {
 	var $db = 'oficinadossonhos';
 	var $dbprefix = 'jos_';
 	var $mailer = 'mail';
-	var $mailfrom = 'contato@oficinadossonhos.com.br';
+	var $mailfrom = 'secretaria@oficinadossonhos.com.br';
 	var $fromname = 'Oficina dos Sonhos';
 	var $sendmail = '/usr/sbin/sendmail';
 	var $smtpauth = '0';
 	var $smtpuser = '';
 	var $smtppass = '';
 	var $smtphost = 'localhost';
-	var $MetaAuthor = '1';
+	var $MetaAuthor = '0';
 	var $MetaTitle = '1';
 	var $lifetime = '90';
 	var $session_handler = 'database';
@@ -51,4 +54,3 @@ class JConfig {
 	var $MetaKeys = 'Escola, Oficina, Sonhos, evangélicos, cristãos, quadrangular, colégio, primário, Joinville, Santa Catarina';
 	var $offline_message = 'Este site está em manutenção. Por favor, retorne mais tarde.';
 }
-?>

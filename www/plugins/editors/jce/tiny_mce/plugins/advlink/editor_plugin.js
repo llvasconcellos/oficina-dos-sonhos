@@ -12,7 +12,7 @@
 					return;
 
 				ed.windowManager.open({
-					file : ed.getParam('site_url') + 'index.php?option=com_jce&tmpl=component&task=plugin&plugin=advlink&file=advlink',
+					file : ed.getParam('site_url') + 'index.php?option=com_jce&task=plugin&plugin=advlink&file=advlink',
 					width : 500 + ed.getLang('advlink.delta_width', 0),
 					height : 480 + ed.getLang('advlink.delta_height', 0),
 					inline : 1
@@ -40,7 +40,7 @@
 					ed.plugins.contextmenu.onContextMenu.add(function(th, m, e) {
 						if((e.nodeName == 'A' && !ed.dom.getAttrib(e, 'name')) || !ed.selection.isCollapsed()){
 							m.addSeparator();
-							m.add({title : 'advlink.desc', icon : 'link', cmd : 'mceAdvLink', ui : true});
+							m.add({title : 'advlink.desc', icon_src : url + '/img/advlink.gif', cmd : 'mceAdvLink', ui : true});
 							m.add({title : 'advanced.unlink_desc', icon : 'unlink', cmd : 'UnLink'});
 						}
 					});

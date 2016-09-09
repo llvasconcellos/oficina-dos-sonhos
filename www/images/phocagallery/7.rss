@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss xmlns:media="http://search.yahoo.com/mrss" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <atom:icon>http://www.phoca.cz/images/phoca-piclens.png</atom:icon>
+        <item>
+            <title>fotos_diversos_166</title>
+            <link>/images/phocagallery/JGSXNG/thumbs/phoca_thumb_l_fotos_diversos_166.jpg</link>
+            <media:thumbnail url="/images/phocagallery/JGSXNG/thumbs/phoca_thumb_l_fotos_diversos_166.jpg" />
+            <media:content url="/images/phocagallery/JGSXNG/fotos_diversos_166.jpg" />
+            <guid isPermaLink="false">7-phocagallerypiclenscode-/JGSXNG/fotos_diversos_166.jpg</guid>
+        </item>
+        <item>
+            <title>fotos_diversos_167</title>
+            <link>/images/phocagallery/JGSXNG/thumbs/phoca_thumb_l_fotos_diversos_167.jpg</link>
+            <media:thumbnail url="/images/phocagallery/JGSXNG/thumbs/phoca_thumb_l_fotos_diversos_167.jpg" />
+            <media:content url="/images/phocagallery/JGSXNG/fotos_diversos_167.jpg" />
+            <guid isPermaLink="false">7-phocagallerypiclenscode-/JGSXNG/fotos_diversos_167.jpg</guid>
+        </item>
+        <item>
+            <title>fotos_diversos_171</title>
+            <link>/images/phocagallery/JGSXNG/thumbs/phoca_thumb_l_fotos_diversos_171.jpg</link>
+            <media:thumbnail url="/images/phocagallery/JGSXNG/thumbs/phoca_thumb_l_fotos_diversos_171.jpg" />
+            <media:content url="/images/phocagallery/JGSXNG/fotos_diversos_171.jpg" />
+            <guid isPermaLink="false">7-phocagallerypiclenscode-/JGSXNG/fotos_diversos_171.jpg</guid>
+        </item>
+        <item>
+            <title>fotos_diversos_173</title>
+            <link>/images/phocagallery/JGSXNG/thumbs/phoca_thumb_l_fotos_diversos_173.jpg</link>
+            <media:thumbnail url="/images/phocagallery/JGSXNG/thumbs/phoca_thumb_l_fotos_diversos_173.jpg" />
+            <media:content url="/images/phocagallery/JGSXNG/fotos_diversos_173.jpg" />
+            <guid isPermaLink="false">7-phocagallerypiclenscode-/JGSXNG/fotos_diversos_173.jpg</guid>
+        </item>
+    </channel>
+</rss>

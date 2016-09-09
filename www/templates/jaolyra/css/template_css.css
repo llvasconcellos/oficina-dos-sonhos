@@ -445,7 +445,9 @@ div.moduletable-slide{
 	vertical-align:middle;
 }
 
-
+div.module-green a, div.module-orange a{
+	color:#000099;
+}
 div.module-green h3,
 div.module-orange h3,
 div.module-sticky h3,
@@ -1117,11 +1119,13 @@ div.syndicate div {
 }
 
 #ja-mainnavwrap {
-	background: url(../images/logo-top.jpg) no-repeat top left #505050;
+	/*background: url(../images/logo-top.jpg) no-repeat top left #505050;*/
+	background-color:#505050;
 }
 
 #ja-mainnav {
-	padding-left: 330px;
+	/*padding-left: 330px;*/
+	padding-left: 30px;
 	height: 40px;
 }
 

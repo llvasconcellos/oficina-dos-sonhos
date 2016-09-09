@@ -51,6 +51,7 @@ class ConfigViewConfig extends JView
 	
 		// get params definitions
 		$params = new JParameter( $row->params, JApplicationHelper::getPath( 'plg_xml', $row->folder .DS. $row->element ), 'plugin' );
+		$params->addElementPath( JPATH_COMPONENT . DS . 'elements' );
 		$this->assignRef('params', $params);
 		$this->assignRef('client', $client);
 

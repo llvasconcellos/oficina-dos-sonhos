@@ -35,6 +35,9 @@ class GroupsViewGroup extends JView
 		
 		$db		=& JFactory::getDBO();
 		$user 	=& JFactory::getUser();
+		
+		JHTML::_('behavior.tooltip');
+		JHTML::_('behavior.modal');
 
 		$cid 	= JRequest::getVar( 'cid', array(0), '', 'array' );
 		JArrayHelper::toInteger( $cid, array(0) );
@@ -54,6 +57,10 @@ class GroupsViewGroup extends JView
 		}
 		// Load editor
 		$editor =& JPluginHelper::getPlugin('editors', 'jce');
+		
+		// Load Language
+		$lang =& JFactory::getLanguage();
+        $lang->load( 'com_jce', JPATH_SITE );
 		
 		// Get all plugins/commands
 		$query = 'SELECT *'
@@ -116,7 +123,8 @@ class GroupsViewGroup extends JView
 		$db->setQuery( $query );
 		$components = $db->loadObjectList();
 		
-		$options = array();
+		$options 	= array();
+		$options[] 	= JHTML::_('select.option', '', JText::_( 'All Components' ) );
 		foreach( $components as $component ){
 			$options[] = JHTML::_('select.option', $component->option, JText::_( $component->name ) );
 		}
@@ -148,7 +156,7 @@ class GroupsViewGroup extends JView
 		$lists['types'] = JHTML::_('select.genericlist', $options, 'types[]', 'class="inputbox levels" size="8" multiple="multiple"', 'value', 'text', $row->types == '' ? '' : explode( ',', $row->types ) );
 		
 		$options = array();
-		if( $row->id ){
+		if( $row->id && $row->users ){
 			$query = 'SELECT id as value, username as text'
 			. ' FROM #__users'
 			. ' WHERE id IN ('.$row->users.')'
@@ -165,18 +173,14 @@ class GroupsViewGroup extends JView
 		$lists['users'] = JHTML::_('select.genericlist', $options, 'users[]', 'class="inputbox users" size="10" multiple="multiple"', 'value', 'text', '' );
 				
 		// get params definitions
-		$xmlPath 	= JPATH_PLUGINS .DS. 'editors' .DS. 'jce.xml';
- 		
-		$editor_params	= new JParameter( $editor->params, $xmlPath );
-		$params 		= new JParameter( $row->params, $xmlPath );
+		$xml = JPATH_PLUGINS .DS. 'editors' .DS. 'jce.xml';
+
+		$params = new JParameter( $row->params, $xml );
+		
+		$params->addElementPath( JPATH_COMPONENT . DS . 'elements' );
 		
 		$rows = str_replace( ';', ',', $row->rows );
-				
-		$layout['width'] 	= $editor_params->get( 'width', '600' );
-		$layout['height'] 	= $editor_params->get( 'height', '600' );
-		$layout['rows'] 	= intval( $editor_params->get( 'layout_rows', 5 ) );
 		
-		$this->assignRef('layout', 		$layout);			
 		$this->assignRef('lists',		$lists);
 		$this->assignRef('group',		$row);
 		$this->assignRef('params',		$params);

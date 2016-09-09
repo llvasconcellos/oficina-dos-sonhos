@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss xmlns:media="http://search.yahoo.com/mrss" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <atom:icon>http://www.phoca.cz/images/phoca-piclens.png</atom:icon>
+        <item>
+            <title>1</title>
+            <link>/images/phocagallery/RRUSCX/thumbs/phoca_thumb_l_1.jpg</link>
+            <media:thumbnail url="/images/phocagallery/RRUSCX/thumbs/phoca_thumb_l_1.jpg" />
+            <media:content url="/images/phocagallery/RRUSCX/1.jpg" />
+            <guid isPermaLink="false">38-phocagallerypiclenscode-/RRUSCX/1.jpg</guid>
+        </item>
+        <item>
+            <title>2</title>
+            <link>/images/phocagallery/RRUSCX/thumbs/phoca_thumb_l_2.jpg</link>
+            <media:thumbnail url="/images/phocagallery/RRUSCX/thumbs/phoca_thumb_l_2.jpg" />
+            <media:content url="/images/phocagallery/RRUSCX/2.jpg" />
+            <guid isPermaLink="false">38-phocagallerypiclenscode-/RRUSCX/2.jpg</guid>
+        </item>
+        <item>
+            <title>3</title>
+            <link>/images/phocagallery/RRUSCX/thumbs/phoca_thumb_l_3.jpg</link>
+            <media:thumbnail url="/images/phocagallery/RRUSCX/thumbs/phoca_thumb_l_3.jpg" />
+            <media:content url="/images/phocagallery/RRUSCX/3.jpg" />
+            <guid isPermaLink="false">38-phocagallerypiclenscode-/RRUSCX/3.jpg</guid>
+        </item>
+        <item>
+            <title>4</title>
+            <link>/images/phocagallery/RRUSCX/thumbs/phoca_thumb_l_4.jpg</link>
+            <media:thumbnail url="/images/phocagallery/RRUSCX/thumbs/phoca_thumb_l_4.jpg" />
+            <media:content url="/images/phocagallery/RRUSCX/4.jpg" />
+            <guid isPermaLink="false">38-phocagallerypiclenscode-/RRUSCX/4.jpg</guid>
+        </item>
+        <item>
+            <title>5</title>
+            <link>/images/phocagallery/RRUSCX/thumbs/phoca_thumb_l_5.jpg</link>
+            <media:thumbnail url="/images/phocagallery/RRUSCX/thumbs/phoca_thumb_l_5.jpg" />
+            <media:content url="/images/phocagallery/RRUSCX/5.jpg" />
+            <guid isPermaLink="false">38-phocagallerypiclenscode-/RRUSCX/5.jpg</guid>
+        </item>
+        <item>
+            <title>6</title>
+            <link>/images/phocagallery/RRUSCX/thumbs/phoca_thumb_l_6.jpg</link>
+            <media:thumbnail url="/images/phocagallery/RRUSCX/thumbs/phoca_thumb_l_6.jpg" />
+            <media:content url="/images/phocagallery/RRUSCX/6.jpg" />
+            <guid isPermaLink="false">38-phocagallerypiclenscode-/RRUSCX/6.jpg</guid>
+        </item>
+        <item>
+            <title>7</title>
+            <link>/images/phocagallery/RRUSCX/thumbs/phoca_thumb_l_7.jpg</link>
+            <media:thumbnail url="/images/phocagallery/RRUSCX/thumbs/phoca_thumb_l_7.jpg" />
+            <media:content url="/images/phocagallery/RRUSCX/7.jpg" />
+            <guid isPermaLink="false">38-phocagallerypiclenscode-/RRUSCX/7.jpg</guid>
+        </item>
+    </channel>
+</rss>

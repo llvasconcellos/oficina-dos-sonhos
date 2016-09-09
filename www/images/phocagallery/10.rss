@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss xmlns:media="http://search.yahoo.com/mrss" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <atom:icon>http://www.phoca.cz/images/phoca-piclens.png</atom:icon>
+        <item>
+            <title>fotos-diversos-195</title>
+            <link>/images/phocagallery/BBZTKI/thumbs/phoca_thumb_l_fotos-diversos-195.jpg</link>
+            <media:thumbnail url="/images/phocagallery/BBZTKI/thumbs/phoca_thumb_l_fotos-diversos-195.jpg" />
+            <media:content url="/images/phocagallery/BBZTKI/fotos-diversos-195.jpg" />
+            <guid isPermaLink="false">10-phocagallerypiclenscode-/BBZTKI/fotos-diversos-195.jpg</guid>
+        </item>
+        <item>
+            <title>imagem-031</title>
+            <link>/images/phocagallery/BBZTKI/thumbs/phoca_thumb_l_imagem-031.jpg</link>
+            <media:thumbnail url="/images/phocagallery/BBZTKI/thumbs/phoca_thumb_l_imagem-031.jpg" />
+            <media:content url="/images/phocagallery/BBZTKI/imagem-031.jpg" />
+            <guid isPermaLink="false">10-phocagallerypiclenscode-/BBZTKI/imagem-031.jpg</guid>
+        </item>
+    </channel>
+</rss>

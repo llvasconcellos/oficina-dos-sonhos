@@ -1,11 +1,22 @@
+/**
+* $Id: imgmanager.js 26 2009-05-25 10:21:53Z happynoodleboy $
+* @package      JCE
+* @copyright    Copyright (C) 2005 - 2009 Ryan Demmer. All rights reserved.
+* @author		Ryan Demmer
+* @license      GNU/GPL
+* JCE is free software. This version may have been modified pursuant
+* to the GNU General Public License, and as distributed it includes or
+* is derivative of works licensed under the GNU General Public License or
+* other free or open source software licenses.
+*/
 var ImageManagerDialog = {
 	preInit : function() {
 		tinyMCEPopup.requireLangPack();
 	},
 	init : function() {
-		var ed = tinyMCEPopup.editor, n = ed.selection.getNode(), br;
+		var ed = tinyMCEPopup.editor, n = ed.selection.getNode(), t = this, br;
 		tinyMCEPopup.resizeToInnerSize();		
-		// Convert from absolute to relative
+		// Get src an convert to relative
 		var src = ed.documentBaseURI.toRelative(ed.dom.getAttrib(n, 'src'));
 		
 		// Setup Manager plugin
@@ -43,24 +54,20 @@ var ImageManagerDialog = {
 			dom.value('insert', ed.getLang('update'));
 			
 			// Longdesc may contain absolute url too
-			var longdesc = ed.dom.getAttrib(n, 'longdesc');
-			if(longdesc.indexOf(ed.getParam('document_base_url')) != -1){
-				longdesc = ed.documentBaseURI.toRelative(longdesc);
-			}
-			dom.value('longdesc', longdesc)
-			dom.value('onmouseoutsrc', src);
+			dom.value('longdesc', ed.documentBaseURI.toRelative(ed.dom.getAttrib(n, 'longdesc')));
 			
-			if (/^\s*this.src\s*=\s*\'([^\']+)\';?\s*$/.test(ed.dom.getAttrib(n, 'onmouseover'))){
-				var onmouseoversrc 	= ed.dom.getAttrib(n, 'onmouseover').replace(/^\s*this.src\s*=\s*\'([^\']+)\';?\s*$/, '$1')
-				onmouseoversrc 		= ed.documentBaseURI.toRelative(onmouseoversrc);
-				dom.value('onmouseoversrc', onmouseoversrc);
-			}
-
-			if (/^\s*this.src\s*=\s*\'([^\']+)\';?\s*$/.test(ed.dom.getAttrib(n, 'onmouseout'))){
-				var onmouseoutsrc 	= ed.dom.getAttrib(n, 'onmouseout').replace(/^\s*this.src\s*=\s*\'([^\']+)\';?\s*$/, '$1')
-				onmouseoutsrc 		= ed.documentBaseURI.toRelative(onmouseoutsrc);
-				dom.value('onmouseoutsrc', onmouseoutsrc);
-			}
+			// onmouseover / onmouseout
+			dom.value('onmouseoutsrc', src);
+			tinymce.each(['onmouseover', 'onmouseout'], function(o){
+				v = ed.dom.getAttrib(n, o);
+				if(/^\s*this.src\s*=\s*\'([^\']+)\';?\s*$/.test(v)){
+					v = v.replace(/^\s*this.src\s*=\s*\'([^\']+)\';?\s*$/, '$1');
+					v = ed.documentBaseURI.toRelative(v);
+					dom.value(o + 'src', v);
+				}
+				dom.check('onmousemovecheck', v !== '');
+				dom.disable(o + 'src', v === '');
+			});
 			
 			br = n.nextSibling;
 			if(br && br.nodeName == 'BR' && ed.dom.getStyle(br, 'clear')){
@@ -71,18 +78,10 @@ var ImageManagerDialog = {
 			this.setDefaults();	
 		}
 		dom.html('border_color_pickcontainer', TinyMCE_Utils.getColorPickerHTML('border_color'));
-	
+		TinyMCE_Utils.updateColor('border_color');
 		// Setup browse button
 		dom.html('longdesccontainer', TinyMCE_Utils.getBrowserHTML('longdescbrowser','longdesc','file','imgmanager'));
 	
-		// Check swap image if valid data
-		if (dom.value('onmouseoversrc') && dom.value('onmouseoutsrc')){
-			dom.check('onmousemovecheck', true);
-			this.setSwapImage();
-		}else{
-			dom.check('onmousemovecheck', false);
-			this.setSwapImage();
-		}
 		// Setup border
 		this.setBorder();
 		// Setup margins
@@ -100,7 +99,7 @@ var ImageManagerDialog = {
 		
 		AutoValidator.validate(document);
 		if(dom.value('src') === ''){
-			new Alert(tinyMCEPopup.getLang('imgmanager_dlg.no_src', 'An URL is required. Please select an image or enter an URL'));
+			new Alert(tinyMCEPopup.getLang('imgmanager_dlg.no_src', 'Please enter a url for the image'));
 			return false;		
 		}
 		if(dom.value('alt') === ''){
@@ -118,7 +117,7 @@ var ImageManagerDialog = {
 		}
 	},
 	insertAndClose : function() {
-		var ed = tinyMCEPopup.editor, v, args = {}, el, br = '';
+		var ed = tinyMCEPopup.editor, t = this, v, args = {}, el, br = '';
 		
 		this.updateStyles();
 
@@ -142,9 +141,14 @@ var ImageManagerDialog = {
 				align : ''
 			};
 		}
+		var src	= dom.value('src');
+		// Add http
+		if(/^\s*www./i.test(src)){
+			src = 'http://' + src;	
+		}
 
 		tinymce.extend(args, {
-			src : dom.value('src'),
+			src : src,
 			width : dom.value('width'),
 			height : dom.value('height'),
 			alt : dom.value('alt'),
@@ -161,19 +165,15 @@ var ImageManagerDialog = {
 		args.onmouseover = args.onmouseout = '';
 
 		if (dom.ischecked('onmousemovecheck')){
-			var onmouseoversrc 	= dom.value('onmouseoversrc');
-			var onmouseoutsrc 	= dom.value('onmouseoutsrc');
-			
-			if(!ed.getParam('relative_urls')){
-				onmouseoversrc 	= new tinymce.util.URI(ed.getParam('document_base_url')).toAbsolute(onmouseoversrc);	
-				onmouseoutsrc 	= new tinymce.util.URI(ed.getParam('document_base_url')).toAbsolute(onmouseoutsrc);	
-			}			
-			if (dom.value('onmouseoversrc')){
-				args.onmouseover = "this.src='" + onmouseoversrc + "';";
-			}
-			if (dom.value('onmouseoutsrc')){
-				args.onmouseout = "this.src='" + onmouseoutsrc + "';";
-			}
+			tinymce.each(['onmouseover', 'onmouseout'], function(o){
+				v = dom.value(o + 'src');					
+				if(!ed.getParam('relative_urls')){
+					v 	= new tinymce.util.URI(ed.getParam('document_base_url')).toAbsolute(v);
+				}
+				if(v){
+					args[o] = "this.src='" + v + "';";
+				}
+			});
 		}
 
 		el = ed.selection.getNode();
@@ -216,7 +216,7 @@ var ImageManagerDialog = {
 		switch (at) {
 			case 'width':
 			case 'height':
-				return ed.dom.getAttrib(e, at) || ed.dom.getStyle(n, at) || '';
+				return ed.dom.getAttrib(e, at) || ed.dom.getStyle(e, at) || '';
 				break;	
 			case 'align':
 				if(v = ed.dom.getAttrib(e, 'align')){
@@ -406,6 +406,7 @@ var ImageManager = Manager.extend({
 		var name 	= string.basename(title);		
 		var url		= string.path(this.getDir(), name);
 		var src 	= string.path(this.getParam('base'), url);
+		src			= src.charAt(0) == '/' ? src.substring(1) : src;
 			
 		if(dom.hasClass('swap_panel', 'current') && dom.ischecked('onmousemovecheck') ){
 			if(dom.value('onmouseoutsrc') == ''){

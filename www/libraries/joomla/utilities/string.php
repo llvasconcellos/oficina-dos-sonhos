@@ -1,6 +1,6 @@
 <?php
 /**
-* @version		$Id: string.php 10707 2008-08-21 09:52:47Z eddieajau $
+* @version		$Id: string.php 11550 2009-01-30 00:32:51Z kdevine $
 * @package		Joomla.Framework
 * @subpackage	Utilities
 * @copyright	Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.
@@ -285,7 +285,7 @@ class JString
 	*/
 	function strspn($str, $mask, $start = NULL, $length = NULL)
 	{
-		jimport('phputf8.native.utf8_strspn');
+		jimport('phputf8.strspn');
 		if ( $start === FALSE && $length === FALSE ) {
 			return utf8_strspn($str, $mask);
 		} else if ( $length === FALSE ) {
@@ -359,7 +359,7 @@ class JString
 	{
 		jimport('phputf8.trim');
 		if ( $charlist === FALSE ) {
-			return utf8_rltrim( $str );
+			return utf8_rtrim($str);
 		} else {
 			return utf8_rtrim( $str, $charlist );
 		}

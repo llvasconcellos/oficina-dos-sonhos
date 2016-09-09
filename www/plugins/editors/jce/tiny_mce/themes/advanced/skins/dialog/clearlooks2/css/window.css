@@ -41,7 +41,7 @@
 
 /* Actions */
 .clearlooks2 a {width:29px; height:16px; top:3px;}
-.clearlooks2 .mceClose {right:6px; background:url(img/buttons.gif) -87px 0}
+.clearlooks2 .mceClose {right:6px; background:url(../img/buttons.gif) -87px 0}
 .clearlooks2 .mceMin {display:none; right:68px; background:url(../img/buttons.gif) 0 0}
 .clearlooks2 .mceMed {display:none; right:37px; background:url(../img/buttons.gif) -29px 0}
 .clearlooks2 .mceMax {display:none; right:37px; background:url(../img/buttons.gif) -58px 0}
@@ -86,7 +86,7 @@
 .clearlooks2 .mceConfirm .mceCancel {left:50%; top:auto}
 .clearlooks2 .mceConfirm .mceIcon {background:url(../img/confirm.png)}
 
-.clearlooks2 .mceAlert .mceMiddle span div, .clearlooks2 .mceConfirm .mceMiddle span div {font-size: 1.1em;width:inherit;}
+.clearlooks2 .mceAlert .mceMiddle span div, .clearlooks2 .mceConfirm .mceMiddle span div {font-size: 1.1em;width:100%;}
 
 .clearlooks2 .mcePrompt .mceMiddle, .clearlooks2 .mceDialog .mceMiddle {background:#fff}
 .clearlooks2 .mcePrompt .mceOk {left:50%; top:auto; margin-left: -90px}

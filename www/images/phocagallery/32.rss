@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss xmlns:media="http://search.yahoo.com/mrss" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <atom:icon>http://www.phoca.cz/images/phoca-piclens.png</atom:icon>
+        <item>
+            <title>imagem_002</title>
+            <link>/images/phocagallery/SQMMUW/thumbs/phoca_thumb_l_imagem_002.jpg</link>
+            <media:thumbnail url="/images/phocagallery/SQMMUW/thumbs/phoca_thumb_l_imagem_002.jpg" />
+            <media:content url="/images/phocagallery/SQMMUW/imagem_002.jpg" />
+            <guid isPermaLink="false">32-phocagallerypiclenscode-/SQMMUW/imagem_002.jpg</guid>
+        </item>
+        <item>
+            <title>imagem_003</title>
+            <link>/images/phocagallery/SQMMUW/thumbs/phoca_thumb_l_imagem_003.jpg</link>
+            <media:thumbnail url="/images/phocagallery/SQMMUW/thumbs/phoca_thumb_l_imagem_003.jpg" />
+            <media:content url="/images/phocagallery/SQMMUW/imagem_003.jpg" />
+            <guid isPermaLink="false">32-phocagallerypiclenscode-/SQMMUW/imagem_003.jpg</guid>
+        </item>
+        <item>
+            <title>imagem_005</title>
+            <link>/images/phocagallery/SQMMUW/thumbs/phoca_thumb_l_imagem_005.jpg</link>
+            <media:thumbnail url="/images/phocagallery/SQMMUW/thumbs/phoca_thumb_l_imagem_005.jpg" />
+            <media:content url="/images/phocagallery/SQMMUW/imagem_005.jpg" />
+            <guid isPermaLink="false">32-phocagallerypiclenscode-/SQMMUW/imagem_005.jpg</guid>
+        </item>
+        <item>
+            <title>imagem_008</title>
+            <link>/images/phocagallery/SQMMUW/thumbs/phoca_thumb_l_imagem_008.jpg</link>
+            <media:thumbnail url="/images/phocagallery/SQMMUW/thumbs/phoca_thumb_l_imagem_008.jpg" />
+            <media:content url="/images/phocagallery/SQMMUW/imagem_008.jpg" />
+            <guid isPermaLink="false">32-phocagallerypiclenscode-/SQMMUW/imagem_008.jpg</guid>
+        </item>
+    </channel>
+</rss>

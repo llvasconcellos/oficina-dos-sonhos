@@ -143,6 +143,7 @@ text-decoration: none;
 	border: 1px solid #D4D5AA;
 	padding: 5px;
 	max-width: 300px;
+	z-index:1000;
 }
 
 .tool-title {

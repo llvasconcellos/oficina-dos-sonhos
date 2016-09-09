@@ -24,7 +24,7 @@ include_once (dirname(__FILE__).DS.'ja_vars.php');
 <link href="<?php echo $tmpTools->templateurl();?>/css/template_css.css" rel="stylesheet" type="text/css" />
 
 <?php if ($ja_iconmenu) { ?>
-<link href="<?php echo $tmpTools->templateurl();?>/ja_iconmenu/ja-iconmenu.css" rel="stylesheet" type="text/css" />
+<!--<link href="<?php echo $tmpTools->templateurl();?>/ja_iconmenu/ja-iconmenu.css" rel="stylesheet" type="text/css" />-->
 <?php } ?>
 
 <script language="javascript" type="text/javascript" src="<?php echo $tmpTools->templateurl();?>/scripts/ja.script.js"></script>
@@ -52,10 +52,32 @@ document.write ('<style type="text\/css">.ja-tab-content{display: none;}\n#ja-hp
 </script>
 
 <link href="<?php echo $tmpTools->templateurl();?>/css/colors/<?php echo $tmpTools->getParam(JA_TOOL_COLOR); ?>.css" rel="stylesheet" type="text/css" />
+<link rel="shortcut icon" href="images/favicon.ico" />
 
 </head>
+<?
+$dir=opendir("/var/www/vhosts/devhouse.com.br/httpdocs/images/backgrounds/");
 
-<body id="bd" class="<?php echo $tmpTools->getParam(JA_TOOL_SCREEN)." fs".$tmpTools->getParam(JA_TOOL_FONT);?>">
+$i=0;
+while($imgfile=readdir($dir))
+{
+     if ($imgfile != "." && $imgfile!="..")
+         {
+        $imgarray[$i]=$imgfile;
+        $i++;
+        }
+}
+
+closedir($dir);
+
+$rand=rand(0,count($imgarray)-1);
+
+    if($rand >= 0)
+    {
+    $fundo = $imgarray[$rand];
+    }
+?>
+<body id="bd" class="<?php echo $tmpTools->getParam(JA_TOOL_SCREEN)." fs".$tmpTools->getParam(JA_TOOL_FONT);?>" style="background-image:url(/images/backgrounds/<?=$fundo?>);background-size: 100%;background-position:center;background-repeat:no-repeat;background-attachment:fixed">
 
 <ul class="accessibility">
 	<li><a href="<?php echo $tmpTools->getCurrentURL();?>#ja-content" title="Skip to content">Skip to content</a></li>
@@ -63,11 +85,28 @@ document.write ('<style type="text\/css">.ja-tab-content{display: none;}\n#ja-hp
 	<li><a href="<?php echo $tmpTools->getCurrentURL();?>#ja-col2" title="">Skip to 2nd column</a></li>
 </ul>
 
-<div id="ja-wrapper">
+<div id="ja-wrapper" style="border-right:solid 3px #FFFFFF;border-left:solid 3px #FFFFFF;">
 <a name="Top" id="Top"></a>
 
+<!-- BEGIN: HEADER -->
+<div id="ja-headerwrap" style="margin-bottom:6px;">
+	<div id="ja-header" class="clearfix">
+		<div style="width:438px;height:136px;float:left;margin:6px;">
+			<object data="images/stories/swfs/logo.swf" type="application/x-shockwave-flash" height="136" width="438">
+				<param name="src" value="images/stories/swfs/logo.swf" />
+				<param name="wmode" value="transparent" />
+				<param name="base" value="/" />
+				<param name="name" value="logo.swf" />
+			</object>
+		</div>
+		<img align="right" src="images/aecep.jpg" hspace="10" vspace="10" />
+		<img align="right" src="images/positivo.gif" hspace="10" vspace="10" />
+	</div>
+</div>
+
+<!-- END: HEADER -->
 <!-- BEGIN: MAIN NAVIGATION -->
-<div id="ja-mainnavwrap" class="clearfix">
+<div id="ja-mainnavwrap" class="clearfix" style="margin-bottom:4px;">
 
   <div id="ja-mainnav">
 		<?php
@@ -95,38 +134,11 @@ document.write ('<style type="text\/css">.ja-tab-content{display: none;}\n#ja-hp
 </div>
 <!-- END: MAIN NAVIGATION -->
 
-<!-- BEGIN: HEADER -->
-<div id="ja-headerwrap">
-	<div id="ja-header" class="clearfix">
-
-		<h1>
-			<a href="index.php">
-				<?php echo $tmpTools->sitename();?>
-			</a>
-		</h1>
-
-		<?php if ($tmpTools->getParam(JA_TOOL_ICONMENU)) { ?>
-		<div id="ja-topnav"><div class="w1"><div class="w2"><div class="w3 clearfix">
-			<?php 
-			//include(dirname(__FILE__).DS."ja_iconmenu.php");
-				$jamenuicon->genMenu(0,0,0);
-			?>
-		</div></div></div></div>
-		<?php } ?>
-
-	</div>
-</div>
-<div class="clr">&nbsp;</div>
-<!-- END: HEADER -->
-
-
-<?php
-  $spotlight_left = ($this->countModules('user1') || $this->countModules('user2') || $this->countModules('user5'));
- 
-  if ($spotlight_left && $this->countModules('user6')) {
+<?php 
+  if ($this->countModules('user1')) {
 ?>
 <!-- BEGIN: TOPSPOTLIGHT -->
-<div id="ja-topslwrap" class="clearfix">
+<div id="ja-topslwrap" class="clearfix" style="margin-bottom:-6px;">
   <div id="ja-topsl">
 
     <?php
@@ -142,81 +154,27 @@ document.write ('<style type="text\/css">.ja-tab-content{display: none;}\n#ja-hp
 
         <div id="ja-topsl-left">
         <div class="wrap1"><div class="wrap2"><div class="wrap3 clearfix">
-          <?php if( $this->countModules('user1') ) {?>
-      	  <div class="ja-box<?php echo $topsl['user1']['class']; ?>" style="width: <?php echo $topsl['user1']['width']; ?>;">
-      	  	<jdoc:include type="modules" name="user1" style="xhtml" />	
-      	  </div>
-      	  <?php } ?>
-      
-      	  <?php if( $this->countModules('user2') ) {?>
-      	  <div class="ja-box<?php echo $topsl['user2']['class']; ?>" style="width: <?php echo $topsl['user2']['width']; ?>;">
-      	    <jdoc:include type="modules" name="user2" style="xhtml" />	
-      	  </div>
-      	  <?php } ?>
-      
-      	  <?php if( $this->countModules('user5') ) {?>
-      	  <div class="ja-box<?php echo $topsl['user5']['class']; ?>" style="width: <?php echo $topsl['user5']['width']; ?>;">
-      	    <jdoc:include type="modules" name="user5" style="xhtml" />	
-      	  </div>
-      	  <?php } ?>
-		  
-		  
-		  
-		  
-		  
-		  
-		  
-		  
-		  
-		  
-		  
-		  
-		  
-		  
-		  
-		  
-		  
-		  <br />
-			<script type="text/javascript" src="swfobject.js"></script>
-			<div id="monoSlideshow" style="width: 750px; height:250px; text-align:center; vertical-align:middle;"></div>
-			<script type="text/javascript">
-				var so = new SWFObject("monoslideshow.swf", "SOmonoSlideshow", "750", "250", "7", "#EBF5FF");
-				so.addVariable("showLogo", "false");
-				so.addVariable("dataFile", "slideshow.xml.php");
-				so.addParam("wmode", "transparent");
-				so.write("monoSlideshow");
-			</script>
-			<br />
-		  
-		  
-		  
-		  
-		  
-		  
-		  
-		  
-		  
-		  
-		  
-		  
+			<?php if( $this->countModules('user1') ) {?>
+				<jdoc:include type="modules" name="user1" style="xhtml" />
+			<?php } ?>
       	</div></div></div>
-        </div>  
+        </div>
       </div>
     </div>
     <?php } ?>
     
-    <?php if ( $this->countModules('user6') ) { ?>
+
     <div id="ja-topsl-right">
       <div class="innerpad">
 	      <jdoc:include type="modules" name="user6" style="rounded" />	
       </div>
     </div> 
-    <?php } ?>
     
   </div>
 </div>
 <!-- END: TOPSPOTLIGHT -->
 <?php } ?>
+ <jdoc:include type="modules" name="newslight" style="xhtml" />	
 
 <div id="ja-containerwrap">
 	<div id="ja-container" class="clearfix">
@@ -285,7 +243,7 @@ document.write ('<style type="text\/css">.ja-tab-content{display: none;}\n#ja-hp
 			<?php include_once( dirname(__FILE__).DS.'footer.php' ); ?>
 		</small>
 		
-	 <div id="ja-cert">
+	 <!--<div id="ja-cert">
 	 <a href="<?php echo $tmpTools->baseurl(); ?>/index.php?option=com_rss&amp;feed=RSS2.0&amp;no_html=1" target="_blank" title="RSS 2.0" style="text-decoration: none;">
 		<img src="<?php echo $tmpTools->templateurl();?>/images/<?php echo $tmpTools->getParam(JA_TOOL_COLOR); ?>/but-rss.gif" alt="RSS 2.0" />
 	 </a>
@@ -297,13 +255,14 @@ document.write ('<style type="text\/css">.ja-tab-content{display: none;}\n#ja-hp
 		<a href="http://validator.w3.org/check/referer" target="_blank" title="Our site is valid XHTML 1.0 Transitional" style="text-decoration: none;">
 			<img src="<?php echo $tmpTools->templateurl();?>/images/<?php echo $tmpTools->getParam(JA_TOOL_COLOR); ?>/but-xhtml10.gif" alt="Our site is valid XHTML 1.0 Transitional" />
 		</a>
-	</div><div class="clr"></div>
+	</div>--><div class="clr"></div>
 
 	</div> 
 </div>
 <!-- END: FOOTER -->
 <br />
 </div>
+
 
 <!-- BEGIN: USER TOOLS -->
 <script type="text/javascript">

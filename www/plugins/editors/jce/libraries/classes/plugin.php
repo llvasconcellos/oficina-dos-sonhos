@@ -1,16 +1,20 @@
 <?php
 /**
- * @version		$Id: jce.php 2007-08-04 09:50:57Z happy_noodle_boy $
- * @package		JCE
- * @copyright	Copyright (C) 2005 - 2007 Ryan Demmer. All rights reserved.
- * @license		GNU/GPL, see LICENSE.php
- * JCE is free software. This version may have been modified pursuant
- * to the GNU General Public License, and as distributed it includes or
- * is derivative of works licensed under the GNU General Public License or
- * other free or open source software licenses.
- */
+* @version		$Id: plugin.php 46 2009-05-26 16:59:42Z happynoodleboy $
+* @package      JCE
+* @copyright    Copyright (C) 2005 - 2009 Ryan Demmer. All rights reserved.
+* @author		Ryan Demmer
+* @license      GNU/GPL
+* JCE is free software. This version may have been modified pursuant
+* to the GNU General Public License, and as distributed it includes or
+* is derivative of works licensed under the GNU General Public License or
+* other free or open source software licenses.
+*/
 
-defined( '_JEXEC' ) or die( 'Restricted access' );
+defined( '_JEXEC') or die( 'Restricted access');
+
+require_once( JCE_LIBRARIES .DS. 'classes' .DS. 'editor.php');
+require_once( JCE_LIBRARIES .DS. 'classes' .DS. 'utils.php');
 
 /**
  * JCE class
@@ -20,63 +24,69 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
  * @since	1.5
  */
 
-class JContentEditorPlugin extends JContentEditor {
+class JContentEditorPlugin extends JContentEditor 
+{
 	/*
 	*  @var array
 	*/
-	var $_plugin =null;
+	var $plugin = null;
 	/*
 	*  @var varchar
 	*/
-	var $_url = array();
+	var $url = array();
 	/*
 	*  @var varchar
 	*/
-	var $_request = null;
+	var $request = null;
 	/*
 	*  @var array
 	*/
-	var $_scripts = array();
+	var $scripts = array();
 	/*
 	*  @var array
 	*/
-	var $_css = array();
+	var $styles = array();
 	/*
 	*  @var array
 	*/
-	var $_head = array();
+	var $head = array();
 	/*
 	*  @var array
 	*/
-	var $_alerts = array();
+	var $alerts = array();
 	/**
 	* Constructor activating the default information of the class
 	*
 	* @access	protected
 	*/
-	function __construct(){
+	function __construct()
+	{
 		// Call parent
 		parent::__construct();
 		
-		$plugin = JRequest::getVar( 'plugin', '' );
+		$db =& JFactory::getDBO();
 		
-		if( $plugin ){
+		$plugin = JRequest::getVar('plugin');
+		
+		if ($plugin) {
 			$query = "SELECT id"
 			. " FROM #__jce_plugins"
 			. " WHERE name = '". $plugin ."'"
 			;
-			$id = $this->_query( $query, 'loadResult');
 			
-			$this->_plugin = new stdClass();
-				
-			$this->_plugin->name 	= $plugin;
-			$this->_plugin->id		= $id;
-			$this->_plugin->params	= $this->getPluginParams();			
-			$this->_plugin->type	= JRequest::getVar( 'type', 'standard' );
+			$db->setQuery($query);
+			$id = $db->loadResult();
 			
-			define( 'JCE_PLUGIN', JCE_PLUGINS . DS . $plugin );
-		}else{
-			die('Restricted Access');
+			$this->plugin = new JObject();
+			
+			$this->plugin->name 	= $plugin;
+			$this->plugin->id 		= $id;
+			$this->plugin->params 	= $this->getPluginParams();
+			$this->plugin->type 	= JRequest::getVar('type', 'standard');	
+			
+			define('JCE_PLUGIN', JCE_PLUGINS . DS . $plugin);
+		} else {
+			die(JError::raiseError(403, JText::_('Access Forbidden')));
 		}
 	}
 	/**
@@ -89,21 +99,27 @@ class JContentEditorPlugin extends JContentEditor {
 	 * @return	JCE  The editor object.
 	 * @since	1.5
 	 */
-	function &getInstance(){
+	function &getInstance() {
 		static $instance;
 
-		if ( !is_object( $instance ) ){
+		if (!is_object($instance)) {
 			$instance = new JContentEditorPlugin();
 		}
 		return $instance;
 	}
-	function getPlugin( $key='' ){
-		if( $key ){
-			if( isset( $this->_plugin->$key ) ){
-				return $this->_plugin->$key;
+	/**
+	 * Get a plugin by key or current plugin
+	 * @return object Plugin
+	 * @param string $key[optional]
+	 */
+	function getPlugin($key = '') 
+	{
+		if ($key) {
+			if (isset($this->plugin->$key)) {
+				return $this->plugin->$key;
 			}
 		}
-		return $this->_plugin;
+		return $this->plugin;
 	}
 	/**
 	 * Return the plugin parameter object
@@ -112,16 +128,25 @@ class JContentEditorPlugin extends JContentEditor {
 	 * @param string	The plugin
 	 * @return 			The parameter object
 	*/
-	function getPluginParams(){				
-		if( isset( $this->_plugin->params ) ){
-			return $this->_plugin->params;
+	function getPluginParams() 
+	{				
+		if (isset($this->plugin->params)) {
+			return $this->plugin->params;
 		}
-		$params = $this->filterParams( $this->_group->params, $this->_plugin->name );				
-		return new JParameter( $params );
+		$params = $this->filterParams($this->group->params, $this->plugin->name);				
+		return new JParameter($params);
 	}
-	function getPluginParam( $key, $default='' ){
+	/**
+	 * Get a plugin parameter
+	 * 
+	 * @return string Parameter
+	 * @param string $key Parameter key
+	 * @param string $default[optional] Default value
+	 */
+	function getPluginParam($key, $default = '') 
+	{
 		$params = $this->getPluginParams();
-		return $this->cleanParam( $params->get( $key, $default ) );
+		return $this->cleanParam($params->get($key, $default));
 	}
 	/**
 	 * Get a group parameter from plugin and/or editor parameters
@@ -131,32 +156,45 @@ class JContentEditorPlugin extends JContentEditor {
 	 * @param string	The default value
 	 * @return 			string
 	*/
-	function getSharedParam( $param, $default='' ){
+	function getSharedParam($param, $default = '')
+	{
 		$e_params 	= $this->getEditorParams();
 		$p_params 	= $this->getPluginParams();
 		
-		$ret = $p_params->get( $this->_plugin->name . '_' . $param );
-		if( !$ret ){
-			$ret = $e_params->get( 'editor_' . $param, $default );
+		$ret = $p_params->get($this->plugin->name . '_' . $param, '');
+
+		if ($ret == '') {			
+			$ret = $e_params->get('editor_' . $param, $default);
 		}
-		return $this->cleanParam( $ret );
+		return $this->cleanParam($ret);
 	}
 	/**
-	 * Load a plugin language file
-	 *
-	 * @access public
-	*/
-	function loadPluginLanguage(){
-		$this->loadLanguage( 'com_jce_'. trim( $this->_plugin->name ) );
+	 * Load current plugin language file
+	 */
+	function loadPluginLanguage()
+	{
+		$this->loadLanguage('com_jce_'. trim($this->plugin->name));
 	}
 	/**
 	 * Load the language files for the current plugin
-	 *
-	 * @access public
 	*/
-	function loadLanguages(){
-		$this->loadLanguage( 'com_jce' );	
+	function loadLanguages() 
+	{
+		$this->loadLanguage('com_jce');	
 		$this->loadPluginLanguage();
+	}
+	/**
+	 * Return the curernt language code. Override of JContentEditor::getLanguageDir
+	 *
+	 * @return language code
+	*/
+	function getLanguageDir() 
+	{
+		/* $language =& JFactory::getLanguage();
+		return $language->isRTL() ? 'rtl' : 'ltr';
+		We can only support ltr at them moment...!
+		*/
+		return 'ltr';
 	}
 	/**
 	 * Named wrapper to check access to a feature
@@ -166,8 +204,9 @@ class JContentEditorPlugin extends JContentEditor {
 	 * @param string	The defalt value
 	 * @return 			string
 	*/
-	function checkAccess( $option, $default='' ){
-		return $this->getSharedParam( $option, $default );
+	function checkAccess($option, $default = '') 
+	{
+		return $this->getSharedParam($option, $default);
 	}
 	/**
 	 * Check the user is in an authorized group
@@ -176,12 +215,13 @@ class JContentEditorPlugin extends JContentEditor {
 	 * @access 			public
 	 * @return 			boolean
 	*/
-	function checkPlugin(){
-		if( $this->isSuperAdmin() ){
+	function checkPlugin() 
+	{
+		if ($this->isSuperAdmin()) {
 			return true;
 		}
-		if( $this->checkUser() ){	
-			return in_array( $this->_plugin->id, explode( ',', $this->_group->plugins ) );
+		if ($this->checkUser()) {	
+			return in_array($this->plugin->id, explode(',', $this->group->plugins));
 		}
 		return false;
 	}
@@ -192,19 +232,20 @@ class JContentEditorPlugin extends JContentEditor {
 	 * @return	Array
 	 * @since	1.5
 	 */
-	function getHelpTopics(){
+	function getHelpTopics() 
+	{
 		// Load plugin xml file
 		$result = '';
-		if( $this->_plugin->type == 'manager' ){
+		if ($this->plugin->type == 'manager') {
 			$file = JCE_LIBRARIES .DS. "xml" .DS. "help" .DS. "manager.xml";			
 			$result .= '<dl><dt><span>'. JText::_('MANAGER HELP') .'<span></dt>';		
-			if( file_exists( $file ) ){				
+			if (file_exists($file)) {				
 				$xml =& JFactory::getXMLParser('Simple');
-				if( $xml->loadFile( $file ) ){
+				if ($xml->loadFile($file)) {
 					$root =& $xml->document;									
-					if( $root ){
-						foreach( $root->children() as $topic ){
-							$result .= '<dd id="'. $topic->attributes('key') .'"><a href="javascript:;" onclick="helpDialog.loadFrame(this.parentNode.id)">'. JText::_( $topic->attributes('title') ) .'</a></dd>';
+					if ($root) {
+						foreach ($root->children() as $topic) {
+							$result .= '<dd id="'. $topic->attributes('key') .'"><a href="javascript:;" onclick="helpDialog.loadFrame(this.parentNode.id)">'. JText::_($topic->attributes('title')) .'</a></dd>';
 						}
 					}
 				}
@@ -212,19 +253,19 @@ class JContentEditorPlugin extends JContentEditor {
 			$result .= '</dl>';
 		}
 		
-		$file = JCE_PLUGIN .DS. $this->_plugin->name. ".xml";			
+		$file = JCE_PLUGIN .DS. $this->plugin->name. ".xml";			
 		$result .= '<dl><dt><span>'. JText::_('HELP') .'<span></dt>';
 		
-		if( file_exists( $file ) ){
+		if (file_exists($file)) {
 			$xml =& JFactory::getXMLParser('Simple');
 			
-			if( $xml->loadFile( $file ) ){
+			if ($xml->loadFile($file)) {
 				$root 	=& $xml->document;				
 				$topics = $root->getElementByPath('help');
 				
-				if( $topics ){
-					foreach( $topics->children() as $topic ){
-						$result .= '<dd id="'. $topic->attributes('key') .'"><a href="javascript:;" onclick="helpDialog.loadFrame(this.parentNode.id)">'. trim( JText::_( $topic->attributes('title') ) ) .'</a></dd>';
+				if ($topics) {
+					foreach ($topics->children() as $topic) {
+						$result .= '<dd id="'. $topic->attributes('key') .'"><a href="javascript:;" onclick="helpDialog.loadFrame(this.parentNode.id)">'. trim(JText::_($topic->attributes('title'))) .'</a></dd>';
 					}
 				}
 			}
@@ -232,15 +273,28 @@ class JContentEditorPlugin extends JContentEditor {
 		$result .= '</dl>';
 		return $result;
 	}
-	function addAlert( $class='info', $title='', $text='' ){
-		$this->_alerts[] = array(
+	/**
+	 * Add an alert array to the stack 
+	 * 
+	 * @param object $class[optional] Alert classname
+	 * @param object $title[optional] Alert title
+	 * @param object $text[optional]  Alert text
+	 */
+	function addAlert($class = 'info', $title = '', $text = '') 
+	{
+		$this->alerts[] = array(
 			'class' => $class,
 			'title'	=> $title,
 			'text'	=> $text
 		);
 	}
-	function getAlerts(){
-		return $this->json_encode( $this->_alerts );
+	/**
+	 * Get current alerts
+	 * @return object Alerts as object
+	 */
+	function getAlerts() 
+	{
+		return $this->json_encode($this->alerts);
 	}
 	/**
 	 * Returns a JCE resource url
@@ -251,17 +305,17 @@ class JContentEditorPlugin extends JContentEditor {
 	 * @return	full url
 	 * @since	1.5
 	 */
-	function url( $path, $relative=false ){
-		// Use a relative path
-		$site = ( !$relative ) ? $this->_site_url : '../';
+	function url($path) 
+	{
 		// Check if value is already stored
-		if( !array_key_exists( $path, $this->_url ) ){
-			switch( $path ){
+		if (!array_key_exists($path, $this->url)) {
+			switch($path) {
 				// JCE root folder
 				case 'jce':
 					$pre = 'plugins/editors/jce';
 					break;
 				// JCE libraries resource folder
+				default:
 				case 'libraries':
 					$pre = 'plugins/editors/jce/libraries';
 					break;
@@ -275,21 +329,24 @@ class JContentEditorPlugin extends JContentEditor {
 					break;
 				// JCE current plugin folder
 				case 'plugins':
-					$pre = 'plugins/editors/jce/tiny_mce/plugins/' .$this->_plugin->name;
+					$pre = 'plugins/editors/jce/tiny_mce/plugins/' .$this->plugin->name;
 					break;
 				// Joomla! media folder
 				case 'extensions':
-					$pre = 'plugins/editors/jce/tiny_mce/plugins/' .$this->_plugin->name. '/extensions';
+					$pre = 'plugins/editors/jce/tiny_mce/plugins/' .$this->plugin->name. '/extensions';
 					break;
 				// Joomla! folders
 				case 'joomla':
 					$pre = '';
 					break;
+				case 'media':
+					$pre = 'media/system';
+					break;
 			}
 			// Store url
-			$this->_url[$path] =  $site . $pre;	
+			$this->url[$path] =  JURI::root(true) .'/'. $pre;	
 		}	
-		return $this->_url[$path];
+		return $this->url[$path];
 	}
 	/**
 	 * Upload form action url
@@ -299,9 +356,11 @@ class JContentEditorPlugin extends JContentEditor {
 	 * @return	Joomla! component url
 	 * @since	1.5
 	 */
-	function getFormAction(){		
-		$file = JRequest::getVar( 'file', $this->_plugin->name );
-		return JURI::base() .'index.php?option=com_jce&task=plugin&plugin=' . $this->_plugin->name . '&file=' . $file . '&method=form';  
+	function getFormAction() 
+	{		
+		$session 	=& JFactory::getSession();
+		$file 		= JRequest::getVar('file', $this->plugin->name);
+		return JURI::base(true) .'/index.php?option=com_jce&amp;task=plugin&amp;plugin=' . $this->plugin->name . '&amp;file=' . $file . '&amp;method=form&amp;' . $session->getName() .'='. $session->getId(); 
 	}
 	/**
 	 * Convert a url to path
@@ -311,16 +370,19 @@ class JContentEditorPlugin extends JContentEditor {
 	 * @return	Full path to file
 	 * @since	1.5
 	 */
-	function urlToPath( $url ){
+	function urlToPath($url) 
+	{
 		jimport('joomla.filesystem.path');
-		$site = strpos( $url, '../' ) !== false ? '../' : $this->_site_url;
-		return JPath::clean( str_replace( $site, JPATH_SITE .DS, $url ) );
+		$bool = strpos($url,  JURI::root()) === false;
+		return Utils::makePath(JPATH_SITE, JPath::clean(str_replace(JURI::root($bool), '', $url)));
 	}
-	function removeScript( $script ){
-		unset( $this->_scripts[$script] );
+	function removeScript($script) 
+	{
+		unset($this->scripts[$script]);
 	}
-	function removeCss( $css ){
-		unset( $this->_css[$css] );
+	function removeCss($css) 
+	{
+		unset($this->styles[$css]);
 	}
 	/**
 	 * Loads a javascript file
@@ -331,26 +393,28 @@ class JContentEditorPlugin extends JContentEditor {
 	 * @return	echo script html
 	 * @since	1.5
 	 */
-	function script( $files, $root = 'libraries' ){		
-		settype( $files, 'array' );
-		
-		foreach( $files as $file ){
-			$parts = explode( '.', $file );
-			$parts = preg_replace( '#[^A-Z0-9-_]#i', '', $parts );
+	function script($files, $root = 'libraries') 
+	{		
+		//settype($files, 'array');
+		$files = (array) $files;
+		foreach ($files as $file) {
+			$parts = explode('.', $file);
+			$parts = preg_replace('#[^A-Z0-9-_]#i', '', $parts);
 			
-			$file	= array_pop( $parts );
-			$path	= implode( '/', $parts );
+			$file	= array_pop($parts);
+			$path	= implode('/', $parts);
 			
-			if( $path ){
+			if ($path) {
 				$path .= '/';
 			}
 
 			// Different path for tiny_mce file
-			if( $root != 'tiny_mce' ){
+			if ($root != 'tiny_mce') {
 				$file = 'js/' .$file;
 			}
-			if( !in_array( $this->url( $root ). "/" . $path.$file, $this->_scripts ) ){
-				$this->_scripts[] = $this->url( $root ). "/" . $path.$file; 
+			
+			if (!in_array($this->url($root). "/" . $path.$file, $this->scripts)) {
+				$this->scripts[] = $this->url($root). "/" . $path.$file; 
 			}
 		}  
     }
@@ -358,34 +422,34 @@ class JContentEditorPlugin extends JContentEditor {
 	 * Loads a css file
 	 *
 	 * @access	public
-	 * @param	string 	The file to load including path eg: libaries.manager
-	 * @param	boolean Load IE6 version
-	 * @param	boolean Load IE7 version
+	 * @param	string The file to load including path eg: libaries.manager
+	 * @param	string Root folder
 	 * @return	echo css html
 	 * @since	1.5
 	 */
-	function css( $files, $root = 'libraries' ){
-		settype( $files, 'array' );
-		
-		foreach( $files as $file ){
-			$parts = explode( '.', $file );
-			$parts = preg_replace( '#[^A-Z0-9-_]#i', '', $parts );
+	function css($files, $root = 'libraries') 
+	{
+		//settype($files, 'array');
+		$files = (array) $files;
+		foreach ($files as $file) {
+			$parts 	= explode('.', $file);
+			$parts 	= preg_replace('#[^A-Z0-9-_]#i', '', $parts);
 			
-			$file	= array_pop( $parts );
-			$path	= implode( '/', $parts );
+			$file	= array_pop($parts);
+			$path	= implode('/', $parts);
 			
-			if( $path ){
+			if ($path) {
 				$path .= '/';
 			}
 			
 			// Different path for tiny_mce file
-			if( $root != 'tiny_mce' ){
+			if ($root != 'tiny_mce') {
 				$file = 'css/' .$file;
 			}		
 			
-			$url = $this->url( $root ). "/" .$path.$file;
-			if( !in_array( $url, $this->_css ) ){
-				$this->_css[] = $url; 
+			$url = $this->url($root). "/" .$path.$file;
+			if (!in_array($url, $this->styles)) {
+				$this->styles[] = $url; 
 			}
 		}
 	}
@@ -396,9 +460,10 @@ class JContentEditorPlugin extends JContentEditor {
 	 * @return	echo <script> html
 	 * @since	1.5
 	 */
-	function printScripts(){
-		$stamp	= '?v'. $this->_version;
-		foreach( $this->_scripts as $script ){
+	function printScripts() 
+	{
+		$stamp	= '?version='. $this->version;
+		foreach ($this->scripts as $script) {
 			echo "\t<script type=\"text/javascript\" src=\"" . $script . ".js". $stamp ."\"></script>\n";		
 		}
 	}
@@ -409,16 +474,24 @@ class JContentEditorPlugin extends JContentEditor {
 	 * @return	echo <link> html
 	 * @since	1.5
 	 */
-	function printCss(){
+	function printCss() 
+	{
 		jimport('joomla.environment.browser');
 		$browser 	= &JBrowser::getInstance();
-		$stamp		= '?v'. $this->_version;
-		foreach( $this->_css as $css ){
-			echo "\t<link href=\"" . $css . ".css". $stamp ."\" rel=\"stylesheet\" type=\"text/css\" />\n";
-			if( $browser->getBrowser() == 'msie' ){
-				$file =  $css. '_ie' .$browser->getMajor(). '.css';
-				if( is_file( $this->urlToPath( $file ) ) ){
+		$stamp		= '?version='. $this->version;
+		foreach ($this->styles as $style) {
+			echo "\t<link href=\"" . $style . ".css". $stamp ."\" rel=\"stylesheet\" type=\"text/css\" />\n";
+			if ($browser->getBrowser() == 'msie') {
+				// Version specific css file
+				$file =  $style. '_ie' .$browser->getMajor(). '.css';
+				if (file_exists($this->urlToPath($file))) {
 					echo "\t<link href=\"" . $file . "\" rel=\"stylesheet\" type=\"text/css\" />\n";
+				} else {
+					// All versions
+					$file =  $style. '_ie.css';
+					if (file_exists($this->urlToPath($file))) {
+						echo "\t<link href=\"" . $file . "\" rel=\"stylesheet\" type=\"text/css\" />\n";
+					}
 				}
 			}
 		}
@@ -429,11 +502,12 @@ class JContentEditorPlugin extends JContentEditor {
 	 * @access	public
 	 * @since	1.5
 	 */
-	function setHead( $data ){
-		if( is_array( $data ) ){
-			$this->_head = array_merge( $this->_head, $data );
-		}else{
-			$this->_head[] = $data;
+	function setHead($data) 
+	{
+		if (is_array($data)) {
+			$this->head = array_merge($this->head, $data);
+		} else {
+			$this->head[] = $data;
 		}
 	}
 	/**
@@ -443,8 +517,8 @@ class JContentEditorPlugin extends JContentEditor {
 	 * @return	echo <head> html
 	 * @since	1.5
 	 */
-	function printHead(){
-		foreach( $this->_head as $head ){
+	function printHead() {
+		foreach ($this->head as $head) {
 			echo "\t". $head ."\n";		
 		}
 	}
@@ -456,15 +530,15 @@ class JContentEditorPlugin extends JContentEditor {
 	 * @return	Image url
 	 * @since	1.5
 	 */
-	function image( $image, $root = 'libraries' ){
-		$parts = explode( '.', $image );
-		$parts = preg_replace( '#[^A-Z0-9-_]#i', '', $parts );
+	function image($image, $root = 'libraries') {
+		$parts = explode('.', $image);
+		$parts = preg_replace('#[^A-Z0-9-_]#i', '', $parts);
 			
-		$ext	= array_pop( $parts );
-		$name	= array_pop( $parts );
-		$path	= implode( '/', $parts );		
+		$ext	= array_pop($parts);
+		$name	= array_pop($parts);
+		$path	= implode('/', $parts);		
 			
-		return $this->url( $root ). "/" .$path. "/img/" . $name . "." . $ext;
+		return $this->url($root). "/" .$path. "/img/" . $name . "." . $ext;
 	}
 	/**
 	 * Load a plugin extension
@@ -472,20 +546,19 @@ class JContentEditorPlugin extends JContentEditor {
 	 * @access	public
 	 * @since	1.5
 	 */
-	function getExtensions( $plugin ){
-		$query = 'SELECT id'
-        . ' FROM #__jce_plugins'
-        . ' WHERE name = "'. $plugin .'"' 
-		. ' AND published = 1 LIMIT 1'
-        ;
-		$id = $this->_query( $query, 'loadResult' );
+	function getExtensions($plugin) {
+		$db =& JFactory::getDBO();
 		
-		$query = 'SELECT extension'
-        . ' FROM #__jce_extensions'
-		. ' WHERE pid = '.(int) $id
-		. ' AND published = 1'
+		$query = 'SELECT e.*'
+        . ' FROM #__jce_extensions AS e'
+		. ' INNER JOIN #__jce_plugins AS p ON p.name = '. $db->Quote($plugin) 
+		. ' WHERE e.pid = p.id'
+		. ' AND p.published = 1'
+		. ' AND e.published = 1'
         ;
-		return $this->_query( $query, 'loadResultArray' );
+		
+		$db->setQuery($query);
+		return $db->loadObjectList();
 	}
 	/**
 	 * Load & Call an extension
@@ -493,45 +566,50 @@ class JContentEditorPlugin extends JContentEditor {
 	 * @access	public
 	 * @since	1.5
 	 */
-	function loadExtensions( $base_dir = '', $plugin = '', $base_path = JCE_PLUGIN ){		
+	function loadExtensions($base_dir = '', $plugin = '', $base_path = JCE_PLUGIN) {		
 		jimport('joomla.filesystem.folder');
 		jimport('joomla.filesystem.file');
 		
-		if( !$plugin ){
-			$plugin = $this->_plugin->name;
+		if (!$plugin) {
+			$plugin = $this->plugin->name;
 		}
 		// Create extensions path
-		$path = $base_path .DS. 'extensions' .DS. $base_dir;
+		$path = $base_path .DS. 'extensions';
 		// Get installed extensions
-		$extensions = $this->getExtensions( $plugin );
+		$extensions = $this->getExtensions($plugin);
 
 		$result = array();
 		
-		if( !empty( $extensions ) ){
-			foreach( $extensions as $extension ){
-				$root = $path .DS. $extension. '.php';
-				if( file_exists( $root ) ){
+		if (!empty($extensions)) {
+			foreach ($extensions as $extension) {
+				$name 	= $extension->extension;
+				$folder = !$base_dir ? $extension->folder : $base_dir;
+				
+				$path = $path .DS. $folder;
+				$root = $path .DS. $name .'.php';
+				
+				if (file_exists($root)) {
 					// Load root extension file
-					require_once( $root );
+					require_once($root);
 					// Load Extension language file
-					$this->loadLanguage( 'com_jce_'. $plugin .'_'. $extension, JPATH_SITE );
+					$this->loadLanguage('com_jce_'. $plugin .'_'. $name, JPATH_SITE);
 					
 					// Load javascript
-					$js = JFolder::files( $path .DS. $extension .DS. 'js', '\.(js)$' );
-					if( !empty( $js ) ){
-						foreach( $js as $file ){
-							$this->script( array( $base_dir .'.'. $extension .'.'. JFile::stripExt( $file ) ), 'extensions' );
+					$js = JFolder::files($path .DS. $name .DS. 'js', '\.(js)$');
+					if (!empty($js)) {
+						foreach ($js as $file) {
+							$this->script(array($folder .'.'. $name .'.'. JFile::stripExt($file)), 'extensions');
 						}
 					}
 					// Load css
-					$css = JFolder::files( $path .DS. $extension .DS. 'css', '\.(css)$' );
-					if( !empty( $css ) ){
-						foreach( $css as $file ){
-							$this->css( array( $base_dir .'.'. $extension .'.'. JFile::stripExt( $file ) ), 'extensions' );
+					$css = JFolder::files($path .DS. $name .DS. 'css', '\.(css)$');
+					if (!empty($css)) {
+						foreach ($css as $file) {
+							$this->css(array($folder .'.'. $name .'.'. JFile::stripExt($file)), 'extensions');
 						}
 					}
 					// Call as function, eg joomlalinks() to array
-					$result[] = call_user_func( $extension, $this );
+					$result[$name] = call_user_func($name, $this);
 				}
 			}
 		}
@@ -543,15 +621,14 @@ class JContentEditorPlugin extends JContentEditor {
 	 *
 	 * @access public
 	 * @param array		An array containing the function and object
-	 * @param string	The ajax mode
 	*/
-	function setXHR( $function ){
-		if( is_array( $function ) ){
-			$this->_request[$function[1]] = array( 
-				'fn' => array( $function[0], $function[1] )
+	function setXHR($function) {
+		if (is_array($function)) {
+			$this->request[$function[1]] = array(
+				'fn' => array($function[0], $function[1])
 			);
-		}else{
-			$this->_request[$function] = array( 
+		} else {
+			$this->request[$function] = array(
 				'fn' => $function
 			);
 		}
@@ -566,11 +643,11 @@ class JContentEditorPlugin extends JContentEditor {
 	 * @return	json  a json services object.
 	 * @since	1.5
 	 */
-	function &getJson(){
+	function &getJson() {
 		static $json;
-		if( !is_object( $json ) ){
-			if( !class_exists( 'Services_JSON' ) ){
-				include_once( dirname(__FILE__) .DS. 'json' .DS. 'json.php' );
+		if (!is_object($json)) {
+			if (!class_exists('Services_JSON')) {
+				include_once(dirname(__FILE__) .DS. 'json' .DS. 'json.php');
 			}
 			$json = new Services_JSON();
 		}
@@ -583,12 +660,12 @@ class JContentEditorPlugin extends JContentEditor {
 	 * @param string	The string to encode
 	 * @return			The json encoded string
 	*/
-	function json_encode( $string ){
-		if( function_exists( 'json_encode' ) ){
-			return json_encode( $string );
-		}else{
+	function json_encode($string) {
+		if (function_exists('json_encode')) {
+			return json_encode($string);
+		} else {
 			$json =& $this->getJson();
-			return $json->encode( $string );
+			return $json->encode($string);
 		}
 	}
 	/**
@@ -598,12 +675,12 @@ class JContentEditorPlugin extends JContentEditor {
 	 * @param string	The string to decode
 	 * @return			The json decoded string
 	*/
-	function json_decode( $string ){
-		if( function_exists( 'json_decode' ) ){
-			return json_decode( $string );
-		}else{
+	function json_decode($string) {
+		if (function_exists('json_decode')) {
+			return json_decode($string);
+		} else {
 			$json =& $this->getJson();
-			return $json->decode( $string );
+			return $json->decode($string);
 		}
 	}
 	/**
@@ -612,47 +689,57 @@ class JContentEditorPlugin extends JContentEditor {
 	 * @access public
 	 * @return string
 	*/
-	function processXHR( $array = false ){										
-		$json 	= JRequest::getVar( 'json', '', 'POST', 'STRING', 2 );
-		$method = JRequest::getVar( 'method', '' );
+	function processXHR($array = false) {										
+		$json 	= JRequest::getVar('json', '', 'POST', 'STRING', 2);
+		$method = JRequest::getVar('method', '');
 						
-		if( $method == 'form' || $json ){			
+		if ($method == 'form' || $json) {			
 			$GLOBALS['xhrErrorHandlerText'] = '';
 			set_error_handler('_xhrErrorHandler');
 		
 			$result = null;
 			$error	= null;
 			
-			$fn 	= JRequest::getVar( 'action', '' );			
+			$fn 	= JRequest::getVar('action');			
 			$args 	= array();
-			
-			if( $json ){
-				$json 	= $this->json_decode( $json );
+				
+			if ($json) {
+				$json 	= $this->json_decode($json);
 				$fn 	= $json->fn;
 				$args 	= $json->args;
 			}
-			$func = $this->_request[$fn]['fn'];
-			
-			if( array_key_exists( $fn, $this->_request ) ){
-				if( $array ){
-					$result = call_user_func( $func, $args );
-				}else{
-					$result = call_user_func_array( $func, $args );
+			$func = $this->request[$fn]['fn'];
+
+			if (array_key_exists($fn, $this->request)) {
+				if ($array) {
+					$result = call_user_func($func, $args);
+				} else {
+					$result = call_user_func_array($func, $args);
 				}
-				if( !empty( $GLOBALS['xhrErrorHandlerText'] ) ){			
-					$error = 'PHP Error Message: ' . addslashes( $GLOBALS['xhrErrorHandlerText'] );
+				if (!empty($GLOBALS['xhrErrorHandlerText'])) {			
+					$error = 'PHP Error Message: ' . addslashes($GLOBALS['xhrErrorHandlerText']);
 				}
-			}else{
-				$error = 'Cannot call function '. addslashes( $fn ) .'. Function not registered!';
+			} else {
+				if ($fn) {
+					$error = 'Cannot call function '. addslashes($fn) .'. Function not registered!';
+				} else {
+					$error = 'No function call specified!';
+				}
 			}
 			$output = array(
 				"result" 	=> $result,
 				"error" 	=> $error
 			);
-			if( $json ){
-				header('Content-type: text/json; charset=utf-8');
+			if ($json) {
+				header('Content-Type: text/json');
+				header('Content-Encoding: UTF-8');
+				header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
+				header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
+				header("Cache-Control: no-store, no-cache, must-revalidate");
+				header("Cache-Control: post-check=0, pre-check=0", false);
+				header("Pragma: no-cache");
 			}
-			exit( $this->json_encode( $output ) );
+			exit($this->json_encode($output));
 		}
 	}
 }
@@ -666,30 +753,31 @@ class JContentEditorPlugin extends JContentEditor {
  * @access private
  * @return error string
 */
-function _xhrErrorHandler( $num, $string, $file, $line ){
+function _xhrErrorHandler($num, $string, $file, $line) 
+{
 	$reporting = error_reporting();
-	if ( ( $num & $reporting ) == 0 ) return;
+	if (($num & $reporting) == 0) return;
 		
-	switch( $num ){
-		case E_NOTICE :
-			$type = "NOTICE";
-			break;
-		case E_WARNING :
-			$type = "WARNING";
-			break;
-		case E_USER_NOTICE :
-			$type = "USER NOTICE";
-			break;
-		case E_USER_WARNING :
-			$type = "USER WARNING";
-			break;
-		case E_USER_ERROR :
-			$type = "USER FATAL ERROR";
-			break;
-		case E_STRICT :
-			return;
-			break;
-		default:
+	switch($num) {
+	case E_NOTICE :
+		$type = "NOTICE";
+		break;
+	case E_WARNING :
+		$type = "WARNING";
+		break;
+	case E_USER_NOTICE :
+		$type = "USER NOTICE";
+		break;
+	case E_USER_WARNING :
+		$type = "USER WARNING";
+		break;
+	case E_USER_ERROR :
+		$type = "USER FATAL ERROR";
+		break;
+	case E_STRICT :
+		return;
+		break;
+	default:
 			$type = "UNKNOWN: ". $num;
 	}
 	$GLOBALS['xhrErrorHandlerText'] .= $type . $string ."Error in line ". $line ." of file ".$file;

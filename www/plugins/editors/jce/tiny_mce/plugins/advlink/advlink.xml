@@ -1,15 +1,21 @@
 <?xml version="1.0" ?>
 <install version="1.5.0" type="plugin" plugin="advlink">
 	<name>Advanced Link</name>
-	<version>1.5.0 Stable</version>
-	<creationDate>29 February 2008</creationDate>
+	<version>1.5.1</version>
+	<creationDate>20 January 2009</creationDate>
 	<author>Ryan Demmer</author>
 	<authorEmail>ryandemmer@gmail.com</authorEmail>
-	<authorUrl>http://www.cellardoor.za.net/</authorUrl>
+	<authorUrl>http://www.joomlacontenteditor.net/</authorUrl>
 	<copyright>Ryan Demmer</copyright>
 	<license>GPL</license>
 	<description><![CDATA[ 
-	<p>AdvLink 1.5.0</p>
+	<p>AdvLink 1.5.1</p>
+	<p>Changelog (from 1.5.0):
+	<ul>
+		<li>Fixed: Menu and Uncategorized links</li>
+		<li>Added: nofollow to rel list</li>
+	</ul>
+	</p>
 	<p>Changelog (from 1.5.0 RC1):
 	<ul>
 		<li>Fixed: Anchorlist error</li>

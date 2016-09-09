@@ -1,3 +1,15 @@
+/**
+* @version		$Id: plugin.js 49 2009-05-28 10:02:46Z happynoodleboy $
+* @package      JCE
+* @copyright    Copyright (C) 2005 - 2009 Ryan Demmer. All rights reserved.
+* @author		Ryan Demmer
+* @license      GNU/GPL
+* JCE is free software. This version may have been modified pursuant
+* to the GNU General Public License, and as distributed it includes or
+* is derivative of works licensed under the GNU General Public License or
+* other free or open source software licenses.
+*/
+
 /*
 Class: Plugin
 	Base plugin class for creating a JCE plugin object.
@@ -14,7 +26,7 @@ Options:
 Example:
 	var advlink = new Plugin('advlink', {params: {'key': 'value'}});
 */
-var Plugin = new Class({
+var Plugin = new Class({	
 	// Dialog box default
 	_dialog 		: [],
 	// Arbitrary variable
@@ -23,10 +35,10 @@ var Plugin = new Class({
 	_plugin			: null,
 	getOptions : function(){
 		return {
-			site : tinyMCEPopup.getParam('document_base_url'),
-			lang : 'en',
-			params : {},
-			alerts : null
+			site 	: tinyMCEPopup.editor.documentBaseURI.getURI(true),
+			lang 	: 'en',
+			params 	: {},
+			alerts 	: null
 		}
 	},
 	initialize : function(plugin, options){
@@ -51,6 +63,15 @@ var Plugin = new Class({
 		return this.options.site;	
 	},
 	/*
+	 * Store a custom plugin parameter
+	 * Example: 'animals', ['dog', 'cat', 'mouse']
+	 * @param {string} The parameter key/name
+	 * @param {string/array/object} The value
+	*/
+	setParam : function(p, v){
+		this.options.params[p] = v;
+	},
+	/*
 	 * Store custom plugin parameters
 	 * Example: {'animals': ['dog', 'cat', 'mouse']}
 	 * @param {Object} The parameters object
@@ -59,15 +80,6 @@ var Plugin = new Class({
 		for(n in p){
 			this.setParam(n, p[n]);
 		}
-	},
-	/*
-	 * Store a custom plugin parameter
-	 * Example: 'animals', ['dog', 'cat', 'mouse']
-	 * @param {string} The parameter key/name
-	 * @param {string/array/object} The value
-	*/
-	setParam : function(p, v){
-		this.options.params[p] = v;
 	},
 	/*
 	 * Return a custom plugin parameter
@@ -99,7 +111,7 @@ var Plugin = new Class({
 		if( type == 'plugins' ){
 			type = 'tiny_mce/plugins/' + this.getPlugin();
 		}
-		return string.path(this.options.site, '/plugins/editors/jce/' + type);
+		return string.path(this.options.site, 'plugins/editors/jce/' + type);
 	},
 	/*
 	 * Return a full image url
@@ -137,7 +149,7 @@ var Plugin = new Class({
 			file 	= parts[1].replace(/[^a-z0-9-_]/i, '');
 			path 	= path + '/' + file + '/';
 		}
-		var u = this.options.site + '/plugins/editors/jce/tiny_mce/' + path + 'langs/' + this.options.lang + '_dlg.js';
+		var u = this.options.site + 'plugins/editors/jce/tiny_mce/' + path + 'langs/' + this.options.lang + '_dlg.js';
 		new Asset.javascript(u);
 	},
 	setVars: function(vars){
@@ -179,7 +191,7 @@ var Plugin = new Class({
 	openHelp : function(type){
 		if(!type) type = 'standard';
 		tinyMCE.activeEditor.windowManager.open({
-			url : this.options.site + 'index.php?option=com_jce&task=help&lang='+ this.options.lang +'&plugin='+ this._plugin +'&type='+ type +'&file=help',
+			url : tinyMCEPopup.getParam('site_url') + 'index.php?option=com_jce&task=help&lang='+ this.options.lang +'&plugin='+ this._plugin +'&type='+ type +'&file=help',
 			width : 640,
 		    height : 480,
 		    resizable : "yes",
@@ -205,14 +217,27 @@ var Plugin = new Class({
 			}
 		});
 	},
+	_encode : function(s){
+		s = s.replace(new RegExp('"', 'g'), '\\"');
+		s = s.replace(new RegExp("'", 'g'), "\\'");
+		
+		return s;
+	},
 	/*
-	 * XHR request. Requires json.js
+	 * XHR request. Requires Mootools json.js
 	 * @param {string} The target function to call
 	 * @param {array} An array of arguments
 	 * @param {function} The callback function on success
 	*/
 	xhr : function(fn, args, cb){
-		new Json.Remote(document.location.href, {
+		var u = document.location.href;
+
+		if(!/format=raw/.test(u)){
+			u += '&format=raw';	
+		}
+
+		new Json.Remote(u, {
+			autoCancel : true,
 			onComplete: function(o){
 				if(o.error){
 					alert(o.error);	
@@ -266,8 +291,9 @@ var IFrame = new Class({
 		return {			
 			form: $E('form'),
 			frame: 'iframe',
-			auto: false,
-			action: null,
+			action: '',
+			cleanup : true,
+			auto : false,
 			onStart: Class.empty,
 			onComplete: Class.empty
 		};
@@ -275,28 +301,33 @@ var IFrame = new Class({
 	initialize : function(options){
 		this.setOptions(this.getOptions(), options);
 		if (this.options.initialize) this.options.initialize.call(this);
-		
-		if($(this.options.frame)){
-			$(this.options.frame).remove();	
-		}
-		this.frame 	= new Element('iframe').setProperties({
+		// Remove existing frame
+		this.remove();
+		// Create IFrame
+		this.frame 	= new Element('iframe', {
 			'src': 'about:blank', 
 			'name': this.options.frame,
 			'id': this.options.frame
-		}).setStyle('display', 'none').injectInside($E('form'))
-		
+		}).setStyle('display', 'none').injectInside($E('form'));
+		// Create action
+		if(this.options.action){
+			this.action = new Element('input', {
+				'type' 	: 'hidden',
+				'id' 	: this.options.frame + '_action',
+				'name'	: 'action',
+				'value'	: this.options.action
+			}).injectInside($E('form'));
+		}
+		// Change frame name
 		if(window.ie){
 			window.frames[this.frame.id].name = this.frame.name;
 		}
 		this.options.form.setAttribute('target', this.frame.name);
-		
-		this.action = this.options.form.action;
-		this.setAction();
-		
+		// Add submit event
 		this.options.form.addEvent('submit', function(){
 			this.fireEvent('onStart');
 		}.bind(this));
-		
+		// Add load event
 		this.frame.addEvent('load', function(){
 			var f 	= $(this.frame);
 			var el 	= f.contentWindow.document || f.contentDocument || window.frames[f.id].document;
@@ -305,23 +336,29 @@ var IFrame = new Class({
 			if(res !== ''){
 				this.fireEvent('onComplete', Json.evaluate(res, true));
 			}
-			this.resetAction();
+			// Remove existing frame
+			if(this.options.cleanup){
+				this.remove();
+			}
 		}.bind(this))
-		
+		// Auto submit
 		if(this.options.auto){
-			this.options.form.submit();	
+			this.submit();	
 		}
 	},
-	setAction : function(){
-		this.resetAction();
-		if(this.options.action){
-			this.action += '&action=' + this.options.action;	
+	remove : function(){
+		// Remove existing frame
+		if($(this.options.frame)){
+			$(this.options.frame).remove();	
 		}
-		this.options.form.setAttribute('action', this.action);
+		// Remove existing action
+		if($(this.options.frame + '_action')){
+			$(this.options.frame + '_action').remove();
+		}
 	},
-	resetAction : function(){
-		this.action = this.action.replace(/&action=([^&]+)/i, '');
-		this.options.form.setAttribute('action', this.action);
+	submit : function(){
+		this.fireEvent('onStart');
+		this.options.form.submit() || $E('form').submit();
 	}
 });
 IFrame.implement(new Options, new Events);

@@ -1,9 +1,10 @@
 <?php
 /**
-* @version help.php 2008-02-22 Ryan Demmer $
-* @package JCE
-* @copyright Copyright (C) 2005 - 2007 Ryan Demmer. All rights reserved.
-* @license http://www.gnu.org/copyleft/gpl.html GNU/GPL, see LICENSE.php
+* $Id: help.php 26 2009-05-25 10:21:53Z happynoodleboy $
+* @package      JCE
+* @copyright    Copyright (C) 2005 - 2009 Ryan Demmer. All rights reserved.
+* @author		Ryan Demmer
+* @license      GNU/GPL
 * JCE is free software. This version may have been modified pursuant
 * to the GNU General Public License, and as distributed it includes or
 * is derivative of works licensed under the GNU General Public License or

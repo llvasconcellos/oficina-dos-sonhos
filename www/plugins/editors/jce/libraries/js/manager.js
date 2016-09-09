@@ -1,4 +1,16 @@
-/*
+/**
+* @version		$Id: manager.js 49 2009-05-28 10:02:46Z happynoodleboy $
+* @package      JCE
+* @copyright    Copyright (C) 2005 - 2009 Ryan Demmer. All rights reserved.
+* @author		Ryan Demmer
+* @license      GNU/GPL
+* JCE is free software. This version may have been modified pursuant
+* to the GNU General Public License, and as distributed it includes or
+* is derivative of works licensed under the GNU General Public License or
+* other free or open source software licenses.
+*/
+
+/**
 Class: Manager
 	Base manager class for creating a JCE Manager object.
 
@@ -58,11 +70,11 @@ var Manager = Plugin.extend({
 			buttons:		null,
 			tree:			true,
 			upload:			{
-				method: 'flash',
 				size: 1024,
 				types: {},
 				conflict: 'all',
-				limit: false
+				limit: false,
+				onLoad: Class.empty
 			},
 			onInit:			Class.empty,
 			onFileInsert:	Class.empty,
@@ -84,7 +96,7 @@ var Manager = Plugin.extend({
 			onLoadList: 	function(o){
 				o.folders.each(function(e){
 					$('folder-list').adopt(
-						new Element('li').addClass('folder').addClass(e.classes).setProperties({'id': escape(e.id), 'title': e.name}).addEvent('click', function(event){
+						new Element('li').addClass('folder').addClass(e.classes).setProperties({'id': encodeURI(e.id), 'title': e.name}).addEvent('click', function(event){
 							this.setSelectedItems(event, false);
 						}.bind(this)).adopt(
 							new Element('a').setProperty('href', 'javascript:;').setHTML(e.name).addEvent('click', function(){
@@ -97,9 +109,17 @@ var Manager = Plugin.extend({
 				if(o.files.length){
 					o.files.each(function(e){
 						$('file-list').adopt(
-							new Element('li').addClass('file').addClass(string.getExt(e.name)).addClass(e.classes).setProperties({'title': e.name}).addEvent('click', function(event){
-								this.setSelectedItems(event, true);
-							}.bind(this)).adopt(
+							new Element('li', {
+								'title'	: e.name,
+								events: {
+									click: function(event){
+										this.setSelectedItems(event, true)	
+									}.bind(this),
+									dblclick: function(){
+										return false;
+									}.bind(this)
+								}
+							}).addClass('file').addClass(string.getExt(e.name)).addClass(e.classes).adopt(
 								new Element('a').setProperty('href', 'javascript:void(0);').setHTML(e.name).addEvent('click', function(){
 									this.fireEvent('onFileClick', [e.name]);
 								}.bind(this))
@@ -117,6 +137,13 @@ var Manager = Plugin.extend({
 			onFileDetails:	Class.empty
 		};
 	},
+	/**
+	 * Initialise the class
+	 * @param {String} plugin 	The plugin name.
+	 * @param {String} src 		The returned src if any.
+	 * @param {Object} vars 	Optional variables object.
+	 * @param {Object} vars 	Optional options object.
+	 */
 	initialize : function(plugin, src, vars, options){		
 		// Set options
 		this.setOptions(this.moreOptions(), options);
@@ -176,8 +203,8 @@ var Manager = Plugin.extend({
 		this.fireEvent('onInit');
 	},
 	/**
-	 * Setup the current directory.
-	 * @param {String} s current directory path.
+	 * Set up the base directory
+	 * @param {String} src The base url
 	 */
 	setupDir : function(src){
 		var p = '/', f = '', base = this.getParam('base'), n = base.length;
@@ -187,7 +214,7 @@ var Manager = Plugin.extend({
 				f = string.basename(src) || '';
 			}
 		}else{
-			p = Cookie.get("jce_" + this.getPlugin() + '_dir') || '/';
+			p = Cookie.get('jce_' + this.getPlugin() + '_dir') || '/';
 			f = '';
 		}
 		this._dir = string.path('/', p);
@@ -201,9 +228,16 @@ var Manager = Plugin.extend({
 			this.getList();	
 		}
 	},
+	/**
+	 * Check if the Tree option is set and the Tree Class is loaded
+	 * return Boolean.
+	 */
 	treeLoaded : function(){
 		return this.options.tree && typeof Tree != 'undefined';
 	},
+	/**
+	 * Initialize the Tree
+	 */
 	initTree : function(){
 		/* Initialise tree */
 		this.setStatus(tinyMCEPopup.getLang('dlg.message_tree', 'Building tree list...'), true);
@@ -225,7 +259,7 @@ var Manager = Plugin.extend({
 			// When a node is toggled and loaded
 			onNodeLoad : function(node){
 				this.tree.toggleLoader(node);
-				this.xhr('getTreeItem', node.id, function(o){
+				this.xhr('getTreeItem', encodeURI(node.id), function(o){
 					if(o){
 						if(!o.error){
 							var ul = $E('ul', node);
@@ -244,16 +278,13 @@ var Manager = Plugin.extend({
 		});
 	},
 	/**
-	 * Reset the manager.
+	 * Reset the Manager
 	 */
 	resetManager : function(){
 		// Clear selects
 		this.selectNoItems();
 		// Clear returns
 		this._returnedItems	= [];
-		// Clear paste 
-		this._pasteaction 	= '';
-		this._pastefiles 	= '';
 		// Close any dialogs
 		this._dialog.each(function(dialog){
 			if(typeof dialog.close() != 'undefined'){
@@ -261,10 +292,29 @@ var Manager = Plugin.extend({
 			}
 		});
 	},
+	/**
+	 * Clear the Paste action
+	 */
+	clearPaste : function(){
+		// Clear paste 
+		this._pasteaction = '';
+		this._pastefiles  = '';
+		this.hideButton(this.getButton('file', 'paste').element);
+	},
+	/**
+	 * Set a status message
+	 * @param {String} message
+	 * @param {String} loading
+	 */
 	setStatus : function(message, loading){
 		$(this.options.interface.status).className = loading ? 'load' : '';
 		$(this.options.interface.status).setHTML('<span>' + message + '</span>');
 	},
+	/**
+	 * Set a message
+	 * @param {String} message
+	 * @param {String} classname
+	 */
 	setMessage : function(message, classname){
 		$(this.options.interface.message).className = classname || 'info';
 		$(this.options.interface.message).setHTML('<span>' + message + '</span>');
@@ -287,7 +337,7 @@ var Manager = Plugin.extend({
 	resetStatus : function(){
 		this.setStatus(tinyMCEPopup.getLang('dlg.current_dir', 'Current directory is: ') + this._dir + ' ( ' + this._foldercount + ' ' + tinyMCEPopup.getLang('folders', 'folders') + ', ' + this._filecount + ' ' + tinyMCEPopup.getLang('files', 'files') + ' )');
 	},
-	/*
+	/**
 	 * Get the parent directory
 	 * @return {String} s The parent/previous directory.
 	*/
@@ -302,14 +352,14 @@ var Manager = Plugin.extend({
 		}
 		return s;
 	},
-	/*
+	/**
 	 * Add an item to the returnedItems array
 	 * @return {String} file The item name.
 	*/
 	addReturnedItem : function(file){
 		this._returnedItems.include(file);
 	},
-	/*
+	/**
 	* Setup the returned file after upload
 	* @param {String} file The returning file name.
 	*/
@@ -317,15 +367,17 @@ var Manager = Plugin.extend({
 		this.addReturnedItem(string.basename(file));
 		this.changeDir(string.dirname(file));
 	},
+	/**
+	 * Change Directory
+	 * @param {String} dir
+	 */
 	changeDir: function(dir){
 		this.resetManager();
 		this.setDir(dir);
 		this.getList();
 	},
-	/*
+	/**
 	* Retrieve a list of files and folders
-	* @param {String} dir  The directory to load files/folders from.
-	* @param {String} args An array of optional arguments.
 	*/
 	getList : function(){
 		this.action = $E('form').action + '&upload-dir=' + this._dir;
@@ -335,28 +387,33 @@ var Manager = Plugin.extend({
 		this.hideButtons('file');
 		this.xhr('getItems', [this._dir, this._vars], this.loadList);
 	},
+	/**
+	 * Refresh the file list
+	 */
 	refreshList : function(){
 		this.resetManager();
 		this.getList();
 	},
+	/**
+	 * Set the current directory
+	 * @param {String} dir
+	 */
 	setDir: function(dir){
-		this._dir = string.unescape(dir);
+		this._dir = decodeURIComponent(dir);
 	},
-	/*
-	* Get the current directory
-	* @return {string} Current directory
-	*/
+	/**
+	 * Get the current directory
+	 */
 	getDir: function(){
 		return this._dir;
 	},
-	/*
-	* Is the current directory the root directory
-	* @return {boolean} true/false
-	*/
+	/**
+	  Determine whether current directory is root
+	 */
 	isRoot : function(){
 		return this._dir == '' || this._dir == '/';
 	},
-	/*
+	/**
 	* Load the file/folder list into the container div
 	* @param {Object} The folder/file JSON object
 	*/
@@ -408,7 +465,7 @@ var Manager = Plugin.extend({
 		this.resetMessage();
 		this.fireEvent('onListComplete');
 	},
-	/*
+	/**
 	* Execute a command
 	* @param {String} The command name
 	* @param {String} The command type
@@ -424,11 +481,13 @@ var Manager = Plugin.extend({
 				this.fireEvent('onFileInsert', [list]);
 				break;
 			case 'view':
-				var url 		= string.path(string.path(this.options.site, this.getParam('base')), string.path(this._dir, this._selectedItems[0].title));	
+				var url 		= string.path(string.path(this.getSite(), this.getParam('base')), string.path(this._dir, this._selectedItems[0].title));	
 				var name 		= string.basename(this._selectedItems[0].title);
 				var viewable 	= this.getParam('viewable') || 'jpeg,jpg,gif,png';
 				if(viewable.split(',').contains(string.getExt(name))){
-					if(/\.(js|asp|php|vb|vbs|exe|ocx|dll)/i.test(name)) return;
+					if (/\.(js|asp|php|vb|vbs|exe|ocx|dll)/i.test(name)) {
+						return false;
+					}
 					if(/\.(jpeg|jpg|gif|png|avi|wmv|wm|asf|asx|wmx|wvx|mov|qt|mpg|mp3|mp4|mpeg|swf|flv|xml|dcr|rm|ra|ram|divx)/i.test(name)){
 						new mediaPreview(name, url, {
 							width: 400,
@@ -445,57 +504,10 @@ var Manager = Plugin.extend({
 				break;
 			case 'upload':
 				this._dialog['upload'] = new uploadDialog({
-					extended : this.getParam('upload') || {},
-					onSelectFile : function(v){
-						var name 	= string.safe(string.basename(v));
-						var ext 	= string.getExt(name);
-						$('upload-queue').empty().adopt(
-							new Element('li', {
-								'class': 'file'
-							}).addClass(ext).adopt(
-								new Element('span', {
-									'class': 'queue-text',
-									'title': string.safe(name)		
-								}).setHTML(string.safe(name))
-							).adopt(
-								new Element('div', {
-									'class': 'queue-loader',
-									styles : {
-										'top': '0px'	
-									}
-								})
-							).adopt(
-								new Element('div', {
-									'class': 'queue-status',
-									events: {
-										click: function(){
-											$('upload-queue').empty();
-											$('upload-input').value = '';
-										}
-									}
-								}).addClass('queue-delete')
-							).adopt(
-								new Element('div', {
-									'class': 'queue-progress'
-								}).setHTML('0%')
-							)
-						).adopt(
-							new Element('li').adopt(
-								new Element('label', {'for': 'upload-name'}).setHTML(tinyMCEPopup.getLang('name', 'Name') +': ')
-							).adopt(
-								new Element('input', {
-									'id': 'upload-name',
-									'name': 'upload-name',
-									'value': string.stripExt(name)
-								})
-							)
-						)
-					}.bind(this),
+					extended : this.options.upload,
 					onOpen : function(){
 						// Set hidden dir value to current dir
 						$('upload-dir').value = this._dir;
-						// Set max upload size
-						$('upload-max-size').value = this.options.upload.size * 1024;
 						// Set overwrite options
 						var o = {
 							'overwrite' : new Option(tinyMCEPopup.getLang('dlg.overwrite', 'Overwrite file'), 0),
@@ -508,68 +520,31 @@ var Manager = Plugin.extend({
 							s.options[s.options.length] = o[e];				
 						});
 						o = null;
-						// Initialize flash uploader if required
-						this.uploader = new Uploader($('upload-input'), {
-							swf: this.getUrl('libraries') + '/swf/swiff.swf',
-							method: this.options.upload['method'],
-							size: this.options.upload['size'],
-							types: this.options.upload['types'],
-							limitFiles: this.options.upload['limit'],
-							onEditList : function(files){
-								if(files.length == 1){
-									files[0].element.adopt(
-										new Element('ul').adopt(
-											new Element('li', {
-												'class': 'queue-name'			
-											}).adopt(
-												new Element('label', {'for': 'upload-name'}).setHTML(tinyMCEPopup.getLang('name', 'Name') +': ')
-											).adopt(
-												new Element('input', {
-													'id': 'upload-name',
-													'value': string.safe(string.stripExt(files[0].name))
-												})
-											)
-										)
-									)
-								}else{
-									if($('upload-name')){
-										$('upload-name').getParent().remove();
-									}
-								}
-							}.bind(this),
-							onStart : function(files){
-								$('upload-submit').disabled = true;							
-								var query = [];
-								
-								$E('form').getElementsBySelector('input[name^=upload-],select[name^=upload-]').each(function(el){
-									if(el.hasClass('upload-html-only')) return;
-									var name 	= el.name;
-									var value 	= el.getValue();
-									if(!name || value === '' || value === false || el.disabled) return;
-									var qs = function(val){
-										query.push(name + '=' + encodeURIComponent(val));
-									};
-									if ($type(value) == 'array') value.each(qs);
-									else qs(value);	
-								})
-								this.uploader.options.url = this.action + '&action=upload' + '&' + query.join('&');
-							}.bind(this),
-							onComplete : function(name, size){
+						// Initialize uploader
+						this.uploader = new Uploader('upload-queue', {															 
+							url		:	$E('form').getProperty('action'),
+							field	:	$E('input[name^=Filedata]'),
+							size	:	this.options.upload.size,
+							limit	: 	this.options.upload.limit,
+							filter	:	this.options.upload.types,
+							fileComplete : function(file, name){
 								// Set uploaded files
 								this.addReturnedItem(string.safe(name));
 							}.bind(this),
-							onAllComplete : function(){
+							uploadComplete : function(){
 								$('upload-submit').disabled = false;
 								// Reset action
 								this.action = $E('form').action;
 								// Refresh file list
 								this.getList();
-								//this.refreshList();
 							}.bind(this)
-						})
-						if(this.getParam('upload')){
-							this.getParam('upload').onLoad.delay(10);	
-						}
+						});
+						this.options.upload.onLoad.delay(10);
+					}.bind(this),
+					onUpload : function(){
+						if(this.uploader.uploading) return false;
+						this.uploader.upload();
+						return false;
 					}.bind(this)
 				});
 				break;
@@ -608,6 +583,7 @@ var Manager = Plugin.extend({
 					if(!o.error){
 						this.fireEvent('onPaste');
 						this.refreshList();
+						this.clearPaste();
 					}else{
 						this.raiseError(o.error);
 					}
@@ -642,8 +618,9 @@ var Manager = Plugin.extend({
 				break;
 			// Rename a file or folder
 			case 'rename':
-				var msg 	= tinyMCEPopup.getLang('dlg.rename_folder', 'Rename Folder');
-				var fn 		= 'folderRename';
+				var msg = tinyMCEPopup.getLang('dlg.rename_folder', 'Rename Folder');
+				var fn 	= 'folderRename';
+				var v	= string.basename(list);
 				if(type == 'file'){
 					msg = tinyMCEPopup.getLang('dlg.rename_file', 'Rename File');
 					fn 	= 'fileRename';
@@ -680,6 +657,10 @@ var Manager = Plugin.extend({
 				break;
 		}
 	},
+	/**
+	 * Show an error dialog
+	 * @param {String} error
+	 */
 	raiseError : function(error){
 		this._dialog['alert'] = new Alert(error, {
 			onClose: function(){
@@ -687,11 +668,19 @@ var Manager = Plugin.extend({
 			}.bind(this)
 		});
 	},
+	/**
+	 * Add an array of actions
+	 * @param {Object} actions
+	 */
 	addActions : function(actions){
 		$each(actions, function(e){
 			this.addAction(e);
 		}.bind(this));
 	},
+	/**
+	 * Add an action to the Manager
+	 * @param {Object} options
+	 */
 	addAction : function(options){
 		var name 	= options.name;
 		var action	= eval(options.action) || this.execCommand;
@@ -716,14 +705,17 @@ var Manager = Plugin.extend({
 		this._actions[name] = atn;
 		$(this.options.interface.actions).adopt(atn);
 	},
+	/**
+	 * Get an action by name
+	 * @param {String} name
+	 */
 	getAction : function(name){
 		return this._actions[name];
 	},
-	/* Button functions */
-	/* addButtons
-	** Add _buttons to the _buttons object
-	** param btns object
-	*/
+	/**
+	 * Add an array of buttons to the Manager
+	 * @param {Object} btns
+	 */
 	addButtons : function(btns){
 		$each(btns.folder, function(e){
 			this.addButton(e, 'folder');
@@ -732,6 +724,11 @@ var Manager = Plugin.extend({
 			this.addButton(e, 'file');
 		}.bind(this));
 	},
+	/**
+	 * Add a button to the Manager
+	 * @param {Object} options
+	 * @param {String} type
+	 */
 	addButton : function(options, type){
 		var action	= options.action || this.execCommand;
 		var btn = new Element('div').setProperty('title', options.title).addClass('button').addClass(options.name).addClass('hide').setStyles({
@@ -758,16 +755,27 @@ var Manager = Plugin.extend({
 		this._buttons[type].include({'name': options.name, 'element': btn, 'trigger': options.trigger, 'multiple': options.multiple});
 		$(this.options.interface.buttons).adopt(btn);
 	},
+	/**
+	 * Hide all buttons
+	 */
 	hideAllButtons : function(){
 		$$('div.button').each(function(e){
 			this.hideButton(e);   
 		}.bind(this));
 	},
+	/**
+	 * Hide buttons by type
+	 * @param {String} type The button type
+	 */
 	hideButtons : function(type){
 		this._buttons[type].each(function(e){
 			this.hideButton(e.element);
 		}.bind(this));
 	},
+	/**
+	 * Hide a button
+	 * @param {String} button The button to hide
+	 */
 	hideButton : function(button){
 		if(button){
 			if(button.hasClass('show')){
@@ -776,6 +784,10 @@ var Manager = Plugin.extend({
 			}
 		}
 	},
+	/**
+	 * Show all buttons by type
+	 * @param {String} type The button type to show
+	 */
 	showButtons : function(type){
 		this.hideAllButtons();
 		this._buttons[type].each(function(e){
@@ -784,6 +796,11 @@ var Manager = Plugin.extend({
 			}
 		}.bind(this));
 	},
+	/**
+	 * Show a button
+	 * @param {String} button The button to show
+	 * @param {Boolean} multiple Whether a button is a multiple selection action
+	 */
 	showButton : function(button, multiple){
 		if(button){
 			if(button.hasClass('hide')){
@@ -795,6 +812,11 @@ var Manager = Plugin.extend({
 			}
 		}
 	},
+	/**
+	 * Get a button
+	 * @param {String} type The button type
+	 * @param {String} name The button name
+	 */
 	getButton : function(type, name){
 		var btn;
 		this._buttons[type].each(function(el){
@@ -804,7 +826,10 @@ var Manager = Plugin.extend({
 		});
 		return btn;
 	},
-	/* Selection functions */
+	/**
+	 * Determine whether an item is selected
+	 * @param {Object} el The list item
+	 */
 	isSelectedItem : function(el){
 		// Quick check
 		if($type(el) == 'element'){
@@ -815,6 +840,9 @@ var Manager = Plugin.extend({
 			return e.title == el;
 		});
 	},
+	/**
+	 * Deselect all list items
+	 */
 	selectNoItems : function(){
 		this._selectedItems.each(function(el){
 			if($(el)){
@@ -831,7 +859,12 @@ var Manager = Plugin.extend({
 			$(el).setStyle('visibility', 'hidden');											  
 		});
 		this.hideAllButtons();
-	},	
+	},
+	/**
+	 * Select an array of items
+	 * @param {Array} items The array of items to select
+	 * @param {Boolean} show Show item properties
+	 */	
 	selectItems : function(items, show){
 		this._selectedItems.merge(items).each(function(el){
 			if($(el)){
@@ -842,6 +875,11 @@ var Manager = Plugin.extend({
 			this.showSelectedItems();
 		}
 	},
+	/**
+	 * Remove items from a selection
+	 * @param {Array} el Array of elements to remove
+	 * @param {Boolean} show Show remaining item properties
+	 */
 	removeSelectedItems : function(el, show){
 		el.each(function(o){
 			if(o){
@@ -853,15 +891,14 @@ var Manager = Plugin.extend({
 			this.showSelectedItems();
 		}
 	},
-	/*
-	* Return selected items array
-	* @param {String} key An optional array key.
-	* @return {Array} or {Object} Current file / folder li element selection.
-	*/
+	/**
+	 * Return selected items by key or all selected items
+	 * @param {String} key Item key
+	 */
 	getSelectedItems : function(key){
 		return this._selectedItems[key] || this._selectedItems;
 	},
-	/*
+	/**
 	* Process a selection click
 	* @param {String} e The click event.
 	* @param {Boolean} multiple Allow multiple selections.
@@ -902,6 +939,10 @@ var Manager = Plugin.extend({
 				}
 			// ctrl & shift
 			}else if(multiple && (e.control || e.shift)){
+				// Remove selected folder
+				if(this._selectedItems.length == 1 && this._selectedItems[0].hasClass('folder')){
+					this.removeSelectedItems([this._selectedItems[0]], true);
+				}			
 				// ctrl
 				if(e.control){
 					this._selectedIndex = items.indexOf(el);
@@ -941,7 +982,7 @@ var Manager = Plugin.extend({
 			}
 		}
 	},
-	/*
+	/**
 	* Show the selected items' details
 	*/
 	showSelectedItems : function(){
@@ -957,7 +998,7 @@ var Manager = Plugin.extend({
 			}
 		}
 	},
-	/*
+	/**
 	* Select an item (file) by name
 	* @param {String} name The file name.
 	*/
@@ -978,13 +1019,13 @@ var Manager = Plugin.extend({
 			// Scroll to first item in list
 			new Fx.Scroll(this.options.interface.list, {
 				wait: false,
-				duration: 500
+				duration: 1000
 			}).toElement(items[0]);
 		}
 		// Select items and display properties
 		this.selectItems(items, true);
 	},
-	/*
+	/**
 	* Serialize the current item selection, add current dir to path
 	*/
 	serializeSelectedItems : function(){
@@ -994,6 +1035,9 @@ var Manager = Plugin.extend({
 		}.bind(this));
 		return s.join(',');
 	},
+	/**
+	 * Show a file number
+	 */
 	showFileNumber : function(){
 		var n = this._selectedItems.length;
 		// Shortcut for nav
@@ -1010,7 +1054,10 @@ var Manager = Plugin.extend({
 		}
 		$(nav + '-text').setStyle('visibility', 'visible').setHTML(this._activeItem + 1 + ' of ' + n);
 	},
-	showFileDetails : function(){
+	/**
+	 * Show a files properties / details
+	 */
+	showFileDetails : function(){		
 		var n = this._selectedItems.length;
 		// Shortcut for nav
 		var nav = this.options.interface.nav;
@@ -1027,16 +1074,26 @@ var Manager = Plugin.extend({
 		}
 		this.showButtons('file');
 	},
+	/**
+	 * Show a folder's details / properties
+	 */
 	showFolderDetails : function(){
-		var title = string.basename(this._selectedItems[0].title);
-		var info = new Element('dl').adopt(
-			new Element('dt').setHTML(title)					
-		).adopt(
-			new Element('dd').setHTML(tinyMCEPopup.getLang('dlg.folder', 'Folder'))
-		)		
-		$(this.options.interface.info).adopt(info).adopt(
-			new Element('div').setProperty('id', 'loader')  
-		)
+		this.getFolderDetails();		
+		this.showButtons('folder');
+	},
+	/**
+	 * Get a folder's details properties
+	 */
+	getFolderDetails : function(){
+		var title 	= string.basename(this._selectedItems[0].title);
+		
+		var info = new Element('dl').adopt([
+			new Element('dt').setHTML(title),					
+			new Element('dd').setHTML(tinyMCEPopup.getLang('dlg.folder', 'Folder')),
+			new Element('dd').setProperty('id', 'loader')
+		]);		
+		$(this.options.interface.info).empty().adopt(info);
+		
 		var comments = [];
 		if($(this._selectedItems[0]).hasClass('notwritable')){
 			comments.include(
@@ -1064,107 +1121,93 @@ var Manager = Plugin.extend({
 			}.bind(this));
 			info.adopt(props);
 			if(comments.length){
-				$(this.options.interface.comments).adopt(
+				$(this.options.interface.comments).empty().adopt(
 					new Element('dl').adopt(
 						new Element('dt').setHTML(tinyMCEPopup.getLang('dlg.comments', 'Comments'))					
 					).adopt(comments)			
 				)
 			}
-			this.fireEvent('getFolderDetails', [o]);
+			this.fireEvent('onFolderDetails', [o]);
 		}.bind(this));
-		this.showButtons('folder');
 	},
+	/**
+	 * Get a files details / properties
+	 */
 	getFileDetails : function(){
-		var file 	= this._selectedItems[this._activeItem];
-		var title 	= $(file).title;
-				
-		// Clear the info and comment box
-		$(this.options.interface.info).empty();
-		$(this.options.interface.comments).empty();
+		var file 		= this._selectedItems[this._activeItem];
+		var title 		= $(file).title;
+	
 		// Info list
 		var info = new Element('dl').adopt([
 			new Element('dt').setHTML(string.stripExt(title)), 
-			new Element('dd').setHTML(string.getExt(title).toUpperCase() + ' ' + tinyMCEPopup.getLang('dlg.file', 'File')),
+			new Element('dd').setHTML(string.getExt(title).toUpperCase() + ' ' + tinyMCEPopup.getLang('dlg.file', 'File')), 
+			new Element('dd').setProperty('id', 'info-properties'), 
+			new Element('dd').setProperty('id', 'info-preview'), 
 			new Element('dd').setProperty('id', 'loader')
-		])		
-		$(this.options.interface.info).adopt(info);
+		]);
+		$(this.options.interface.info).empty().adopt(info);
 		
-		var properties = [];
 		this.xhr('getFileDetails', string.path(this._dir, this._selectedItems[this._activeItem].title), function(o){
-			if($('loader')){
+			if ($('loader')) {
 				$('loader').remove();
 			}
 			$each(o, function(v, k){
 				// If a button trigger or triggers
-				if(o.trigger){
+				if (o.trigger) {
 					o.trigger.each(function(t){
-						if(t !== ''){
+						if (t !== '') {
 							var b = this.getButton('file', t);
-							if(b){
-								this.showButton(b.element, b.multiple);	
+							if (b) {
+								this.showButton(b.element, b.multiple);
 							}
 						}
 					}.bind(this));
 				}
-				if(!/(trigger|preview)/i.test(k)){
-					properties.include(
-						new Element('dd').setProperty('id', 'info-' + k.toLowerCase()).setHTML(tinyMCEPopup.getLang('dlg.' + k, k) + ': ' + v)			  
-					)
+				if (!/(trigger|preview)/i.test(k)) {
+					$('info-properties').adopt(new Element('dd').setProperty('id', 'info-' + k.toLowerCase()).setHTML(tinyMCEPopup.getLang('dlg.' + k, k) + ': ' + v));
 				}
 			}.bind(this));
-			if(o.preview){
-				properties.include(
-					new Element('dt').setHTML(tinyMCEPopup.getLang('dlg.preview', 'Preview') + ': ')
-				).include(
-					new Element('dd').setProperty('id', 'info-preview').addClass('loader').adopt(
-						new Asset.image(o.preview.src, {
-							width: o.preview.width || 100,
-							height: o.preview.height || 100,
-							title: 'Preview',
-							onload: function(){
-								this.getParent().removeClass('loader');
-							}
-						})
-					)
-				);		  
+			// Preview
+			if (o.preview) {
+				var w = o.preview.width || 100;
+				var h = o.preview.height || 100;
+				$('info-preview').adopt(new Element('dl').adopt([new Element('dt').setHTML(tinyMCEPopup.getLang('dlg.preview', 'Preview') + ': '), new Element('dd').setStyle('height', h).adopt(new Asset.image(o.preview.src, {
+					width: w,
+					height: h,
+					title: 'Preview',
+					onload: function(){
+						// Show image and remove loader
+						this.setStyle('display', '').getParent().removeClass('loader');
+					},
+					// Remove loader and show error icon
+					onerror: function(){
+						this.setStyle('display', 'none').getParent().removeClass('loader').addClass('preview-error');
+					}
+				// Hide preview image while loading
+				}).setStyle('display', 'none')).addClass('loader')]))	
 			}
 			// Comments
 			var comments = [];
-			if(/not(writable|safe)/i.test($(file).className)){
-				comments.include(
-					new Element('dt').setHTML(tinyMCEPopup.getLang('dlg.comments', 'Comments'))		   
-				);
+			if (/not(writable|safe)/i.test($(file).className)) {
+				comments.include(new Element('dt').setHTML(tinyMCEPopup.getLang('dlg.comments', 'Comments')));
 				// not writable
-				if($(file).hasClass('notwritable')){
-					comments.include(
-						new Element('dd').addClass('comments').addClass('file').addClass('notwritable').adopt(
-							new Element('span').addClass('hastip').setProperty('title', tinyMCEPopup.getLang('dlg.notwritable_desc', 'Unwritable')).setHTML(tinyMCEPopup.getLang('dlg.notwritable', 'Unwritable'))
-						)
-					)
+				if ($(file).hasClass('notwritable')) {
+					comments.include(new Element('dd').addClass('comments').addClass('file').addClass('notwritable').adopt(new Element('span').addClass('hastip').setProperty('title', tinyMCEPopup.getLang('dlg.notwritable_desc', 'Unwritable')).setHTML(tinyMCEPopup.getLang('dlg.notwritable', 'Unwritable'))))
 				}
 				// not safe
-				if($(file).hasClass('notsafe')){
-					comments.include(
-						new Element('dd').addClass('comments').addClass('file').addClass('notsafe').adopt(
-							new Element('span').addClass('hastip').setProperty('title', tinyMCEPopup.getLang('dlg.bad_name_desc', 'Bad file or folder name')).setHTML(tinyMCEPopup.getLang('dlg.bad_name', 'Bad file or folder name'))
-						)
-					)
+				if ($(file).hasClass('notsafe')) {
+					comments.include(new Element('dd').addClass('comments').addClass('file').addClass('notsafe').adopt(new Element('span').addClass('hastip').setProperty('title', tinyMCEPopup.getLang('dlg.bad_name_desc', 'Bad file or folder name')).setHTML(tinyMCEPopup.getLang('dlg.bad_name', 'Bad file or folder name'))))
 				}
 			}
-			// Inject details
-			if($(info)){ 
-				$(info).adopt(properties);
-			}
-			if(comments.length){
-				$(this.options.interface.comments).adopt(
-					new Element('dl').adopt(comments)			
-				)
+			if (comments.length) {
+				$(this.options.interface.comments).empty().adopt(new Element('dl').adopt(comments))
 				// Add tooltip
 				this.addToolTip($E('span.hastip', $$('dd.comments')));
 			}
 			// Fire event
-			this.fireEvent('getFileDetails', [o]);
-		}.bind(this));	
+			this.fireEvent('onFileDetails', [o]);
+		}.bind(this));
 	}
 });
+// Implement Manager class
 Manager.implement(new Events, new Options);

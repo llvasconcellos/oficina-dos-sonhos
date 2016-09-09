@@ -23,7 +23,7 @@ class JA_IconMenu extends JA_Base {
 		</script>
 		<div id="ja-iconmenu">
 		<div id="ja-imageTitle"></div> 
-		<table cellspacing="0" cellpadding="0" border="0">
+		<table cellspacing="0" cellpadding="0" border="1">
 		<tr>
 		<td style="width:1px"><img src="<?php echo JURI::base(); ?>images/blank.png" style="width:1px;height:<?php echo $this->getParam('menu_height');?>px" alt="" /></td>
 		<?php

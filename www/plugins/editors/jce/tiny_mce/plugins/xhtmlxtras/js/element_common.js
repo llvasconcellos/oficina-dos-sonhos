@@ -1,5 +1,5 @@
  /**
- * $Id: editor_plugin_src.js 42 2006-08-08 14:32:24Z spocke $
+ * $Id: element_common.js 26 2009-05-25 10:21:53Z happynoodleboy $
  *
  * @author Moxiecode - based on work by Andrew Tetlaw
  * @copyright Copyright © 2004-2008, Moxiecode Systems AB, All rights reserved.
@@ -160,19 +160,19 @@ SXE.insertElement = function(element_name) {
 			if (tinymce.isIE && element_name.indexOf('html:') == 0)
 				element_name = element_name.substring(5).toLowerCase();
 
-			h = '<' + tagName + ' id="#sxe_temp_' + element_name + '#">' + s + '</' + tagName + '>';
-
-			tinyMCEPopup.execCommand('mceInsertContent', false, h);
-
-			var elementArray = tinymce.grep(SXE.inst.dom.select(element_name), function(n) {return n.id == '#sxe_temp_' + element_name + '#';});
+			insertInlineElement(element_name);
+			var elementArray = tinymce.grep(SXE.inst.dom.select(element_name));
 			for (var i=0; i<elementArray.length; i++) {
 				var elm = elementArray[i];
 
-				elm.id = '';
-				elm.setAttribute('id', '');
-				elm.removeAttribute('id');
+				if (SXE.inst.dom.getAttrib(elm, '_mce_new')) {
+					elm.id = '';
+					elm.setAttribute('id', '');
+					elm.removeAttribute('id');
+					elm.removeAttribute('_mce_new');
 
-				setAllCommonAttribs(elm);
+					setAllCommonAttribs(elm);
+				}
 			}
 		}
 	} else {
@@ -218,4 +218,14 @@ SXE.removeClass = function(elm,cl) {
 SXE.addClass = function(elm,cl) {
 	if(!SXE.containsClass(elm,cl)) elm.className ? elm.className += " " + cl : elm.className = cl;
 	return true;
+}
+
+function insertInlineElement(en) {
+	var ed = tinyMCEPopup.editor, dom = ed.dom;
+
+	ed.getDoc().execCommand('FontName', false, 'mceinline');
+	tinymce.each(dom.select('span,font'), function(n) {
+		if (n.style.fontFamily == 'mceinline' || n.face == 'mceinline')
+			dom.replace(dom.create(en, {_mce_new : 1}), n, 1);
+	});
 }

@@ -1,15 +1,13 @@
 <?php
 /**
- * @version		$Id: plugin.php 7074 2007-03-31 15:37:23Z jinx $
- * @package		Joomla.Framework
- * @subpackage	Table
- * @copyright	Copyright (C) 2005 - 2007 Open Source Matters. All rights reserved.
- * @license		GNU/GPL, see LICENSE.php
- * Joomla! is free software. This version may have been modified pursuant
+ * @version		plugin.php 08/03/2009
+ * @package		JCE.Administration
+ * @copyright	Copyright (C) 2006 - 2009 Ryan Demmer. All rights reserved.
+ * @license		GNU/GPL
+ * JCE is free software. This version may have been modified pursuant
  * to the GNU General Public License, and as distributed it includes or
  * is derivative of works licensed under the GNU General Public License or
  * other free or open source software licenses.
- * See COPYRIGHT.php for copyright notices and details.
  */
 
 // Check to ensure this file is within the rest of the framework
@@ -50,7 +48,7 @@ class JCETablePlugin extends JTable
 	 *
 	 * @var varchar
 	 */
-	var $type = null;
+	var $type = 'plugin';
 	
 	/**
 	 *
@@ -71,21 +69,21 @@ class JCETablePlugin extends JTable
 	 *
 	 * @var int
 	 */
-	var $row = null;
+	var $row = 0;
 	
 	/**
 	 *
 	 *
 	 * @var int
 	 */
-	var $ordering = null;
+	var $ordering = 0;
 
 	/**
 	 *
 	 *
 	 * @var tinyint
 	 */
-	var $published = null;
+	var $published = 1;
 	
 	/**
 	 *
@@ -99,7 +97,11 @@ class JCETablePlugin extends JTable
 	 *
 	 * @var tinyint
 	 */
-	var $iscore = null;
+	var $iscore = 0;
+	
+	// Legacy
+	
+	var $elements = null;
 
 	/**
 	 *
@@ -114,20 +116,6 @@ class JCETablePlugin extends JTable
 	 * @var datetime
 	 */
 	var $checked_out_time = 0;
-
-	/**
-	 *
-	 *
-	 * @var text
-	 */
-	var $params = null;
-	
-	/**
-	 *
-	 *
-	 * @var text
-	 */
-	var $variables = null;
 
 	function __construct(& $db) {
 		parent::__construct('#__jce_plugins', 'id', $db);

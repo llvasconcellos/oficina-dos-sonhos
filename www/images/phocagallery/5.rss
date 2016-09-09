@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss xmlns:media="http://search.yahoo.com/mrss" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <atom:icon>http://www.phoca.cz/images/phoca-piclens.png</atom:icon>
+        <item>
+            <title>imagem-001</title>
+            <link>/images/phocagallery/QLYCDA/thumbs/phoca_thumb_l_imagem-001.jpg</link>
+            <media:thumbnail url="/images/phocagallery/QLYCDA/thumbs/phoca_thumb_l_imagem-001.jpg" />
+            <media:content url="/images/phocagallery/QLYCDA/imagem-001.jpg" />
+            <guid isPermaLink="false">5-phocagallerypiclenscode-/QLYCDA/imagem-001.jpg</guid>
+        </item>
+        <item>
+            <title>imagem-002</title>
+            <link>/images/phocagallery/QLYCDA/thumbs/phoca_thumb_l_imagem-002.jpg</link>
+            <media:thumbnail url="/images/phocagallery/QLYCDA/thumbs/phoca_thumb_l_imagem-002.jpg" />
+            <media:content url="/images/phocagallery/QLYCDA/imagem-002.jpg" />
+            <guid isPermaLink="false">5-phocagallerypiclenscode-/QLYCDA/imagem-002.jpg</guid>
+        </item>
+        <item>
+            <title>imagem-003</title>
+            <link>/images/phocagallery/QLYCDA/thumbs/phoca_thumb_l_imagem-003.jpg</link>
+            <media:thumbnail url="/images/phocagallery/QLYCDA/thumbs/phoca_thumb_l_imagem-003.jpg" />
+            <media:content url="/images/phocagallery/QLYCDA/imagem-003.jpg" />
+            <guid isPermaLink="false">5-phocagallerypiclenscode-/QLYCDA/imagem-003.jpg</guid>
+        </item>
+        <item>
+            <title>imagem-008</title>
+            <link>/images/phocagallery/QLYCDA/thumbs/phoca_thumb_l_imagem-008.jpg</link>
+            <media:thumbnail url="/images/phocagallery/QLYCDA/thumbs/phoca_thumb_l_imagem-008.jpg" />
+            <media:content url="/images/phocagallery/QLYCDA/imagem-008.jpg" />
+            <guid isPermaLink="false">5-phocagallerypiclenscode-/QLYCDA/imagem-008.jpg</guid>
+        </item>
+        <item>
+            <title>imagem-010</title>
+            <link>/images/phocagallery/QLYCDA/thumbs/phoca_thumb_l_imagem-010.jpg</link>
+            <media:thumbnail url="/images/phocagallery/QLYCDA/thumbs/phoca_thumb_l_imagem-010.jpg" />
+            <media:content url="/images/phocagallery/QLYCDA/imagem-010.jpg" />
+            <guid isPermaLink="false">5-phocagallerypiclenscode-/QLYCDA/imagem-010.jpg</guid>
+        </item>
+    </channel>
+</rss>

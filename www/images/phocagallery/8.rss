@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss xmlns:media="http://search.yahoo.com/mrss" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <atom:icon>http://www.phoca.cz/images/phoca-piclens.png</atom:icon>
+        <item>
+            <title>dsc01607</title>
+            <link>/images/phocagallery/OHZCPV/thumbs/phoca_thumb_l_dsc01607.jpg</link>
+            <media:thumbnail url="/images/phocagallery/OHZCPV/thumbs/phoca_thumb_l_dsc01607.jpg" />
+            <media:content url="/images/phocagallery/OHZCPV/dsc01607.jpg" />
+            <guid isPermaLink="false">8-phocagallerypiclenscode-/OHZCPV/dsc01607.jpg</guid>
+        </item>
+    </channel>
+</rss>

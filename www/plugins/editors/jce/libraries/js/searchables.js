@@ -1,21 +1,15 @@
-/*
-Class: Searchables
-	Creates an interface for <Drag.Base> and drop, resorting of a list.
-
-Note:
-	The Sortables require an XHTML doctype.
-
-Arguments:
-	input 	- the input element
-	list 	- the target list to scroll.
-	items	- the target items to search
-	options - an Object, see options below.
-
-Options:
-	
-Events:
-	onFind - function executed when an item is found
+/**
+* @version		$Id: searchables.js 49 2009-05-28 10:02:46Z happynoodleboy $
+* @package      JCE
+* @copyright    Copyright (C) 2005 - 2009 Ryan Demmer. All rights reserved.
+* @author		Ryan Demmer
+* @license      GNU/GPL
+* JCE is free software. This version may have been modified pursuant
+* to the GNU General Public License, and as distributed it includes or
+* is derivative of works licensed under the GNU General Public License or
+* other free or open source software licenses.
 */
+
 var Searchables = new Class({
 	getOptions : function(){
 		return {
@@ -29,11 +23,12 @@ var Searchables = new Class({
 			wait: false,
 			duration: 500
 		});
-		i.addEvent('keyup', function(){
+		i.addEvent('keyup', function(e){
 			var s = i.value;
 			if(/[a-z0-9_\.-]/i.test(s)){
 				$(items).getChildren().each(function(el){
-					if(string.basename(el.title).substring(0, s.length) == s){
+					var f = string.basename(el.title).substring(0, s.length); 
+					if(f.toLowerCase() == s.toLowerCase()){
 						x.include(el);
 					}else{	
 						x.remove(el);

@@ -3,11 +3,17 @@ defined('_JEXEC') or die('Restricted access');
 
 $config =& JFactory::getConfig();
 $publish_up =& JFactory::getDate($this->article->publish_up);
-$publish_down =& JFactory::getDate($this->article->publish_down);
 $publish_up->setOffset($config->getValue('config.offset'));
-$publish_down->setOffset($config->getValue('config.offset'));
 $publish_up = $publish_up->toFormat();
-$publish_down = $publish_down->toFormat(); ?>
+
+if (! isset($this->article->publish_down) || $this->article->publish_down == 'Never') {
+	$publish_down = JText::_('Never');
+} else {
+	$publish_down =& JFactory::getDate($this->article->publish_down);
+	$publish_down->setOffset($config->getValue('config.offset'));
+	$publish_down = $publish_down->toFormat();
+}
+?>
 
 <script language="javascript" type="text/javascript">
 <!--
@@ -57,7 +63,7 @@ function submitbutton(pressbutton) {
 //-->
 </script>
 <?php if ($this->params->get('show_page_title', 1)) : ?>
-<div class="componentheading<?php echo $this->params->get('pageclass_sfx')?>"><?php echo $this->escape($this->params->get('page_title')); ?></div>
+<div class="componentheading<?php echo $this->escape($this->params->get('pageclass_sfx')); ?>"><?php echo $this->escape($this->params->get('page_title')); ?></div>
 <?php endif; ?>
 <form action="<?php echo $this->action ?>" method="post" name="adminForm" onSubmit="setgood();">
 <fieldset>
@@ -140,7 +146,7 @@ echo $this->editor->display('text', $this->article->text, '100%', '400', '70', '
 		</label>
 	</td>
 	<td>
-		<input type="text" id="created_by_alias" name="created_by_alias" size="50" maxlength="100" value="<?php echo $this->article->created_by_alias; ?>" class="inputbox" />
+		<input type="text" id="created_by_alias" name="created_by_alias" size="50" maxlength="100" value="<?php echo $this->escape($this->article->created_by_alias); ?>" class="inputbox" />
 	</td>
 </tr>
 <tr>

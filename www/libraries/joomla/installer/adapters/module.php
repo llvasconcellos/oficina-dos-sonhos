@@ -188,7 +188,7 @@ class JInstallerModule extends JObject
 		// So all we need to do is create an entry when we can't find one
 		if (!$id) {
 			$row = & JTable::getInstance('module');
-			$row->title = $this->get('name');
+			$row->title = JText::_($this->get('name'));
 			$row->ordering = $row->getNextOrder( "position='left'" );
 			$row->position = 'left';
 			$row->showtitle = 1;
@@ -246,6 +246,11 @@ class JInstallerModule extends JObject
 			$this->parent->abort(JText::_('Module').' '.JText::_('Install').': '.JText::_('Could not copy setup file'));
 			return false;
 		}
+
+		// Load module language file
+		$lang =& JFactory::getLanguage();
+		$lang->load($row->module, JPATH_BASE.DS.'..');
+
 		return true;
 	}
 

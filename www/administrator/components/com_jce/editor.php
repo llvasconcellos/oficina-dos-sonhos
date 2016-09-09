@@ -4,7 +4,7 @@
 * @package		JCE
 * @subpackage	Admin Component
 * @copyright	Copyright (C) 2006 - 2008 Ryan Demmmer. All rights reserved.
-* @license		GNU/GPL, see LICENSE.php
+* @license		GNU/GPL
 * JCE is free software. This version may have been modified pursuant
 * to the GNU General Public License, and as distributed it includes or
 * is derivative of works licensed under the GNU General Public License or

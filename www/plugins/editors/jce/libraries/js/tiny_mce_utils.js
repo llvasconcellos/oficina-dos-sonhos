@@ -1,6 +1,4 @@
 /**
- * $Id: editable_selects.js 520 2008-01-07 16:30:32Z spocke $
- *
  * Makes select boxes editable.
  *
  * @author Moxiecode
@@ -68,7 +66,7 @@ var TinyMCE_EditableSelects = {
 				}
 			}
 			
-			if(se.tmp != 'undefined'){
+			if(se.tmp && se.tmp != 'undefined'){
 				se.tmp.call();	
 			}
 
@@ -110,6 +108,7 @@ TinyMCE_Utils = {
 	},
 	getBrowserHTML : function(id, target_form_element, type, prefix) {
 		var option = prefix + "_" + type + "_browser_callback", cb, html;
+		var cb, html;
 	
 		cb = tinyMCEPopup.getParam(option, tinyMCEPopup.getParam("file_browser_callback"));
 	
@@ -142,6 +141,10 @@ TinyMCE_Utils = {
 		}else{
 			cl = ed.dom.getClasses();
 		}
+		
+		tinymce.each(['jcepopup', 'jcetooltip'], function(o){
+			lst.options[lst.options.length] = new Option(o, o);											  
+		});
 	
 		if(cl.length > 0){
 			tinymce.each(cl, function(o) {
@@ -151,8 +154,6 @@ TinyMCE_Utils = {
 	}
 }
 /**
- * $Id: mctabs.js 520 2008-01-07 16:30:32Z spocke $
- *
  * Moxiecode DHTML Tabs script.
  *
  * @author Moxiecode
@@ -225,8 +226,6 @@ MCTabs.prototype.getAnchor = function() {
 // Global instance
 var mcTabs = new MCTabs();
 /**
- * $Id: validate.js 520 2008-01-07 16:30:32Z spocke $
- *
  * Various form validation methods.
  *
  * @author Moxiecode

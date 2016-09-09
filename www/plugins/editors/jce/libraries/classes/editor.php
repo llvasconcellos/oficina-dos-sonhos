@@ -1,16 +1,17 @@
 <?php
 /**
- * @version		$Id: jce.php 2007-08-04 09:50:57Z happy_noodle_boy $
- * @package		JCE
- * @copyright	Copyright (C) 2005 - 2007 Ryan Demmer. All rights reserved.
- * @license		GNU/GPL, see LICENSE.php
- * JCE is free software. This version may have been modified pursuant
- * to the GNU General Public License, and as distributed it includes or
- * is derivative of works licensed under the GNU General Public License or
- * other free or open source software licenses.
- */
+* @version		$Id: editor.php 46 2009-05-26 16:59:42Z happynoodleboy $
+* @package      JCE
+* @copyright    Copyright (C) 2005 - 2009 Ryan Demmer. All rights reserved.
+* @author		Ryan Demmer
+* @license      GNU/GPL
+* JCE is free software. This version may have been modified pursuant
+* to the GNU General Public License, and as distributed it includes or
+* is derivative of works licensed under the GNU General Public License or
+* other free or open source software licenses.
+*/
 
-defined( '_JEXEC' ) or die( 'Restricted access' );
+defined('_JEXEC') or die('Restricted access');
 
 /**
  * JCE class
@@ -20,59 +21,44 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
  * @since	1.5
  */
 
-class JContentEditor extends JObject{
+class JContentEditor extends JObject
+{
+	/*
+	 * @var varchar
+	 */
+	var $version = '152';
 	/*
 	*  @var varchar
 	*/
-	var $_version = '150';
+	var $site_url = null;
 	/*
 	*  @var varchar
 	*/
-	var $_site_url = null;
-	/*
-	*  @var int
-	*/
-	var $_user = null;
-	/*
-	*  @var int
-	*/
-	var $_id = null;
-	/*
-	*  @var int
-	*/
-	var $_gid = null;
-	/*
-	*  @var varchar
-	*/
-	var $_usertype = null;
-	/*
-	*  @var varchar
-	*/
-	var $_username = null;
-	/*
-	*  @var varchar
-	*/
-	var $_group = null;
+	var $group = null;
 	/*
 	 *  @var object
 	 */
-	var $_params = null;
+	var $params = null;
+	/*
+	 *  @var array
+	 */
+	var $plugins = array();
 	/*
 	*  @var varchar
 	*/
-	var $_url = array();
+	var $url = array();
 	/*
 	*  @var varchar
 	*/
-	var $_request = null;
+	var $request = null;
 	/*
 	*  @var array
 	*/
-	var $_scripts = array();
+	var $scripts = array();
 	/*
 	*  @var array
 	*/
-	var $_css = array();
+	var $css = array();
 	/*
 	*  @var boolean
 	*/
@@ -82,31 +68,16 @@ class JContentEditor extends JObject{
 	*
 	* @access	protected
 	*/
-	function __construct(){
+	function __construct($config = array())
+	{
 		global $mainframe;
 		
-		$this->_user 		=& JFactory::getUser();				                     
-        $this->_site_url 	= $mainframe->isAdmin() ? $mainframe->getSiteURL() : JURI::base();
-		
-		$this->_usertype 	= strtolower( $this->_user->get('usertype') );
-        $this->_username 	= $this->_user->get('username');
-		
-		if( !$this->_user->get('id') ){
-			$gid = 0;
-		}else{
-			$query = "SELECT gid"
-			. "\n FROM #__users"
-			. "\n WHERE id = '".$this->_user->get('id')."' LIMIT 1";
-			;
-			$gid = $this->_query( $query, 'loadResult' );
-		}
-		$this->_gid 	= $gid;		
-		$this->_id 		= $this->_user->get('id');
+		$this->setProperties($config);
 		
 		// Get user group
-		$this->_group 	= $this->getUserGroup();
+		$this->group 	= $this->getUserGroup();
 		// Get editor and group params
-		$this->_params	= $this->getEditorParams();
+		$this->params	= $this->getEditorParams();
 	}
 	/**
 	 * Returns a reference to a editor object
@@ -118,48 +89,22 @@ class JContentEditor extends JObject{
 	 * @return	JCE  The editor object.
 	 * @since	1.5
 	 */
-	function &getInstance(){
+	function &getInstance()
+	{
 		static $instance;
 
-		if ( !is_object( $instance ) ){
+		if (!is_object($instance)) {
 			$instance = new JContentEditor();
 		}
 		return $instance;
 	}
-	function getVersion(){
-		return $this->_version;
-	}
 	/**
-	 * Process a query
-	 *
-	 * Wrapper function for a db query
-	 *
-	 * @access private
-	 * @param string	The query text
-	 * @param string	The result type
-	 * @return query result
-	*/
-	function _query( $query, $result ){
-		$db	=& JFactory::getDBO();
-		$db->setQuery( $query );
-		
-		switch( $result ){
-			case 'loadResult':
-				return $db->loadResult();
-				break;
-			case 'loadResultArray':
-				return $db->loadResultArray();
-				break;
-			case 'loadObjectList':
-				return $db->loadObjectList();
-				break;
-		}	
-	}
-	function getSite(){
-		return $this->_site_url;
-	}
-	function getUser( $option='id' ){
-		return $this->_user->get( $option );
+	 * Get the current version
+	 * @return Version
+	 */
+	function getVersion()
+	{
+		return $this->version;
 	}
 	/**
 	 * Get the current users group if any
@@ -167,30 +112,31 @@ class JContentEditor extends JObject{
 	 * @access public
 	 * @return group or false
 	*/
-	function getUserGroup(){
-		$option = JRequest::getCmd( 'option' );
+	function getUserGroup()
+	{
+		$db		=& JFactory::getDBO();
+		$user	=& JFactory::getUser();
+		$option = JRequest::getCmd('option');
 		
-		if( $this->_group ){
-			return $this->_group;
+		if ($this->group) {
+			return $this->group;
 		}
 		$query = 'SELECT *'
 		. ' FROM #__jce_groups'
 		. ' WHERE published = 1'
 		. ' ORDER BY ordering ASC'
 		;
-		$groups = $this->_query( $query, 'loadObjectList');
+		$db->setQuery($query);
+		$groups = $db->loadObjectList();
 		
-		foreach( $groups as $group ){
-			$users 			= in_array( $this->_id, explode(',', $group->users ) );
-			$types 			= in_array( $this->_gid, explode(',', $group->types ) );
-			$components 	= in_array( $option, explode(',', $group->components ) );
-						
+		foreach ($groups as $group) {
+			$components = ($option == 'com_jce') ? true : in_array($option, explode(',', $group->components));
+
 			// Check user			
-			if( $users ){
-				// Components entry?
-				if( $group->components ){
-					// Check component
-					if( $components ){
+			if (in_array($user->id, explode(',', $group->users))) {
+				// Check components
+				if ($group->components) {
+					if ($components) {
 						return $group;
 					}
 				}else{
@@ -198,11 +144,10 @@ class JContentEditor extends JObject{
 				}
 			}
 			// Check usertype
-			if( $types ){
-				// Components entry?
-				if( $group->components ){
-					// Check component
-					if( $components ){
+			if (in_array($user->gid, explode(',', $group->types))) {
+				// Check components
+				if ($group->components) {
+					if ($components) {
 						return $group;
 					}
 				}else{
@@ -210,7 +155,7 @@ class JContentEditor extends JObject{
 				}
 			}
 			// Check components only
-			if( $group->components && $components ){
+			if ($group->components && $components) {
 				return $group;
 			}
 		}
@@ -221,58 +166,74 @@ class JContentEditor extends JObject{
 	 *
 	 * Determine whether the user is a Super Administrator
 	 *
-	 * @access public
 	 * @return boolean
 	*/
-	function isSuperAdmin(){
-		return ( $this->_usertype == 'superadministrator' || $this->_usertype == 'super administrator' || $this->_gid == 25 ) ? true : false;	
+	function isSuperAdmin()
+	{
+		$user =& JFactory::getUser();
+		return (strtolower($user->usertype) == 'superadministrator' || strtolower($user->usertype) == 'super administrator' || $user->gid == 25) ? true : false;	
     }
-	function filterParams( $params, $key ){
-		$params = explode( "\n", $params );
-			
+	/**
+	 * Filter (remove) a parameter from a parameter string
+	 * @return string Filtered parameter String
+	 * @param object $params
+	 * @param object $key
+	 */
+	function filterParams($params, $key)
+	{
+		$params = explode("\n", $params);					
 		$return = array();
 		
-		foreach( $params as $param ){
-			if( eregi( $key, $param ) ){
+		foreach($params as $param) {
+			if (eregi($key, $param)) {
 				$return[] = $param;
 			}
 		}
-		return implode( "\n", $return );
+		return implode("\n", $return);
 	}
 	/**
-	 * Return the JCE Mambot's parameters
+	 * Return the JCE Editor's parameters
 	 *
-	 * @access public
 	 * @return object
 	*/
-	function getEditorParams(){		
-		if( isset( $this->_params ) ){
-			return $this->_params;
+	function getEditorParams()
+	{		
+		$db	=& JFactory::getDBO();
+		
+		if (isset($this->params)) {
+			return $this->params;
 		}
 		
 		$e_params = '';
 		$g_params = '';
 		
-		$query = "SELECT params FROM #__plugins"
-		. "\n WHERE element = 'jce'"
-		. "\n AND folder = 'editors'" 
-		. "\n AND published = 1" 
-		. "\n LIMIT 1";
-		$e_params = $this->_query( $query, 'loadResult' );
+		$query = 'SELECT params FROM #__plugins'
+		. ' WHERE element = '. $db->Quote('jce')
+		. ' AND folder = '. $db->Quote('editors')
+		. ' AND published = 1' 
+		. ' LIMIT 1'
+		;
+		$db->setQuery($query);
 		
-		$g_params = $this->filterParams( $this->_group->params, 'editor' );
+		$e_params = $db->loadResult();
+		// check if group params available
+		if ($this->group) {
+			$g_params = $this->filterParams($this->group->params, 'editor');
+		}
 
-		return new JParameter( $e_params . $g_params );
+		return new JParameter($e_params . $g_params);
 	}
-	/**
-	 * Return an Editor parameter
-	 *
-	 * @access public
-	 * @return object
-	*/
-	function getEditorParam( $key, $default='' ){		
+    /**
+     * Get an Editor Parameter by key
+     * 
+     * @return string Editor Parameter
+     * @param string $key The parameter key
+     * @param string $default[optional] Value if no result
+     */
+	function getEditorParam($key, $default = '')
+	{		
 		$params = $this->getEditorParams();
-		return $this->cleanParam( $params->get( $key, $default ) );
+		return $this->cleanParam($params->get($key, $default));
 	}
 	/**
 	 * Return the plugin parameter object
@@ -281,11 +242,44 @@ class JContentEditor extends JObject{
 	 * @param string	The plugin
 	 * @return 			The parameter object
 	*/
-	function getPluginParams( $plugin ){						
-		if( $this->_group ){
-			$params = $this->filterParams( $this->_group->params, $plugin );
+	function getPluginParams($plugin)
+	{						
+		$params = '';
+		if ($this->group) {
+			$params = $this->filterParams($this->group->params, $plugin);
 		}				
-		return new JParameter( $params );
+		return new JParameter($params);
+	}
+	/**
+	 * Get a group parameter from plugin and/or editor parameters
+	 *
+	 * @access 			public
+	 * @param string	The parameter name
+	 * @param string	The default value
+	 * @return 			string
+	*/
+	function getSharedParam($plugin, $param, $default = '')
+	{
+		$e_params 	= $this->getEditorParams();
+		$p_params 	= $this->getPluginParams($plugin);
+		
+		$ret = $p_params->get($plugin . '_' . $param, '');
+
+		if ($ret == '') {			
+			$ret = $e_params->get('editor_' . $param, $default);
+		}
+		return $this->cleanParam($ret);
+	}
+	/**
+	 * Add a plugin to the plugins array
+	 * 
+	 * @return null
+	 * @param array $plugins
+	 */
+	function addPlugins($plugins)
+	{
+		$plugins = (array) $plugins;		
+		$this->plugins = array_unique(array_merge($this->plugins, $plugins));
 	}
 	/**
 	 * Return a list of published JCE plugins
@@ -293,53 +287,41 @@ class JContentEditor extends JObject{
 	 * @access public
 	 * @return string list
 	*/
-	function getPlugins( $extra=array() ){		
-		if( $this->_group ){			
-			// Load other plugins not included in Groups
-			/*$query = "SELECT name"
-			. " FROM #__jce_plugins"
-			. " WHERE published = 1"
-			. " AND type = 'plugin'"
-			. " AND row = 0"
-			. " AND editable = 0"
-			;
-			if( !$pseudo = $this->_query( $query, 'loadResultArray' ) ){
-				$pseudo = array();
-			}*/
-			
+	function getPlugins()
+	{		
+		$db	=& JFactory::getDBO();
+		
+		$plugins = array();
+		
+		if ($this->group) {			
 			$query = "SELECT name"
 			. " FROM #__jce_plugins"
 			. " WHERE published = 1"
 			. " AND type = 'plugin'"
-			. " AND id IN (". $this->_group->plugins. ")"
+			. " AND id IN (". $this->group->plugins. ")"
 			;
-			if( !$plugins = $this->_query( $query, 'loadResultArray' ) ){
-				$plugins = array();
-			}
 			
-			//$plugins = array_merge( $group, $pseudo );
-		}else{
-			$query = "SELECT name"
-			. " FROM #__jce_plugins"
-			. " WHERE published = 1"
-			. " AND type = 'plugin'"
-			;
-			if( !$plugins = $this->_query( $query, 'loadResultArray' ) ){
-				$plugins = array();
-			}
+			$db->setQuery($query);
+			$plugins = $db->loadResultArray();
 		}
-		$plugins = array_merge( $plugins, $extra );
-        return implode( ',', $plugins );
+	   	return array_merge($plugins, $this->plugins);
 	}
 	/**
-	 * Return a list of font familys
-	 *
-	 * @access public
-	 * @return string list
-	*/
-	function getEditorFonts( $add, $remove ){
+	 * Get a list of editor font families
+	 * 
+	 * @return string font family list
+	 * @param string $add Font family to add
+	 * @param string $remove Font family to remove
+	 */
+	function getEditorFonts($add, $remove)
+	{
+		
+		$add 	= explode(';', $this->getEditorParam('editor_theme_advanced_fonts_add', ''));
+		$remove = preg_split('/[;,]+/', $this->getEditorParam('editor_theme_advanced_fonts_remove', ''));
+		
 		// Default font list
-		$fonts = array('Andale Mono=andale mono,times',
+		$fonts = array(
+		'Andale Mono=andale mono,times',
 		'Arial=arial,helvetica,sans-serif',
 		'Arial Black=arial black,avant garde',
 		'Book Antiqua=book antiqua,palatino',
@@ -355,28 +337,29 @@ class JContentEditor extends JObject{
 		'Trebuchet MS=trebuchet ms,geneva',
 		'Verdana=verdana,geneva',
 		'Webdings=webdings',
-		'Wingdings=wingdings,zapf dingbats');
+		'Wingdings=wingdings,zapf dingbats'
+		);
 		
-		$add 	= explode( ';', $add );
-		$remove = explode( ';', $remove );	
-		
-		foreach( $fonts as $key => $value ){
-			foreach( $remove as $gone ){
-				// Match family to remove
-				if( stristr( $value, $gone . '=' ) ){
-					// Remove family
-					unset( $fonts[$key] );
+		if (count($remove)) {
+			foreach($fonts as $key => $value) {
+				foreach($remove as $gone) {
+					if ($gone) {
+						if (preg_match('/^'. $gone .'=/i', $value)) {
+							// Remove family
+							unset($fonts[$key]);
+						}
+					}
 				}
 			}
 		}
-		foreach( $add as $new ){
+		foreach($add as $new) {
 		// Add new font family
-			if( preg_match( '/([^\=]+)(\=)([^\=]+)/', trim( $new ) ) && !in_array( $new, $fonts ) ){
+			if (preg_match('/([^\=]+)(\=)([^\=]+)/', trim($new)) && !in_array($new, $fonts)) {
 				$fonts[] = $new;
 			}
 		}
-		natcasesort( $fonts );
-		return implode( ';', $fonts );
+		natcasesort($fonts);
+		return implode(';', $fonts);
 	}
 	/**
 	 * Return the curernt language code
@@ -384,22 +367,21 @@ class JContentEditor extends JObject{
 	 * @access public
 	 * @return language code
 	*/
-	function getLanguageDir(){
-		/* $language =& JFactory::getLanguage();
-		return $language->isRTL() ? 'rtl' : 'ltr';
-		We can only support ltr at them moment...!
-		*/
-		return 'ltr';
-	}
-	/**
-	 * Return the curernt language code
-	 *
-	 * @access public
-	 * @return language code
-	*/
-	function getLanguageTag(){
+	function getLanguageDir()
+	{
 		$language =& JFactory::getLanguage();
-		if( $language->isRTL() ){
+		return $language->isRTL() ? 'rtl' : 'ltr';
+	}
+	/**
+	 * Return the curernt language code
+	 *
+	 * @access public
+	 * @return language code
+	*/
+	function getLanguageTag()
+	{
+		$language =& JFactory::getLanguage();
+		if ($language->isRTL()) {
 			return 'en-GB';
 		}
 		return $language->getTag();
@@ -410,79 +392,85 @@ class JContentEditor extends JObject{
 	 * @access public
 	 * @return language code
 	*/
-	function getLanguage(){
+	function getLanguage()
+	{
 		$tag = $this->getLanguageTag();
-		if( file_exists( JPATH_SITE .DS. 'language' .DS. $tag .DS. $tag .'.com_jce.xml' ) ){
-			return substr( $tag, 0, strpos( $tag, '-' ) );
+		if (file_exists(JPATH_SITE .DS. 'language' .DS. $tag .DS. $tag .'.com_jce.xml')) {
+			return substr($tag, 0, strpos($tag, '-'));
 		}
 		return 'en';
 	}
 	/**
 	 * Load a language file
-	 *
-	 * @access public
-	*/
-	function loadLanguage( $prefix, $path = JPATH_SITE ){
+	 * 
+	 * @param string $prefix Language prefix
+	 * @param object $path[optional] Base path
+	 */
+	function loadLanguage($prefix, $path = JPATH_SITE)
+	{
 		$language =& JFactory::getLanguage();		
-		$language->load( $prefix, $path );
+		$language->load($prefix, $path);
 	}
 	/**
 	 * Return the current site template name
 	 *
 	 * @access public
 	*/
-	function getSiteTemplate(){
+	function getSiteTemplate()
+	{
+		$db =& JFactory::getDBO();
+		
 		$query = 'SELECT template'
 		. ' FROM #__templates_menu'
 		. ' WHERE client_id = 0'
 		. ' AND menuid = 0'
 		;
-		return $this->_query( $query, 'loadResult' );
+		
+		$db->setQuery($query);
+		
+		return $db->loadResult();
 	}
-	function getSkin(){
-		return $this->_params->get('editor_inlinepopups_skin', 'clearlooks2');
+	function getSkin()
+	{
+		return $this->params->get('editor_inlinepopups_skin', 'clearlooks2');
 	}
 	/**
-	 * Remove a key from an array
-	 *
-	 * @param array	    The array
-	 * @param string	The key to remove
-	 * @access public
-	*/
-	function removeKey( $array, $key ){
-		if( in_array( $key, $array ) ){
-			unset( $array[$key] );
+	 * Remove keys from an array
+	 * 
+	 * @return $array by reference
+	 * @param arrau $array Array to edit
+	 * @param array $keys Keys to remove
+	 */
+	function removeKeys(&$array, $keys)
+	{
+		if (!is_array($keys)) {
+			$keys = array($keys);
 		}
+		$array = array_diff($array, $keys);
 	}
 	/**
-	 * Add a key to a string list
+	 * Add keys to an array
 	 *
-	 * @param string	The string list to create an array from
-	 * @param string	The key to add
-	 * @param string	The list item seperator
-	 * @access public
 	 * @return The string list with added key or the key
+	 * @param string	The array
+	 * @param string	The keys to add
 	*/
-	function addKey( $string, $key, $separator ){
-		if( $string ){
-			$array 	= explode( $separator, $string );
-			if( !in_array( $key, $array ) ){
-				$array[] = $key;
-			}
-			return implode( $separator, $array );
-		}else{
-			return $key;
+	function addKeys(&$array, $keys)
+	{
+		if (!is_array($keys)) {
+			$keys = array($keys);
 		}
+		$array = array_unique(array_merge($array, $keys));
 	}
 	/**
 	 * Remove linebreaks and carriage returns from a parameter value
 	 *
-	 * @param string	The parameter value
-	 * @access public
 	 * @return The modified value
+	 * @param string	The parameter value
 	*/
-	function cleanParam( $param ){
-		return trim( preg_replace( '/\n|\r|\t(\r\n)[\s]+/', '', $param ) );
+	function cleanParam($param)
+	{
+		return trim(preg_replace('/\n|\r|\t(\r\n)[\s]+/', '', $param));
 	}
 	/**
 	 * Get a JCE editor or plugin parameter
@@ -494,9 +482,10 @@ class JContentEditor extends JObject{
 	 * @access public
 	 * @return The parameter
 	*/
-	function getParam( $params, $key, $p, $t='' ){		
-		$v = $this->cleanParam( $params->get( $key, $p ) );
-		return ( $v == $t ) ? '' : $v;
+	function getParam($params, $key, $p, $t = '')
+	{		
+		$v = JContentEditor::cleanParam($params->get($key, $p));
+		return ($v == $t) ? '' : $v;
 	}
 	/**
 	 * Return a string of JCE Commands to be removed
@@ -504,15 +493,21 @@ class JContentEditor extends JObject{
 	 * @access public
 	 * @return The string list
 	*/
-	function getRemovePlugins(){
+	function getRemovePlugins()
+	{
+		$db =& JFactory::getDBO();
+		
 		$query = "SELECT name"
         . "\n FROM #__jce_plugins"
         . "\n WHERE type = 'command'"
 		. "\n AND published = 0"
         ;
-		$remove = $this->_query( $query, 'loadResultArray' );
-		if( $remove ){
-			return implode( ',', $remove );
+		
+		$db->setQuery($query);
+		
+		$remove = $db->loadResultArray();
+		if ($remove) {
+			return implode(',', $remove);
 		}else{
 			return '';
 		}
@@ -524,28 +519,39 @@ class JContentEditor extends JObject{
 	 * @param string	The number of rows
 	 * @return The row array
 	*/
-	function getRows(){
+	function getRows()
+	{
+		$db =& JFactory::getDBO();
+		
 		$rows 	= array();
-		if( $this->_group ){
+		if ($this->group) {
 			// Get all plugins that are in the group rows list
 			$query = "SELECT id, icon"
 			. " FROM #__jce_plugins"
 			. " WHERE published = 1"
-			. " AND id IN (". str_replace( ';', ',', $this->_group->rows ) .")"
+			. " AND id IN (". str_replace(';', ',', $this->group->rows) .")"
 			;
-			$icons 	= $this->_query( $query, 'loadObjectList' );			
-			$lists 	= explode( ';', $this->_group->rows );
 			
-			if( $icons ){
-				for( $i=1; $i<=count( $lists ); $i++ ){
+			$db->setQuery($query);
+			
+			$icons 	= $db->loadObjectList();						
+			$lists 	= explode(';', $this->group->rows);
+			
+			if ($icons) {
+				for($i=1; $i<=count($lists); $i++) {
 					$x = $i - 1;
-					$items = explode( ',', $lists[$x] );
+					$items 	= explode(',', $lists[$x]);
 					$result = array();
 					// I'm sure you can use array_walk for this but I just can't figure out how!	
-					foreach( $items as $item ){
-						foreach( $icons as $icon ){
-							if( $icon->id == $item ){
-								$result[] = $icon->icon;
+					foreach($items as $item) {
+						// Add support for spacer
+						if ($item == '00') {
+							$result[] = '|';
+						}else{
+							foreach($icons as $icon) {
+								if ($icon->id == $item) {
+									$result[] = $icon->icon;
+								}
 							}
 						}		
 					}
@@ -553,56 +559,71 @@ class JContentEditor extends JObject{
 				}
 			}
 		}else{	
-			$num = intval( $this->_params->get( 'editor_layout_rows', '5' ) );
-			for( $i=1; $i<=$num; $i++ ){
+			$num = intval($this->params->get('editor_layout_rows', '5'));
+			for($i=1; $i<=$num; $i++) {
 				$query = "SELECT icon"
 				. " FROM #__jce_plugins"
 				. " WHERE published = 1"
 				. " AND row = ".$i
 				. " ORDER BY ordering ASC"
 				;
-				$result 	= $this->_query( $query, 'loadResultArray' );
-				if( $result ){
-					$rows[$i] 	= implode( ',', $result );
+				
+				$db->setQuery($query);
+				
+				$result = $db->loadResultArray();
+				if ($result) {
+					$rows[$i] 	= implode(',', $result);
 				}
 			}
 		}
         return $rows;
 	}
 	/**
-	 * Return a string of extended elements for a plugin
-	 *
-	 * @access public
-	 * @return The string list
-	*/
-	function getElements(){			
-		$jce_elements = explode( ',', $this->cleanParam( $this->_params->get( 'editor_extended_elements', '' ) ) );
-		$query = "SELECT elements"
-    	. "\n FROM #__jce_plugins"
-    	. "\n WHERE elements != ''"
-    	. "\n AND published = 1"
-    	;
-		$plugin_elements = $this->_query( $query, 'loadResultArray' );
-		
-		$elements = array_merge( $jce_elements, $plugin_elements );
-		return implode( ',', $elements );		
-	}
-	/**
-	 * Determine whether a plugin is loaded
+	 * Determine whether a plugin or command is loaded
 	 *
 	 * @access 			public
 	 * @param string	The plugin
 	 * @return 			boolean
 	*/
-	function isLoaded( $plugin ){		
-        $query = "SELECT id"
-        . "\n FROM #__jce_plugins"
-        . "\n WHERE name = '" . $plugin . "'"
-		. "\n AND published = 1 LIMIT 1"
-        ;
-		$id = $this->_query( $query, 'loadResult' );
+	function isLoaded($plugin)
+	{		
+		$db =& JFactory::getDBO();  
 		
-		return ( $id ) ? true : false;
+		$query = 'SELECT count(id)'
+		. ' FROM #__jce_plugins'
+		. ' WHERE name = '. $db->Quote($plugin)
+		. ' AND published = 1'
+		. ' AND id IN ('. str_replace(';', ',', $this->group->rows) .')'
+		;
+		
+		$db->setQuery($query);
+		return $db->loadResult() ? true : false;
+	}
+	/**
+	 * Get all loaded plugins config options
+	 *
+	 * @access 			public
+	 * @param array		vars passed by reference
+	*/
+	function getPluginConfig(&$vars)
+	{
+		// Store path
+		$path 		= JPATH_PLUGINS .DS. 'editors' .DS. 'jce' .DS. 'tiny_mce' .DS. 'plugins';
+		$plugins 	= $this->getPlugins();
+		
+		foreach($plugins as $plugin) {
+			$file = $path .DS. $plugin .DS. 'classes' .DS. 'config.php';
+			
+			if (file_exists($file)) {
+				require_once($file);
+				// Create class name	
+				$class = ucfirst($plugin . 'Config');
+				// Check method
+				if (method_exists($class, 'getConfig')) {
+					call_user_func_array(array($class, 'getConfig'), array(&$vars));
+				}
+			}
+		}
 	}
 	/**
 	 * Named wrapper to check access to a feature
@@ -612,8 +633,9 @@ class JContentEditor extends JObject{
 	 * @param string	The defalt value
 	 * @return 			string
 	*/
-	function checkUser(){
-		if( $this->_group ){
+	function checkUser()
+	{
+		if ($this->group) {
 			return true;
 		}
 		return false;
@@ -625,8 +647,9 @@ class JContentEditor extends JObject{
 	 * @param 	string	String to encode
 	 * @return 	string	Encoded string
 	*/
-	function xmlEncode( $string ){
-		return preg_replace( array( '/&/', '/</', '/>/', '/\'/', '/"/' ), array( '&amp;', '&lt;', '&gt;', '&apos;', '&quot;' ), $string );
+	function xmlEncode($string)
+	{
+		return preg_replace(array('/&/', '/</', '/>/', '/\'/', '/"/'), array('&amp;', '&lt;', '&gt;', '&apos;', '&quot;'), $string);
 	}
 	/**
 	 * XML decode a string.
@@ -635,8 +658,9 @@ class JContentEditor extends JObject{
 	 * @param 	string	String to decode
 	 * @return 	string	Decoded string
 	*/
-	function xmlDecode( $string ){
-		return preg_replace( array( '&amp;', '&lt;', '&gt;', '&apos;', '&quot;' ), array( '/&/', '/</', '/>/', '/\'/', '/"/' ), $string );
+	function xmlDecode($string)
+	{
+		return preg_replace(array('&amp;', '&lt;', '&gt;', '&apos;', '&quot;'), array('/&/', '/</', '/>/', '/\'/', '/"/'), $string);
 	}
 }
 ?>

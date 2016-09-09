@@ -1,17 +1,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>{#advanced_dlg.code_title}</title>
 	<script type="text/javascript" src="../../tiny_mce_popup.js"></script>
 	<script type="text/javascript" src="js/source_editor.js"></script>
 	<base target="_self" />
 </head>
-<body onresize="resizeInputs();" style="display:none; overflow:hidden;">
-	<form name="source" onsubmit="saveContent();return false;" action="#">
+<body onResize="resizeInputs();" style="display:none; overflow:hidden;">
+	<form name="source" onSubmit="saveContent();return false;" action="#">
 		<div style="float: left" class="title">{#advanced_dlg.code_title}</div>
 
 		<div id="wrapline" style="float: right">
-			<input type="checkbox" name="wraped" id="wraped" onclick="toggleWordWrap(this);" class="wordWrapCode" /><label for="wraped">{#advanced_dlg.code_wordwrap}</label>
+			<input type="checkbox" name="wraped" id="wraped" onClick="toggleWordWrap(this);" class="wordWrapCode" /><label for="wraped">{#advanced_dlg.code_wordwrap}</label>
 		</div>
 
 		<br style="clear: both" />
@@ -24,7 +24,7 @@
 			</div>
 
 			<div style="float: right">
-				<input type="button" name="cancel" value="{#cancel}" onclick="tinyMCEPopup.close();" id="cancel" />
+				<input type="button" name="cancel" value="{#cancel}" onClick="tinyMCEPopup.close();" id="cancel" />
 			</div>
 		</div>
 	</form>

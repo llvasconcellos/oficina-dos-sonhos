@@ -1,26 +1,27 @@
 <?php
-/** $Id: default_form.php 10381 2008-06-01 03:35:53Z pasamio $ */
+/** $Id: default_form.php 11917 2009-05-29 19:37:05Z ian $ */
 defined( '_JEXEC' ) or die( 'Restricted access' );
-?>
-<script type="text/javascript">
-<!--
-	function validateForm( frm ) {
-		var valid = document.formvalidator.isValid(frm);
-		if (valid == false) {
-			// do field validation
-			if (frm.email.invalid) {
-				alert( "<?php echo JText::_( 'Please enter a valid e-mail address.', true );?>" );
-			} else if (frm.text.invalid) {
-				alert( "<?php echo JText::_( 'CONTACT_FORM_NC', true ); ?>" );
+
+	$script = '<!--
+		function validateForm( frm ) {
+			var valid = document.formvalidator.isValid(frm);
+			if (valid == false) {
+				// do field validation
+				if (frm.email.invalid) {
+					alert( "' . JText::_( 'Please enter a valid e-mail address.', true ) . '" );
+				} else if (frm.text.invalid) {
+					alert( "' . JText::_( 'CONTACT_FORM_NC', true ) . '" );
+				}
+				return false;
+			} else {
+				frm.submit();
 			}
-			return false;
-		} else {
-			frm.submit();
 		}
-	}
-// -->
-</script>
-<?php if(isset($this->error)) : ?>
+		// -->';
+	$document =& JFactory::getDocument();
+	$document->addScriptDeclaration($script);
+	
+	if(isset($this->error)) : ?>
 <tr>
 	<td><?php echo $this->error; ?></td>
 </tr>
@@ -29,7 +30,7 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 	<td colspan="2">
 	<br /><br />
 	<form action="<?php echo JRoute::_( 'index.php' );?>" method="post" name="emailForm" id="emailForm" class="form-validate">
-		<div class="contact_email<?php echo $this->params->get( 'pageclass_sfx' ); ?>">
+		<div class="contact_email<?php echo $this->escape($this->params->get('pageclass_sfx')); ?>">
 			<label for="contact_name">
 				&nbsp;<?php echo JText::_( 'Enter your name' );?>:
 			</label>

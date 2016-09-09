@@ -1,6 +1,6 @@
 <?php
 /**
- * @version		$Id: file.php 10707 2008-08-21 09:52:47Z eddieajau $
+ * @version		$Id: file.php 11807 2009-05-10 00:33:43Z kdevine $
  * @package		Joomla.Framework
  * @subpackage	FileSystem
  * @copyright	Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.
@@ -85,7 +85,7 @@ class JFile
 
 		//Check src path
 		if (!is_readable($src)) {
-			JError::raiseWarning(21, 'JFile::copy: '.JText::_('Cannot find or read file' . ": '$src'"));
+			JError::raiseWarning(21, 'JFile::copy: ' . JText::_('Cannot find or read file') . ": '$src'");
 			return false;
 		}
 
@@ -194,7 +194,8 @@ class JFile
 
 		//Check src path
 		if (!is_readable($src) && !is_writable($src)) {
-			return JText::_('Cannot find source file');
+			JError::raiseWarning(21, 'JFile::move: ' . JText::_('Cannot find, read or write file') . ": '$src'");
+			return false;
 		}
 
 		if ($FTPOptions['enabled'] == 1) {
@@ -373,7 +374,11 @@ class JFile
 	 * @since 1.5
 	 */
 	function getName($file) {
-		$slash = strrpos($file, DS) + 1;
-		return substr($file, $slash);
+		$slash = strrpos($file, DS);
+		if ($slash !== false) {
+			return substr($file, $slash + 1);
+		} else {
+			return $file;
+		}
 	}
 }

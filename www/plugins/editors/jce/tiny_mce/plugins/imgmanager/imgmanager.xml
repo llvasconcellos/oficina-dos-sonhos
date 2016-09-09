@@ -1,15 +1,23 @@
 <?xml version="1.0" ?>
 <install version="1.5.0" type="plugin" plugin="imgmanager">
 	<name>Image Manager</name>
-	<version>1.5.0 RC1</version>
-	<creationDate>28 February 2008</creationDate>
+	<version>1.5.2</version>
+	<creationDate>07 February 2009</creationDate>
 	<author>Ryan Demmer</author>
 	<authorEmail>ryandemmer@gmail.com</authorEmail>
-	<authorUrl>http://www.cellardoor.za.net/</authorUrl>
+	<authorUrl>http://www.joomlacontenteditor.net/</authorUrl>
 	<copyright>Ryan Demmer</copyright>
 	<license>GPL</license>
 	<description><![CDATA[ 
-	<p>Image Manager 1.5.0</p>
+	<p>Image Manager 1.5.2</p>
+	<p>Changelog (from 1.5.0):
+	<ul>
+		<li>Fixed: Border Tooltip Description</li>
+		<li>Fixed: Errors editing images with no width/height</li>
+		<li>Fixed: Adding/updating classes</li>
+		<li>Changed: Base URL removed from image urls</li>
+	</ul>
+	</p>
 	<p>Changelog (from 1.5.0 beta 2):
 	<ul>
 		<li>Fixed: Border option updating (again)</li>
@@ -55,7 +63,7 @@
 		<param name="imgmanager_extensions" type="text" size="50" default="image=jpeg,jpg,png,gif" label="PARAM EXTENSIONS" description="PARAM EXTENSIONS DESC"/>
 	</params>
 	<params group="defaults">
-		<param name="imgmanager_margin_top" type="list" default="default" label="MARGIN TOP" description="MARGIN DESC">
+		<param name="imgmanager_margin_top" type="list" default="default" label="MARGIN TOP" description="MARGIN TOP DESC">
 			<option value="default">NOT SET</option>
 			<option value="0">0</option>
 			<option value="1">1</option>
@@ -69,7 +77,7 @@
 			<option value="9">9</option>
 			<option value="10">10</option>
 		</param>
-		<param name="imgmanager_margin_right" type="list" default="default" label="MARGIN RIGHT" description="MARGIN DESC">
+		<param name="imgmanager_margin_right" type="list" default="default" label="MARGIN RIGHT" description="MARGIN RIGHT DESC">
 			<option value="default">NOT SET</option>
 			<option value="0">0</option>
 			<option value="1">1</option>
@@ -83,7 +91,7 @@
 			<option value="9">9</option>
 			<option value="10">10</option>
 		</param>
-		<param name="imgmanager_margin_bottom" type="list" default="default" label="MARGIN BOTTOM" description="MARGIN DESC">
+		<param name="imgmanager_margin_bottom" type="list" default="default" label="MARGIN BOTTOM" description="MARGIN BOTTOM DESC">
 			<option value="default">NOT SET</option>
 			<option value="0">0</option>
 			<option value="1">1</option>
@@ -97,7 +105,7 @@
 			<option value="9">9</option>
 			<option value="10">10</option>
 		</param>
-		<param name="imgmanager_margin_left" type="list" default="default" label="MARGIN LEFT" description="MARGIN DESC">
+		<param name="imgmanager_margin_left" type="list" default="default" label="MARGIN LEFT" description="MARGIN LEFT DESC">
 			<option value="default">NOT SET</option>
 			<option value="0">0</option>
 			<option value="1">1</option>
@@ -112,8 +120,8 @@
 			<option value="10">10</option>
 		</param>
         <param name="imgmanager_border" type="list" default="0" label="BORDER ENABLE" description="BORDER ENABLE DESC">
-				<option value="0">NO</option>
-                <option value="1">YES</option>
+				<option value="1">YES</option>
+            	<option value="0">NO</option>
 		</param>
 		<param name="imgmanager_border_width" type="list" default="default" label="BORDER WIDTH" description="BORDER WIDTH DESC">
 				<option value="default">NOT SET</option>
@@ -144,7 +152,7 @@
 			    <option value="ridge">BORDER RIDGE</option>
 		</param>
 		<param name="imgmanager_border_color" type="text" default="#000000" label="BORDER COLOR" description="BORDER COLOR DESC"/>
-        <param name="imgmanager_align" type="list" default="default" label="Default Align value" description="Default Align value">
+        <param name="imgmanager_align" type="list" default="default" label="ALIGN DEFAULT" description="ALIGN DEFAULT DESC">
                 <option value="default">NOT SET</option>
                 <option value="top">ALIGN TOP</option>
                 <option value="middle">ALIGN MIDDLE</option>
@@ -165,7 +173,7 @@
 			<option value="overwrite|unique">PARAM UPLOAD EXISTS OVERWRITE PARAM UPLOAD EXISTS UNIQUE</option>
         </param>
 		<param name="imgmanager_folder_new" type="list" default="1" label="FOLDER CREATE" description="FOLDER CREATE DESC">
-            <option value="1">YES</option>
+           <option value="1">YES</option>
             <option value="0">NO</option>
 		</param>
 		<param name="imgmanager_folder_delete" type="list" default="1" label="FOLDER DELETE" description="FOLDER DELETE DESC">

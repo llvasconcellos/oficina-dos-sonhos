@@ -1,6 +1,6 @@
 /* Manager CSS */
 
-/*Message Block*/
+/* Message Block */
 img.icon {
 	border: 0px;
 	vertical-align: middle;
@@ -156,12 +156,22 @@ div.desc {
 	margin-left: 20px;
 }
 dd#info-preview {
-	text-align: center;
+	margin: 0pt;
 	width: 100%;
+}
+dd#info-preview dl {
+	margin: 0;
+	padding: 0;
+}
+dd#info-preview dl dd {
+	width: 100%;
+	text-align: center;
 	margin-top: 2px;
 }
-dd#info-preview.loader {
-	height: 100px;
+dd#info-preview dl dd.preview-error {
+	background: url(../img/empty.gif) no-repeat center;
+}
+dd#info-preview dl dd.loader {
 	background: url(../img/load.gif) no-repeat center;
 }
 #info-buttons {

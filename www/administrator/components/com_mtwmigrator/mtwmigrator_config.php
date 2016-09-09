@@ -1,6 +1,6 @@
 <?php
 $mtwCFG['hostname'] = "localhost";
-$mtwCFG['dbname'] = "oficinaantigo";
+$mtwCFG['dbname'] = "oficinadossonhos_antigo";
 $mtwCFG['username'] = "root";
 $mtwCFG['password'] = "vertrigo";
 $mtwCFG['prefix'] = "jos_";
@@ -12,7 +12,7 @@ $mtwCFG['ext_ff'] = "";
 $mtwCFG['ext_aj'] = "";
 $mtwCFG['ext_fb'] = "";
 $mtwCFG['backup'] = "0";
-$mtwCFG['groups'] = "1";
+$mtwCFG['groups'] = "0";
 $mtwCFG['users'] = "1";
 $mtwCFG['sections'] = "1";
 $mtwCFG['categories'] = "1";

@@ -107,7 +107,7 @@ if (!defined ('_JA_TRANS_MENU_CLASS')) {
 				}
 				$txt = str_replace("\"", "\\\"", $txt);
 
-				echo "$pmenu.addItem(\"$txt\", \"$row->url\", $row->browserNav, $active);\n";
+				echo "$pmenu.addItem(\"$txt\", \"" . str_replace("&amp;", "&", $row->url) . "\", $row->browserNav, $active);\n";
 			}else{
 				$pmenu = "ms";
 			}

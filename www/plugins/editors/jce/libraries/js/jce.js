@@ -1,3 +1,15 @@
+/**
+* @version		$Id: jce.js 49 2009-05-28 10:02:46Z happynoodleboy $
+* @package      JCE
+* @copyright    Copyright (C) 2005 - 2009 Ryan Demmer. All rights reserved.
+* @author		Ryan Demmer
+* @license      GNU/GPL
+* JCE is free software. This version may have been modified pursuant
+* to the GNU General Public License, and as distributed it includes or
+* is derivative of works licensed under the GNU General Public License or
+* other free or open source software licenses.
+*/
+if(!tinymce) document.location.href = 'index.php';
 //Common scripts for JCE
 //DOM utilities
 var Editor = {
@@ -94,7 +106,7 @@ var Editor = {
 		},
 		/* From TinyMCE form_utils.js function, slightly modified.
 		 * @author Moxiecode
- 		 * @copyright Copyright © 2004-2008, Moxiecode Systems AB, All rights reserved.
+ 		 * @copyright Copyright ï¿½ 2004-2008, Moxiecode Systems AB, All rights reserved.
 		*/
 		setSelect : function(fn, v, ac, ic){
 			var s = this.get(fn);
@@ -119,7 +131,7 @@ var Editor = {
 		},
 		/* From TinyMCE form_utils.js function, slightly modified.
 		 * @author Moxiecode
- 		 * @copyright Copyright © 2004-2008, Moxiecode Systems AB, All rights reserved.
+ 		 * @copyright Copyright ï¿½ 2004-2008, Moxiecode Systems AB, All rights reserved.
 		*/
 		addSelect : function(fn, n, v, s){
 			var o = this.get(fn);
@@ -159,16 +171,26 @@ var Editor = {
 			return info;
 		},
 		path : function(a, b){			
-			if(a.substring(a.length-1) != '/'){
+			a = this.clean(a);
+			b = this.clean(b);			
+			
+			if(a.substring(a.length-1) != '/')
 				a += '/';
-			}		
-			if(b.charAt(0) == '/'){
+					
+			if(b.charAt(0) == '/')
 				b = b.substring(1);
-			}
+
 			return a+b;
 		},
+		clean : function(s){
+			if(!/:\/\//.test(s)){
+				return s.replace(/\/+/g, '/');
+			}
+			return s;
+		},
 		safe : function(s){
-			s = s.replace(/[^a-z0-9\.\_\-\s]/gi, '').replace(/\s/gi, '_').toLowerCase();
+			s = s.replace(/(\.){2,}/g, '').replace(/[^a-z0-9\.\_\-\s]/gi, '').replace(/\s/gi, '_');
+			//.toLowerCase();
 			return this.basename(s);
 		},
 		query : function(s){
@@ -195,18 +217,14 @@ var Editor = {
 			return tinyMCEPopup.editor.dom.decode(s).replace(/&apos;/, "'").replace(/&quot;/, '"');
 		},
 		escape : function(s){
-			// Already escaped? Avoid double escaping
-			if(/%([0-9A-Z+])/i.test(s)){
-				return s;	
-			}
-			return escape(s);
+			return encodeURI(s);
 		},
 		unescape : function(s){
-			return unescape(s);
+			return decodeURI(s);
 		},
 		/* From TinyMCE form_utils.js function, slightly modified.
 		 * @author Moxiecode
- 		 * @copyright Copyright © 2004-2008, Moxiecode Systems AB, All rights reserved.
+ 		 * @copyright Copyright ï¿½ 2004-2008, Moxiecode Systems AB, All rights reserved.
 		*/
 		toHex : function(color) {
 			var re = new RegExp("rgb\\s*\\(\\s*([0-9]+).*,\\s*([0-9]+).*,\\s*([0-9]+).*\\)", "gi");
@@ -227,7 +245,7 @@ var Editor = {
 		},
 		/* From TinyMCE form_utils.js function, slightly modified.
 		 * @author Moxiecode
- 		 * @copyright Copyright © 2004-2008, Moxiecode Systems AB, All rights reserved.
+ 		 * @copyright Copyright ï¿½ 2004-2008, Moxiecode Systems AB, All rights reserved.
 		*/
 		toRGB : function(color) {
 			if (color.indexOf('#') != -1) {
@@ -249,13 +267,19 @@ var Editor = {
 			
 			if(!w || !h)
 				return;
-			
-			if( !Editor.dom.ischecked('constrain'))
-				return;
-			
-			var temp = (w / Editor.dom.value('tmp_' + wo)) * Editor.dom.value('tmp_' + ho);
-			Editor.dom.value(ho, temp.toFixed(0));
-			Editor.dom.value('tmp_' + ho, temp.toFixed(0));
+			// Get tmp values	
+			var th = Editor.dom.value('tmp_' + ho);
+			var tw = Editor.dom.value('tmp_' + wo);
+			// tmp values must be set
+			if(th && tw){
+				if(Editor.dom.ischecked('constrain')){			
+					var temp = (w / Editor.dom.value('tmp_' + wo)) * Editor.dom.value('tmp_' + ho);
+					h = temp.toFixed(0);
+					Editor.dom.value(ho, h);
+				}
+			}
+			// set tmp values
+			Editor.dom.value('tmp_' + ho, h);
 			Editor.dom.value('tmp_' + wo, w);
 		},
 		setDefaults : function(d){

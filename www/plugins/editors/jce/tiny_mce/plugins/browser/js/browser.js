@@ -1,3 +1,14 @@
+/**
+* $Id: browser.js 26 2009-05-25 10:21:53Z happynoodleboy $
+* @package      JCE
+* @copyright    Copyright (C) 2005 - 2009 Ryan Demmer. All rights reserved.
+* @author		Ryan Demmer
+* @license      GNU/GPL
+* JCE is free software. This version may have been modified pursuant
+* to the GNU General Public License, and as distributed it includes or
+* is derivative of works licensed under the GNU General Public License or
+* other free or open source software licenses.
+*/
 var BrowserDialog = {
 	preInit : function() {
 		tinyMCEPopup.requireLangPack();
@@ -20,8 +31,8 @@ var BrowserDialog = {
 		if(/(:\/\/|www|index.php(.*)\?option)/gi.test(src)){
 			src = '';	
 		}
-		dom.value('src', src);
 		this.browser = initManager(src);
+		dom.value('src', src);
 	},
 	insert : function(){
 		var win = tinyMCEPopup.getWindowArg("window");
@@ -51,6 +62,7 @@ var Browser = Manager.extend({
 	selectFile : function(title){
 		var name 	= string.basename(title);
 		var src 	= string.path(this.getParam('base'), string.path(this.getDir(), name));	
+		src			= src.charAt(0) == '/' ? src.substring(1) : src;
 			
 		dom.value('src', src);
 		dom.disable('insert', false);

@@ -1,6 +1,6 @@
 <?php
 /**
- * @version		$Id: category.php 10704 2008-08-21 09:38:40Z eddieajau $
+ * @version		$Id: category.php 11794 2009-05-06 01:56:42Z ian $
  * @package		Joomla
  * @subpackage	Content
  * @copyright	Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.
@@ -358,11 +358,11 @@ class ContentModelCategory extends JModel
 		$where		= $this->_buildContentWhere($state);
 		$orderby	= $this->_buildContentOrderBy($state);
 
-		$query = 'SELECT cc.title AS category, a.id, a.title, a.title_alias, a.introtext, a.fulltext, a.sectionid, a.state, a.catid, a.created, a.created_by, a.created_by_alias, a.modified, a.modified_by,' .
+		$query = 'SELECT cc.title AS category, a.id, a.title, a.alias, a.title_alias, a.introtext, a.fulltext, a.sectionid, a.state, a.catid, a.created, a.created_by, a.created_by_alias, a.modified, a.modified_by,' .
 			' a.checked_out, a.checked_out_time, a.publish_up, a.publish_down, a.attribs, a.hits, a.images, a.urls, a.ordering, a.metakey, a.metadesc, a.access,' .
 			' CASE WHEN CHAR_LENGTH(a.alias) THEN CONCAT_WS(":", a.id, a.alias) ELSE a.id END as slug,'.
 			' CASE WHEN CHAR_LENGTH(cc.alias) THEN CONCAT_WS(":", cc.id, cc.alias) ELSE cc.id END as catslug,'.
-			' CHAR_LENGTH( a.`fulltext` ) AS readmore, u.name AS author, u.usertype, g.name AS groups'.$voting['select'] .
+			' CHAR_LENGTH( a.`fulltext` ) AS readmore, u.name AS author, u.usertype, g.name AS groups, u.email as author_email'.$voting['select'] .
 			' FROM #__content AS a' .
 			' LEFT JOIN #__categories AS cc ON a.catid = cc.id' .
 			' LEFT JOIN #__users AS u ON u.id = a.created_by' .
@@ -379,14 +379,19 @@ class ContentModelCategory extends JModel
 		global $mainframe;
 		// Get the page/component configuration
 		$params = &$mainframe->getParams();
-
-		$filter_order		= JRequest::getCmd('filter_order');
-		$filter_order_Dir	= JRequest::getWord('filter_order_Dir');
-
+		$itemid = JRequest::getInt('id', 0) . ':' . JRequest::getInt('Itemid', 0);
+		$filter_order  = $mainframe->getUserStateFromRequest('com_content.category.list.' . $itemid . '.filter_order', 'filter_order', '', 'cmd');
+		$filter_order_Dir = $mainframe->getUserStateFromRequest('com_content.category.list.' . $itemid . '.filter_order_Dir', 'filter_order_Dir', '', 'cmd');
 		$orderby = ' ORDER BY ';
 		if ($filter_order && $filter_order_Dir)
 		{
 			$orderby .= $filter_order .' '. $filter_order_Dir.', ';
+		}
+	    elseif($filter_order == '' && $filter_order_Dir == '')
+		{
+				$filter_order='a.ordering';
+				$filter_order_Dir='ASC';
+				$orderby .= $filter_order .' '. $filter_order_Dir.', ';
 		}
 
 		if ($filter_order == 'author')
@@ -487,20 +492,22 @@ class ContentModelCategory extends JModel
 			{
 				// clean filter variable
 				$filter = JString::strtolower($filter);
+				$hitsFilter = intval($filter);
 				$filter	= $this->_db->Quote( '%'.$this->_db->getEscaped( $filter, true ).'%', false );
 
 				switch ($params->get('filter_type'))
 				{
-					case 'title' :
-						$where .= ' AND LOWER( a.title ) LIKE '.$filter;
-						break;
-
 					case 'author' :
 						$where .= ' AND ( ( LOWER( u.name ) LIKE '.$filter.' ) OR ( LOWER( a.created_by_alias ) LIKE '.$filter.' ) )';
 						break;
 
 					case 'hits' :
-						$where .= ' AND a.hits LIKE '.$filter;
+						$where .= ' AND a.hits >= '.$hitsFilter. ' ';
+						break;
+
+					case 'title' :
+					default : // default to 'title' if parameter is not valid
+						$where .= ' AND LOWER( a.title ) LIKE '.$filter;
 						break;
 				}
 			}

@@ -40,7 +40,7 @@ class GroupsViewGroups extends JView
 		$filter_order		= $mainframe->getUserStateFromRequest( "$option.$type.$task.$client.filter_order",		'filter_order',		'g.name',	'cmd' );
 		$filter_order_Dir	= $mainframe->getUserStateFromRequest( "$option.$type.$task.$client.filter_order_Dir",	'filter_order_Dir',	'',			'word' );
 		$filter_state		= $mainframe->getUserStateFromRequest( "$option.$type.$task.$client.filter_state",		'filter_state',		'',			'word' );
-		$search				= $mainframe->getUserStateFromRequest( "$option.$type.$task.$client.search",				'search',			'',			'string' );
+		$search				= $mainframe->getUserStateFromRequest( "$option.$type.$task.$client.search",				'search',		'',			'string' );
 		$search				= JString::strtolower( $search );
 
 		$limit		= $mainframe->getUserStateFromRequest( 'global.list.limit', 'limit', $mainframe->getCfg('list_limit'), 'int' );
@@ -61,7 +61,7 @@ class GroupsViewGroups extends JView
 			}
 		}
 		$where 		= ( count( $where ) ? ' WHERE ' . implode( ' AND ', $where ) : '' );
-		$orderby 	= ' ORDER BY '.$filter_order .' '. $filter_order_Dir .', g.ordering ASC';
+		$orderby 	= ' ORDER BY g.ordering ASC';
 
 		// get the total number of records
 		$query = 'SELECT COUNT(g.id)'

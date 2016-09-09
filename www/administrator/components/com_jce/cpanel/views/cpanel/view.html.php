@@ -32,9 +32,9 @@ class CpanelViewCpanel extends JView
 	function display( $tpl = null )
 	{
 		$pane			=& JPane::getInstance('sliders');
-		$modules		=& JModuleHelper::getModules('jce_cpanel');
+		//$modules		=& JModuleHelper::getModules('jce_cpanel');
 		
-		$com_xml 		= JApplicationHelper::parseXMLInstallFile( JPATH_ADMINISTRATOR .DS. 'components' .DS. 'com_jce' .DS. 'admin.jce.xml' );
+		$com_xml 		= JApplicationHelper::parseXMLInstallFile( JPATH_ADMINISTRATOR .DS. 'components' .DS. 'com_jce' .DS. 'jce.xml' );
 		
 		$plg_xml 		= array();
 		$plg_xml_file 	= JPATH_PLUGINS .DS. 'editors' .DS. 'jce.xml';
@@ -47,7 +47,7 @@ class CpanelViewCpanel extends JView
 		
 		$this->assignRef('icons', 	$icons);
 		$this->assignRef('pane', 	$pane);
-		$this->assignRef('modules', $modules);
+		//$this->assignRef('modules', $modules);
 		$this->assignRef('com_info', $com_xml);
 		$this->assignRef('plg_info', $plg_xml);
 

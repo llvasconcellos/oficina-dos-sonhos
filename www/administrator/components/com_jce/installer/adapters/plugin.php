@@ -205,7 +205,7 @@ class JCEInstallerPlugin extends JObject
 			$row->ordering 		= 1;
 			$row->published 	= 1;
 			$row->editable 		= 1;
-			$row->elements 		= $elements->data();
+			//$row->elements 		= $elements->data();
 			$row->icon 			= $icon->data();
 			$row->layout	 	= $layout->data();
 			$row->iscore 		= 0;
@@ -247,30 +247,6 @@ class JCEInstallerPlugin extends JObject
 		 * Custom Installation Script Section
 		 * ---------------------------------------------------------------------------------------------
 		 */
-
-		/*
-		 * If we have an install script, lets include it, execute the custom
-		 * install method, and append the return value from the custom install
-		 * method to the installation message.
-		 */
-		if ($this->get('install.script')) {
-			if (is_file($this->parent->getPath('extension_root').DS.$this->get('install.script'))) {
-				ob_start();
-				ob_implicit_flush(false);
-				require_once ($this->parent->getPath('extension_root').DS.$this->get('install.script'));
-				if (function_exists('com_install')) {
-					if (com_install() === false) {
-						$this->parent->abort(JText::_('Plugin').' '.JText::_('Install').': '.JText::_('Custom install routine failure'));
-						return false;
-					}
-				}
-				$msg = ob_get_contents();
-				ob_end_clean();
-				if ($msg != '') {
-					$this->parent->set('extension.message', $msg);
-				}
-			}
-		}
 		
 		/**
 		 * ---------------------------------------------------------------------------------------------
@@ -312,6 +288,30 @@ class JCEInstallerPlugin extends JObject
 			// Install failed, rollback changes
 			$this->parent->abort('Plugin Install: '.JText::_('Could not copy setup file'));
 			return false;
+		}
+		
+		/*
+		 * If we have an install script, lets include it, execute the custom
+		 * install method, and append the return value from the custom install
+		 * method to the installation message.
+		 */
+		if ($this->get('install.script')) {
+			if (is_file($this->parent->getPath('extension_root').DS.$this->get('install.script'))) {
+				ob_start();
+				ob_implicit_flush(false);
+				require_once ($this->parent->getPath('extension_root').DS.$this->get('install.script'));
+				if (function_exists('com_install')) {
+					if (com_install() === false) {
+						$this->parent->abort(JText::_('Plugin').' '.JText::_('Install').': '.JText::_('Custom install routine failure'));
+						return false;
+					}
+				}
+				$msg = ob_get_contents();
+				ob_end_clean();
+				if ($msg != '') {
+					$this->parent->set('extension.message', $msg);
+				}
+			}
 		}
 		
 		return true;

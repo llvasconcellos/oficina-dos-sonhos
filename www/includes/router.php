@@ -36,14 +36,22 @@ class JRouterSite extends JRouter
 	{
 		$vars = array();
 
+		// Get the application
+		$app =& JFactory::getApplication();
+
+		if($app->getCfg('force_ssl') == 2 && strtolower($uri->getScheme()) != 'https') {
+			//forward to https
+			$uri->setScheme('https');
+			$app->redirect($uri->toString());
+		}
+
+
 		// Get the path
 		$path = $uri->getPath();
 
 		//Remove the suffix
 		if($this->_mode == JROUTER_MODE_SEF)
 		{
-			// Get the application
-			$app =& JFactory::getApplication();
 
 			if($app->getCfg('sef_suffix') && !(substr($path, -9) == 'index.php' || substr($path, -1) == '/'))
 			{
@@ -236,9 +244,16 @@ class JRouterSite extends JRouter
 
 			if (file_exists($path) && count($segments))
 			{
-				if ($component != "com_search") { // Cheep fix on searches
+				if ($component != "com_search") { // Cheap fix on searches
 					//decode the route segments
 					$segments = $this->_decodeSegments($segments);
+				}
+				else { // fix up search for URL
+					$total = count($segments);
+					for($i=0; $i<$total; $i++) {
+						// urldecode twice because it is encoded twice
+						$segments[$i] = urldecode(urldecode(stripcslashes($segments[$i])));
+					}
 				}
 
 				require_once $path;
@@ -296,6 +311,13 @@ class JRouterSite extends JRouter
 			// encode the route segments
 			if ($component != "com_search") { // Cheep fix on searches
 				$parts = $this->_encodeSegments($parts);
+			}
+			else { // fix up search for URL
+				$total = count($parts);
+				for($i=0; $i<$total; $i++) {
+					// urlencode twice because it is decoded once after redirect
+					$parts[$i] = urlencode(urlencode(stripcslashes($parts[$i])));
+				}
 			}
 
 			$result = implode('/', $parts);

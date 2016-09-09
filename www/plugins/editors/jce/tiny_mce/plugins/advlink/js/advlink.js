@@ -176,11 +176,7 @@ var AdvLinkDialog = {
 		dom.setSelect('classlist', v, true);
 	},
 	insertLink : function(v){
-		v = v.replace(tinyMCEPopup.getParam('site_url'), '');
-		if(v.charAt(0) == '/'){
-			v = v.substring(1);	
-		}
-		dom.value('href', v);
+		dom.value('href', tinyMCEPopup.editor.documentBaseURI.toRelative(v));
 	},
 	createEmail : function(){
 		this.advlink.emailDialog();	
@@ -211,7 +207,9 @@ var AdvLink = Plugin.extend({
 				e = new Event(e);
 				var v, el = e.target;
 				if(!el.getParent().hasClass('nolink')){
-					v = el.href == 'javascript:;' ? node.id : el.href;
+					v = el.getProperty('href');
+					if(v == 'javascript:;') v = node.id;
+					//v = el.href == 'javascript:;' ? node.id : el.href;
 					AdvLinkDialog.insertLink(string.decode(v));
 				}
 				if(el.getParent().hasClass('folder')){
@@ -240,30 +238,112 @@ var AdvLink = Plugin.extend({
 			}.bind(this)
 		});
 	},
-	emailDialog : function(){		
-		this.addDialog('email', new Prompt(tinyMCEPopup.getLang('advlink_dlg.email', 'Create E-Mail Address'), {
-			width: 300,
-			text: tinyMCEPopup.getLang('advlink_dlg.address', 'Address'),
-			id : 'email',
-			elements: new Element('div', {'class': 'formElm'}).adopt(
-				new Element('label', {'for': 'subject'}).setHTML(tinyMCEPopup.getLang('advlink_dlg.subject', 'Subject'))								 
+	emailDialog : function(){
+		var fields = [
+			// To Address
+			new Element('div', {'class': 'formElm'}).adopt(
+				new Element('label', {'for': 'email_to'}).setHTML(tinyMCEPopup.getLang('advlink_dlg.to', 'To'))								 
 			).adopt(
-				new Element('input', {
-					'id': 'subject',
-					'type': 'text'
+				new Element('textarea', {
+					id	: 'email_to',
+					'class' : 'email',
+					styles : {
+						width: 200,
+						height: 30
+					}
 				})
 			),
-			onConfirm: function(){
-				var a = dom.value('email');
-					if(!Validator.isEmail(a)){
-						alert(tinyMCEPopup.getLang('invalid_email', 'Invalid e-mail address!'));
-					}else{
-						var s = dom.value('subject');
-						s = s !== '' ? '?subject=' + string.escape(s) : '';
-						dom.value('href', 'mailto:' + a + s);
+			// CC Address
+			new Element('div', {'class': 'formElm'}).adopt(
+				new Element('label', {'for': 'email_cc'}).setHTML(tinyMCEPopup.getLang('advlink_dlg.cc', 'Cc'))								 
+			).adopt(
+				new Element('textarea', {
+					id	: 'email_cc',
+					'class' : 'email',
+					styles : {
+						width: 200,
+						height: 30
 					}
+				})
+			),
+			// Bcc Address
+			new Element('div', {'class': 'formElm'}).adopt(
+				new Element('label', {'for': 'email_bcc'}).setHTML(tinyMCEPopup.getLang('advlink_dlg.bcc', 'Bcc'))								 
+			).adopt(
+				new Element('textarea', {
+					id	: 'email_bcc',
+					'class' : 'email',
+					styles : {
+						width: 200,
+						height: 30
+					}
+				})
+			),
+			// Subject
+			new Element('div', {'class': 'formElm'}).adopt(
+				new Element('label', {'for': 'email_subject'}).setHTML(tinyMCEPopup.getLang('advlink_dlg.subject', 'Subject'))								 
+			).adopt(
+				new Element('textarea', {
+					id	: 'email_subject',
+					styles : {
+						width: 200,
+						height: 30
+					}
+				})
+			)		  
+		];
+		this.addDialog('email', new basicDialog(tinyMCEPopup.getLang('advlink_dlg.email', 'Create E-Mail Address'), fields, {
+			width: 300,
+			buttons: [{
+				'text': tinyMCEPopup.getLang('dlg.ok', 'OK'),
+				'class': 'mceOk',
+				'click': function(){
+					var args = [], errors = 0;
+					['to', 'cc', 'bcc', 'subject'].each(function(s){
+						var v = $('email_' + s).value;
+						if(v){
+							v = v.replace(/\n\r/g, '');
+							v.split(',').each(function(o){
+								if(s !== 'subject'){
+									if(!Validator.isEmail(o)){
+										alert(s + ' is not a valid e-mail address!');
+										errors++;
+									}
+								}
+							});
+							args.push((s == 'to') ? v : s + '=' + v);
+						}
+					});
+					if(errors == 0){
+						if(args.length){
+							$('href').value = 'mailto:' + args.join('&').replace(/&/, '?');
+						}
+						this.removeDialog('email');
+					}
+				}.bind(this)
+			},{
+				'text': tinyMCEPopup.getLang('dlg.cancel', 'Cancel'),
+				'class': 'mceCancel',
+				'click': function(){
 					this.removeDialog('email');
-			}.bind(this)
+				}.bind(this)
+			}],
+			onOpen : function(){
+				var v = $('href').value, s;
+				if(/^mailto:/.test(v)){
+					v = v.replace(/&amp;/g, '&');
+					s = v.replace(/mailto:/, '').replace(/(\?|&)/g, ',').replace(/(.*)=(.*)/g, function(a, b, c){
+						if(/'/.test(c)){
+							return '"' + b + '":"' + c + '"';
+						}else{
+							return "'" + b + "':'" + c + "'";
+						}
+					});
+					$each(Json.evaluate('{'+ s +'}'), function(v, k){
+						$('email_' + k).value = v;									   
+					});
+				}
+			}
 		}));
 	}
 });

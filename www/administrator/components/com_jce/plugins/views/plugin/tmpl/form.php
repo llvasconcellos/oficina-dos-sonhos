@@ -139,6 +139,8 @@
 		</table>
 	</fieldset>
 </div>
+<?php
+/*
 <div class="col width-50">
 	<fieldset class="adminform">
 	<legend><?php echo JText::_( 'Parameters' ); ?></legend>
@@ -189,7 +191,8 @@
 		echo $pane->endPane();
 	?>
 	</fieldset>
-</div>
+</div>*/
+?>
 <div class="clr"></div>
 	<input type="hidden" name="option" value="com_jce" />
 	<input type="hidden" name="id" value="<?php echo $this->plugin->id; ?>" />

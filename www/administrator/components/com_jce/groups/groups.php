@@ -85,14 +85,14 @@ class JCETableGroups extends JTable
 	 *
 	 * @var tinyint
 	 */
-	var $published = null;
+	var $published = 0;
 	
 	/**
 	 *
 	 *
 	 * @var tinyint
 	 */
-	var $ordering = null;
+	var $ordering = 1;
 
 	/**
 	 *

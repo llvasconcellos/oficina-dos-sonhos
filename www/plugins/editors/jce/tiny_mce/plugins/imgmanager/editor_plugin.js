@@ -1,14 +1,25 @@
+/**
+* $Id: editor_plugin.js 26 2009-05-25 10:21:53Z happynoodleboy $
+* @package      JCE
+* @copyright    Copyright (C) 2005 - 2009 Ryan Demmer. All rights reserved.
+* @author		Ryan Demmer
+* @license      GNU/GPL
+* JCE is free software. This version may have been modified pursuant
+* to the GNU General Public License, and as distributed it includes or
+* is derivative of works licensed under the GNU General Public License or
+* other free or open source software licenses.
+*/
 (function() {
 	tinymce.create('tinymce.plugins.ImageManager', {
 		init : function(ed, url) {
-			function isMediaElm(n) {
-				return /^(mceItemFlash|mceItemShockWave|mceItemWindowsMedia|mceItemQuickTime|mceItemRealMedia|mceItemDivX)$/.test(n.className);
+			function isMceItem(n) {
+				return /mceItem/.test(n.className);
 			};
 			
 			// Register commands
 			ed.addCommand('mceImageManager', function() {
 				// Internal image object like a flash placeholder
-				if (isMediaElm(ed.selection.getNode()))
+				if (isMceItem(ed.selection.getNode()))
 					return;
 
 				ed.windowManager.open({
@@ -28,13 +39,13 @@
 			});
 			
 			ed.onNodeChange.add(function(ed, cm, n) {
-				cm.setActive('imgmanager', n.nodeName == 'IMG' && !isMediaElm(n));
+				cm.setActive('imgmanager', n.nodeName == 'IMG' && !isMceItem(n));
 			});
 			
 			ed.onInit.add(function() {				
 				if (ed && ed.plugins.contextmenu) {
 					ed.plugins.contextmenu.onContextMenu.add(function(th, m, e) {
-						m.add({title : 'imgmanager.desc', icon : 'image', cmd : 'mceImageManager'});
+						m.add({title : 'imgmanager.desc', icon_src : url + '/img/imgmanager.gif', cmd : 'mceImageManager'});
 					});
 				}
 			});

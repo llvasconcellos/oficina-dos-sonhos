@@ -45,6 +45,6 @@ file_select: 'Click on a file name to insert, click to the right of the name to 
 notwritable: 'Unwritable',
 notwritable_desc: 'Unwritable::Folder or file is not writable and cannot be renamed, moved or deleted.',
 bad_name: 'Bad file or folder name',
-bad_name_desc: 'Bad file or folder name::Folder/file name can only contain the characters a-z0-9_-.',
+bad_name_desc: 'Bad file or folder name::Folder/file name can only contain the characters a-zA-Z0-9_-.',
 select_value: 'Add Value'
 });

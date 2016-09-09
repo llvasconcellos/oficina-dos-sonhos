@@ -39,8 +39,6 @@ class PluginsController extends JController
 		$this->registerTask( 'add' , 		'display' );
 		$this->registerTask( 'orderup'   , 	'order' );
 		$this->registerTask( 'orderdown' , 	'order' );
-		$this->registerTask( 'layout' , 	'display' );
-		$this->registerTask( 'layoutsave' , 'layoutsave' );
 	}
 
 	function display( )
@@ -53,10 +51,6 @@ class PluginsController extends JController
 				JRequest::setVar( 'hidemainmenu', 1 );
 				JRequest::setVar( 'layout', 'form' );
 				JRequest::setVar( 'view', 'plugin' );
-			} break;
-			case 'layout'	:
-			{
-				JRequest::setVar( 'view', 'layout' );
 			} break;
 		}
 
@@ -98,38 +92,6 @@ class PluginsController extends JController
 				$this->setRedirect( 'index.php?option=com_jce&type=plugin', $msg );
 				break;
 		}
-	}
-			
-	function layoutsave( ){
-		// Check for request forgeries
-		JRequest::checkToken() or die( 'Invalid Token' );
-		$db =& JFactory::getDBO();
-		
-		$rows 	= JRequest::getVar( 'layout' );
-					
-		if( $rows ){
-			$plugin =& JPluginHelper::getPlugin('editors', 'jce');
-			$params = new JParameter( $plugin->params );
-			$num 	= intval( $params->get( 'layout_rows', 5 ) );
-			 
-			 for( $i=1; $i <= $num; $i++ ){
-				$items = JCEHelper::getOrderArray( $rows, 'row' . $i );
-				foreach( $items as $item ){			
-					$row =& JTable::getInstance('plugin', 'JCETable');
-					$row->load( $item['element'] );
-					$row->row = $i;
-					$row->ordering = $item['order'];
-	
-					if ( !$row->check() ) {
-						return $row->getError();
-					}
-					if ( !$row->store() ) {
-						return $row->getError();
-					}
-				}
-			 }
-		}
-		$this->setRedirect( 'index.php?option=com_jce&type=plugin&tmpl=component&task=layout', JText::_('New Layout Saved') );
 	}
 
 	function publish( ){

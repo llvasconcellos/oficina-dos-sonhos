@@ -1,10 +1,20 @@
 <?php
 /**
- * ImageManager Class.
- * @author $Author: Ryan Demmer $
- * @version $Id: manager.class.php 27 2005-09-14 17:51:00 Ryan Demmer $
- */
-class Browser extends Manager{
+* @version		$Id: browser.php 46 2009-05-26 16:59:42Z happynoodleboy $
+* @package      JCE
+* @copyright    Copyright (C) 2005 - 2009 Ryan Demmer. All rights reserved.
+* @author		Ryan Demmer
+* @license      GNU/GPL
+* JCE is free software. This version may have been modified pursuant
+* to the GNU General Public License, and as distributed it includes or
+* is derivative of works licensed under the GNU General Public License or
+* other free or open source software licenses.
+*/
+ 
+require_once(JCE_LIBRARIES .DS. 'classes' .DS. 'manager.php');
+
+class Browser extends Manager
+{
 	/* 
 	* @var string
 	*/
@@ -13,14 +23,15 @@ class Browser extends Manager{
 	/**
 	* @access	protected
 	*/
-	function __construct(){		
+	function __construct()
+	{		
 		// Call parent
 		parent::__construct();
-		if( JRequest::getVar( 'type', 'file' ) == 'file'){
-			$this->setFileTypes( $this->getPluginParam( 'browser_extensions', $this->_ext ) );
+		if(JRequest::getVar('type', 'file') == 'file'){
+			$this->setFileTypes($this->getPluginParam('browser_extensions', $this->_ext));
 		}else{
-			$this->setFileTypes( 'image=jpg,jpeg,png,gif' );
-		} 
+			$this->setFileTypes('image=jpg,jpeg,png,gif');
+		}		
 		$this->init();
 	}
 	/**
@@ -33,58 +44,40 @@ class Browser extends Manager{
 	 * @return	JCE  The editor object.
 	 * @since	1.5
 	 */
-	function &getInstance(){
+	function &getInstance()
+	{
 		static $instance;
-	
-		if ( !is_object( $instance ) ){
+
+		if (!is_object($instance)) {
 			$instance = new Browser();
 		}
 		return $instance;
 	}
-	function getFileDetails( $file ){
-		clearstatcache();
+	/**
+	 * Initialise the plugin
+	 */
+	function init()
+	{
+		$this->checkPlugin() or die('Restricted access');
 		
-		$path 	= Utils::makePath( $this->getBaseDir(), rawurldecode( $file ) );
-		$url 	= Utils::makePath( $this->getBaseUrl(), rawurldecode( $file ) );
-		
-		$date 	= Utils::formatDate( @filemtime( $path ) );
-		$size 	= Utils::formatSize( @filesize( $path ) );
-		
-		$h = array(
-			'size'		=>	$size, 
-			'modified'	=>	$date,
-		);
-		
-		if( preg_match('/\.(jpeg|jpg|gif|png)/', $file) ){
-			$dim = @getimagesize( $path );
-	
-			$width 	= $dim[0];
-			$height = $dim[1];
-			
-			$pw 	= ( $width >= 100 ) ? 100 : $width;
-			$ph 	= ( $pw / $width ) * $height;
-		
-			if( $ph > 80 ){
-				$ph = 80;
-				$pw = ( $ph / $height ) * $width;
-			}
-			
-			$h = array(
-				'dimensions'	=>	$width. ' x ' .$height,
-				'size'			=>	$size, 
-				'modified'		=>	$date,
-				'preview'		=>	array(
-					'src'		=>	$url,
-					'width'		=>	round( $pw ),
-					'height'	=>	round( $ph )
-				)
-			);
-		}
-		return $h;
+		parent::init();
+
+		// Set javascript file array
+		$this->script(array(
+			'browser'
+		), 'plugins');
+		$this->css(array(
+			'browser'
+		), 'plugins');		
+		$this->loadExtensions();
 	}
-	function getViewable(){
-		return $this->getPluginParam( 'browser_extensions_viewable', 'html,htm,doc,docx,ppt,rtf,xls,txt,gif,jpeg,jpg,png,pdf,swf,mov,mpeg,mpg,avi,asf,asx,dcr,flv,wmv,wav,mp3' );
+	/**
+	 * Get viewable file types
+	 * @return string Comma seperated list of file extensions
+	 */
+	function getViewable()
+	{
+		return $this->getPluginParam('browser_extensions_viewable', 'html,htm,doc,docx,ppt,rtf,xls,txt,gif,jpeg,jpg,png,pdf,swf,mov,mpeg,mpg,avi,asf,asx,dcr,flv,wmv,wav,mp3');
 	}
 }
-
 ?>

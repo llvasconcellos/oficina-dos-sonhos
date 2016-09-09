@@ -53,9 +53,9 @@ class GroupsController extends JController
 			case 'add'     :
 			case 'edit'    :
 			{
-				JRequest::setVar( 'hidemainmenu', 1 );
 				JRequest::setVar( 'layout', 'form' );
-				JRequest::setVar( 'view', 'group' );
+				JRequest::setVar( 'view', 'group' );	
+				JRequest::setVar( 'hidemainmenu', 1 );	
 			} break;
 			case 'addusers'     :
 			case 'removeusers'  :
@@ -163,7 +163,7 @@ class GroupsController extends JController
 		
 		$row->types 		= implode( ',', $types );
 		$row->components 	= implode( ',', $components );
-		$row->users 		= implode( ',', $users );		
+		$row->users 		= implode( ',', $users );
 		
 		$query = "SELECT id"
 		. " FROM #__jce_plugins"

@@ -1,6 +1,17 @@
+/**
+* @version		$Id: tree.js 49 2009-05-28 10:02:46Z happynoodleboy $
+* @package      JCE
+* @copyright    Copyright (C) 2005 - 2009 Ryan Demmer. All rights reserved.
+* @author		Ryan Demmer
+* @license      GNU/GPL
+* JCE is free software. This version may have been modified pursuant
+* to the GNU General Public License, and as distributed it includes or
+* is derivative of works licensed under the GNU General Public License or
+* other free or open source software licenses.
+*/
+
 /*
 Class: Tree
-	Creates an interface for <Drag.Base> and drop, resorting of a list.
 
 Note:
 	The Sortables require an XHTML doctype.
@@ -128,7 +139,6 @@ var Tree = new Class({
 		$ES('span', this.container).each(function(el){
 			el.removeClass('open');	
 		});
-		
 		$ES('div.tree-image', this.container).each(function(el){
 			el.removeClass('open');										  
 		});
@@ -146,7 +156,7 @@ var Tree = new Class({
 		// Rename the span
 		$E('a', node).setHTML(string.basename(name));
 		// Rename each of the child nodes
-		$ES('li[id^='+ string.escape(id) +']', node).each(function(n){
+		$ES('li[id^='+ escape(id) +']', node).each(function(n){
 			var nt = n.getProperty('id');
 			n.setProperty('id', nt.replace(id, name));
 		})
@@ -213,7 +223,7 @@ var Tree = new Class({
 					}
 					ul.adopt(
 						new Element('li', {
-							'id': node.id
+							'id': this._escape(encodeURI(node.id))
 						}).adopt(
 							new Element('div', {
 								'class': 'tree-row',
@@ -282,9 +292,9 @@ var Tree = new Class({
 					return n;
 				}
 				n = n.parentNode;
-			}		
+			}
 		}else{
-			return $E('li[id='+ string.escape(el) +']', this.container);
+			return $E('li[id='+ this._escape(encodeURI(el)) +']', this.container);
 		}
 	},
 	/*
@@ -300,7 +310,7 @@ var Tree = new Class({
 		if($type(parent) == 'string'){
 			parent = this.findParent(parent);	
 		}
-		return $E('li[id='+ string.escape(id) +']', parent) || false;
+		return $E('li[id='+ this._escape(encodeURI(id)) +']', parent) || false;
 	},
 	/*
 	 * Toggle the loader class on the node span element
@@ -384,6 +394,15 @@ var Tree = new Class({
 		if(this.options.collapseTree){
 			this.collapseNodes(node);
 		}
+	},
+	/*
+	 * Private function
+	 * Escape a string
+	 * @param {String} The string
+	 * @return {String} The escaped string
+	*/
+	_escape : function(s){
+		return s.replace(/'/, '%27');
 	}
 });
 Tree.implement(new Events, new Options);

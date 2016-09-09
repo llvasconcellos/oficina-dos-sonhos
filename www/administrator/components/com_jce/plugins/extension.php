@@ -61,31 +61,10 @@ class JCETableExtension extends JTable
 	 *
 	 * @var tinyint
 	 */
-	var $published = null;
+	var $published = 1;
 
 	function __construct(& $db) {
 		parent::__construct('#__jce_extensions', 'id', $db);
-	}
-
-	/**
-	* Overloaded bind function
-	*
-	* @access public
-	* @param array $hash named array
-	* @return null|string	null is operation was satisfactory, otherwise returns an error
-	* @see JTable:bind
-	* @since 1.5
-	*/
-	function bind($array, $ignore = '')
-	{
-		if (isset( $array['params'] ) && is_array($array['params']))
-		{
-			$registry = new JRegistry();
-			$registry->loadArray($array['params']);
-			$array['params'] = $registry->toString();
-		}
-
-		return parent::bind($array, $ignore);
 	}
 }
 ?>

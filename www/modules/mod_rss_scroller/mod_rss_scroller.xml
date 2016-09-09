@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="module" version="1.5.0">
+    <name>RSS Scroller 1.5</name>
+    <author>Stefano Alì dalla versione per Joomla! 1.0 di Marco Napolitano http://www.allone.it - info@allone.it. Grazie per l'eccellente estensione</author>
+    <creationDate>Gennaio 2009</creationDate>
+    <copyright>This module is released under the GNU/GPL License</copyright>
+    <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL, see LICENSE.php</license>	 
+    <authorEmail>sali40@inwind.it</authorEmail>
+    <authorUrl>http://www.joomla.it</authorUrl>
+    <version>1.5</version>
+    <description>Modulo che mostra i newsfeed creati con Joomla con un effetto animato di scrolling.</description>
+    <files>
+        <filename module="mod_rss_scroller">mod_rss_scroller.php</filename>
+    </files>
+   <languages>
+        <language tag="en-GB">en-GB.mod_rss_scroller.ini</language>
+        <language tag="it-IT">it-IT.mod_rss_scroller.ini</language>
+   </languages>
+    <params>
+        <param name="newsfeed" type="text" default="0" label="Feed RSS" description="PARAMSFEEDID" />
+        <param name="charset" type="text" default="utf-8" label="Codifica caratteri" description="CHARSETDESC" />
+        <param name="channelCounter" type="radio" default="1" label="Contatore canali" description="CHANCOUNTDESC">
+            <option value="1">Si</option>
+            <option value="0">No</option>
+        </param>
+        <param name="itemCounter" type="radio" default="1" label="Contatore notizie" description="NEWSCOUNTDESC">
+            <option value="1">Si</option>
+            <option value="0">No</option>
+        </param>
+        <param name="showChannel" type="radio" default="1" label="Mostra canale" description="Visualizza il titolo e la descrizione del canale">
+            <option value="1">Si</option>
+            <option value="0">No</option>
+        </param>
+        <param name="direction" type="list" default="up" label="Direzione" description="Direzione animazione di scrolling" >
+            <option value="up">Alto</option>
+            <option value="down">Basso</option>
+            <option value="left">Sinistra</option>
+            <option value="right">Destra</option>
+        </param>
+        <param name="align" type="list" default="center" label="Allineamento" description="Allineamento del testo" >
+            <option value="left">Sinistra</option>
+            <option value="right">Destra</option>
+            <option value="center">Centro</option>
+            <option value="justify">Giustificato</option>
+        </param>
+        <param name="height" type="text" default="150" label="Altezza" description="Altezza del blocco di scrolling (in pixel)" />
+        <param name="target" type="list" default="_blank" label="Target" description="Target HTML dei link delle notizie">
+            <option value="_blank">Nuova pagina (_blank)</option>
+            <option value="_parent">Pagina genitore (_parent)</option>
+            <option value="_self">Pagina corrente (_self)</option>
+            <option value="_top">Finestra corrente (_top)</option>
+	</param>
+        <param name="scrollamount" type="text" default="1" label="Numero righe" description="Numero di righe da far avanzare ad ogni ritardo" />
+        <param name="scrolldelay" type="text" default="50" label="Ritardo" description="SCROLLDELAYDESC" />
+    </params>
+</install>

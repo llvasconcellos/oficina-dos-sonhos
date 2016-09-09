@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <install version="1.5.0" type="plugin" plugin="code">
 	<name>Advanced Code Editor</name>
-	<version>1.5.0</version>
+	<version>1.5.3</version>
 	<creationDate>27 May 2008</creationDate>
 	<author>Ryan Demmer</author>
 	<authorEmail>ryandemmer@gmail.com</authorEmail>
@@ -13,29 +13,16 @@
 	]]></description>
 	<icon>advcode</icon>
 	<layout>advcode</layout>
-	<files>
-		<filename>editor_plugin.js</filename>
-		<filename>advcode.html</filename>
-		<filename>editor.html</filename>
-        <filename>css/advcode.css</filename>
-		<filename>css/editor.css</filename>
-		<filename>css/styles.css</filename>
-        <filename>css/index.html</filename>
-        <filename>img/advcode.gif</filename>
-        <filename>img/index.html</filename>
-        <filename>img/numbers.png</filename>
-		<filename>img/preview.jpg</filename>
-        <filename>index.html</filename>
-        <filename>js/advcode.js</filename>
-		<filename>js/css.js</filename>
-		<filename>js/gecko.js</filename>
-		<filename>js/html.js</filename>
-		<filename>js/javascript.js</filename>
-		<filename>js/msie.js</filename>
-		<filename>js/opera.js</filename>
-		<filename>js/php.js</filename>
-        <filename>js/index.html</filename>
-        <filename>langs/en_dlg.js</filename>
-        <filename>langs/index.html</filename>
-    </files>
+	<files></files>
+	<params group="standard">
+		<param name="advcode_toggle" type="radio" default="1" label="PARAM EDITOR TOGGLE ALLOW" description="PARAM EDITOR TOGGLE ALLOW DESC">
+            <option value="1">YES</option>
+            <option value="0">NO</option>
+        </param>
+		<param name="advcode_editor_state" type="radio" default="1" label="PARAM EDITOR STATE" description="PARAM EDITOR STATE DESC">
+            <option value="1">ON</option>
+            <option value="0">OFF</option>
+        </param>
+        <param name="advcode_toggle_text" type="text" default="[show/hide]" label="PARAM EDITOR TOGGLE TEXT" description="PARAM EDITOR TOGGLE TEXT DESC" />
+	</params>
 </install>

@@ -1,11 +1,21 @@
+/**
+* @version		$Id: window.js 49 2009-05-28 10:02:46Z happynoodleboy $
+* @package      JCE
+* @copyright    Copyright (C) 2005 - 2009 Ryan Demmer. All rights reserved.
+* @author		Ryan Demmer
+* @license      GNU/GPL
+* JCE is free software. This version may have been modified pursuant
+* to the GNU General Public License, and as distributed it includes or
+* is derivative of works licensed under the GNU General Public License or
+* other free or open source software licenses.
+*/
+
 //Requires mootools.js
 var Dialog = new Class({
 	getOptions : function(){
 		return {			
 			width: 250,
 			height: 250,
-			deltaWidth: 0,
-			deltaHeight: 0,
 			parent: 'body',
 			onOpen: Class.empty,
 			onClose: Class.empty,
@@ -55,8 +65,8 @@ var Dialog = new Class({
 			'class': this.skin,
 			'id': this.id,
 			'styles': {
-				'width': this.options.width.toInt() + 2 + this.options.deltaWidth, 
-				'height': this.options.height.toInt() + this.options.deltaHeight,
+				'width': this.options.width.toInt() + 2, 
+				'height': this.options.height.toInt(),
 				'z-index': 1000
 			}
 		}).injectInside($E(this.options.parent));
@@ -138,8 +148,11 @@ var Dialog = new Class({
 			}
 		}
 		this.content = $(this.id + '-content');
-		this.centerWindow();
 		this.fireEvent('onOpen');
+		var h = parseInt($(this.id + '-content-body').offsetHeight) + 70;
+
+		this.setHeight(h < this.options.height ? this.options.height : h);
+		this.centerWindow();
 	},
 	getResizeHandles : function(){
 		var points = ['S', 'E', 'SE'];
@@ -197,14 +210,15 @@ var Dialog = new Class({
 		this.dialog.setStyle('width', w.toInt() + 'px');
 	},
 	setHeight: function(h){
-		if(h.toInt() < 250) h = 250;
+		//if(h.toInt() < 250) h = 250;
 		this.options.height = h.toInt();
 		this.dialog.setStyle('height', this.options.height + 'px');
 	},
 	close : function() {			
 		this.fireEvent('onClose');
 		if(this.content){
-			this.content.setHTML('').remove();
+			//this.content.setHTML('').remove();
+			this.content.remove();
 		}
 		if(this.dialog){
 			this.dialog.setHTML('').remove();
@@ -270,13 +284,12 @@ var Dialog = new Class({
 		}).start(e);
 	}
 });
-Dialog.implement(new Options);
-Dialog.implement(new Events);
+Dialog.implement(new Options, new Events);
 
 var Alert = Dialog.extend({
     getExtended : function(){
 		return {
-			width: 270,
+			width: 300,
 			height: 150,
 			buttons: [{
 				'text': tinyMCEPopup.getLang('dlg.ok', 'OK'),
@@ -401,27 +414,20 @@ var uploadDialog = Dialog.extend({
 					this.close();
 				}.bind(this)
 			}],
-			onSelectFile: Class.empty,
 			extended: {
-				deltaWidth: 0,
-				deltaHeight: 0,
-				body: null,
-				onLoad : Class.empty
-			}
+				body: null
+			},
+			onUpload : Class.empty
 		};
 	},
 	initialize: function(options){
-		this.setOptions(this.getExtended(), options);		
-		
-		this.options.deltaWidth 	= this.options.extended.deltaWidth || 0;
-		this.options.deltaHeight 	= this.options.extended.deltaHeight || 0;
-		var moreBody 				= this.options.extended.body || '';
-		
+		this.setOptions(this.getExtended(), options);
+					
 		var body = new Element('div', {
 			id: 'upload-body'
 		}).adopt(
 			new Element('fieldset').adopt(
-				new Element('legend').setHTML(tinyMCEPopup.getLang('dlg.browse', 'Browse'))							  
+				new Element('legend').setHTML(tinyMCEPopup.getLang('dlg.browse', 'Browse'))
 			).adopt(
 				new Element('input', {
 					type: 'hidden',
@@ -430,33 +436,11 @@ var uploadDialog = Dialog.extend({
 				})
 			).adopt(
 				new Element('input', {
-					type: 'hidden',
-					id: 'upload-method',
-					name: 'upload-method',
-					value: 'html',
-					'class': 'upload-html-only'
-				})
-			).adopt(
-				new Element('input', {
-					type: 'hidden',
-					id: 'upload-max-size',
-					name: 'MAX_FILE_SIZE',
-					value: ''
-				})
-			).adopt(	
-				new Element('input', {
-					type: 'file',
-					size: '44',
-					id: 'upload-input',
-					'class': 'upload-html-only',
-					name: 'Filedata',
+					'type': 'file', 
+					'name': 'Filedata',
+					'size': 40,
 					styles: {
-						position: 'relative'
-					},
-					events: {
-						change: function(){
-							this.fireEvent('onSelectFile', [$('upload-input').value]);
-						}.bind(this)
+						position: 'relative' 
 					}
 				})
 			)
@@ -478,7 +462,7 @@ var uploadDialog = Dialog.extend({
 							name: 'upload-overwrite'
 						})
 					)
-				).adopt(moreBody)
+				).adopt(this.options.extended.body || '')
 			)
 		).adopt(
 			new Element('fieldset').adopt(
@@ -505,9 +489,14 @@ var uploadDialog = Dialog.extend({
 					position: 'absolute'
 				},
 				'id': 'upload-submit',
-				'type': 'submit',
+				'type': 'button',
 				'class': 'mceButton mceOk',
-				value : tinyMCEPopup.getLang('dlg.upload', 'Upload')
+				value : tinyMCEPopup.getLang('dlg.upload', 'Upload'),
+				events : {
+					'click': function(){
+						this.fireEvent('onUpload');	
+					}.bind(this)
+				}
 			})
 		)
     }
@@ -645,51 +634,52 @@ var mediaPreview = basicDialog.extend({
 			
 			if(type == 'flash'){
 				p.wmode = 'opaque';
-				p.base 	= tinyMCEPopup.getParam('document_base_url');
-				if(window.ie){
+				p.base 	= tinyMCEPopup.editor.documentBaseURI.getURI(true);
+				/*if(window.ie){
 					p.movie = p.src;
 					delete p.src;
-				}
+				}*/
 			}
 			if(/(mplayer|windowsmedia)/i.test(type)){
-				p.baseurl = tinyMCEPopup.getParam('document_base_url');
+				p.baseurl = tinyMCEPopup.editor.documentBaseURI.getURI(true);
 				if(window.ie){
 					p.url = p.src;
 					delete p.src;
 				}
 			}			
 			
-			html += '<object id="jcepopup-object" codebase="' + cb + '"';
-				if(window.ie){
-					html += 'classid="clsid:' + ci + '"';
-					for (n in p){
-						if(p[n] !== ''){
-							if (/(id|name|width|height|style)$/.test(n)){
-								html += n + '="' + p[n] + '"';	
-							}
-						}
+			html = '<object id="media-preview" ';
+			if(/flash/i.test(type)){
+				html += 'type="'+ mt +'" data="'+ p.src +'" ';	
+			}else{
+				html += 'codebase="' + cb + '" classid="clsid:' + ci + '" ';
+			}
+			for (n in p){
+				if(p[n] !== ''){
+					if (/(id|name|width|height|style)$/.test(n)){
+						html += n + '="' + p[n] + '"';	
 					}
 				}
-				html += '>';
-				if(window.ie){
-					for (n in p){
-						if(p[n] !== ''){
-							if (!/(id|name|width|height|style)$/.test(n)){
-								html += '<param name="' + n + '" value="' + p[n] + '">';
-							}
-						}
+			}
+			html += '>';
+			for (n in p){
+				if(p[n] !== ''){
+					if (!/(id|name|width|height|style)$/.test(n)){
+						html += '<param name="' + n + '" value="' + p[n] + '">';
 					}
-				}else{
-					html += '<object type="'+ mt +'" data="'+ p.src +'"';
-					for (n in p){
-						if(p[n] !== ''){
-							html += n + '="' + p[n] + '"';
-						}
-					}
-					html += '></object>';
 				}
-				html += '</object>';
-			
+			}
+			if(!window.ie && !/flash/i.test(type)){
+				html += '<object type="'+ mt +'" data="'+ p.src +'" ';
+				for (n in p){
+					if(p[n] !== ''){
+						html += n + '="' + p[n] + '"';
+					}
+				}
+				html += '></object>';	
+			}
+			html += '</object>';
+
 			this.display.setHTML(html);
 		}
 	},

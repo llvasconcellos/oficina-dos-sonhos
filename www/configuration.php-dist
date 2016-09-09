@@ -1,6 +1,6 @@
 <?php
 /**
-* @version		$Id: configuration.php-dist 9991 2008-02-05 22:13:22Z ircmaxell $
+* @version		$Id: configuration.php-dist 11687 2009-03-11 17:49:23Z ian $
 * @package		Joomla
 * @copyright	Copyright (C) 2005 - 2008 Open Source Matters. All rights reserved.
 * @license		GNU/GPL, see LICENSE.php
@@ -63,6 +63,7 @@ class JConfig {
 	var $log_path	= '/var/logs';
 	var $offset = '0';
 	var $live_site = ''; 					// Optional, Full url to Joomla install.
+	var $force_ssl = 0;		//Force areas of the site to be SSL ONLY.  0 = None, 1 = Administrator, 2 = Both Site and Administrator
 
 	/* Session settings */
 	var $lifetime = '15';					// Session time
@@ -101,5 +102,6 @@ class JConfig {
 
 	/* Feed Settings */
 	var $feed_limit   = 10;
+	var $feed_email   = 'author';
 }
 ?>

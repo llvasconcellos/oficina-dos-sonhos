@@ -1,14 +1,21 @@
 <?xml version="1.0" ?>
 <install version="1.5" type="extension" plugin="advlink" extension="joomlalinks" folder="links">
 	<name>Joomla! Links for Advanced Link</name>
-	<version>1.1.0</version>
+	<version>1.2.0</version>
 	<creationDate>24 July 2008</creationDate>
 	<author>Ryan Demmer</author>
 	<authorEmail>ryandemmer@gmail.com</authorEmail>
-	<authorUrl>http://www.cellardoor.za.net/</authorUrl>
+	<authorUrl>http://www.joomlacontenteditor.net/</authorUrl>
 	<copyright>Ryan Demmer</copyright>
 	<license>GPL</license>
 	<description><![CDATA[
+		<p>Changelog (from 1.1.0):
+		<ul>
+			<li>Fixed: Menu links.</li>
+			<li>Fixed: Uncategorized links.</li>
+			<li>Fixed: Content links.</li>
+		</ul>
+		</p>
 		<p>Changelog (from 1.0.0):
 		<ul>
 			<li>Added: Menu links.</li>
@@ -21,12 +28,10 @@
 		<filename>joomlalinks/index.html</filename>
 		<filename>joomlalinks/contact.php</filename>
 		<filename>joomlalinks/content.php</filename>
-		<filename>joomlalinks/weblink.php</filename>
+		<filename>joomlalinks/weblinks.php</filename>
 		<filename>joomlalinks/menu.php</filename>
 		<filename>joomlalinks/css/index.html</filename>
 		<filename>joomlalinks/css/joomlalinks.css</filename>
-		<filename>joomlalinks/img/index.html</filename>
-		<filename>joomlalinks/img/joomlalinks.gif</filename>
 	</files>
 	<params>
 		<param name="advlink_content" type="list" default="1" label="PARAM CONTENT ACCESS" description="PARAM CONTENT ACCESS DESC">
@@ -50,7 +55,4 @@
             <option value="0">NO</option>
 		</param>
 	</params>
-	<languages>
-		<language tag="en-GB">en-GB.com_jce_advlink_joomlalinks.ini</language>
-	</languages>
 </install>

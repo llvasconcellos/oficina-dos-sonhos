@@ -18,16 +18,18 @@ global $_VERSION;
 
 // NOTE - You may change this file to suit your site needs
 ?>
-
+<center><b>Oficina dos Sonhos</b> - Rua Senador Nilo Coelho, 181 - Costa e Silva - Joinville - Santa Catarina - Brasil - (47) 3425-5063</center>
+<br />
+<div style="float:left;width:300px;padding-left:148px">
 Copyright &copy; 
 <?php 
 	echo JHTML::_('date', 'now', '2005 - %Y');
 	echo " ";
 	echo $mainframe->getCfg('sitename');
-?>. 
-Designed by <a href="http://www.joomlart.com/" title="Visit Joomlart.com!" target="blank">JoomlArt.com</a>
+?>.</div>
+<div style="float:right;width:200px;padding-right:109px;">Desenvolvido por <a target="_blank" href="http://www.devhouse.com.br">DevHouse</a></div>
 <br />
 <?php 
-	$version = new JVersion();
-	echo $version->URL; 
+	/*$version = new JVersion();
+	echo $version->URL; */
 ?>

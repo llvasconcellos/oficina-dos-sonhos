@@ -1,9 +1,10 @@
 <?php
 /**
-* @version browser.php 2008-02-25 Ryan Demmer $
-* @package JCE
-* @copyright Copyright (C) 2005 - 2008 Ryan Demmer. All rights reserved.
-* @license http://www.gnu.org/copyleft/gpl.html GNU/GPL, see LICENSE.php
+* $Id: browser.php 26 2009-05-25 10:21:53Z happynoodleboy $
+* @package      JCE
+* @copyright    Copyright (C) 2005 - 2009 Ryan Demmer. All rights reserved.
+* @author		Ryan Demmer
+* @license      GNU/GPL
 * JCE is free software. This version may have been modified pursuant
 * to the GNU General Public License, and as distributed it includes or
 * is derivative of works licensed under the GNU General Public License or
@@ -11,7 +12,7 @@
 */
 defined( '_JEXEC' ) or die( 'Restricted access' );
 ?>
-<form action="<?php echo $this->action;?>&<?php echo $this->session->getName().'='.$this->session->getId(); ?>" target="_self" method="post" enctype="multipart/form-data">
+<form onsubmit="return false;" action="<?php echo $this->action;?>" target="_self" method="post" enctype="multipart/form-data">
 <div id="browser">
     <fieldset>
         <legend><?php echo JText::_('Browse');?></legend>

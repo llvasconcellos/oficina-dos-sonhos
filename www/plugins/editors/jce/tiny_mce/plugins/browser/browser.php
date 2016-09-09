@@ -1,9 +1,10 @@
 <?php
 /**
-* @version $Id: brower.php 2005-12-27 09:23:43Z Ryan Demmer $
-* @package JCE
-* @copyright Copyright (C) 2005 Ryan Demmer. All rights reserved.
-* @license http://www.gnu.org/copyleft/gpl.html GNU/GPL, see LICENSE.php
+* $Id: browser.php 26 2009-05-25 10:21:53Z happynoodleboy $
+* @package      JCE
+* @copyright    Copyright (C) 2005 - 2009 Ryan Demmer. All rights reserved.
+* @author		Ryan Demmer
+* @license      GNU/GPL
 * JCE is free software. This version may have been modified pursuant
 * to the GNU General Public License, and as distributed it includes or
 * is derivative of works licensed under the GNU General Public License or
@@ -11,30 +12,15 @@
 */
 defined( '_JEXEC' ) or die( 'Restricted access' );
 
-$version = "1.5.0";
-
-require_once( JCE_LIBRARIES .DS. 'classes' .DS. 'editor.php' );
-require_once( JCE_LIBRARIES .DS. 'classes' .DS. 'plugin.php' );
-require_once( JCE_LIBRARIES .DS. 'classes' .DS. 'utils.php' );
-require_once( JCE_LIBRARIES .DS. 'classes' .DS. 'manager.php' );
+$version = "1.5.1";
 
 require_once( dirname( __FILE__ ) .DS. 'classes' .DS. 'browser.php' );
 
-$manager =& Browser::getInstance();
-$manager->checkPlugin() or die( 'Restricted access' );
-
+$manager =& Browser::getInstance();		
 // Process any XHR requests
 $manager->processXHR();
-// Set javascript file array
-$manager->script( array( 
-	'browser'
-), 'plugins' );
-$manager->css( array( 
-	'browser'
-), 'plugins' );
 
 $manager->_debug = false;
-$session = &JFactory::getSession();
 $version .= $manager->_debug ? ' - debug' : '';
 
 ?>

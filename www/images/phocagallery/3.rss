@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss xmlns:media="http://search.yahoo.com/mrss" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <atom:icon>http://www.phoca.cz/images/phoca-piclens.png</atom:icon>
+        <item>
+            <title>dsc02431</title>
+            <link>/images/phocagallery/MERQDJ/thumbs/phoca_thumb_l_dsc02431.jpg</link>
+            <media:thumbnail url="/images/phocagallery/MERQDJ/thumbs/phoca_thumb_l_dsc02431.jpg" />
+            <media:content url="/images/phocagallery/MERQDJ/dsc02431.jpg" />
+            <guid isPermaLink="false">3-phocagallerypiclenscode-MERQDJ/dsc02431.jpg</guid>
+        </item>
+    </channel>
+</rss>

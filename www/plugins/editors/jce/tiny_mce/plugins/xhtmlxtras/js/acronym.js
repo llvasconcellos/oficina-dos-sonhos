@@ -1,5 +1,5 @@
  /**
- * $Id: editor_plugin_src.js 42 2006-08-08 14:32:24Z spocke $
+ * $Id: acronym.js 26 2009-05-25 10:21:53Z happynoodleboy $
  *
  * @author Moxiecode - based on work by Andrew Tetlaw
  * @copyright Copyright © 2004-2008, Moxiecode Systems AB, All rights reserved.

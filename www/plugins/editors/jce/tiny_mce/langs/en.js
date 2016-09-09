@@ -22,16 +22,6 @@ center:"Center",
 right:"Right",
 full:"Full"
 },
-insertdatetime:{
-date_fmt:"%Y-%m-%d",
-time_fmt:"%H:%M:%S",
-insertdate_desc:"Insert date",
-inserttime_desc:"Insert time",
-months_long:"January,February,March,April,May,June,July,August,September,October,November,December",
-months_short:"Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec",
-day_long:"Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday",
-day_short:"Sun,Mon,Tue,Wed,Thu,Fri,Sat,Sun"
-},
 print:{
 print_desc:"Print"
 },
@@ -56,25 +46,8 @@ cancel_desc:"Cancel all changes"
 nonbreaking:{
 nonbreaking_desc:"Insert non-breaking space character"
 },
-iespell:{
-iespell_desc:"Run spell checking",
-download:"ieSpell not detected. Do you want to install it now?"
-},
-advhr:{
-advhr_desc:"Horizontale rule"
-},
 emotions:{
 emotions_desc:"Emotions"
-},
-searchreplace:{
-search_desc:"Find",
-replace_desc:"Find/Replace"
-},
-advimage:{
-image_desc:"Insert/edit image"
-},
-advlink:{
-link_desc:"Insert/edit link"
 },
 xhtmlxtras:{
 cite_desc:"Citation",
@@ -90,12 +63,12 @@ desc:"Edit CSS Style"
 paste:{
 paste_text_desc:"Paste as Plain Text",
 paste_word_desc:"Paste from Word",
+paste_desc:"Paste",
 selectall_desc:"Select All"
 },
 paste_dlg:{
-text_title:"Use CTRL+V on your keyboard to paste the text into the window.",
-text_linebreaks:"Keep linebreaks",
-word_title:"Use CTRL+V on your keyboard to paste the text into the window."
+title:"Use CTRL+V on your keyboard to paste the text into the window.",
+text_linebreaks:"Keep linebreaks"
 },
 table:{
 desc:"Inserts a new table",
@@ -119,21 +92,12 @@ row:"Row",
 col:"Column",
 cell:"Cell"
 },
-autosave:{
-unload_msg:"The changes you made will be lost if you navigate away from this page."
-},
 fullscreen:{
 desc:"Toggle fullscreen mode"
 },
 media:{
 desc:"Insert / edit embedded media",
 edit:"Edit embedded media"
-},
-fullpage:{
-desc:"Document properties"
-},
-template:{
-desc:"Insert predefined template content"
 },
 visualchars:{
 desc:"Visual control characters on/off."
@@ -178,6 +142,6 @@ caption:{
 desc:"Insert/Edit Caption"
 },
 templatemanager:{
-desc:"Insert/Edit Template"
+desc:"Insert predefined template content"
 }
 }});

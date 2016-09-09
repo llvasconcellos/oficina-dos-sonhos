@@ -1,9 +1,10 @@
 <?php
 /**
-* @version $Id: link.php 2008-02-20 Ryan Demmer $
-* @package JCE
-* @copyright Copyright (C) 2006-2007 Ryan Demmer. All rights reserved.
-* @license http://www.gnu.org/copyleft/gpl.html GNU/GPL, see LICENSE.php
+* $Id: advlink.php 26 2009-05-25 10:21:53Z happynoodleboy $
+* @package      JCE
+* @copyright    Copyright (C) 2005 - 2009 Ryan Demmer. All rights reserved.
+* @author		Ryan Demmer
+* @license      GNU/GPL
 * JCE is free software. This version may have been modified pursuant
 * to the GNU General Public License, and as distributed it includes or
 * is derivative of works licensed under the GNU General Public License or
@@ -11,22 +12,15 @@
 */
 defined( '_JEXEC' ) or die( 'Restricted access' );
 
-$version = "1.5.0";
-
-require_once( JCE_LIBRARIES .DS. 'classes' .DS. 'editor.php' );
-require_once( JCE_LIBRARIES .DS. 'classes' .DS. 'plugin.php' );
-require_once( JCE_LIBRARIES .DS. 'classes' .DS. 'utils.php' );
+$version = "1.5.3";
 
 require_once( dirname( __FILE__ ) .DS. 'classes' .DS. 'advlink.php' );
 
 $advlink =& AdvLink::getInstance();
-
-$advlink->checkPlugin() or die( 'Restricted access' );
+// Process Requests
+$advlink->processXHR( true );
 // Load Plugin Parameters
 $params	= $advlink->getPluginParams();
-
-// Process any XHR requests
-$advlink->processXHR( true );
 
 $advlink->_debug = false;
 $version .= $advlink->_debug ? ' - debug' : '';
@@ -46,7 +40,7 @@ $advlink->printCss();
 				alerts: <?php echo $advlink->getAlerts();?>,
 				params: {
 					'defaults': {
-						'targetlist': "<?php echo $params->get('target', 'default');?>"
+						'targetlist': "<?php echo $params->get('advlink_target', 'default');?>"
 					}
 				}
 			});
@@ -59,7 +53,7 @@ $advlink->printCss();
 	<div class="tabs">
 		<ul>
 			<li id="general_tab" class="current"><span><a href="javascript:mcTabs.displayTab('general_tab','general_panel');" onMouseDown="return false;"><?php echo JText::_('LINK');?></a></span></li>
-			<li id="advanced_tab"><span><a href="javascript:mcTabs.displayTab('advanced_tab','advanced_panel');" onMouseDown="return false;"><?php echo JText::_('ADVANCED');?></a></span></li>
+			<li id="advanced_tab"><span><a href="javascript:mcTabs.displayTab('advanced_tab','advanced_panel');" onMouseDown="return false;"><?php echo JText::_('Advanced');?></a></span></li>
 		</ul>
 	</div>
 	<div class="panel_wrapper">
@@ -159,6 +153,9 @@ $advlink->printCss();
 							<td><select id="rel" class="mceEditableSelect"> 
 									<option value=""><?php echo JText::_('NOT SET');?></option>
 									<option value="lightbox">Lightbox</option>
+                                    <option value="lytebox">Lytebox</option>
+                                    <option value="lyteframe">Lyteframe</option>
+                                    <option value="nofollow">No Follow</option>
                                     <option value="alternate">Alternate</option> 
 									<option value="designates">Designates</option> 
 									<option value="stylesheet">Stylesheet</option> 

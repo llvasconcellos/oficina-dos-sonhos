@@ -221,12 +221,12 @@ if (!defined ('_JA_BASE_MENU_CLASS')) {
 			if ($this->getParam('menu_images') && $iParams->get('menu_image') && $iParams->get('menu_image') != -1) {
 				if ($this->getParam('menu_background')) {
 					$itembg = ' style="background:url(images/stories/'.$iParams->get('menu_image').') top left no-repeat;"';
-					$txt = '<span>' . $tmp->name . '</span>';
+					$txt = '<span>' . str_replace(" ", "&nbsp;", $tmp->name) . '</span>';
 				} else {
 					$txt = '<img src="images/stories/'.$iParams->get('menu_image').'" alt="'.$tmp->name.'" title="'.$tmp->name.'" /><span>' . $tmp->name . '</span>';
 				}
 			} else {
-				$txt = '<span>' . $tmp->name . '</span>';
+				$txt = '<span>' . str_replace(" ", "&nbsp;", $tmp->name) . '</span>';
 			}
 			$title = "title=\"$tmp->name\"";
 
