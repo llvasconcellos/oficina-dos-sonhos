@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss xmlns:media="http://search.yahoo.com/mrss" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <atom:icon>http://www.phoca.cz/images/phoca-piclens.png</atom:icon>
+        <item>
+            <title>imagem-170</title>
+            <link>/images/phocagallery/TSJMEU/thumbs/phoca_thumb_l_imagem-170.jpg</link>
+            <media:thumbnail url="/images/phocagallery/TSJMEU/thumbs/phoca_thumb_l_imagem-170.jpg" />
+            <media:content url="/images/phocagallery/TSJMEU/imagem-170.jpg" />
+            <guid isPermaLink="false">51-phocagallerypiclenscode-/TSJMEU/imagem-170.jpg</guid>
+        </item>
+        <item>
+            <title>imagem-177</title>
+            <link>/images/phocagallery/TSJMEU/thumbs/phoca_thumb_l_imagem-177.jpg</link>
+            <media:thumbnail url="/images/phocagallery/TSJMEU/thumbs/phoca_thumb_l_imagem-177.jpg" />
+            <media:content url="/images/phocagallery/TSJMEU/imagem-177.jpg" />
+            <guid isPermaLink="false">51-phocagallerypiclenscode-/TSJMEU/imagem-177.jpg</guid>
+        </item>
+        <item>
+            <title>imagem-190</title>
+            <link>/images/phocagallery/TSJMEU/thumbs/phoca_thumb_l_imagem-190.jpg</link>
+            <media:thumbnail url="/images/phocagallery/TSJMEU/thumbs/phoca_thumb_l_imagem-190.jpg" />
+            <media:content url="/images/phocagallery/TSJMEU/imagem-190.jpg" />
+            <guid isPermaLink="false">51-phocagallerypiclenscode-/TSJMEU/imagem-190.jpg</guid>
+        </item>
+        <item>
+            <title>imagem-194</title>
+            <link>/images/phocagallery/TSJMEU/thumbs/phoca_thumb_l_imagem-194.jpg</link>
+            <media:thumbnail url="/images/phocagallery/TSJMEU/thumbs/phoca_thumb_l_imagem-194.jpg" />
+            <media:content url="/images/phocagallery/TSJMEU/imagem-194.jpg" />
+            <guid isPermaLink="false">51-phocagallerypiclenscode-/TSJMEU/imagem-194.jpg</guid>
+        </item>
+        <item>
+            <title>imagem-202</title>
+            <link>/images/phocagallery/TSJMEU/thumbs/phoca_thumb_l_imagem-202.jpg</link>
+            <media:thumbnail url="/images/phocagallery/TSJMEU/thumbs/phoca_thumb_l_imagem-202.jpg" />
+            <media:content url="/images/phocagallery/TSJMEU/imagem-202.jpg" />
+            <guid isPermaLink="false">51-phocagallerypiclenscode-/TSJMEU/imagem-202.jpg</guid>
+        </item>
+        <item>
+            <title>imagem-206</title>
+            <link>/images/phocagallery/TSJMEU/thumbs/phoca_thumb_l_imagem-206.jpg</link>
+            <media:thumbnail url="/images/phocagallery/TSJMEU/thumbs/phoca_thumb_l_imagem-206.jpg" />
+            <media:content url="/images/phocagallery/TSJMEU/imagem-206.jpg" />
+            <guid isPermaLink="false">51-phocagallerypiclenscode-/TSJMEU/imagem-206.jpg</guid>
+        </item>
+        <item>
+            <title>imagem-217</title>
+            <link>/images/phocagallery/TSJMEU/thumbs/phoca_thumb_l_imagem-217.jpg</link>
+            <media:thumbnail url="/images/phocagallery/TSJMEU/thumbs/phoca_thumb_l_imagem-217.jpg" />
+            <media:content url="/images/phocagallery/TSJMEU/imagem-217.jpg" />
+            <guid isPermaLink="false">51-phocagallerypiclenscode-/TSJMEU/imagem-217.jpg</guid>
+        </item>
+    </channel>
+</rss>

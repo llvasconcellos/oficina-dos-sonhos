@@ -1,0 +1,276 @@
+/*------------------------------------------------------------------------
+# JA Olyra - Jul, 2007
+# ------------------------------------------------------------------------
+# Copyright (C) 2004-2007 J.O.O.M Solutions Co., Ltd. All Rights Reserved.
+# @license - Copyrighted Commercial Software
+# Author: J.O.O.M Solutions Co., Ltd
+# Websites:  http://www.joomlart.com -  http://www.joomlancers.com
+-------------------------------------------------------------------------*/
+
+a {
+	color: #558BCC;
+	text-decoration: none;
+}
+
+a:hover, a:active, a:focus {
+	color: #558BCC;
+	text-decoration: underline;
+}
+
+ul {
+	list-style: none;
+}
+
+ul li {
+	background: url(../../images/blue/bullet-list.gif) no-repeat 25px 8px;
+}
+
+/* Module table */
+div.module h3 {
+	color: #558BCC;
+}
+
+div.moduletable h3 {
+	color: #558BCC;
+}
+
+/* Joomla Style */
+tr.sectiontableentry1:hover td,
+tr.sectiontableentry2:hover td {
+	background: #F7FAED;
+}
+
+.contentheading {
+	color: #558BCC;
+}
+
+/* Default joomla menu */
+a.mainlevel {
+	background: url(../../images/blue/bullet-list.gif) no-repeat 3px 12px;
+}
+
+a.mainlevel:hover,
+a.mainlevel:active,
+a.mainlevel:focus {
+	color: #558BCC;
+	background-color: #F7F7F7;
+}
+
+a.mainlevel#active_menu {
+	color: #558BCC;
+}
+
+/* Header */
+#ja-header h1 a {
+	background: url(../../images/blue/logo.jpg) no-repeat top left;
+}
+
+/* Top spotlight */
+#ja-topsl-head {
+	background: url(../../images/blue/topsl-head-bg.gif) no-repeat top right;
+}
+
+#ja-topsl-left {
+	background: url(../../images/blue/topsl-br.gif) no-repeat bottom right;
+}
+
+#ja-topsl-left div.wrap1 {
+	background: url(../../images/blue/topsl-bl.gif) no-repeat bottom left;
+}
+
+#ja-topsl-left div.wrap2 {
+	background: url(../../images/blue/topsl-tr.gif) no-repeat top right;
+}
+
+#ja-topsl-left div.wrap3 {
+	background: url(../../images/blue/topsl-tl.gif) no-repeat top left;
+}
+
+#ja-topsl ul li {
+	background: url(../../images/blue/bullet-list.gif) no-repeat 0	 8px;	
+}
+
+/* BONUS TYPOGRAPHY STYLES
+--------------------------------------------------------- */
+pre, .code {
+	border-top: 3px solid #558BCC;
+	background: #E8F0F9;
+}
+
+.dropcap-hilite {
+	color: #FFFFFF;
+	background: #558BCC;
+}
+
+.highlight {
+	border-bottom: 1px dotted #558BCC;
+	background: #E8F0F9;
+}
+
+/* Check list */
+ul.checklist li {
+	background: url(../../images/blue/checklist-bg.gif) no-repeat 0px 0px;
+}
+
+/* Bignumber */
+.bignumber {
+	color: #FFFFFF;
+	background: url(../../images/blue/ol-bg.gif) no-repeat top left;
+}
+
+/* Talking box. Thinking box. */
+div.bubble1 div {
+	background: url(../../images/blue/bub1-br.gif) no-repeat bottom right;
+}
+
+div.bubble1 div div {
+	background: url(../../images/blue/bub1-bl.gif) no-repeat bottom left;
+}
+
+div.bubble1 div div div {
+	background: url(../../images/blue/bub1-tr.gif) no-repeat top right;
+}
+
+div.bubble1 div div div div {
+	background: url(../../images/blue/bub1-tl.gif) no-repeat top left;
+}
+
+div.bubble2 div {
+	background: url(../../images/blue/bub2-br.gif) no-repeat bottom right;
+}
+
+div.bubble2 div div {
+	background: url(../../images/blue/bub2-bl.gif) no-repeat bottom left;
+}
+
+div.bubble2 div div div {
+	background: url(../../images/blue/bub2-tr.gif) no-repeat top right;
+}
+
+div.bubble2 div div div div {
+	background: url(../../images/blue/bub2-tl.gif) no-repeat top left;
+}
+
+div.bubble3 div {
+	background: url(../../images/blue/bub3-br.gif) no-repeat bottom right;
+}
+
+div.bubble3 div div {
+	background: url(../../images/blue/bub3-bl.gif) no-repeat bottom left;
+}
+
+div.bubble3 div div div {
+	background: url(../../images/blue/bub3-tr.gif) no-repeat top right;
+}
+
+div.bubble3 div div div div {
+	background: url(../../images/blue/bub3-tl.gif) no-repeat top left;
+}
+
+div.bubble4 div {
+	background: url(../../images/blue/bub4-br.gif) no-repeat bottom right;
+}
+
+div.bubble4 div div {
+	background: url(../../images/blue/bub4-bl.gif) no-repeat bottom left;
+}
+
+div.bubble4 div div div {
+	background: url(../../images/blue/bub4-tr.gif) no-repeat top right;
+}
+
+div.bubble4 div div div div {
+	background: url(../../images/blue/bub4-tl.gif) no-repeat top left;
+}
+
+/* User tool */
+#ja-usertools ul li {
+	background: none !important;
+}
+
+/* FOOTER
+--------------------------------------------------------- */
+#ja-footerwrap {
+	background: url(../../images/blue/footer-bg.gif) repeat-x top left;
+}
+
+/* SPLITMENU
+-------------------------------------*/
+#ja-subnav a {
+	background: url(../../images/blue/bullet-list.gif) no-repeat 3px 12px;
+}
+
+#ja-subnav a:hover,
+#ja-subnav a:active,
+#ja-subnav a:focus {
+	color: #558BCC;
+	background-color: #F7F7F7;
+}
+
+#ja-subnav li.active a,
+#ja-subnav li.active a:hover,
+#ja-subnav li.active a:active,
+#ja-subnav li.active a:focus {
+	color: #558BCC;
+}
+
+#ja-splitmenu li.active a,
+#ja-splitmenu li.active a:hover,
+#ja-splitmenu li.active a:active,
+#ja-splitmenu li.active a:focus {
+	background: url(../../images/blue/mainnav-active-bg.gif) no-repeat top right !important;
+}
+
+/* SUCKERFISH MENU
+-------------------------------------*/
+#ja-cssmenu li a.active,
+#ja-cssmenu li a.active:hover,
+#ja-cssmenu li a.active:active,
+#ja-cssmenu li a.active:focus {
+	background: url(../../images/blue/mainnav-active-bg.gif) no-repeat top right;
+}
+
+#ja-cssmenu li a.active-first-item,
+#ja-cssmenu li a.active-first-item:hover,
+#ja-cssmenu li a.active-first-item:active,
+#ja-cssmenu li a.active-first-item:focus {
+	background: url(../../images/blue/mainnav-active-bg.gif) no-repeat top right !important;
+}
+
+/* TRANSMENU
+--------------------------------------------------------- */
+#ja-transmenu a.havechild-mainlevel-active-trans,
+#ja-transmenu a.havechild-mainlevel-active-trans:hover,
+#ja-transmenu a.havechild-mainlevel-active-trans:active,
+#ja-transmenu a.havechild-mainlevel-active-trans:focus {
+	background: url(../../images/blue/mainnav-active-bg.gif) no-repeat top right;
+}
+
+#ja-transmenu a.havechild-mainlevel-active-trans-last,
+#ja-transmenu a.havechild-mainlevel-active-trans-last:hover,
+#ja-transmenu a.havechild-mainlevel-active-trans-last:active,
+#ja-transmenu a.havechild-mainlevel-active-trans-last:focus {
+	background: url(../../images/blue/mainnav-active-bg.gif) no-repeat top right;
+}
+
+#ja-transmenu a.jahover-active {
+	background: url(../../images/blue/mainnav-active-bg.gif) no-repeat top right;
+}
+
+#ja-transmenu a.mainlevel-active-trans,
+#ja-transmenu a.mainlevel-active-trans:hover,
+#ja-transmenu a.mainlevel-active-trans:active,
+#ja-transmenu a.mainlevel-active-trans:focus {
+	background: url(../../images/blue/mainnav-active-bg.gif) no-repeat top right;
+}
+
+#ja-transmenu a.havechild-mainlevel-active-trans-first,
+#ja-transmenu a.havechild-mainlevel-active-trans-first:hover,
+#ja-transmenu a.havechild-mainlevel-active-trans-first:active,
+#ja-transmenu a.havechild-mainlevel-active-trans-first:focus,
+#ja-transmenu a.mainlevel-active-trans-first,
+#ja-transmenu a.mainlevel-active-trans-first:hover,
+#ja-transmenu a.mainlevel-active-trans-first:active,
+#ja-transmenu a.mainlevel-active-trans-first:focus {
+	background: url(../../images/blue/mainnav-active-bg.gif) no-repeat top right;
+}

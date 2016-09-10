@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- generator="Joomla! 1.5 - Open Source Content Management" -->
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Links</title>
+		<description>Portal Escola Oficina dos Sonhos</description>
+		<link>http://localhost/oficinadossonhos/index.php?option=com_weblinks&amp;view=category&amp;id=2&amp;Itemid=89</link>
+		<lastBuildDate>Fri, 09 Sep 2016 19:56:21 +0000</lastBuildDate>
+		<generator>Joomla! 1.5 - Open Source Content Management</generator>
+		<language>pt-br</language>
+		<managingEditor>secretaria@oficinadossonhos.com.br (Oficina dos Sonhos)</managingEditor>
+		<item>
+			<title>KDWEB</title>
+			<link>http://localhost/oficinadossonhos/index.php?option=com_weblinks&amp;view=weblink&amp;id=1&amp;Itemid=89</link>
+			<guid>http://localhost/oficinadossonhos/index.php?option=com_weblinks&amp;view=weblink&amp;id=1&amp;Itemid=89</guid>
+			<description><![CDATA[Site da empresa, Desenvolvimento de sites, hospedagem, registro de domínios, comércio eletrônico, newsletter, e geradores de conteúdo, etc.]]></description>
+			<category>Weblinks</category>
+			<pubDate>Wed, 24 May 2006 15:30:02 +0000</pubDate>
+		</item>
+		<item>
+			<title>wmonline</title>
+			<link>http://localhost/oficinadossonhos/index.php?option=com_weblinks&amp;view=weblink&amp;id=4&amp;Itemid=89</link>
+			<guid>http://localhost/oficinadossonhos/index.php?option=com_weblinks&amp;view=weblink&amp;id=4&amp;Itemid=89</guid>
+			<description><![CDATA[Portal do WebMaster, utilitários para desenvolvimento, templates, Softwares livres dentre outros relacionado ao assunto.]]></description>
+			<category>Weblinks</category>
+			<pubDate>Wed, 24 May 2006 15:31:15 +0000</pubDate>
+		</item>
+	</channel>
+</rss>

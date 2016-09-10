@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- generator="Joomla! 1.5 - Open Source Content Management" -->
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Contato</title>
+		<description>Portal Escola Oficina dos Sonhos</description>
+		<link>http://localhost/oficinadossonhos/index.php?option=com_contact&amp;view=category&amp;catid=12&amp;Itemid=86</link>
+		<lastBuildDate>Fri, 09 Sep 2016 19:35:16 +0000</lastBuildDate>
+		<generator>Joomla! 1.5 - Open Source Content Management</generator>
+		<language>pt-br</language>
+		<managingEditor>secretaria@oficinadossonhos.com.br (Oficina dos Sonhos)</managingEditor>
+		<item>
+			<title>Alessandra Machado</title>
+			<link>http://localhost/oficinadossonhos/index.php?option=com_contact&amp;view=contact&amp;id=1%3Aalessandra-machado&amp;catid=12%3Acontatos&amp;Itemid=86</link>
+			<guid>http://localhost/oficinadossonhos/index.php?option=com_contact&amp;view=contact&amp;id=1%3Aalessandra-machado&amp;catid=12%3Acontatos&amp;Itemid=86</guid>
+			<description><![CDATA[Financeiro - ]]></description>
+			<category>Contatos</category>
+		</item>
+		<item>
+			<title>Evelize da Cunha</title>
+			<link>http://localhost/oficinadossonhos/index.php?option=com_contact&amp;view=contact&amp;id=12%3Aevelize-da-cunha&amp;catid=12%3Acontatos&amp;Itemid=86</link>
+			<guid>http://localhost/oficinadossonhos/index.php?option=com_contact&amp;view=contact&amp;id=12%3Aevelize-da-cunha&amp;catid=12%3Acontatos&amp;Itemid=86</guid>
+			<description><![CDATA[Coordenação Pedagógica Educação Infantil - ]]></description>
+			<category>Contatos</category>
+		</item>
+		<item>
+			<title>Fábia Steuernagel Poffo</title>
+			<link>http://localhost/oficinadossonhos/index.php?option=com_contact&amp;view=contact&amp;id=6%3Afabia-steuernagel-poffo&amp;catid=12%3Acontatos&amp;Itemid=86</link>
+			<guid>http://localhost/oficinadossonhos/index.php?option=com_contact&amp;view=contact&amp;id=6%3Afabia-steuernagel-poffo&amp;catid=12%3Acontatos&amp;Itemid=86</guid>
+			<description><![CDATA[Coordenação Pedagógica Ensino  Fundamental - ]]></description>
+			<category>Contatos</category>
+		</item>
+		<item>
+			<title>Jaqueline Schuster</title>
+			<link>http://localhost/oficinadossonhos/index.php?option=com_contact&amp;view=contact&amp;id=2%3Ajaqueline-schuster&amp;catid=12%3Acontatos&amp;Itemid=86</link>
+			<guid>http://localhost/oficinadossonhos/index.php?option=com_contact&amp;view=contact&amp;id=2%3Ajaqueline-schuster&amp;catid=12%3Acontatos&amp;Itemid=86</guid>
+			<description><![CDATA[Secretaria - ]]></description>
+			<category>Contatos</category>
+		</item>
+		<item>
+			<title>Marcia Poletti</title>
+			<link>http://localhost/oficinadossonhos/index.php?option=com_contact&amp;view=contact&amp;id=4%3Amarcia-poletti&amp;catid=12%3Acontatos&amp;Itemid=86</link>
+			<guid>http://localhost/oficinadossonhos/index.php?option=com_contact&amp;view=contact&amp;id=4%3Amarcia-poletti&amp;catid=12%3Acontatos&amp;Itemid=86</guid>
+			<description><![CDATA[Diretora / Supervisão Pedagógica - ]]></description>
+			<category>Contatos</category>
+		</item>
+		<item>
+			<title>Pamela Gonçalves de Araújo</title>
+			<link>http://localhost/oficinadossonhos/index.php?option=com_contact&amp;view=contact&amp;id=11%3Apamela-goncalves-de-araujo&amp;catid=12%3Acontatos&amp;Itemid=86</link>
+			<guid>http://localhost/oficinadossonhos/index.php?option=com_contact&amp;view=contact&amp;id=11%3Apamela-goncalves-de-araujo&amp;catid=12%3Acontatos&amp;Itemid=86</guid>
+			<description><![CDATA[Administrativo - ]]></description>
+			<category>Contatos</category>
+		</item>
+	</channel>
+</rss>

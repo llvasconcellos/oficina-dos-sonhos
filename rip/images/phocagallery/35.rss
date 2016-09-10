@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss xmlns:media="http://search.yahoo.com/mrss" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <atom:icon>http://www.phoca.cz/images/phoca-piclens.png</atom:icon>
+        <item>
+            <title>01</title>
+            <link>/images/phocagallery/ZKQRPG/thumbs/phoca_thumb_l_01.jpg</link>
+            <media:thumbnail url="/images/phocagallery/ZKQRPG/thumbs/phoca_thumb_l_01.jpg" />
+            <media:content url="/images/phocagallery/ZKQRPG/01.jpg" />
+            <guid isPermaLink="false">35-phocagallerypiclenscode-/ZKQRPG/01.jpg</guid>
+        </item>
+    </channel>
+</rss>

@@ -1,0 +1,96 @@
+:focus {
+	outline: 0;
+}
+
+div#news-highlight-8 .gk_news_highlighter{
+	font-family: Verdana, Arial;
+	font-size: 11px;
+	color: #666;	
+}
+
+div#news-highlight-8{
+	width: 100%;
+	height: 28px;
+	background: #cccccc;
+	clear: both;
+	overflow: hidden;
+}
+
+div#news-highlight-8 .gk_news_highlighter_wrapper{
+	float: left;
+	width: 100%;
+	height: 28px;
+	line-height: 28px;
+	overflow: hidden;
+	position: relative;
+}
+
+div#news-highlight-8 .gk_news_highlighter_item{
+	width: auto;
+	height: 28px;
+	padding-left: 20px;
+	display: none;
+	position: absolute;
+}
+
+div#news-highlight-8 .nowrap{
+	white-space: nowrap;
+}
+
+div#news-highlight-8 .gk_news_highlighter_title{
+	padding-left: 5px;
+}
+
+div#news-highlight-8 .gk_news_highlighter_desc{	
+	padding-right: 5px;
+}
+
+div#news-highlight-8 .gk_news_highlighter_interface{
+	float: left;
+	width: 110px;
+	height: 28px;
+	text-align: right;
+	line-height: 28px;
+	z-index: 1000;        
+}
+
+div#news-highlight-8 .gk_news_highlighter_interface .text{
+	float: left;
+	display: block;
+	width: auto;
+	padding-left: 5px;
+			font-weight: bold;}
+
+div#news-highlight-8 .gk_news_highlighter_interface div {width: 30px; float: right;}
+div#news-highlight-8 .gk_news_highlighter_interface a.prev,
+div#news-highlight-8 .gk_news_highlighter_interface a.next {
+	cursor: pointer;
+	width: 13px;
+	height: 28px;
+	display: block;
+	background: url('http://localhost/oficinadossonhos//modules/images/7set.png') no-repeat 0 50%;
+	float: left; 
+}
+
+div#news-highlight-8 .gk_news_highlighter_interface a:hover.prev {	
+	background-position: -13px 50%;	      
+}
+
+div#news-highlight-8 a, 
+div#news-highlight-8 a:link,
+div#news-highlight-8 a:visited,
+div#news-highlight-8 a:active,
+div#news-highlight-8 a:focus {	
+	}
+
+div#news-highlight-8 a:hover {	
+	}
+
+div#news-highlight-8 .gk_news_highlighter_interface a.next {
+	float: right;
+	background-position: -26px 50%;	   
+}
+
+div#news-highlight-8 .gk_news_highlighter_interface a:hover.next {
+	background-position: -39px 50%;	   
+}

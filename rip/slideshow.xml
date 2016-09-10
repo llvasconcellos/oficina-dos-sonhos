@@ -1,0 +1,31 @@
+
+<?xml version="1.0" encoding="utf-8"?>
+<slideshow>	
+	<preferences kenBurnsMode="random" controlAlpha="50" controlAutoHide="true" controlDelay="3" controlLineWidth="2" controlRoundedCorners="10"/>
+	<album thumbnail="images/slides/album.jpg" title="Núcleo do Evento" description="Amostra de Imagens" imagePath="images/slides" thumbnailPath="images/slides">
+		<img src="0_6.jpeg"/>
+		<img src="ballet04.jpg"/>
+		<img src="DSC02261.JPG"/>
+		<img src="dsc03549.jpg"/>
+		<img src="dsc03612.jpg"/>
+		<img src="dsc03750.jpg"/>
+		<img src="eden day site.jpg"/>
+		<img src="maquina 002.jpg"/>
+		<img src="P1200087.JPG"/>
+		<img src="P2160044.JPG"/>
+		<img src="P2160052.JPG"/>
+		<img src="p2190059.jpg"/>
+		<img src="P2200011.JPG"/>
+		<img src="p2270080.jpg"/>
+		<img src="P3050100.JPG"/>
+		<img src="P3050101.JPG"/>
+		<img src="p3100078.jpg"/>
+		<img src="p3130050.jpg"/>
+		<img src="P3130083.JPG"/>
+		<img src="p3160001.jpg"/>
+		<img src="p3270009.jpg"/>
+		<img src="p5150035.jpg"/>
+		<img src="p5220002.jpg"/>
+		<img src="sdc12013.jpg"/>
+	</album>	
+</slideshow>

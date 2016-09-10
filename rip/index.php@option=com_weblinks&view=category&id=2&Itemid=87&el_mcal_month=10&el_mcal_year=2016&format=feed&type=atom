@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- generator="Joomla! 1.5 - Open Source Content Management" -->
+<feed xmlns="http://www.w3.org/2005/Atom"  xml:lang="pt-br">
+	<title type="text">Links</title>
+	<subtitle type="text">Portal Escola Oficina dos Sonhos</subtitle>
+	<link rel="alternate" type="text/html" href="http://localhost"/>
+	<id>http://localhost/oficinadossonhos/index.php</id>
+	<updated>2016-09-09T20:02:40Z</updated>
+	<author>
+		<name>Oficina dos Sonhos</name>
+		<email>secretaria@oficinadossonhos.com.br</email>
+	</author>
+	<generator uri="http://joomla.org" version="1.5">Joomla! 1.5 - Open Source Content Management</generator>
+<link rel="self" type="application/atom+xml" href="http://localhost/oficinadossonhos/index.php?option=com_weblinks&amp;view=category&amp;id=2&amp;Itemid=87&amp;el_mcal_month=10&amp;el_mcal_year=2016&amp;format=feed&amp;type=atom" />
+	<entry>
+		<title>KDWEB</title>
+		<link rel="alternate" type="text/html" href="http://localhost/oficinadossonhos/index.php?option=com_weblinks&amp;view=weblink&amp;id=1&amp;Itemid=87"/>
+		<published>2006-05-24T15:30:02Z</published>
+		<updated>2006-05-24T15:30:02Z</updated>
+		<id>http://localhost/oficinadossonhos/index.php?option=com_weblinks&amp;view=weblink&amp;id=1&amp;Itemid=87</id>
+		<summary type="html">Site da empresa, Desenvolvimento de sites, hospedagem, registro de domínios, comércio eletrônico, newsletter, e geradores de conteúdo, etc.</summary>
+		<content type="html">Site da empresa, Desenvolvimento de sites, hospedagem, registro de domínios, comércio eletrônico, newsletter, e geradores de conteúdo, etc.</content>
+	</entry>
+	<entry>
+		<title>wmonline</title>
+		<link rel="alternate" type="text/html" href="http://localhost/oficinadossonhos/index.php?option=com_weblinks&amp;view=weblink&amp;id=4&amp;Itemid=87"/>
+		<published>2006-05-24T15:31:15Z</published>
+		<updated>2006-05-24T15:31:15Z</updated>
+		<id>http://localhost/oficinadossonhos/index.php?option=com_weblinks&amp;view=weblink&amp;id=4&amp;Itemid=87</id>
+		<summary type="html">Portal do WebMaster, utilitários para desenvolvimento, templates, Softwares livres dentre outros relacionado ao assunto.</summary>
+		<content type="html">Portal do WebMaster, utilitários para desenvolvimento, templates, Softwares livres dentre outros relacionado ao assunto.</content>
+	</entry>
+</feed>

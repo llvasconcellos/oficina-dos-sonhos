@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- generator="Joomla! 1.5 - Open Source Content Management" -->
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Links</title>
+		<description>Portal Escola Oficina dos Sonhos</description>
+		<link>http://localhost/oficinadossonhos/index.php?option=com_weblinks&amp;view=category&amp;id=31&amp;Itemid=89</link>
+		<lastBuildDate>Fri, 09 Sep 2016 19:45:11 +0000</lastBuildDate>
+		<generator>Joomla! 1.5 - Open Source Content Management</generator>
+		<language>pt-br</language>
+		<managingEditor>secretaria@oficinadossonhos.com.br (Oficina dos Sonhos)</managingEditor>
+		<item>
+			<title>Guia dos Curiosos</title>
+			<link>http://localhost/oficinadossonhos/index.php?option=com_weblinks&amp;view=weblink&amp;id=8&amp;Itemid=89</link>
+			<guid>http://localhost/oficinadossonhos/index.php?option=com_weblinks&amp;view=weblink&amp;id=8&amp;Itemid=89</guid>
+			<description><![CDATA[]]></description>
+			<category>Weblinks</category>
+			<pubDate>Mon, 14 Aug 2006 03:37:18 +0000</pubDate>
+		</item>
+		<item>
+			<title>Nosso Amiguinho</title>
+			<link>http://localhost/oficinadossonhos/index.php?option=com_weblinks&amp;view=weblink&amp;id=7&amp;Itemid=89</link>
+			<guid>http://localhost/oficinadossonhos/index.php?option=com_weblinks&amp;view=weblink&amp;id=7&amp;Itemid=89</guid>
+			<description><![CDATA[]]></description>
+			<category>Weblinks</category>
+			<pubDate>Mon, 14 Aug 2006 03:36:46 +0000</pubDate>
+		</item>
+		<item>
+			<title>Nosso Pão Diário</title>
+			<link>http://localhost/oficinadossonhos/index.php?option=com_weblinks&amp;view=weblink&amp;id=6&amp;Itemid=89</link>
+			<guid>http://localhost/oficinadossonhos/index.php?option=com_weblinks&amp;view=weblink&amp;id=6&amp;Itemid=89</guid>
+			<description><![CDATA[]]></description>
+			<category>Weblinks</category>
+			<pubDate>Mon, 14 Aug 2006 03:35:04 +0000</pubDate>
+		</item>
+	</channel>
+</rss>

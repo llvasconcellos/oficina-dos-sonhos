@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- generator="Joomla! 1.5 - Open Source Content Management" -->
+<feed xmlns="http://www.w3.org/2005/Atom"  xml:lang="pt-br">
+	<title type="text">Contato</title>
+	<subtitle type="text">Portal Escola Oficina dos Sonhos</subtitle>
+	<link rel="alternate" type="text/html" href="http://localhost"/>
+	<id>http://localhost/oficinadossonhos/index.php</id>
+	<updated>2016-09-09T19:35:17Z</updated>
+	<author>
+		<name>Oficina dos Sonhos</name>
+		<email>secretaria@oficinadossonhos.com.br</email>
+	</author>
+	<generator uri="http://joomla.org" version="1.5">Joomla! 1.5 - Open Source Content Management</generator>
+<link rel="self" type="application/atom+xml" href="http://localhost/oficinadossonhos/index.php?option=com_contact&amp;view=category&amp;catid=12&amp;Itemid=86&amp;el_mcal_month=10&amp;el_mcal_year=2016&amp;format=feed&amp;type=atom" />
+	<entry>
+		<title>Alessandra Machado</title>
+		<link rel="alternate" type="text/html" href="http://localhost/oficinadossonhos/index.php?option=com_contact&amp;view=contact&amp;id=1%3Aalessandra-machado&amp;catid=12%3Acontatos&amp;Itemid=86"/>
+		<published>2016-09-09T19:35:17Z</published>
+		<updated>2016-09-09T19:35:17Z</updated>
+		<id>http://localhost/oficinadossonhos/index.php?option=com_contact&amp;view=contact&amp;id=1%3Aalessandra-machado&amp;catid=12%3Acontatos&amp;Itemid=86</id>
+		<summary type="html">Financeiro - </summary>
+		<content type="html">Financeiro - </content>
+	</entry>
+	<entry>
+		<title>Evelize da Cunha</title>
+		<link rel="alternate" type="text/html" href="http://localhost/oficinadossonhos/index.php?option=com_contact&amp;view=contact&amp;id=12%3Aevelize-da-cunha&amp;catid=12%3Acontatos&amp;Itemid=86"/>
+		<published>2016-09-09T19:35:17Z</published>
+		<updated>2016-09-09T19:35:17Z</updated>
+		<id>http://localhost/oficinadossonhos/index.php?option=com_contact&amp;view=contact&amp;id=12%3Aevelize-da-cunha&amp;catid=12%3Acontatos&amp;Itemid=86</id>
+		<summary type="html">Coordenação Pedagógica Educação Infantil - </summary>
+		<content type="html">Coordenação Pedagógica Educação Infantil - </content>
+	</entry>
+	<entry>
+		<title>Fábia Steuernagel Poffo</title>
+		<link rel="alternate" type="text/html" href="http://localhost/oficinadossonhos/index.php?option=com_contact&amp;view=contact&amp;id=6%3Afabia-steuernagel-poffo&amp;catid=12%3Acontatos&amp;Itemid=86"/>
+		<published>2016-09-09T19:35:17Z</published>
+		<updated>2016-09-09T19:35:17Z</updated>
+		<id>http://localhost/oficinadossonhos/index.php?option=com_contact&amp;view=contact&amp;id=6%3Afabia-steuernagel-poffo&amp;catid=12%3Acontatos&amp;Itemid=86</id>
+		<summary type="html">Coordenação Pedagógica Ensino  Fundamental - </summary>
+		<content type="html">Coordenação Pedagógica Ensino  Fundamental - </content>
+	</entry>
+	<entry>
+		<title>Jaqueline Schuster</title>
+		<link rel="alternate" type="text/html" href="http://localhost/oficinadossonhos/index.php?option=com_contact&amp;view=contact&amp;id=2%3Ajaqueline-schuster&amp;catid=12%3Acontatos&amp;Itemid=86"/>
+		<published>2016-09-09T19:35:17Z</published>
+		<updated>2016-09-09T19:35:17Z</updated>
+		<id>http://localhost/oficinadossonhos/index.php?option=com_contact&amp;view=contact&amp;id=2%3Ajaqueline-schuster&amp;catid=12%3Acontatos&amp;Itemid=86</id>
+		<summary type="html">Secretaria - </summary>
+		<content type="html">Secretaria - </content>
+	</entry>
+	<entry>
+		<title>Marcia Poletti</title>
+		<link rel="alternate" type="text/html" href="http://localhost/oficinadossonhos/index.php?option=com_contact&amp;view=contact&amp;id=4%3Amarcia-poletti&amp;catid=12%3Acontatos&amp;Itemid=86"/>
+		<published>2016-09-09T19:35:17Z</published>
+		<updated>2016-09-09T19:35:17Z</updated>
+		<id>http://localhost/oficinadossonhos/index.php?option=com_contact&amp;view=contact&amp;id=4%3Amarcia-poletti&amp;catid=12%3Acontatos&amp;Itemid=86</id>
+		<summary type="html">Diretora / Supervisão Pedagógica - </summary>
+		<content type="html">Diretora / Supervisão Pedagógica - </content>
+	</entry>
+	<entry>
+		<title>Pamela Gonçalves de Araújo</title>
+		<link rel="alternate" type="text/html" href="http://localhost/oficinadossonhos/index.php?option=com_contact&amp;view=contact&amp;id=11%3Apamela-goncalves-de-araujo&amp;catid=12%3Acontatos&amp;Itemid=86"/>
+		<published>2016-09-09T19:35:17Z</published>
+		<updated>2016-09-09T19:35:17Z</updated>
+		<id>http://localhost/oficinadossonhos/index.php?option=com_contact&amp;view=contact&amp;id=11%3Apamela-goncalves-de-araujo&amp;catid=12%3Acontatos&amp;Itemid=86</id>
+		<summary type="html">Administrativo - </summary>
+		<content type="html">Administrativo - </content>
+	</entry>
+</feed>
